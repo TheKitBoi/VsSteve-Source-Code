@@ -73,18 +73,7 @@ class MainMenuState extends MusicBeatState
 		//menuBG.scale.set(1.3, 1.3);
 		//add(menuBG);
 
-		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("minecraf"));
-		minecraft.setGraphicSize(Std.int(minecraft.width * 1.1));
-		minecraft.updateHitbox();
-		minecraft.screenCenter(X);
-		minecraft.setPosition(minecraft.x, 150);
-		minecraft.antialiasing = false;
-		add(minecraft);
-
-		var menuBG:FlxSprite = new FlxSprite();
-		menuBG.frames = Paths.getSparrowAtlas('menuBG');
-		menuBG.animation.addByPrefix('spin', 'Panorama', 12, true);
-		menuBG.animation.play('spin');
+		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
 		menuBG.y -= 500;
 		menuBG.x -= 650;
 		menuBG.scale.set(1.3, 1.3);
@@ -92,6 +81,22 @@ class MainMenuState extends MusicBeatState
 		menuBG.antialiasing = false;
 		add(menuBG);
 
+		var menuBGClone:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
+		menuBGClone.y -= 500;
+		menuBGClone.x -= 650;
+		menuBGClone.scale.set(1.3, 1.3);
+		menuBGClone.updateHitbox();
+		menuBGClone.antialiasing = false;
+		add(menuBGClone);
+
+		
+		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("minecraf"));
+		minecraft.setGraphicSize(Std.int(minecraft.width * 1.1));
+		minecraft.updateHitbox();
+		minecraft.screenCenter(X);
+		minecraft.y += 200;
+		minecraft.antialiasing = false;
+		add(minecraft);
 
 		camFollow = new FlxObject(0, 0, 0, 0);
 		add(camFollow);
@@ -160,6 +165,8 @@ class MainMenuState extends MusicBeatState
 
 	var canClick:Bool = true;
 	var usingMouse:Bool = false;
+	var scroll:Bool;
+	var tween:FlxTween;
 
 	override function update(elapsed:Float)
 	{
@@ -167,6 +174,31 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+	
+		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
+		
+		var menuBGClone:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
+	
+		if(scroll == true)
+		{
+           scroll = false;
+           menuBG.x = 1280;
+           menuBGClone.x = 0;
+           //"pano name here".visible = false;
+           FlxTween.tween("menuBG", {x: -1600}, 90, {
+           onComplete: function(twn:FlxTween)
+       		{
+       			tween = FlxTween.tween("menuBG", { x: -2880 }, 90);
+       			FlxTween.tween("menuBGclone", {x: 0}, 90, {
+       			onComplete: function(twn:FlxTween)
+       			{
+       			    tween.cancel();
+       			    scroll = true;
+       			}
+       			});
+            }
+            });
+        }
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
