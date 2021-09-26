@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bfMinecraft.png"><SubTexture name="bfMinecraft down note0000" x="0" y="0" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft down note0001" x="107" y="0" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft down miss0000" x="214" y="0" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft down miss0001" x="321" y="0" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft Idle0000" x="0" y="119" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft Idle0001" x="107" y="119" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft Idle0002" x="214" y="119" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft Idle0003" x="321" y="119" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft left note0000" x="0" y="238" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft left note0001" x="107" y="238" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft left miss0000" x="214" y="238" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft left miss0001" x="321" y="238" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft right note0000" x="0" y="357" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft right note0001" x="107" y="357" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft right miss0000" x="214" y="357" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft right miss0001" x="321" y="357" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft up note0000" x="0" y="476" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft up note0001" x="107" y="476" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft up miss0000" x="214" y="476" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft up miss0001" x="321" y="476" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0000" x="0" y="595" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0001" x="107" y="595" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0002" x="214" y="595" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0003" x="321" y="595" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0004" x="0" y="714" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0005" x="107" y="714" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0006" x="214" y="714" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0007" x="321" y="714" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0008" x="0" y="833" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0009" x="107" y="833" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0010" x="214" y="833" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0011" x="321" y="833" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0012" x="0" y="952" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0013" x="107" y="952" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0014" x="214" y="952" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0015" x="321" y="952" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0016" x="0" y="1071" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0017" x="107" y="1071" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0018" x="214" y="1071" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+<SubTexture name="bfMinecraft shield0019" x="321" y="1071" width="107" height="119" frameX="0" frameY="0" frameWidth="107" frameHeight="119" />
+</TextureAtlas>
