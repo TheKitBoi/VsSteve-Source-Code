@@ -31,7 +31,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -125,14 +125,15 @@ class MainMenuState extends MusicBeatState
 				case 1: //freeplay
 					butos.setPosition(butos.x, 350);
 				case 2: // options
-					butos.setPosition(butos.x - 110, 500);
+					butos.setPosition(butos.x - 110, 550);
 				case 3: //quit game
-					butos.setPosition(butos.x + 110, 500);
+					butos.setPosition(butos.x + 110, 550);
 				case 4: //credits?
-					butos.setPosition(butos.x - 250, 500);
+					butos.setPosition(butos.x - 250, 550);
 				case 5: //uoh?
-					butos.setPosition(butos.x + 250, 500);
-				
+					butos.setPosition(butos.x + 250, 550);
+				case 6: //bonus
+				    butos.setPosition(butos.x, 450);
 			}
 			menuItems.add(butos);
 		}
@@ -304,6 +305,8 @@ class MainMenuState extends MusicBeatState
 			case 'credits':
 				trace("Soon");
 				System.exit(0);
+			case 'bonus':
+				FlxG.switchState(new FreeplayStateBonus());
 		}
 	}
 
