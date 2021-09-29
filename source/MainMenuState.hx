@@ -94,7 +94,8 @@ class MainMenuState extends MusicBeatState
 		minecraft.setGraphicSize(Std.int(minecraft.width * 1.1));
 		minecraft.updateHitbox();
 		minecraft.screenCenter(X);
-		minecraft.y += 200;
+		minecraft.x -= 630;
+		minecraft.y -= 300;
 		minecraft.antialiasing = false;
 		add(minecraft);
 
@@ -307,6 +308,7 @@ class MainMenuState extends MusicBeatState
 				System.exit(0);
 			case 'bonus':
 				FlxG.switchState(new FreeplayStateBonus());
+				trace("bonus songs!");
 		}
 	}
 
