@@ -4445,6 +4445,7 @@ class PlayState extends MusicBeatState
 		{
 			// dad.dance();
 		}
+		
 
 		// yes this updates every step.
 		// yes this is bad
@@ -4518,16 +4519,13 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
-		if(curSong == 'gapple' && dad.curCharacter == 'notch')
+		if (curSong == 'gapple' && curBeat >= 28 && curBeat < 64)
 			{
-				switch(curStep)
-				{
-					case 125 | 383 | 927:
-						FlxG.camera.zoom += 0.025;
-					case 254 | 510 | 1150:
-						defaultCamZoom;
-				}
+				FlxG.camera.zoom += 0.025;
+				camHUD.zoom += 0.03;
+				trace(FlxG.camera.zoom);
 			}
+		
 
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
