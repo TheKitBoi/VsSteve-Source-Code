@@ -715,7 +715,7 @@ class PlayState extends MusicBeatState
 
 					var repositionShit = -200;
 
-					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fasttravelBg'));
+					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
 					fasttravelbg.scale.set(3.1, 3.1);
 					fasttravelbg.updateHitbox();
 					fasttravelbg.antialiasing = false;
@@ -2710,8 +2710,8 @@ class PlayState extends MusicBeatState
 			steveHorse.y += Math.cos(floatvalue);
 			gfHorse.y += Math.sin(floatvalue);
 			gfHorse.y += Math.cos(floatvalue);
-			dad.x += Math.sin(floatvalue);
-			dad.x += Math.cos(floatvalue);
+			dad.x += Math.sin(runvalue);
+			dad.x += Math.cos(runvalue);
 			boyfriend.x += Math.sin(runvalue);
 			boyfriend.x += Math.cos(runvalue);
 			alexHorse.x += Math.sin(runvalue);
