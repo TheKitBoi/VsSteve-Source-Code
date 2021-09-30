@@ -713,12 +713,8 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.7;
 					camMovement = 0.6;
 
-					var repositionShit = -200;
-
-					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fasttravelBg'));
-					fasttravelbg.scale.set(3.1, 3.1);
-					fasttravelbg.updateHitbox();
-					fasttravelbg.antialiasing = false;
+					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
+					fasttravelbg.scrollFactor.set(0.95, 0.95);
 					add(fasttravelbg);
 					
 					alexHorse = new FlxSprite(50, 0);
@@ -746,6 +742,8 @@ class PlayState extends MusicBeatState
 					steveHorse.setGraphicSize(Std.int(steveHorse.width * 6));
 					steveHorse.updateHitbox();
 			 		add(steveHorse);
+
+					fasttravelbg.setGraphicSize(Std.int(fasttravelbg.width * daPixelZoom));
 
 					fasttravelbg.updateHitbox();
 
@@ -2710,8 +2708,8 @@ class PlayState extends MusicBeatState
 			steveHorse.y += Math.cos(floatvalue);
 			gfHorse.y += Math.sin(floatvalue);
 			gfHorse.y += Math.cos(floatvalue);
-			dad.x += Math.sin(floatvalue);
-			dad.x += Math.cos(floatvalue);
+			dad.x += Math.sin(runvalue);
+			dad.x += Math.cos(runvalue);
 			boyfriend.x += Math.sin(runvalue);
 			boyfriend.x += Math.cos(runvalue);
 			alexHorse.x += Math.sin(runvalue);

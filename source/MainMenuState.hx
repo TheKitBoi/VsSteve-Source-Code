@@ -186,12 +186,12 @@ class MainMenuState extends MusicBeatState
            scroll = false;
            menuBG.x = 1280;
            menuBGClone.x = 0;
-           //"pano name here".visible = false;
-           FlxTween.tween("menuBG", {x: -1600}, 90, {
+           //"menuBG".visible = false;
+           FlxTween.tween(menuBG, {x: -1600}, 90, {
            onComplete: function(twn:FlxTween)
        		{
-       			tween = FlxTween.tween("menuBG", { x: -2880 }, 90);
-       			FlxTween.tween("menuBGclone", {x: 0}, 90, {
+       			tween = FlxTween.tween(menuBG, { x: -2880 }, 90);
+       			FlxTween.tween(menuBGClone, {x: 0}, 90, {
        			onComplete: function(twn:FlxTween)
        			{
        			    tween.cancel();
