@@ -713,12 +713,9 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.7;
 					camMovement = 0.6;
 
-					var repositionShit = -200;
-
 					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
-					fasttravelbg.scale.set(3.1, 3.1);
+					fasttravelbg.scale.set(1.1, 1.1);
 					fasttravelbg.updateHitbox();
-					fasttravelbg.antialiasing = false;
 					add(fasttravelbg);
 					
 					alexHorse = new FlxSprite(50, 0);
@@ -1197,7 +1194,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.save.data.songPosition) // I dont wanna talk about this code :(
 			{
-				songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBarBGG'));
+				songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBarBG'));
 				if (FlxG.save.data.downscroll)
 					songPosBG.y = FlxG.height * 0.9 + 45; 
 				songPosBG.screenCenter(X);
@@ -2453,6 +2450,8 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
 							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
 					}
+					babyArrow.updateHitbox();
+				babyArrow.scrollFactor.set();
 			}
 
 			babyArrow.updateHitbox();
@@ -2566,8 +2565,8 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		floatvalue += 0.009;
-		runvalue += 0.005;
+		floatvalue += 0.0005;
+		runvalue += 0.0002;
 		#if !debug
 		perfectMode = false;
 		#end
@@ -2698,7 +2697,7 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		if (curStage.startsWith('fasttravel'))
+		if (curStage.startsWith('fasttravel') || curStage.startsWith('school'))
 		{
 			dad.y += Math.sin(floatvalue);
 			dad.y += Math.cos(floatvalue);
