@@ -713,8 +713,12 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.7;
 					camMovement = 0.6;
 
-					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
-					fasttravelbg.scrollFactor.set(0.95, 0.95);
+					var repositionShit = -200;
+
+					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fasttravelBg'));
+					fasttravelbg.scale.set(3.1, 3.1);
+					fasttravelbg.updateHitbox();
+					fasttravelbg.antialiasing = false;
 					add(fasttravelbg);
 					
 					alexHorse = new FlxSprite(50, 0);
@@ -742,8 +746,6 @@ class PlayState extends MusicBeatState
 					steveHorse.setGraphicSize(Std.int(steveHorse.width * 6));
 					steveHorse.updateHitbox();
 			 		add(steveHorse);
-
-					fasttravelbg.setGraphicSize(Std.int(fasttravelbg.width * daPixelZoom));
 
 					fasttravelbg.updateHitbox();
 
@@ -2708,8 +2710,8 @@ class PlayState extends MusicBeatState
 			steveHorse.y += Math.cos(floatvalue);
 			gfHorse.y += Math.sin(floatvalue);
 			gfHorse.y += Math.cos(floatvalue);
-			dad.x += Math.sin(runvalue);
-			dad.x += Math.cos(runvalue);
+			dad.x += Math.sin(floatvalue);
+			dad.x += Math.cos(floatvalue);
 			boyfriend.x += Math.sin(runvalue);
 			boyfriend.x += Math.cos(runvalue);
 			alexHorse.x += Math.sin(runvalue);
@@ -4444,7 +4446,6 @@ class PlayState extends MusicBeatState
 			// dad.dance();
 		}
 
-
 		// yes this updates every step.
 		// yes this is bad
 		// but i'm doing it to update misses and accuracy
@@ -4517,6 +4518,16 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
+		if(curSong == 'gapple' && dad.curCharacter == 'notch')
+			{
+				switch(curStep)
+				{
+					case 125 | 383 | 927:
+						FlxG.camera.zoom += 0.025;
+					case 254 | 510 | 1150:
+						defaultCamZoom;
+				}
+			}
 
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
@@ -4626,3 +4637,14 @@ class PlayState extends MusicBeatState
 //but look at me now makin special notes and coding for 2 mods.
 //never give up!!!
 //- Nosadx
+
+
+
+// hi me chromasen and i will teach u how to code
+// so u see if (curSong.toLowerCase == 'gapple') it means what song rn
+// (curSong.toLowerCase == 'gapple' curStep >= 133) it means what curstep for what mid song event
+// (curSong.toLowerCase == 'gapple' curStep >= 133)
+//{
+//  gf.playAnim = 'fard';      if it animation exists she will fard
+//}
+// thats it tahnk u for watching now pay me my 25 dollars for code teaching :DDDDDDDDDDDDD
