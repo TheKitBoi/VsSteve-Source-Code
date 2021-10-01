@@ -342,7 +342,7 @@ class PlayState extends MusicBeatState
 		{
 			case 'lmao':
 				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
-			case 'uog':
+			case 'uoh':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('uoh/uohDialogue'));
 			case 'craft away':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('craft away/craft awayDialogue'));
@@ -816,6 +816,7 @@ class PlayState extends MusicBeatState
 					creeper.scale.set(1.8, 1.8);
 				    creeper.scrollFactor.set(0.9, 0.9);
 			     	add(creeper);
+
 					var repositionShit = -200;
 
 					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('awwman/floor'));
@@ -1035,14 +1036,6 @@ class PlayState extends MusicBeatState
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
-			case 'limo':
-				boyfriend.y -= 220;
-				boyfriend.x += 260;
-				if(FlxG.save.data.distractions){
-					resetFastCar();
-					add(fastCar);
-				}
-
 			case 'mall':
 				boyfriend.x += 200;
 
@@ -3871,12 +3864,12 @@ class PlayState extends MusicBeatState
 				if (combo >= 10 || combo == 0)
 					add(numScore);
 	
-				FlxTween.tween(numScore, {alpha: 0}, 0.2, {
+				FlxTween.tween(numScore, {alpha: 0}, 0.4, {
 					onComplete: function(tween:FlxTween)
 					{
 						numScore.destroy();
 					},
-					startDelay: Conductor.crochet * 0.002
+					startDelay: Conductor.crochet * 0.0025
 				});
 	
 				daLoop++;
@@ -4337,33 +4330,6 @@ class PlayState extends MusicBeatState
 			}
 		
 
-	var fastCarCanDrive:Bool = true;
-
-	function resetFastCar():Void
-	{
-		if(FlxG.save.data.distractions){
-			fastCar.x = -12600;
-			fastCar.y = FlxG.random.int(140, 250);
-			fastCar.velocity.x = 0;
-			fastCarCanDrive = true;
-		}
-	}
-
-	function fastCarDrive()
-	{
-		if(FlxG.save.data.distractions){
-			FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
-
-			fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;
-			fastCarCanDrive = false;
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				resetFastCar();
-			});
-		}
-	}
-
-
 	var healthLost:Float = 0;
 
 
@@ -4519,11 +4485,11 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 		if (curSong == 'gapple' && curBeat >= 28 && curBeat < 64)
-			{
-				FlxG.camera.zoom += 0.025;
-				camHUD.zoom += 0.03;
-				trace(FlxG.camera.zoom);
-			}
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
 		
 
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
@@ -4551,6 +4517,8 @@ class PlayState extends MusicBeatState
 		if (!dad.animation.curAnim.name.startsWith("sing"))
 		{
 			dad.dance();
+			if (hasDuoDad)
+				duoDad.dance();
 		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
@@ -4597,12 +4565,6 @@ class PlayState extends MusicBeatState
 					gfHorse.animation.play('bop', false);
 					alexHorse.animation.play('bop', false);
 					steveHorse.animation.play('bop', false);
-				}
-			case 'mall':
-				if(FlxG.save.data.distractions){
-					upperBoppers.animation.play('bop', true);
-					bottomBoppers.animation.play('bop', true);
-					santa.animation.play('idle', true);
 				}
 
 		}
