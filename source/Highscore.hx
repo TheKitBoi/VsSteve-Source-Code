@@ -70,8 +70,8 @@ class Highscore
 
 		if (diff == 0)
 			daSong += '-normal';
-		else if (diff == 2)
-			daSong += '-hardcore';
+		else if (diff == 3)
+			daSong += '-ultrahardcore';
 
 		return daSong;
 	}

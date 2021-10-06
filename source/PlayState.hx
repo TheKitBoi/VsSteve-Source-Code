@@ -282,6 +282,8 @@ class PlayState extends MusicBeatState
 				storyDifficultyText = "Hard";
 			case 2:
 				storyDifficultyText = "Hardcore";
+			case 3:
+				storyDifficultyText = "Ultra Hardcore";
 		}
 
 		iconRPC = SONG.player2;
@@ -1248,7 +1250,7 @@ class PlayState extends MusicBeatState
 
 
 		// Add Kade Engine watermark
-		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 2 ? "Hardore" : storyDifficulty == 1 ? "Hard" : "Normal") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
+		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardore" : storyDifficulty == 2 ? "Hardore" : storyDifficulty == 1 ? "Hard" : "Normal") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
@@ -2558,7 +2560,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		floatvalue += 0.05;
+		floatvalue += 0.07;
 		runvalue += 0.09;
 		#if !debug
 		perfectMode = false;
@@ -3358,12 +3360,21 @@ class PlayState extends MusicBeatState
 							daNote.kill();
 							notes.remove(daNote, true);
 							daNote.destroy();
-							health += 0.01;
 						}
 						else if(storyDifficulty == 2)
 						{
-							health -= 69; // i should've put only 2 since thats the max health, but eh, 69 cool
-							trace ('BOOOM YOU MISSED ONE');
+							health -= 0.035;
+							vocals.volume = 0;
+							if (theFunne)
+								noteMiss(daNote.noteData, daNote);
+						}
+						else if(storyDifficulty == 3)
+						{
+							if(health > 0.8)
+								health -= 0.5;
+							else
+								health -= 0.2;
+
 							vocals.volume = 0;
 							if (theFunne)
 								noteMiss(daNote.noteData, daNote);	
@@ -3493,8 +3504,8 @@ class PlayState extends MusicBeatState
 					if (storyDifficulty == 0)
 						difficulty = '-normal';
 
-					if (storyDifficulty == 2)
-						difficulty = '-hardcore';
+					if (storyDifficulty == 3)
+						difficulty = '-ultrahardcore';
 
 					trace('LOADING NEXT SONG');
 

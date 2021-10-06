@@ -184,6 +184,7 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
 		sprDifficulty.animation.addByPrefix('hard', 'NHARD');
 		sprDifficulty.animation.addByPrefix('hardcore', 'HARDCORE');
+		sprDifficulty.animation.addByPrefix('ultrahardcore', 'ULTRA HARDCORE');
 		sprDifficulty.animation.play('normal');
 		changeDifficulty();
 
@@ -202,6 +203,7 @@ class StoryMenuState extends MusicBeatState
 		diffs.animation.addByPrefix('normal', 'Normal', 24);
 		diffs.animation.addByPrefix('harrrd', 'Very yes very much hard', 24);
 		diffs.animation.addByPrefix('hardcoreee', 'Hardcore', 24);
+		diffs.animation.addByPrefix('Ultrahardcoreee', 'UltraHardcore', 24);
 		diffs.animation.play('normal');
 		add(diffs);
 		
@@ -319,6 +321,9 @@ class StoryMenuState extends MusicBeatState
 		if (curDifficulty == 2){
 		diffs.animation.play('hardcoreee');
 		}
+		if (curDifficulty == 3){
+			diffs.animation.play('Ultrahardcoreee');
+		}
 
 		if (controls.BACK && !movedBack && !selectedWeek)
 		{
@@ -357,8 +362,8 @@ class StoryMenuState extends MusicBeatState
 			{
 				case 0:
 					diffic = '-normal';
-				case 2:
-					diffic = '-hardcore';
+				case 3:
+					diffic = '-ultrahardcore';
 			}
 
 			PlayState.storyDifficulty = curDifficulty;
@@ -375,8 +380,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
+			curDifficulty = 3;
+		if (curDifficulty > 3)
 			curDifficulty = 0;
 			
 		sprDifficulty.offset.x = 0;
@@ -391,6 +396,9 @@ class StoryMenuState extends MusicBeatState
 				sprDifficulty.offset.x = 20;
 			case 2:
 				sprDifficulty.animation.play('hardcore');
+				sprDifficulty.offset.x = 20;
+			case 3:
+				sprDifficulty.animation.play('ultrahardcore');
 				sprDifficulty.offset.x = 20;
 
 		}
