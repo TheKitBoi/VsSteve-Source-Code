@@ -720,12 +720,12 @@ class PlayState extends MusicBeatState
 					fasttravelbg.updateHitbox();
 					add(fasttravelbg);
 					
-					alexHorse = new FlxSprite(50, 0);
+					alexHorse = new FlxSprite(50, 55);
 				    alexHorse.frames = Paths.getSparrowAtlas('fasttravel/alexHorse');
 					alexHorse.animation.addByPrefix('bop', 'alexHorse idle', 24, false);
 					alexHorse.scrollFactor.set(1, 1);
 					alexHorse.scale.set(1.1, 1.1);
-					alexHorse.setGraphicSize(Std.int(alexHorse.width * 6));
+					alexHorse.setGraphicSize(Std.int(alexHorse.width * 5.6));
 					alexHorse.updateHitbox();
 			 		add(alexHorse);
 
