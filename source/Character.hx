@@ -597,23 +597,25 @@ class Character extends FlxSprite
 			case 'alex':
 				iconColor = 'FF9AFF9A';
 				frames = Paths.getSparrowAtlas('characters/alex');
-				animation.addByPrefix('idle', 'alex Idle', 24, false);
-				animation.addByPrefix('singUP', 'alex UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'alex LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'alex RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'alex DOWN NOTE', 24, false);
+				animation.addByPrefix('idle', 'alex idle', 24, false);
+				animation.addByPrefix('singUP', 'alex up', 24, false);
+				animation.addByPrefix('singLEFT', 'alex left', 24, false);
+				animation.addByPrefix('singRIGHT', 'alex right', 24, false);
+				animation.addByPrefix('singDOWN', 'alex down', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -239, -272);
+				addOffset("singRIGHT", -252, -260);
+				addOffset("singLEFT", -250, -260);
+				addOffset("singDOWN", -250, -260);
+
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 5.9));
 				updateHitbox();
 
 				antialiasing = false;
+
 
 			case 'alexchill':
 				iconColor = 'FF9AFF9A';
