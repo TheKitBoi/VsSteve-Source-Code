@@ -713,10 +713,10 @@ class PlayState extends MusicBeatState
 					curStage = 'fasttravel';
 
 					defaultCamZoom = 0.7;
-					camMovement = 0.6;
+					camMovement = 0.8;
 
 					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
-					fasttravelbg.scale.set(1.1, 1.1);
+					fasttravelbg.scale.set(1.4, 1.4);
 					fasttravelbg.updateHitbox();
 					add(fasttravelbg);
 					
