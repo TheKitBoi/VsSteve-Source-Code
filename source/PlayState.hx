@@ -1216,8 +1216,43 @@ class PlayState extends MusicBeatState
 
 		// im planning on making a sandwich like thing.. like.. first the outline, then the healthbar and then the xp bar but a bit transparent
 		
+		////OUTLINE SHIT
+		//healthBarBGG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarBGG'));
+		//if (FlxG.save.data.downscroll)
+		//	healthBarBGG.y = 50;
+		//healthBarBGG.screenCenter(X);
+		//healthBarBGG.scrollFactor.set();
+//
+		//add(healthBarBGG);
+//
+		//
+		////HEALTH BAR SHIT -- COLORS YK
+		//healthBar = new FlxBar(healthBarBGG.x + 4, healthBarBGG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBGG.width - 8), Std.int(healthBarBGG.height - 8), this,
+		//	'health', 0, 2);
+		////weird shit layering here
+//
+		//healthBar.scrollFactor.set();
+		//healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+		//// healthBar
+		//add(healthBar);
+		//// maybe like this???
+//
+		////XP BAR SHIT
+		//healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
+		//if (FlxG.save.data.downscroll)
+		//	healthBarBG.y = 50;
+		//healthBarBG.screenCenter(X);
+		//healthBarBG.alpha = 0.7;
+		//healthBarBG.scrollFactor.set();
+		//add(healthBarBG);
+		
+
+
+
+
+
 		//OUTLINE SHIT
-		healthBarBGG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarBGG'));
+		healthBarBGG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarBGGLong'));
 		if (FlxG.save.data.downscroll)
 			healthBarBGG.y = 50;
 		healthBarBGG.screenCenter(X);
@@ -1225,7 +1260,7 @@ class PlayState extends MusicBeatState
 
 		add(healthBarBGG);
 
-		
+
 		//HEALTH BAR SHIT -- COLORS YK
 		healthBar = new FlxBar(healthBarBGG.x + 4, healthBarBGG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBGG.width - 8), Std.int(healthBarBGG.height - 8), this,
 			'health', 0, 2);
@@ -1238,14 +1273,19 @@ class PlayState extends MusicBeatState
 		// maybe like this???
 
 		//XP BAR SHIT
-		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
+		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarLong'));
 		if (FlxG.save.data.downscroll)
 			healthBarBG.y = 50;
 		healthBarBG.screenCenter(X);
-		healthBarBG.alpha = 0.7;
+		healthBarBG.alpha = 0.65;
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
-		
+
+
+
+
+
+
 		//Do i need to add the BGG shit here aswell??
 
 
@@ -3661,7 +3701,7 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						if (health < 2)
+						if (health < 4)
 							health += 0.06;
 						if (FlxG.save.data.accuracyMod == 0)
 							totalNotesHit += 1;
@@ -4369,9 +4409,9 @@ class PlayState extends MusicBeatState
 		healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF3e0707);
 		new FlxTimer().start(0.75, function(swagTimer:FlxTimer)
 		{
-			health -= 0.1;
-			healthLost += 0.1;
-			if (healthLost < 1.5)
+			health -= 0.125;
+			healthLost += 0.125;
+			if (healthLost < 1.75)
 			{
 				swagTimer.reset();
 			}
