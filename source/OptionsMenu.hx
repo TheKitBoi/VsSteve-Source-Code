@@ -18,6 +18,7 @@ import lime.utils.Assets;
 
 class OptionsMenu extends MusicBeatState
 {
+	public static var instance:OptionsMenu;
 	var selector:FlxText;
 	var curSelected:Int = 0;
 
@@ -60,6 +61,8 @@ class OptionsMenu extends MusicBeatState
 		
 	];
 
+	public var acceptInput:Bool = true;
+
 	private var currentDescription:String = "";
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	public static var versionShit:FlxText;
@@ -68,6 +71,8 @@ class OptionsMenu extends MusicBeatState
 	var blackBorder:FlxSprite;
 	override function create()
 	{
+		instance = this;
+
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGBlue"));
 
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
@@ -113,6 +118,9 @@ class OptionsMenu extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if(acceptInput)
+		{
 
 			if (controls.BACK && !isCat)
 				FlxG.switchState(new MainMenuState());
@@ -223,6 +231,7 @@ class OptionsMenu extends MusicBeatState
 					curSelected = 0;
 				}
 			}
+		}
 		FlxG.save.flush();
 	}
 
