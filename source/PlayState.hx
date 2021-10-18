@@ -191,6 +191,10 @@ class PlayState extends MusicBeatState
 
 	var fc:Bool = true;
 
+	//Blockinf Stuff
+	var achievementBlock:FlxSprite;
+	var detectAttack:Bool = false;
+
 	var bgGirls:BackgroundGirls;
 	var bgDevs:BackgroundDevs;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
@@ -1114,11 +1118,6 @@ class PlayState extends MusicBeatState
 		}
 
 		add(gf);
-
-		// Shitty layering but whatev it works LOL
-		if (curStage == 'limo')
-			add(limo);
-
 		add(dad);
 
 		switch (SONG.song.toLowerCase())
@@ -1129,6 +1128,18 @@ class PlayState extends MusicBeatState
 				hasDuoDad = true;
 		}
 		add(boyfriend);
+
+		achievementBlock = new FlxSprite(300, 400);
+		achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
+		achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
+		achievementBlock.antialiasing = false;
+		achievementBlock.alpha = 0;
+		//achievementBlock.screenCenter(X);
+		achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2.7));
+
+		add(achievementBlock);
+
+
 		if (loadRep)
 		{
 			FlxG.watch.addQuick('rep rpesses',repPresses);
@@ -4426,6 +4437,92 @@ class PlayState extends MusicBeatState
 	}
 
 
+	function blockFail()
+		{
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			{
+				boyfriend.playAnim('singDOWNmiss', true);	
+
+				if (health > 1)
+				{
+					health -= 1;
+				}
+				else{
+					health -= 0.5;
+				}	
+				FlxG.camera.shake(0.05, 0.05);
+			});
+		}
+		
+	function bfBlock()
+	{
+		boyfriend.playAnim('Block', true);
+	}
+
+	function steveAttack()
+	{
+		dad.playAnim('SteveSlash', true);
+	}
+	
+	
+	var pressedSpace:Bool = false;
+
+	function slashEvent()
+		{
+			trace('prepare to slash');
+			blockWarning();
+			achievementBlock.animation.play('block', true);
+			pressedSpace = false;
+			detectAttack = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			{
+				steveAttack();
+				if (pressedSpace)
+				{
+					bfBlock();
+					trace('Successful Block');
+				}
+				else
+				{
+					pressedSpace = false;
+					detectAttack = false;
+					blockFail();
+					trace('Haha, hit');
+				}
+			});
+		}
+
+	function blockWarning()
+	{
+		pressCounter = 0;
+		FlxTween.tween(achievementBlock, {x: 100});
+		achievementBlock.alpha = 1;
+		new FlxTimer().start(2, function(tmr:FlxTimer)
+		{
+			FlxTween.tween(achievementBlock, {x: -100});
+			achievementBlock.alpha = 0;
+			//FlxFlicker.stopFlickering(combatSpr);
+		});
+	}
+	var pressCounter = 0;
+
+	function detectSpace()
+	{
+		if (FlxG.keys.justPressed.SPACE)
+		{
+			pressCounter += 1;
+			trace('tap');
+			FlxG.camera.shake(0.02, 0.02);
+		}
+		if (pressCounter >= 1)
+		{
+			trace('TAP');
+			pressedSpace = true;
+			detectAttack = false;
+			//FlxG.sound.play(Paths.sound('achievement/Block'));
+		}
+	}
+
 	override function stepHit()
 	{
 		super.stepHit();
@@ -4512,6 +4609,15 @@ class PlayState extends MusicBeatState
 				}
 
 		}
+		if (curSong == 'suit up')
+			if (curStep == null)
+			{
+				var blackCut:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+				blackCut.scrollFactor.set();
+				add(blackCut);
+
+			}
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
 		{
