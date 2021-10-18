@@ -4461,7 +4461,7 @@ class PlayState extends MusicBeatState
 
 	function steveAttack()
 	{
-		dad.playAnim('SteveSlash', true);
+		dad.playAnim('SteveArmor Hit', true);
 	}
 	
 	
@@ -4610,13 +4610,18 @@ class PlayState extends MusicBeatState
 
 		}
 		if (curSong == 'suit up')
-			if (curStep == null)
+			if (curStep == 245 | 767 | 801 | 833 | 866 | 896 | 928 | 961 | 993)
 			{
 				var blackCut:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
 					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 				blackCut.scrollFactor.set();
 				add(blackCut);
 
+			}
+			if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929 | 962 | 994)
+			{
+				destroy(blackCut);
+				slashEvent();	
 			}
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
