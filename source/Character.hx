@@ -450,17 +450,21 @@ class Character extends FlxSprite
 			case 'steve-armor':
 				iconColor = 'FF224367';
 				frames = Paths.getSparrowAtlas('characters/SteveArmor');
-				animation.addByPrefix('idle', 'Steve Armor Idle', 24, false);
-				animation.addByPrefix('singUP', 'Steve Armor UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'Steve Armor LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'Steve Armor RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'Steve Armor DOWN NOTE', 24, false);
+				animation.addByPrefix('idle', 'SteveArmor idle', 24, false);
+				animation.addByPrefix('singUP', 'SteveArmor up', 24, false);
+				animation.addByPrefix('singLEFT', 'SteveArmor left', 24, false);
+				animation.addByPrefix('singRIGHT', 'SteveArmor right', 24, false);
+				animation.addByPrefix('singDOWN', 'SteveArmor down', 24, false);
+				animation.addByPrefix('prepare', 'SteveArmor prepare', 24, false);
+				animation.addByPrefix('hit', 'SteveArmor hit', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -247, -256);
+				addOffset("singRIGHT", -249, -254);
+				addOffset("singLEFT", -244, -259);
+				addOffset("singDOWN", -256, -260);
+				addOffset("prepare", -221, -250);
+				addOffset("hit", -220, -240);
 				playAnim('idle');
 
 				setGraphicSize(Std.int(width * 6));
