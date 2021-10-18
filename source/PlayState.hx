@@ -957,8 +957,8 @@ class PlayState extends MusicBeatState
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'steve-armor':
-				dad.x += 150;
-				dad.y += 360;
+				dad.x -= 90;
+				dad.y += 230;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 90;
@@ -2982,9 +2982,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.8;
 						
 						case 'steve-armor':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - -50;
-							defaultCamZoom = 1.15;                    
+							camFollow.y = dad.getMidpoint().y - 80;
+							camFollow.x = dad.getMidpoint().x - -170;
+							defaultCamZoom = 0.95;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -4299,7 +4299,6 @@ class PlayState extends MusicBeatState
 				/*if (mashing > getKeyPresses(note) && mashViolations <= 2)
 				{
 					mashViolations++;
-
 					goodNoteHit(note, (mashing > getKeyPresses(note)));
 				}
 				else if (mashViolations > 2)
@@ -4618,11 +4617,7 @@ class PlayState extends MusicBeatState
 				add(blackCut);
 
 			}
-			if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929 | 962 | 994)
-			{
-				destroy(blackCut);
-				slashEvent();	
-			}
+
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
 		{
