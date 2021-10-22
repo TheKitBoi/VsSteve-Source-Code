@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="giantalex.png"><SubTexture name="giantalex idle0000" x="0" y="0" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0001" x="426" y="0" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0002" x="852" y="0" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0003" x="1278" y="0" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0004" x="0" y="441" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0005" x="426" y="441" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0006" x="852" y="441" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex idle0007" x="1278" y="441" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex left0000" x="0" y="882" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex left0001" x="426" y="882" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex left0002" x="852" y="882" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex left0003" x="1278" y="882" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0000" x="0" y="1323" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0001" x="426" y="1323" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0002" x="852" y="1323" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0003" x="1278" y="1323" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0004" x="0" y="1764" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex down0005" x="426" y="1764" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex up0000" x="852" y="1764" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex up0001" x="1278" y="1764" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex up0002" x="0" y="2205" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex up0003" x="426" y="2205" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex up0004" x="852" y="2205" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex right0000" x="1278" y="2205" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex right0001" x="0" y="2646" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex right0002" x="426" y="2646" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+<SubTexture name="giantalex right0003" x="852" y="2646" width="426" height="441" frameX="0" frameY="0" frameWidth="426" frameHeight="441" />
+</TextureAtlas>
