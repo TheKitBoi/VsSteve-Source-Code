@@ -958,7 +958,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'steve-armor':
 				dad.x -= 90;
-				dad.y += 210;
+				dad.y += 195;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 90;
@@ -1345,6 +1345,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		achievementBlock.cameras = [camHUD];
 		healthBarBGG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
@@ -2622,7 +2623,7 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
-		if (dad.animation.curAnim.name == 'hit')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare')
 			{
 				if (dad.animation.finished)
 				{
@@ -2638,8 +2639,9 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
+
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -3050,9 +3052,9 @@ class PlayState extends MusicBeatState
 				switch (curStage)
 				{
 					case 'school':
-						camFollow.x = boyfriend.getMidpoint().x - 200;
-						camFollow.y = boyfriend.getMidpoint().y - 210;
-						defaultCamZoom = 1.0;
+						camFollow.x = boyfriend.getMidpoint().x - 180;
+						camFollow.y = boyfriend.getMidpoint().y - 190;
+						defaultCamZoom = 1.05;
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -4579,9 +4581,14 @@ class PlayState extends MusicBeatState
 
 		if (dad.curCharacter == 'steve-armor' && SONG.song.toLowerCase() == 'suit up')
 		{
+			camHUD.visible = !camHUD.visible;
+
 			switch (curStep)
 			{
-				case 122 | 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
+				case 124:
+					stevePrepare();
+					camHUD.visible = !camHUD.visible;
+				case 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
 					stevePrepare();
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
 					slashEvent();
@@ -4672,7 +4679,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
