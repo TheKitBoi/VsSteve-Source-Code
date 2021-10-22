@@ -3005,7 +3005,7 @@ class PlayState extends MusicBeatState
 						case 'steve-armor':
 							camFollow.y = dad.getMidpoint().y - 100;
 							camFollow.x = dad.getMidpoint().x - -140;
-							defaultCamZoom = 1.15;              
+							defaultCamZoom = 1.10;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
