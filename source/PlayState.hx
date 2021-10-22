@@ -1129,13 +1129,13 @@ class PlayState extends MusicBeatState
 		}
 		add(boyfriend);
 
-		achievementBlock = new FlxSprite(300, 400);
+		achievementBlock = new FlxSprite(550, 500);
 		achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
 		achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
 		achievementBlock.antialiasing = false;
 		achievementBlock.alpha = 0;
 		//achievementBlock.screenCenter(X);
-		achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2.7));
+		achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
 
 		add(achievementBlock);
 
@@ -2617,6 +2617,27 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+		if (detectAttack)
+		{
+			detectSpace();
+		}
+
+		if (dad.animation.curAnim.name == 'hit')
+			{
+				if (dad.animation.finished)
+				{
+					dad.dance();
+				}
+			}
+	
+			if (boyfriend.animation.curAnim.name == 'block')
+			{
+				if (boyfriend.animation.finished)
+				{
+					boyfriend.playAnim('idle');
+				}
+			}
+
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
@@ -2982,9 +3003,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.8;
 						
 						case 'steve-armor':
-							camFollow.y = dad.getMidpoint().y - 90;
-							camFollow.x = dad.getMidpoint().x - -170;
-							defaultCamZoom = 1.2;              
+							camFollow.y = dad.getMidpoint().y - 100;
+							camFollow.x = dad.getMidpoint().x - -140;
+							defaultCamZoom = 1.15;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -3031,7 +3052,7 @@ class PlayState extends MusicBeatState
 					case 'school':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 210;
-						defaultCamZoom = 1.2;
+						defaultCamZoom = 1.0;
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -3261,19 +3282,21 @@ class PlayState extends MusicBeatState
 							if (SONG.notes[Math.floor(curStep / 16)].altAnim)
 								altAnim = '-alt';
 						}
-	
-						switch (Math.abs(daNote.noteData))
-						{
-							case 2:
-								dad.playAnim('singUP' + altAnim, true);
-							case 3:
-								dad.playAnim('singRIGHT' + altAnim, true);
-							case 1:
-								dad.playAnim('singDOWN' + altAnim, true);
-							case 0:
-								dad.playAnim('singLEFT' + altAnim, true);
-						}
-						
+
+						if (dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare')
+							{
+								switch (Math.abs(daNote.noteData))
+								{
+									case 2:
+										dad.playAnim('singUP' + altAnim, true);
+									case 3:
+										dad.playAnim('singRIGHT' + altAnim, true);
+									case 1:
+										dad.playAnim('singDOWN' + altAnim, true);
+									case 0:
+										dad.playAnim('singLEFT' + altAnim, true);
+								}
+							}
 						
 						cpuStrums.forEach(function(spr:FlxSprite)
 						{
@@ -4200,19 +4223,20 @@ class PlayState extends MusicBeatState
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
-
-			switch (direction)
+			if (boyfriend.animation.curAnim.name != 'block')
 			{
-				case 0:
-					boyfriend.playAnim('singLEFTmiss', true);
-				case 1:
-					boyfriend.playAnim('singDOWNmiss', true);
-				case 2:
-					boyfriend.playAnim('singUPmiss', true);
-				case 3:
-					boyfriend.playAnim('singRIGHTmiss', true);
+				switch (direction)
+				{
+					case 0:
+						boyfriend.playAnim('singLEFTmiss', true);
+					case 1:
+						boyfriend.playAnim('singDOWNmiss', true);
+					case 2:
+						boyfriend.playAnim('singUPmiss', true);
+					case 3:
+						boyfriend.playAnim('singRIGHTmiss', true);
+				}
 			}
-
 			#if windows
 			if (luaModchart != null)
 				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
@@ -4350,19 +4374,20 @@ class PlayState extends MusicBeatState
 					else
 						totalNotesHit += 1;
 	
-
-					switch (note.noteData)
+					if (boyfriend.animation.curAnim.name != 'block')
 					{
-						case 2:
-							boyfriend.playAnim('singUP', true);
-						case 3:
-							boyfriend.playAnim('singRIGHT', true);
-						case 1:
-							boyfriend.playAnim('singDOWN', true);
-						case 0:
-							boyfriend.playAnim('singLEFT', true);
+						switch (note.noteData)
+						{
+							case 2:
+								boyfriend.playAnim('singUP', true);
+							case 3:
+								boyfriend.playAnim('singRIGHT', true);
+							case 1:
+								boyfriend.playAnim('singDOWN', true);
+							case 0:
+								boyfriend.playAnim('singLEFT', true);
+						}
 					}
-		
 					#if windows
 					if (luaModchart != null)
 						luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
@@ -4499,11 +4524,11 @@ class PlayState extends MusicBeatState
 		function blockWarning()
 		{
 			pressCounter = 0;
-			FlxTween.tween(achievementBlock, {x: 100});
+			//FlxTween.tween(achievementBlock, {x: 100});
 			achievementBlock.alpha = 1;
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				FlxTween.tween(achievementBlock, {x: -100});
+				//FlxTween.tween(achievementBlock, {x: -100});
 				achievementBlock.alpha = 0;
 				//FlxFlicker.stopFlickering(combatSpr);
 			});
@@ -4554,12 +4579,11 @@ class PlayState extends MusicBeatState
 
 		if (dad.curCharacter == 'steve-armor' && SONG.song.toLowerCase() == 'suit up')
 		{
-			// ALT DONT DELETE (245 | 767 | 801 | 833 | 866 | 896 | 928 | 961 | 993
 			switch (curStep)
 			{
-				case 380 | 396 | 412 | 428 | 444 | 460 | 476 | 492 | 764 | 780 | 812 | 826 | 844 | 842 | 876:
+				case 122 | 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
 					stevePrepare();
-				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 848 | 846 | 880:
+				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
 					slashEvent();
 			}
 			//if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929| 962 | 994)
@@ -4648,7 +4672,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
@@ -4685,7 +4709,7 @@ class PlayState extends MusicBeatState
 			gf.dance();
 		}
 
-		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
+		if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.animation.curAnim.name != 'block')
 		{
 			boyfriend.playAnim('idle');
 		}
