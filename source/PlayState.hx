@@ -958,7 +958,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'steve-armor':
 				dad.x -= 90;
-				dad.y += 230;
+				dad.y += 210;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 90;
@@ -2982,9 +2982,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.8;
 						
 						case 'steve-armor':
-							camFollow.y = dad.getMidpoint().y - 80;
+							camFollow.y = dad.getMidpoint().y - 90;
 							camFollow.x = dad.getMidpoint().x - -170;
-							defaultCamZoom = 0.95;              
+							defaultCamZoom = 1.2;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -4392,51 +4392,51 @@ class PlayState extends MusicBeatState
 			}
 		
 
-	var healthLost:Float = 0;
+		var healthLost:Float = 0;
 
 
-	function PoisonDrain():Void
-	{
-		healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
-		new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
+		function PoisonDrain():Void
 		{
-			health -= 0.05;
-			healthLost += 0.05;
-			if (healthLost < 0.75)
+			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
+			new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
 			{
-				swagTimer.reset();
-			}
-			else
-			{
-				healthLost = 0;
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-			}
+				health -= 0.05;
+				healthLost += 0.05;
+				if (healthLost < 0.75)
+				{
+					swagTimer.reset();
+				}
+				else
+				{
+					healthLost = 0;
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				}
 
-		});
-		
-	}
-	function WitherDrain():Void
-	{
-		healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF3e0707);
-		new FlxTimer().start(0.75, function(swagTimer:FlxTimer)
+			});
+
+		}
+		function WitherDrain():Void
 		{
-			health -= 0.125;
-			healthLost += 0.125;
-			if (healthLost < 1.75)
+			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF3e0707);
+			new FlxTimer().start(0.75, function(swagTimer:FlxTimer)
 			{
-				swagTimer.reset();
-			}
-			else
-			{
-				healthLost = 0;
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				health -= 0.125;
+				healthLost += 0.125;
+				if (healthLost < 1.75)
+				{
+					swagTimer.reset();
+				}
+				else
+				{
+					healthLost = 0;
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
 
-			}
-		});
-	}
+				}
+			});
+		}
 
 
-	function blockFail()
+		function blockFail()
 		{
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
@@ -4451,29 +4451,34 @@ class PlayState extends MusicBeatState
 				}	
 				FlxG.camera.shake(0.05, 0.05);
 			});
+			}
+
+		function bfBlock()
+		{
+			boyfriend.playAnim('block', true);
 		}
-		
-	function bfBlock()
-	{
-		boyfriend.playAnim('Block', true);
-	}
 
-	function steveAttack()
-	{
-		dad.playAnim('SteveArmor Hit', true);
-	}
-	
-	
-	var pressedSpace:Bool = false;
+		function steveAttack()
+		{
+			dad.playAnim('hit', true);
+		}
 
-	function slashEvent()
+		function stevePrepare()
+		{
+			dad.playAnim('prepare', true);
+		}
+
+
+		var pressedSpace:Bool = false;
+
+		function slashEvent()
 		{
 			trace('prepare to slash');
 			blockWarning();
 			achievementBlock.animation.play('block', true);
 			pressedSpace = false;
 			detectAttack = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				steveAttack();
 				if (pressedSpace)
@@ -4491,36 +4496,37 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-	function blockWarning()
-	{
-		pressCounter = 0;
-		FlxTween.tween(achievementBlock, {x: 100});
-		achievementBlock.alpha = 1;
-		new FlxTimer().start(2, function(tmr:FlxTimer)
+		function blockWarning()
 		{
-			FlxTween.tween(achievementBlock, {x: -100});
-			achievementBlock.alpha = 0;
-			//FlxFlicker.stopFlickering(combatSpr);
-		});
-	}
-	var pressCounter = 0;
+			pressCounter = 0;
+			FlxTween.tween(achievementBlock, {x: 100});
+			achievementBlock.alpha = 1;
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
+				FlxTween.tween(achievementBlock, {x: -100});
+				achievementBlock.alpha = 0;
+				//FlxFlicker.stopFlickering(combatSpr);
+			});
+		}
 
-	function detectSpace()
-	{
-		if (FlxG.keys.justPressed.SPACE)
+		var pressCounter = 0;
+
+		function detectSpace()
 		{
-			pressCounter += 1;
-			trace('tap');
-			FlxG.camera.shake(0.02, 0.02);
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				pressCounter += 1;
+				trace('tap');
+				FlxG.camera.shake(0.02, 0.02);
+			}
+			if (pressCounter >= 1)
+			{
+				trace('TAP');
+				pressedSpace = true;
+				detectAttack = false;
+				//FlxG.sound.play(Paths.sound('achievement/Block'));
+			}
 		}
-		if (pressCounter >= 1)
-		{
-			trace('TAP');
-			pressedSpace = true;
-			detectAttack = false;
-			//FlxG.sound.play(Paths.sound('achievement/Block'));
-		}
-	}
 
 	override function stepHit()
 	{
@@ -4546,6 +4552,26 @@ class PlayState extends MusicBeatState
 					}
 			}
 
+		if (dad.curCharacter == 'steve-armor' && SONG.song.toLowerCase() == 'suit up')
+		{
+			// ALT DONT DELETE (245 | 767 | 801 | 833 | 866 | 896 | 928 | 961 | 993
+			switch (curStep)
+			{
+				case 380 | 396 | 412 | 428 | 444 | 460 | 476 | 492 | 764 | 780 | 812 | 826 | 844 | 842 | 876:
+					stevePrepare();
+				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 848 | 846 | 880:
+					slashEvent();
+			}
+			//if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929| 962 | 994)
+			//{
+			//	slashEvent();
+			//	//var blackCut:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+			//	//	-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+			//	//blackCut.scrollFactor.set();
+			//	//add(blackCut);
+//
+			//}
+		}
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{
@@ -4608,15 +4634,7 @@ class PlayState extends MusicBeatState
 				}
 
 		}
-		if (curSong == 'suit up')
-			if (curStep == 245 | 767 | 801 | 833 | 866 | 896 | 928 | 961 | 993)
-			{
-				var blackCut:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-				blackCut.scrollFactor.set();
-				add(blackCut);
-
-			}
+		
 
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
