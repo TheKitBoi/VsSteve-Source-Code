@@ -2652,7 +2652,7 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
-		if (dad.animation.curAnim.name == 'hit')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare')
 			{
 				if (dad.animation.finished)
 				{
@@ -2668,7 +2668,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
 		#if windows
@@ -3317,7 +3317,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare')
+						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -4711,7 +4711,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);

@@ -5,6 +5,7 @@ Craft Away:tuxsteve:2
 Suit Up:steve-armor:2
 Overseen:alexpickaxe:3
 Iron Picks:alexpickaxe:3
+Copper:alex:3
 Underrated:alex:3
 Tick Tock:alexchill:3
 Fast Travel:stevehorse:4

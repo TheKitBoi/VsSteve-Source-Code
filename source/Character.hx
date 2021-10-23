@@ -63,6 +63,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'gf-christmas':
+				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/gfChristmas');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -94,6 +95,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'gf-car':
+				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/gfCar');
 				frames = tex;
 				animation.addByIndices('singUP', 'GF Dancing Beat Hair blowing CAR', [0], "", 24, false);
@@ -107,6 +109,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'gf-pixel':
+				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/gfPixel');
 				frames = tex;
 				animation.addByIndices('singUP', 'GF IDLE', [2], "", 24, false);
@@ -123,6 +126,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'no-gf':
+				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/no-gf');
 				frames = tex;
 				animation.addByIndices('singUP', 'GF IDLE', [2], "", 24, false);
