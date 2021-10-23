@@ -472,6 +472,27 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'giantalex':
+				iconColor = 'FFFF0000';
+				frames = Paths.getSparrowAtlas('characters/giantalex');
+				animation.addByPrefix('idle', 'giantalex idle', 24, false);
+				animation.addByPrefix('singUP', 'giantalex up', 24, false);
+				animation.addByPrefix('singLEFT', 'giantalex left', 24, false);
+				animation.addByPrefix('singRIGHT', 'giantalex right', 24, false);
+				animation.addByPrefix('singDOWN', 'giantalex down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -247, -256);
+				addOffset("singRIGHT", -239, -254);
+				addOffset("singLEFT", -251, -259);
+				addOffset("singDOWN", -256, -250);
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.5));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'tuxsteve':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/tuxsteve');

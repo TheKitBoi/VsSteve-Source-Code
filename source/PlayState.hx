@@ -772,6 +772,26 @@ class PlayState extends MusicBeatState
 					littlebg.updateHitbox();
 
 			}
+
+			case 'lost':
+			{
+					curStage = 'lost';
+
+					defaultCamZoom = 0.7;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var lostbg:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('lost/lostbg'));
+					lostbg.scrollFactor.set(0.95, 0.95);
+					add(lostbg);
+					lostbg.y -= 220;
+					lostbg.x -= 200;
+					lostbg.setGraphicSize(Std.int(lostbg.width * daPixelZoom));
+
+					lostbg.updateHitbox();
+
+			}
 			case 'dev':
 			{
 					curStage = 'dev';
@@ -958,7 +978,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'steve-armor':
 				dad.x -= 90;
-				dad.y += 195;
+				dad.y += 210;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 90;
@@ -1089,6 +1109,11 @@ class PlayState extends MusicBeatState
 				gf.x += 230;
 				gf.y += 200;
 			case 'littleman':
+				boyfriend.x += 220;
+				boyfriend.y += 20;
+				gf.x += 240;
+				gf.y += 170;
+			case 'lost':
 				boyfriend.x += 220;
 				boyfriend.y += 20;
 				gf.x += 240;
@@ -1345,7 +1370,6 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
-		achievementBlock.cameras = [camHUD];
 		healthBarBGG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
@@ -1571,6 +1595,11 @@ class PlayState extends MusicBeatState
 				'littleman/pixelUI/ready-pixel',
 				'littleman/pixelUI/set-pixel',
 				'littleman/pixelUI/date-pixel'		
+			]);
+			introAssets.set('lost', [
+				'lost/pixelUI/ready-pixel',
+				'lost/pixelUI/set-pixel',
+				'lost/pixelUI/date-pixel'		
 			]);
 			introAssets.set('fasttravel', [
 				'fasttravel/pixelUI/ready-pixel',
@@ -2623,7 +2652,7 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
-		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare')
+		if (dad.animation.curAnim.name == 'hit')
 			{
 				if (dad.animation.finished)
 				{
@@ -2639,9 +2668,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
-
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -3007,7 +3035,7 @@ class PlayState extends MusicBeatState
 						case 'steve-armor':
 							camFollow.y = dad.getMidpoint().y - 100;
 							camFollow.x = dad.getMidpoint().x - -140;
-							defaultCamZoom = 1.10;              
+							defaultCamZoom = 1.15;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -3052,9 +3080,9 @@ class PlayState extends MusicBeatState
 				switch (curStage)
 				{
 					case 'school':
-						camFollow.x = boyfriend.getMidpoint().x - 180;
-						camFollow.y = boyfriend.getMidpoint().y - 190;
-						defaultCamZoom = 1.05;
+						camFollow.x = boyfriend.getMidpoint().x - 200;
+						camFollow.y = boyfriend.getMidpoint().y - 210;
+						defaultCamZoom = 1.0;
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -3075,6 +3103,10 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
 						defaultCamZoom = 0.9;
+					case 'lost':
+						camFollow.x = boyfriend.getMidpoint().x - 480;
+						camFollow.y = boyfriend.getMidpoint().y - 340;
+						defaultCamZoom = 0.95;
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
@@ -3795,6 +3827,11 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('littleman'))
 				{
 					pixelShitPart1 = 'littleman/pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
+			if (curStage.startsWith('lost'))
+				{
+					pixelShitPart1 = 'lost/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
 			if (curStage.startsWith('fasttravel'))
@@ -4581,14 +4618,9 @@ class PlayState extends MusicBeatState
 
 		if (dad.curCharacter == 'steve-armor' && SONG.song.toLowerCase() == 'suit up')
 		{
-			camHUD.visible = !camHUD.visible;
-
 			switch (curStep)
 			{
-				case 124:
-					stevePrepare();
-					camHUD.visible = !camHUD.visible;
-				case 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
+				case 122 | 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
 					stevePrepare();
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
 					slashEvent();
@@ -4679,7 +4711,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
