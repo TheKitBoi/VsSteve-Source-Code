@@ -519,6 +519,28 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'herobrine':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/herobrine');
+				animation.addByPrefix('idle', 'herobrine idle', 24, false);
+				animation.addByPrefix('singUP', 'herobrine up', 24, false);
+				animation.addByPrefix('singLEFT', 'herobrine left', 24, false);
+				animation.addByPrefix('singRIGHT', 'herobrine right', 24, false);
+				animation.addByPrefix('singDOWN', 'herobrine down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -247, -276);
+				addOffset("singRIGHT", -209, -264);
+				addOffset("singLEFT", -274, -264);
+				addOffset("singDOWN", -226, -280);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'stevehorse':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/steveHorse');
@@ -806,27 +828,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'alex LEFT NOTE', 24, false);
 				animation.addByPrefix('singRIGHT', 'alex RIGHT NOTE', 24, false);
 				animation.addByPrefix('singDOWN', 'alex DOWN NOTE', 24, false);
-
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				antialiasing = false;
-
-			case 'herobrine':
-				iconColor = 'FF112133 ';
-				frames = Paths.getSparrowAtlas('characters/herobrine');
-				animation.addByPrefix('idle', 'herobrine Idle', 24, false);
-				animation.addByPrefix('singUP', 'herobrine UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'herobrine LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'herobrine RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'herobrine DOWN NOTE', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP", 5, 37);

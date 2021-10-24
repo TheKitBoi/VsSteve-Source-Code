@@ -35,6 +35,7 @@ class HealthIcon extends FlxSprite
 		animation.add('alexpickaxemad', [12, 13, 14], 0, false, isPlayer);
 		animation.add('alexchill', [30, 31, 30], 0, false, isPlayer);
 		animation.add('giantalex', [30, 31, 30], 0, false, isPlayer);
+		animation.add('herobrine', [8, 6, 9], 0, false, isPlayer);
 		animation.add('alexsunday', [30, 31, 30], 0, false, isPlayer);
 		animation.add('smollalex', [30, 31, 30], 0, false, isPlayer);
 		animation.add('notch', [33, 34, 35], 0, false, isPlayer);

@@ -772,26 +772,6 @@ class PlayState extends MusicBeatState
 					littlebg.updateHitbox();
 
 			}
-
-			case 'lost':
-			{
-					curStage = 'lost';
-
-					defaultCamZoom = 0.7;
-					camMovement = 0.2;
-
-					var repositionShit = -200;
-
-					var lostbg:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('lost/lostbg'));
-					lostbg.scrollFactor.set(0.95, 0.95);
-					add(lostbg);
-					lostbg.y -= 220;
-					lostbg.x -= 200;
-					lostbg.setGraphicSize(Std.int(lostbg.width * daPixelZoom));
-
-					lostbg.updateHitbox();
-
-			}
 			case 'dev':
 			{
 					curStage = 'dev';
@@ -1109,11 +1089,6 @@ class PlayState extends MusicBeatState
 				gf.x += 230;
 				gf.y += 200;
 			case 'littleman':
-				boyfriend.x += 220;
-				boyfriend.y += 20;
-				gf.x += 240;
-				gf.y += 170;
-			case 'lost':
 				boyfriend.x += 220;
 				boyfriend.y += 20;
 				gf.x += 240;
@@ -1595,11 +1570,6 @@ class PlayState extends MusicBeatState
 				'littleman/pixelUI/ready-pixel',
 				'littleman/pixelUI/set-pixel',
 				'littleman/pixelUI/date-pixel'		
-			]);
-			introAssets.set('lost', [
-				'lost/pixelUI/ready-pixel',
-				'lost/pixelUI/set-pixel',
-				'lost/pixelUI/date-pixel'		
 			]);
 			introAssets.set('fasttravel', [
 				'fasttravel/pixelUI/ready-pixel',
@@ -2652,7 +2622,7 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
-		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare')
+		if (dad.animation.curAnim.name == 'hit')
 			{
 				if (dad.animation.finished)
 				{
@@ -2668,7 +2638,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
 		#if windows
@@ -3103,10 +3073,6 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
 						defaultCamZoom = 0.9;
-					case 'lost':
-						camFollow.x = boyfriend.getMidpoint().x - 480;
-						camFollow.y = boyfriend.getMidpoint().y - 340;
-						defaultCamZoom = 0.95;
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
@@ -3317,7 +3283,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare')
+						if (dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -3827,11 +3793,6 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('littleman'))
 				{
 					pixelShitPart1 = 'littleman/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('lost'))
-				{
-					pixelShitPart1 = 'lost/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
 			if (curStage.startsWith('fasttravel'))
@@ -4711,7 +4672,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
