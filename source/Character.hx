@@ -498,9 +498,9 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'tuxsteve':
-				iconColor = 'FF2B5480';
+				iconColor = 'FF224367';
 				frames = Paths.getSparrowAtlas('characters/tuxsteve');
-				animation.addByPrefix('idle', 'tuxsteve Idle', 24, false);
+				animation.addByPrefix('idle', 'tuxsteve idle', 24, false);
 				animation.addByPrefix('singUP', 'tuxsteve up', 24, false);
 				animation.addByPrefix('singLEFT', 'tuxsteve left', 24, false);
 				animation.addByPrefix('singRIGHT', 'tuxsteve right', 24, false);
@@ -511,7 +511,6 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -249, -254);
 				addOffset("singLEFT", -244, -259);
 				addOffset("singDOWN", -256, -260);
-
 				playAnim('idle');
 
 				setGraphicSize(Std.int(width * 6));
