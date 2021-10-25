@@ -245,6 +245,7 @@ class PlayState extends MusicBeatState
 	//Fast Travel shit
 	private var floatvalue:Float = 0;
 	private var runvalue:Float = 0;
+	private var hero:Float = 0;
 
 
 	override public function create()
@@ -2599,6 +2600,7 @@ class PlayState extends MusicBeatState
 	{
 		floatvalue += 0.07;
 		runvalue += 0.1;
+		hero += 0.02;
 		#if !debug
 		perfectMode = false;
 		#end
@@ -2775,6 +2777,9 @@ class PlayState extends MusicBeatState
 			//gfHorse.x += Math.cos(runvalue);
 		}//
 
+		if (dad.curCharacter == "herobrine"){
+			dad.y += Math.sin(hero);
+		}
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
 
