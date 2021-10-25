@@ -582,8 +582,8 @@ class PlayState extends MusicBeatState
 
 					var caveBG = new FlxSprite().loadGraphic(Paths.image('cave/caveBG'));
 					caveBG.scrollFactor.set(0.1, 0.1);
-					caveBG.y -= 150;
-					caveBG.x -= 200;
+					caveBG.y -= 250;
+					caveBG.x -= 500;
 					caveBG.setGraphicSize(Std.int(caveBG.width * daPixelZoom));
 					add(caveBG);
 
@@ -591,10 +591,17 @@ class PlayState extends MusicBeatState
 
 					var caveFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/floor'));
 					caveFloor.scrollFactor.set(0.95, 0.95);
-					caveFloor.y -= 600;
-					caveFloor.x -= 200;
-					caveFloor.setGraphicSize(Std.int(caveFloor.width * 8));
+					caveFloor.y -= 0;
+					caveFloor.x -= 500;
+					caveFloor.setGraphicSize(Std.int(caveFloor.width * 6.5));
 					add(caveFloor);
+
+					var lanterns:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/lanterns'));
+					lanterns.scrollFactor.set(3, 1);
+					lanterns.y -= 0;
+					lanterns.x -= 500;
+					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
+					add(lanterns);
 
 					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
 					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
@@ -607,6 +614,7 @@ class PlayState extends MusicBeatState
 
 					caveBG.updateHitbox();
 					caveFloor.updateHitbox();
+					lanterns.updateHitbox();
 					caveLeaves.updateHitbox();
 			}
 			case 'notch':
@@ -967,7 +975,7 @@ class PlayState extends MusicBeatState
 				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexchill':
-				dad.x += 150;
+				dad.x += 25;
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexsunday':
@@ -987,11 +995,11 @@ class PlayState extends MusicBeatState
 				dad.y += 210;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexpickaxe':
-				dad.x += 150;
+				dad.x += 25;
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexpickaxemad':
-				dad.x += 150;
+				dad.x += 25;
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'herobrine':
@@ -2948,22 +2956,22 @@ class PlayState extends MusicBeatState
 						case 'alex':
 							camFollow.y = dad.getMidpoint().y - 140;
 							camFollow.x = dad.getMidpoint().x - -300;
-							defaultCamZoom = 0.9;
+							defaultCamZoom = 0.7;
 						
 						case 'alexchill':
 							camFollow.y = dad.getMidpoint().y - 400;
 							camFollow.x = dad.getMidpoint().x - 10;
-							defaultCamZoom = 0.95;
+							defaultCamZoom = 0.8;
 						
 						case 'alexpickaxe':
 							camFollow.y = dad.getMidpoint().y - 400;
 							camFollow.x = dad.getMidpoint().x - 10;
-							defaultCamZoom = 0.9;
+							defaultCamZoom = 0.8;
 						
 						case 'alexpickaxemad':
 							camFollow.y = dad.getMidpoint().y - 400;
 							camFollow.x = dad.getMidpoint().x - 10;
-							defaultCamZoom = 0.8;
+							defaultCamZoom = 0.7;
 
 						case 'notch':
 							camFollow.y = dad.getMidpoint().y - 120;
@@ -3038,7 +3046,7 @@ class PlayState extends MusicBeatState
 					case 'cave':
 						camFollow.x = boyfriend.getMidpoint().x - 280;
 						camFollow.y = boyfriend.getMidpoint().y - 240;
-						defaultCamZoom = 1.2;
+						defaultCamZoom = 0.8;
 					case 'notch':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
