@@ -580,56 +580,34 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.96;
 					camMovement = 0.2;
 
-					var bgSky = new FlxSprite().loadGraphic(Paths.image('cave/caveBG'));
-					bgSky.scrollFactor.set(0.1, 0.1);
-					bgSky.y -= 150;
-					bgSky.x -= 200;
-					add(bgSky);
+					var caveBG = new FlxSprite().loadGraphic(Paths.image('cave/caveBG'));
+					caveBG.scrollFactor.set(0.1, 0.1);
+					caveBG.y -= 150;
+					caveBG.x -= 200;
+					caveBG.setGraphicSize(Std.int(caveBG.width * daPixelZoom));
+					add(caveBG);
 
 					var repositionShit = -200;
 
-					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('cave/weebSchool'));
-					bgSchool.scrollFactor.set(0.6, 0.90);
-					add(bgSchool);
+					var caveFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/floor'));
+					caveFloor.scrollFactor.set(0.95, 0.95);
+					caveFloor.y -= 600;
+					caveFloor.x -= 200;
+					caveFloor.setGraphicSize(Std.int(caveFloor.width * 8));
+					add(caveFloor);
 
-					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/floor'));
-					bgStreet.scrollFactor.set(0.95, 0.95);
-					add(bgStreet);
+					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
+					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
+					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
+					caveLeaves.animation.play('leaves');
+					caveLeaves.scrollFactor.set(0.85, 0.85);
+					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
+					add(caveLeaves);
 
-					var fgTrees:FlxSprite = new FlxSprite(repositionShit + 170, 130).loadGraphic(Paths.image('weeb/weebTreesBack','week6'));
-					fgTrees.scrollFactor.set(0.9, 0.9);
-					add(fgTrees);
 
-					var bgTrees:FlxSprite = new FlxSprite(repositionShit - 380, -800);
-					var treetex = Paths.getPackerAtlas('weeb/weebTrees','week6');
-					bgTrees.frames = treetex;
-					bgTrees.animation.add('treeLoop', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 12);
-					bgTrees.animation.play('treeLoop');
-					bgTrees.scrollFactor.set(0.85, 0.85);
-					add(bgTrees);
-
-					var treeLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
-					treeLeaves.frames = Paths.getSparrowAtlas('weeb/petals','week6');
-					treeLeaves.animation.addByPrefix('leaves', 'PETALS ALL', 24, true);
-					treeLeaves.animation.play('leaves');
-					treeLeaves.scrollFactor.set(0.85, 0.85);
-					add(treeLeaves);
-
-					var widShit = Std.int(bgSky.width * 6);
-
-					bgSky.setGraphicSize(widShit);
-					bgSchool.setGraphicSize(widShit);
-					bgStreet.setGraphicSize(widShit);
-					bgTrees.setGraphicSize(Std.int(widShit * 1.4));
-					fgTrees.setGraphicSize(Std.int(widShit * 0.8));
-					treeLeaves.setGraphicSize(widShit);
-
-					fgTrees.updateHitbox();
-					bgSky.updateHitbox();
-					bgSchool.updateHitbox();
-					bgStreet.updateHitbox();
-					bgTrees.updateHitbox();
-					treeLeaves.updateHitbox();
+					caveBG.updateHitbox();
+					caveFloor.updateHitbox();
+					caveLeaves.updateHitbox();
 			}
 			case 'notch':
 			{
@@ -1017,8 +995,8 @@ class PlayState extends MusicBeatState
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'herobrine':
-				dad.x += 150;
-				dad.y += 360;
+				dad.x -= 90;
+				dad.y += 230;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tiago':
 				dad.x += 150;
@@ -2963,9 +2941,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.9;
 						
 						case 'herobrine':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 100;
-							defaultCamZoom = 1.2;
+							camFollow.y = dad.getMidpoint().y - 80;
+							camFollow.x = dad.getMidpoint().x - -170;
+							defaultCamZoom = 0.7;
 						
 						case 'alex':
 							camFollow.y = dad.getMidpoint().y - 140;
@@ -2985,7 +2963,7 @@ class PlayState extends MusicBeatState
 						case 'alexpickaxemad':
 							camFollow.y = dad.getMidpoint().y - 400;
 							camFollow.x = dad.getMidpoint().x - 10;
-							defaultCamZoom = 1.1;
+							defaultCamZoom = 0.8;
 
 						case 'notch':
 							camFollow.y = dad.getMidpoint().y - 120;
