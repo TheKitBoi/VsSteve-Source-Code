@@ -459,7 +459,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'SteveArmor left', 24, false);
 				animation.addByPrefix('singRIGHT', 'SteveArmor right', 24, false);
 				animation.addByPrefix('singDOWN', 'SteveArmor down', 24, false);
-				animation.addByPrefix('prepare', 'SteveArmor prepare', 24, false);
 				animation.addByPrefix('hit', 'SteveArmor hit', 24, false);
 
 				addOffset('idle', -250, -260);
@@ -467,7 +466,6 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -249, -254);
 				addOffset("singLEFT", -244, -259);
 				addOffset("singDOWN", -256, -260);
-				addOffset("prepare", -221, -250);
 				addOffset("hit", -220, -240);
 				playAnim('idle');
 
