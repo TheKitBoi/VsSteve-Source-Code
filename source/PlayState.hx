@@ -3274,7 +3274,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare')
+						if (dad.animation.curAnim.name != 'hit')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -4476,12 +4476,7 @@ class PlayState extends MusicBeatState
 
 		function steveAttack()
 		{
-			dad.playAnim('hit', true);
-		}
-
-		function stevePrepare()
-		{
-			dad.playAnim('prepare', true);
+			dad.playAnim("hit", true);
 		}
 
 
@@ -4572,9 +4567,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 122 | 382 | 398 | 414 | 430 | 446 | 462 | 478 | 494 | 766 | 782 | 814 | 828 | 844 | 878 | 1163:
-					stevePrepare();
+				case 122:
+					steveAttack();
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
+					steveAttack();
 					slashEvent();
 			}
 			//if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929| 962 | 994)
