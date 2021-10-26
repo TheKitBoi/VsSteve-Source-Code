@@ -2626,7 +2626,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 	
-			if (boyfriend.animation.curAnim.name == 'block')
+		if (boyfriend.animation.curAnim.name == 'block')
 			{
 				if (boyfriend.animation.finished)
 				{
@@ -2634,7 +2634,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
 		#if windows
@@ -4462,7 +4462,7 @@ class PlayState extends MusicBeatState
 
 		function blockFail()
 		{
-			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			new FlxTimer().start(0.00001, function(tmr:FlxTimer)
 			{
 				boyfriend.playAnim('singDOWNmiss', true);	
 
@@ -4491,6 +4491,10 @@ class PlayState extends MusicBeatState
 			dad.playAnim("hit", true);
 		}
 
+		function stevePrepare()
+		{
+			dad.playAnim("prepare", true);
+		}
 
 		var pressedSpace:Bool = false;
 
@@ -4501,7 +4505,7 @@ class PlayState extends MusicBeatState
 			achievementBlock.animation.play('block', true);
 			pressedSpace = false;
 			detectAttack = true;
-			new FlxTimer().start(1, function(tmr:FlxTimer)
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
 				steveAttack();
 				if (pressedSpace)
@@ -4541,13 +4545,8 @@ class PlayState extends MusicBeatState
 				pressCounter += 1;
 				trace('tap');
 				FlxG.camera.shake(0.02, 0.02);
-			}
-			if (pressCounter >= 1)
-			{
-				trace('TAP');
 				pressedSpace = true;
 				detectAttack = false;
-				//FlxG.sound.play(Paths.sound('achievement/Block'));
 			}
 		}
 
