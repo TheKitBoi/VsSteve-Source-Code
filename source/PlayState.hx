@@ -602,7 +602,7 @@ class PlayState extends MusicBeatState
 					lanterns.y -= 0;
 					lanterns.x -= 500;
 					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
-					add(lanterns);
+					
 
 					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
 					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
@@ -945,7 +945,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'steve-armor':
 				dad.x -= 90;
-				dad.y += 210;
+				dad.y += 190;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 90;
@@ -1107,6 +1107,16 @@ class PlayState extends MusicBeatState
 		add(gf);
 		add(dad);
 
+		if (curStage == 'cave')
+			{
+				var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
+					lanterns.scrollFactor.set(3, 1);
+					lanterns.y -= 0;
+					lanterns.x -= 500;
+					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
+				add(lanterns);
+			}
+
 		switch (SONG.song.toLowerCase())
 		{
 			case 'last craft':
@@ -1116,7 +1126,7 @@ class PlayState extends MusicBeatState
 		}
 		add(boyfriend);
 
-		achievementBlock = new FlxSprite(550, 500);
+		achievementBlock = new FlxSprite(900, 600);
 		achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
 		achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
 		achievementBlock.antialiasing = false;
@@ -4462,7 +4472,7 @@ class PlayState extends MusicBeatState
 
 		function blockFail()
 		{
-			new FlxTimer().start(0.00001, function(tmr:FlxTimer)
+			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
 				boyfriend.playAnim('singDOWNmiss', true);	
 
@@ -4475,7 +4485,7 @@ class PlayState extends MusicBeatState
 				}	
 				FlxG.camera.shake(0.05, 0.05);
 			});
-			}
+		}
 
 		function bfBlock()
 		{
@@ -4491,11 +4501,6 @@ class PlayState extends MusicBeatState
 			dad.playAnim("hit", true);
 		}
 
-		function stevePrepare()
-		{
-			dad.playAnim("prepare", true);
-		}
-
 		var pressedSpace:Bool = false;
 
 		function slashEvent()
@@ -4505,9 +4510,9 @@ class PlayState extends MusicBeatState
 			achievementBlock.animation.play('block', true);
 			pressedSpace = false;
 			detectAttack = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			steveAttack();
+			new FlxTimer().start(0.6, function(tmr:FlxTimer)
 			{
-				steveAttack();
 				if (pressedSpace)
 				{
 					bfBlock();
@@ -4581,7 +4586,6 @@ class PlayState extends MusicBeatState
 				case 122:
 					steveAttack();
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
-					steveAttack();
 					slashEvent();
 			}
 			//if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929| 962 | 994)

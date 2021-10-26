@@ -27,6 +27,7 @@ class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
 	var logoBl:FlxSprite;
+	var tigoBabo:FlxSprite;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -98,6 +99,16 @@ class MainMenuState extends MusicBeatState
 		minecraft.y -= 300;
 		minecraft.antialiasing = false;
 		add(minecraft);
+
+		
+		tigoBabo = new FlxSprite().loadGraphic(Paths.image("Creators"));
+		tigoBabo.y += 200;
+		tigoBabo.x += 100;
+		tigoBabo.antialiasing = false;
+		tigoBabo.setGraphicSize(Std.int(tigoBabo.width * 0.4));
+		tigoBabo.updateHitbox();
+		add(tigoBabo);
+
 
 		camFollow = new FlxObject(0, 0, 0, 0);
 		add(camFollow);
@@ -175,6 +186,16 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
+
+		if (FlxG.mouse.overlaps(tigoBabo))
+		{
+			if(FlxG.mouse.justPressed){
+				PlayState.SONG = Song.loadFromJson(Highscore.formatSong('dev battle', 1), 'dev battle');
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 1;
+				LoadingState.loadAndSwitchState(new PlayState());
+			}
 		}
 	
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
