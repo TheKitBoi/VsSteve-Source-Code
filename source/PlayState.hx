@@ -2609,6 +2609,14 @@ class PlayState extends MusicBeatState
 		{
 			detectSpace();
 		}
+		
+		if (SONG.song.toLowerCase() == 'suit up')
+			{
+				if (FlxG.keys.justPressed.SPACE)
+					{
+					   boyfriend.playAnim('block', true);
+					}
+			}
 
 		if (dad.animation.curAnim.name == 'hit')
 			{
@@ -4471,7 +4479,11 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			boyfriend.playAnim('block', true);
+			if (FlxG.keys.justPressed.SPACE)
+				{
+					boyfriend.playAnim('block', true);
+				}
+			
 		}
 
 		function steveAttack()
