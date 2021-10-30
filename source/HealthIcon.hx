@@ -15,7 +15,7 @@ class HealthIcon extends FlxSprite
 		
 		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 
-		antialiasing = true;
+		antialiasing = false;
 		animation.add('bf', [20, 21, 22], 0, false, isPlayer);
 		animation.add('bf-pixel', [0, 2, 1], 0, false, isPlayer);
 		animation.add('bfminecraft', [0, 2, 1], 0, false, isPlayer);
@@ -47,12 +47,6 @@ class HealthIcon extends FlxSprite
 		animation.add('gabo', [26, 27, 27], 0, false, isPlayer);
 		animation.add('jeb', [36, 37, 38], 0, false, isPlayer);
 		animation.play(char);
-
-		switch(char)
-		{
-			case 'bf-pixel' | 'tuxsteveuoh' | 'senpai-angry' | 'spirit' | 'gf-pixel' | 'tiago' | 'tiagoswag' | 'herobrine' | 'stevelucky' | 'alex' | 'alexchill' | 'alexpickaxe' | 'tuxsteve':
-				antialiasing = false;
-		}
 
 		scrollFactor.set();
 	}

@@ -26,6 +26,8 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
+	var menuBG:FlxSprite;
+	var menuBGClone:FlxSprite;
 	var logoBl:FlxSprite;
 	var tigoBabo:FlxSprite;
 
@@ -74,7 +76,7 @@ class MainMenuState extends MusicBeatState
 		//menuBG.scale.set(1.3, 1.3);
 		//add(menuBG);
 
-		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
+		menuBG = new FlxSprite().loadGraphic(Paths.image("menuBG"));
 		menuBG.y -= 500;
 		menuBG.x -= 650;
 		menuBG.scale.set(1.3, 1.3);
@@ -82,7 +84,7 @@ class MainMenuState extends MusicBeatState
 		menuBG.antialiasing = false;
 		add(menuBG);
 
-		var menuBGClone:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
+		menuBGClone = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
 		menuBGClone.y -= 500;
 		menuBGClone.x -= 650;
 		menuBGClone.scale.set(1.3, 1.3);
@@ -102,8 +104,8 @@ class MainMenuState extends MusicBeatState
 
 		
 		tigoBabo = new FlxSprite().loadGraphic(Paths.image("Creators"));
-		tigoBabo.y += 200;
-		tigoBabo.x += 100;
+		tigoBabo.y += 250;
+		tigoBabo.x += 350;
 		tigoBabo.antialiasing = false;
 		tigoBabo.setGraphicSize(Std.int(tigoBabo.width * 0.4));
 		tigoBabo.updateHitbox();
@@ -197,10 +199,6 @@ class MainMenuState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
-	
-		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
-		
-		var menuBGClone:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
 	
 		if(scroll == true)
 		{
