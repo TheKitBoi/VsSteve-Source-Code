@@ -3,6 +3,7 @@ Lost:gf-christmas:2
 Uoh:tuxsteveuoh:2
 Craft Away:tuxsteve:2
 Suit Up:steve-armor:2
+Whatever:steve-armor:2
 Overseen:alexpickaxe:3
 Iron Picks:alexpickaxe:3
 Copper:alex:3
