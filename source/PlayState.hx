@@ -177,6 +177,8 @@ class PlayState extends MusicBeatState
 
 	var doggo:FlxSprite; 
 
+	var alexPickaxeBG:FlxSprite; 
+
 	var catto:FlxSprite; 
 
 	var sheep:FlxSprite; 
@@ -540,6 +542,14 @@ class PlayState extends MusicBeatState
 					doggo.setGraphicSize(Std.int(doggo.width * 6));
 					doggo.updateHitbox();
 			 		add(doggo);
+
+					alexPickaxeBG = new FlxSprite(-375, 200);
+				    alexPickaxeBG.frames = Paths.getSparrowAtlas('house/alexPickaxeBG');
+					alexPickaxeBG.animation.addByPrefix('bop', 'alexPickaxeBG idle', 24, false);
+					alexPickaxeBG.scrollFactor.set(0.9, 0.9);
+					alexPickaxeBG.setGraphicSize(Std.int(alexPickaxeBG.width * 6));
+					alexPickaxeBG.updateHitbox();
+			 		add(alexPickaxeBG);
 
 					catto = new FlxSprite(0, -320);
 				    catto.frames = Paths.getSparrowAtlas('house/catto');
@@ -3040,7 +3050,7 @@ class PlayState extends MusicBeatState
 						case 'steve-armor':
 							camFollow.y = dad.getMidpoint().y - 260;
 							camFollow.x = dad.getMidpoint().x - -140;
-							defaultCamZoom = 0.8;              
+							defaultCamZoom = 0.7;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -4790,6 +4800,7 @@ class PlayState extends MusicBeatState
 			case 'house':
 				if(FlxG.save.data.distractions){
 					doggo.animation.play('bop', false);
+					alexPickaxeBG.animation.play('bop', false);
 					catto.animation.play('bop', false);
 					sheep.animation.play('bop', false);
 				}
