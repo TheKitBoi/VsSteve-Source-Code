@@ -593,11 +593,11 @@ class PlayState extends MusicBeatState
 					caveFloor.setGraphicSize(Std.int(caveFloor.width * 6.5));
 					add(caveFloor);
 
-					var lanterns:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/lanterns'));
-					lanterns.scrollFactor.set(3, 1);
-					lanterns.y -= 0;
-					lanterns.x -= 500;
-					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
+					//var lanterns:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/lanterns'));
+					//lanterns.scrollFactor.set(3, 1);
+					//lanterns.y -= 0;
+					//lanterns.x -= 500;
+					//lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 					
 
 					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
@@ -611,7 +611,7 @@ class PlayState extends MusicBeatState
 
 					caveBG.updateHitbox();
 					caveFloor.updateHitbox();
-					lanterns.updateHitbox();
+					//lanterns.updateHitbox();
 					caveLeaves.updateHitbox();
 			}
 			case 'notch':
@@ -657,13 +657,13 @@ class PlayState extends MusicBeatState
 			 		stev.updateHitbox();
 			 		add(stev);
 					
-					notchStanding = new FlxSprite(165, -70);
-				    notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
-					notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
-					notchStanding.scrollFactor.set(0.9, 0.9);
-					notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
-					notchStanding.updateHitbox();
-			 		add(notchStanding);
+					//notchStanding = new FlxSprite(165, -70);
+				    //notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
+					//notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
+					//notchStanding.scrollFactor.set(0.9, 0.9);
+					//notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
+					//notchStanding.updateHitbox();
+			 		//add(notchStanding);
 				
 
 					var widShit = Std.int(bgSky.width * 6);
@@ -1132,17 +1132,11 @@ class PlayState extends MusicBeatState
 		}
 
 		add(gf);
-		add(dad);
-
 		if (curStage == 'cave')
-			{
-				var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
-					lanterns.scrollFactor.set(3, 1);
-					lanterns.y -= 0;
-					lanterns.x -= 500;
-					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
-				add(lanterns);
-			}
+		{
+			remove(gf);
+		}
+		add(dad);
 
 		switch (SONG.song.toLowerCase())
 		{
@@ -1150,18 +1144,34 @@ class PlayState extends MusicBeatState
 				duoDad = new Character(10, 530, 'alexchill');
 				add(duoDad);
 				hasDuoDad = true;
+
+			case 'gapple':
+				remove(notchStanding);
+				
 		}
 		add(boyfriend);
 
-		achievementBlock = new FlxSprite(900, 600);
-		achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
-		achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
-		achievementBlock.antialiasing = false;
-		achievementBlock.alpha = 0;
-		//achievementBlock.screenCenter(X);
-		achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
-
-		add(achievementBlock);
+		if (curStage == 'cave')
+			{
+				var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
+					lanterns.scrollFactor.set(2, 1);
+					lanterns.y += 390;
+					lanterns.x += 615;
+					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
+				add(lanterns);
+			}
+		if (SONG.song.toLowerCase() == 'suit up')
+		{
+			achievementBlock = new FlxSprite(1100, 300);
+			achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
+			achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
+			achievementBlock.antialiasing = false;
+			achievementBlock.alpha = 0;
+			//achievementBlock.screenCenter(X);
+			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
+	
+			add(achievementBlock);
+		}
 
 
 		if (loadRep)
