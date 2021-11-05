@@ -175,6 +175,10 @@ class PlayState extends MusicBeatState
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
+	var dog:FlxSprite; 
+
+	var sheep:FlxSprite; 
+
 	var alecs:FlxSprite; 
 
 	var gfHorse:FlxSprite;
@@ -186,6 +190,8 @@ class PlayState extends MusicBeatState
 	var hors:FlxSprite; 
 
 	var stev:FlxSprite; 
+	
+	var notchStanding:FlxSprite; 
 
 	var gfminecraft:FlxSprite; 
 
@@ -502,77 +508,47 @@ class PlayState extends MusicBeatState
 								add(waveSpriteFG);
 						*/
 			}
-			case 'herobrine':
+			case 'house':
 			{
-					curStage = 'herobrine';
-					camMovement = 0.5;
+					curStage = 'house';
 
-					// defaultCamZoom = 0.9;
+					defaultCamZoom = 0.96;
+					camMovement = 0.2;
 
-					var bgSky = new FlxSprite().loadGraphic(Paths.image('herobrine/weebSky'));
-					bgSky.scrollFactor.set(0.1, 0.1);
-					add(bgSky);
+					var houseBG = new FlxSprite().loadGraphic(Paths.image('house/houseBG'));
+					houseBG.scrollFactor.set(0.1, 0.1);
+					houseBG.y -= 1200;
+					houseBG.x -= 1500;
+					houseBG.setGraphicSize(Std.int(houseBG.width * 6));
+					add(houseBG);
 
 					var repositionShit = -200;
 
-					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('herobrine/weebSchool'));
-					bgSchool.scrollFactor.set(0.6, 0.90);
-					add(bgSchool);
+					var house:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('house/house'));
+					house.scrollFactor.set(0.95, 0.95);
+					house.y -= 425;
+					house.x -= 1600;
+					house.setGraphicSize(Std.int(house.width * 6));
+					add(house);
 
-					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('herobrine/weebStreet'));
-					bgStreet.scrollFactor.set(0.95, 0.95);
-					add(bgStreet);
+					dog = new FlxSprite(-820, 450);
+				    dog.frames = Paths.getSparrowAtlas('house/dog');
+					dog.animation.addByPrefix('bop', 'dog idle', 24, false);
+					dog.scrollFactor.set(0.9, 0.9);
+					dog.setGraphicSize(Std.int(dog.width * 6));
+					dog.updateHitbox();
+			 		add(dog);
 
-					var fgTrees:FlxSprite = new FlxSprite(repositionShit + 170, 130).loadGraphic(Paths.image('weeb/weebTreesBack','week6'));
-					fgTrees.scrollFactor.set(0.9, 0.9);
-					add(fgTrees);
-
-					var bgTrees:FlxSprite = new FlxSprite(repositionShit - 380, -800);
-					var treetex = Paths.getPackerAtlas('weeb/weebTrees','week6');
-					bgTrees.frames = treetex;
-					bgTrees.animation.add('treeLoop', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 12);
-					bgTrees.animation.play('treeLoop');
-					bgTrees.scrollFactor.set(0.85, 0.85);
-					add(bgTrees);
-
-					var treeLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
-					treeLeaves.frames = Paths.getSparrowAtlas('weeb/petals','week6');
-					treeLeaves.animation.addByPrefix('leaves', 'PETALS ALL', 24, true);
-					treeLeaves.animation.play('leaves');
-					treeLeaves.scrollFactor.set(0.85, 0.85);
-					add(treeLeaves);
-
-					var widShit = Std.int(bgSky.width * 6);
-
-					bgSky.setGraphicSize(widShit);
-					bgSchool.setGraphicSize(widShit);
-					bgStreet.setGraphicSize(widShit);
-					bgTrees.setGraphicSize(Std.int(widShit * 1.4));
-					fgTrees.setGraphicSize(Std.int(widShit * 0.8));
-					treeLeaves.setGraphicSize(widShit);
-
-					fgTrees.updateHitbox();
-					bgSky.updateHitbox();
-					bgSchool.updateHitbox();
-					bgStreet.updateHitbox();
-					bgTrees.updateHitbox();
-					treeLeaves.updateHitbox();
-
-					bgGirls = new BackgroundGirls(-100, 190);
-					bgGirls.scrollFactor.set(0.9, 0.9);
-
-					if (SONG.song.toLowerCase() == 'craft away')
-						{
-							if(FlxG.save.data.distractions){
-								bgGirls.getScared();
-							}
-						}
-
-					bgGirls.setGraphicSize(Std.int(bgGirls.width * daPixelZoom));
-					bgGirls.updateHitbox();
-					if(FlxG.save.data.distractions){
-						add(bgGirls);
-					}
+					sheep = new FlxSprite(1500, 420);
+				    sheep.frames = Paths.getSparrowAtlas('house/sheep');
+					sheep.animation.addByPrefix('bop', 'sheep idle', 24, false);
+					sheep.scrollFactor.set(0.9, 0.9);
+					sheep.setGraphicSize(Std.int(sheep.width * 6));
+					sheep.updateHitbox();
+			 		add(sheep);
+					
+					houseBG.updateHitbox();
+					house.updateHitbox();
 			}
 			case 'cave':
 			{
@@ -637,7 +613,7 @@ class PlayState extends MusicBeatState
 					bgStreet.scrollFactor.set(0.95, 0.95);
 					add(bgStreet);
 
-					alecs = new FlxSprite(690, 100);
+					alecs = new FlxSprite(810, 100);
 				    alecs.frames = Paths.getSparrowAtlas('temple/alexBG');
 			 		alecs.animation.addByPrefix('bop', 'alexBG Idle', 24, false);
 			 		alecs.scrollFactor.set(0.9, 0.9);
@@ -653,7 +629,7 @@ class PlayState extends MusicBeatState
 			 		hors.updateHitbox();
 			 		add(hors);
 
-					stev = new FlxSprite(-350, 120);
+					stev = new FlxSprite(-280, 120);
 				    stev.frames = Paths.getSparrowAtlas('temple/steveBG');
 			 		stev.animation.addByPrefix('bop', 'steveBG Idle', 24, false);
 			 		stev.scrollFactor.set(0.9, 0.9);
@@ -661,7 +637,14 @@ class PlayState extends MusicBeatState
 			 		stev.updateHitbox();
 			 		add(stev);
 					
-
+					notchStanding = new FlxSprite(165, -70);
+				    notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
+					notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
+					notchStanding.scrollFactor.set(0.9, 0.9);
+					notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
+					notchStanding.updateHitbox();
+			 		add(notchStanding);
+				
 
 					var widShit = Std.int(bgSky.width * 6);
 
@@ -757,6 +740,25 @@ class PlayState extends MusicBeatState
 					littlebg.setGraphicSize(Std.int(littlebg.width * daPixelZoom));
 
 					littlebg.updateHitbox();
+
+			}
+			case 'lost':
+			{
+					curStage = 'lost';
+
+					defaultCamZoom = 0.7;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var lost:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('lost/lost'));
+					lost.scrollFactor.set(0.95, 0.95);
+					add(lost);
+					lost.y -= 220;
+					lost.x -= 200;
+					lost.setGraphicSize(Std.int(lost.width * daPixelZoom));
+
+					lost.updateHitbox();
 
 			}
 			case 'dev':
@@ -947,10 +949,6 @@ class PlayState extends MusicBeatState
 				dad.x -= 90;
 				dad.y += 190;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
-			case 'tuxsteve':
-				dad.x -= 90;
-				dad.y += 230;
-				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'stevehorse':
 				dad.x -= 200;
 				dad.y -= 0;
@@ -958,6 +956,14 @@ class PlayState extends MusicBeatState
 			case 'tuxsteveuoh':
 				dad.x += 150;
 				dad.y += 360;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case 'tuxsteve':
+				dad.x -= 140;
+				dad.y += 240;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case 'tuxstevewhatever':
+				dad.x -= 140;
+				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'stevefnm':
 				dad.x -= 140;
@@ -1023,7 +1029,7 @@ class PlayState extends MusicBeatState
 				dad.y -= 70;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);			
 		}
-		
+
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		// REPOSITIONING PER STAGE
@@ -1055,11 +1061,12 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
-			case 'herobrine':
+
+			case 'house':
 				boyfriend.x += 200;
-				boyfriend.y += 220;
+				boyfriend.y += 215;
 				gf.x += 180;
-				gf.y += 300;
+				gf.y += 340;				
 			case 'cave':
 				boyfriend.x += 200;
 				boyfriend.y += 215;
@@ -1068,7 +1075,7 @@ class PlayState extends MusicBeatState
 			case 'notch':
 				boyfriend.x += 520;
 				boyfriend.y += 50;
-				gf.x += 230;
+				gf.x += 350;
 				gf.y += 200;
 			case 'endless':
 				boyfriend.x += 520;
@@ -1542,6 +1549,11 @@ class PlayState extends MusicBeatState
 				'awwman/pixelUI/ready-pixel',
 				'awwman/pixelUI/set-pixel',
 				'awwman/pixelUI/date-pixel'
+			]);
+			introAssets.set('house', [
+				'house/pixelUI/ready-pixel',
+				'house/pixelUI/set-pixel',
+				'house/pixelUI/date-pixel'
 			]);
 			introAssets.set('cave', [
 				'cave/pixelUI/ready-pixel',
@@ -2941,16 +2953,20 @@ class PlayState extends MusicBeatState
 							camFollow.y = dad.getMidpoint().y - 430;
 							camFollow.x = dad.getMidpoint().x - 100;
 						
-						case 'tuxsteve':
-							camFollow.y = dad.getMidpoint().y - 80;
-							camFollow.x = dad.getMidpoint().x - -170;
-							defaultCamZoom = 1.1;
-						
 						case 'tuxsteveuoh':
-							camFollow.y = dad.getMidpoint().y - 430;
+							camFollow.y = dad.getMidpoint().y - 500;
 							camFollow.x = dad.getMidpoint().x - 100;
-							defaultCamZoom = 1;
+							defaultCamZoom = 0.6;
 
+						case 'tuxsteve':
+							camFollow.y = dad.getMidpoint().y - 300;
+							camFollow.x = dad.getMidpoint().x - -300;
+							defaultCamZoom = 0.5;
+						
+						case 'tuxstevewhatever':
+							camFollow.y = dad.getMidpoint().y - 300;
+							camFollow.x = dad.getMidpoint().x - -300;
+							defaultCamZoom = 0.5;
 						case 'stevehorse':
 							camFollow.y = dad.getMidpoint().y - 200;
 							camFollow.x = dad.getMidpoint().x - -170;
@@ -3012,9 +3028,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.8;
 						
 						case 'steve-armor':
-							camFollow.y = dad.getMidpoint().y - 100;
+							camFollow.y = dad.getMidpoint().y - 260;
 							camFollow.x = dad.getMidpoint().x - -140;
-							defaultCamZoom = 1.15;              
+							defaultCamZoom = 0.8;              
 						
 						case 'tiago':
 							camFollow.y = dad.getMidpoint().y - 430;
@@ -3066,6 +3082,10 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 						defaultCamZoom = 1.2;
+					case 'house':
+						camFollow.x = boyfriend.getMidpoint().x - 280;
+						camFollow.y = boyfriend.getMidpoint().y - 350;
+						defaultCamZoom = 0.55;
 					case 'cave':
 						camFollow.x = boyfriend.getMidpoint().x - 280;
 						camFollow.y = boyfriend.getMidpoint().y - 240;
@@ -3777,6 +3797,11 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('school'))
 			{
 				pixelShitPart1 = 'weeb/pixelUI/';
+				pixelShitPart2 = '-pixel';
+			}
+			if (curStage.startsWith('house'))
+			{
+				pixelShitPart1 = 'house/pixelUI/';
 				pixelShitPart2 = '-pixel';
 			}
 			if (curStage.startsWith('cave'))
@@ -4752,10 +4777,16 @@ class PlayState extends MusicBeatState
 				if(FlxG.save.data.distractions){
 					bgDevs.dance();
 				}
+			case 'house':
+				if(FlxG.save.data.distractions){
+					dog.animation.play('bop', false);
+					sheep.animation.play('bop', false);
+				}
 			case 'notch':
 				if(FlxG.save.data.distractions){
 					alecs.animation.play('bop', false);
 					stev.animation.play('bop', false);
+					notchStanding.animation.play('bop', false);
 					hors.animation.play('bop', false);
 				}
 			case 'templeentrance':
@@ -4771,7 +4802,7 @@ class PlayState extends MusicBeatState
 
 		}
 	}
-
+	   
 	var curLight:Int = 0;
 }
 //if you're reading this, heeelllooo from Tiago :P

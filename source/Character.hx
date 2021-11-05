@@ -495,27 +495,6 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'tuxsteve':
-				iconColor = 'FF224367';
-				frames = Paths.getSparrowAtlas('characters/tuxsteve');
-				animation.addByPrefix('idle', 'tuxsteve idle', 24, false);
-				animation.addByPrefix('singUP', 'tuxsteve up', 24, false);
-				animation.addByPrefix('singLEFT', 'tuxsteve left', 24, false);
-				animation.addByPrefix('singRIGHT', 'tuxsteve right', 24, false);
-				animation.addByPrefix('singDOWN', 'tuxsteve down', 24, false);
-
-				addOffset('idle', -250, -260);
-				addOffset("singUP", -247, -256);
-				addOffset("singRIGHT", -249, -254);
-				addOffset("singLEFT", -244, -259);
-				addOffset("singDOWN", -256, -260);
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				antialiasing = false;
-
 			case 'herobrine':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/herobrine');
@@ -581,6 +560,50 @@ class Character extends FlxSprite
 	
 				antialiasing = false;
 
+			case 'tuxsteve':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/tuxsteve');
+				animation.addByPrefix('idle', 'tuxsteve idle', 24, false);
+				animation.addByPrefix('singUP', 'tuxsteve up', 24, false);
+				animation.addByPrefix('singLEFT', 'tuxsteve left', 24, false);
+				animation.addByPrefix('singRIGHT', 'tuxsteve right', 24, false);
+				animation.addByPrefix('singDOWN', 'tuxsteve down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -239, -272);
+				addOffset("singRIGHT", -252, -260);
+				addOffset("singLEFT", -250, -260);
+				addOffset("singDOWN", -250, -260);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.9));
+				updateHitbox();
+
+				antialiasing = false;
+
+			case 'tuxstevewhatever':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/tuxstevewhatever');
+				animation.addByPrefix('idle', 'tuxsteve idle', 24, false);
+				animation.addByPrefix('singUP', 'tuxsteve up', 24, false);
+				animation.addByPrefix('singLEFT', 'tuxsteve left', 24, false);
+				animation.addByPrefix('singRIGHT', 'tuxsteve right', 24, false);
+				animation.addByPrefix('singDOWN', 'tuxsteve down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -239, -272);
+				addOffset("singRIGHT", -252, -260);
+				addOffset("singLEFT", -250, -260);
+				addOffset("singDOWN", -250, -260);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.9));
+				updateHitbox();
+
+				antialiasing = false;
+				
 			case 'stevefnm':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/stevefnm');
@@ -771,7 +794,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 6.1));
 				updateHitbox();
 
 				antialiasing = false;
