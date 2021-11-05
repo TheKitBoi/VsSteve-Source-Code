@@ -1,6 +1,7 @@
 awwman
 lost
 school
+house
 cave
 fasttravel
 notch
