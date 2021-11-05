@@ -175,7 +175,9 @@ class PlayState extends MusicBeatState
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
-	var dog:FlxSprite; 
+	var doggo:FlxSprite; 
+
+	var catto:FlxSprite; 
 
 	var sheep:FlxSprite; 
 
@@ -531,13 +533,21 @@ class PlayState extends MusicBeatState
 					house.setGraphicSize(Std.int(house.width * 6));
 					add(house);
 
-					dog = new FlxSprite(-820, 450);
-				    dog.frames = Paths.getSparrowAtlas('house/dog');
-					dog.animation.addByPrefix('bop', 'dog idle', 24, false);
-					dog.scrollFactor.set(0.9, 0.9);
-					dog.setGraphicSize(Std.int(dog.width * 6));
-					dog.updateHitbox();
-			 		add(dog);
+					doggo = new FlxSprite(-820, 450);
+				    doggo.frames = Paths.getSparrowAtlas('house/doggo');
+					doggo.animation.addByPrefix('bop', 'dog idle', 24, false);
+					doggo.scrollFactor.set(0.9, 0.9);
+					doggo.setGraphicSize(Std.int(doggo.width * 6));
+					doggo.updateHitbox();
+			 		add(doggo);
+
+					catto = new FlxSprite(0, -320);
+				    catto.frames = Paths.getSparrowAtlas('house/catto');
+					catto.animation.addByPrefix('bop', 'catto idle', 24, false);
+					catto.scrollFactor.set(0.9, 0.9);
+					catto.setGraphicSize(Std.int(catto.width * 5.5));
+					catto.updateHitbox();
+			 		add(catto);
 
 					sheep = new FlxSprite(1500, 420);
 				    sheep.frames = Paths.getSparrowAtlas('house/sheep');
@@ -4779,7 +4789,8 @@ class PlayState extends MusicBeatState
 				}
 			case 'house':
 				if(FlxG.save.data.distractions){
-					dog.animation.play('bop', false);
+					doggo.animation.play('bop', false);
+					catto.animation.play('bop', false);
 					sheep.animation.play('bop', false);
 				}
 			case 'notch':
