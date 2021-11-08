@@ -135,9 +135,9 @@ class MainMenuState extends MusicBeatState
 			switch(i) 
 			{
 				case 0: //storymode
-					butos.setPosition(butos.x, 250);
+					butos.setPosition(butos.x, 275);
 				case 1: //freeplay
-					butos.setPosition(butos.x, 350);
+					butos.setPosition(butos.x, 340);
 				case 2: // options
 					butos.setPosition(butos.x - 110, 550);
 				case 3: //quit game
@@ -146,8 +146,8 @@ class MainMenuState extends MusicBeatState
 					butos.setPosition(butos.x - 250, 550);
 				case 5: //uoh?
 					butos.setPosition(butos.x + 250, 550);
-				case 6: //bonus
-				    butos.setPosition(butos.x, 450);
+				case 6: //extras
+				    butos.setPosition(butos.x, 390);
 			}
 			menuItems.add(butos);
 		}
@@ -180,7 +180,7 @@ class MainMenuState extends MusicBeatState
 
 	var canClick:Bool = true;
 	var usingMouse:Bool = false;
-	var scroll:Bool;
+	var scroll:Bool = true;
 	var tween:FlxTween;
 
 	override function update(elapsed:Float)

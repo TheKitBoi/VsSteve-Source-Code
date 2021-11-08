@@ -1301,14 +1301,6 @@ class PlayState extends MusicBeatState
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 
-
-
-
-
-
-		//Do i need to add the BGG shit here aswell??
-
-
 		// Add Kade Engine watermark
 		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardore" : storyDifficulty == 2 ? "Hardore" : storyDifficulty == 1 ? "Hard" : "Normal") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -1385,10 +1377,14 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'suit up':
 					schoolIntro(doof);
+				case 'whatever':
+					schoolIntro(doof);
         /*
       	case 'overseen':
 					schoolIntro(doof);
       	case 'iron picks':
+					schoolIntro(doof);
+		case 'copper':
 					schoolIntro(doof);
         case 'underrated':
 					schoolIntro(doof);
@@ -3472,17 +3468,16 @@ class PlayState extends MusicBeatState
 						}
 						else if(storyDifficulty == 2)
 						{
-							health -= 0.035;
+							health -= 0.05;
 							vocals.volume = 0;
 							if (theFunne)
 								noteMiss(daNote.noteData, daNote);
 						}
 						else if(storyDifficulty == 3)
 						{
-							if(health > 0.8)
-								health -= 0.5;
-							else
-								health -= 0.2;
+
+								health -= 0.75;
+
 
 							vocals.volume = 0;
 							if (theFunne)
@@ -3755,6 +3750,11 @@ class PlayState extends MusicBeatState
 						goods++;
 						if (health < 2)
 							health += 0.04;
+						else if (health < 2 && storyDifficulty == 2)
+							health += 0.02;
+						else if (health < 2 && storyDifficulty == 3)
+							health += 0.01;
+
 						if (FlxG.save.data.accuracyMod == 0)
 							totalNotesHit += 0.75;
 					}
@@ -3770,8 +3770,14 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						if (health < 4)
+						if (health < 2)
 							health += 0.06;
+						else if (health < 2 && storyDifficulty == 2)
+							health += 0.03;
+						else if (health < 2 && storyDifficulty == 3)
+							health += 0.015;
+
+
 						if (FlxG.save.data.accuracyMod == 0)
 							totalNotesHit += 1;
 						sicks++;	
@@ -4508,22 +4514,23 @@ class PlayState extends MusicBeatState
 
 				if (health > 1)
 				{
-					health -= 1;
+					health -= 5;
 				}
 				else{
-					health -= 0.5;
+					health -= 0.25;
 				}	
-				FlxG.camera.shake(0.05, 0.05);
+				
 			});
+			FlxG.camera.shake(0.05, 0.05);
 		}
 
 		function bfBlock()
 		{
 			if (FlxG.keys.justPressed.SPACE)
-				{
-					boyfriend.playAnim('block', true);
-				}
-
+			{
+				boyfriend.playAnim('block', true);
+			}
+		
 		}
 
 		function steveAttack()
@@ -4540,13 +4547,15 @@ class PlayState extends MusicBeatState
 			achievementBlock.animation.play('block', true);
 			pressedSpace = false;
 			detectAttack = true;
-			steveAttack();
-			new FlxTimer().start(0.6, function(tmr:FlxTimer)
+			//steveAttack(); needs pre pare
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
 				if (pressedSpace)
 				{
 					bfBlock();
 					trace('Successful Block');
+					FlxG.camera.shake(0.02, 0.02);
+					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.6);
 				}
 				else
 				{
@@ -4558,16 +4567,14 @@ class PlayState extends MusicBeatState
 			});
 		}
 
+
 		function blockWarning()
 		{
 			pressCounter = 0;
-			//FlxTween.tween(achievementBlock, {x: 100});
 			achievementBlock.alpha = 1;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				//FlxTween.tween(achievementBlock, {x: -100});
 				achievementBlock.alpha = 0;
-				//FlxFlicker.stopFlickering(combatSpr);
 			});
 		}
 
@@ -4579,7 +4586,6 @@ class PlayState extends MusicBeatState
 			{
 				pressCounter += 1;
 				trace('tap');
-				FlxG.camera.shake(0.02, 0.02);
 				pressedSpace = true;
 				detectAttack = false;
 			}
@@ -4614,19 +4620,17 @@ class PlayState extends MusicBeatState
 			switch (curStep)
 			{
 				case 122:
-					steveAttack();
-				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 816 | 832 | 846 | 848 | 880 | 1166:
+					//steveAttack(); needs prepare
+				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 | 846 | 848 | 864 | 866 | 880 | 1166:
 					slashEvent();
+				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
+					steveAttack();
+				case  800 | 802 | 816 | 818:
+					slashEvent();
+				case 804 | 806 | 820 | 822:
+					steveAttack();
 			}
-			//if (curStep == 246 | 768 | 802 | 834 | 867 | 897 | 929| 962 | 994)
-			//{
-			//	slashEvent();
-			//	//var blackCut:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-			//	//	-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-			//	//blackCut.scrollFactor.set();
-			//	//add(blackCut);
-//
-			//}
+
 		}
 		#if windows
 		if (executeModchart && luaModchart != null)
