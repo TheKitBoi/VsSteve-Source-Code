@@ -42,6 +42,7 @@ class DialogueBox extends FlxSpriteGroup
 	//i disabled the dialogs with lmaos, LMAOOOOOOO -babobias
 	//enabled again by tigo -Tigo
 	//added dialouge  -Nosadx
+	// enabled by google chrome - chromasen
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'Uoh':
@@ -53,18 +54,18 @@ class DialogueBox extends FlxSpriteGroup
 			case 'Suit Up':
 				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
-			//case 'overseen':
-			//	FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-			//	FlxG.sound.music.fadeIn(1, 0, 0.8);
-			//case 'iron picks':
-			//	FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-			//	FlxG.sound.music.fadeIn(1, 0, 0.8);
-			//case 'underrated':
-			//	FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-			//	FlxG.sound.music.fadeIn(1, 0, 0.8);
-			//case 'tick tock':
-			//	FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-			//	FlxG.sound.music.fadeIn(1, 0, 0.8);
+			case 'overseen':
+				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.8);
+			case 'iron picks':
+				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.8);
+			case 'underrated':
+				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.8);
+			case 'tick tock':
+				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.8);
 
 		}
 
@@ -105,29 +106,29 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear instance', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear instance', [11], "", 24);
 				
-			//case 'overseen':
-			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
-			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
+			case 'overseen':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
+				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 
-			//case 'iron picks':
-			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
-			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
+			case 'iron picks':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
+				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 		
-			//case 'underrated':
-			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
-			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
+			case 'underrated':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
+				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 		
-			//case 'tick tock':
-			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
-			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
+			case 'tick tock':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
+				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 
 			case 'eyes':
 				hasDialog = true;
