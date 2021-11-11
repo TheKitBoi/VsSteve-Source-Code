@@ -756,6 +756,25 @@ class PlayState extends MusicBeatState
 					lost.updateHitbox();
 
 			}
+			case 'espionage':
+			{
+					curStage = 'espionage';
+
+					defaultCamZoom = 0.7;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var espionage:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('espionage/espionage'));
+					espionage.scrollFactor.set(0.95, 0.95);
+					add(espionage);
+					espionage.y -= 220;
+					espionage.x -= 200;
+					espionage.setGraphicSize(Std.int(espionage.width * daPixelZoom));
+
+					espionage.updateHitbox();
+
+			}
 			case 'dev':
 			{
 					curStage = 'dev';
@@ -1019,6 +1038,10 @@ class PlayState extends MusicBeatState
 			case 'gabo':
 				dad.x += 150;
 				dad.y += 690;
+			case 'jaziel':
+				dad.x -= 140;
+				dad.y += 150;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'jeb':
 				dad.x -= 90;
 				dad.y -= 70;
@@ -1080,6 +1103,11 @@ class PlayState extends MusicBeatState
 			case 'littleman':
 				boyfriend.x += 220;
 				boyfriend.y += 20;
+				gf.x += 240;
+				gf.y += 170;
+			case 'espionage':
+				boyfriend.x += 220;
+				boyfriend.y += 75;
 				gf.x += 240;
 				gf.y += 170;
 			case 'fasttravel':
@@ -1580,6 +1608,11 @@ class PlayState extends MusicBeatState
 				'littleman/pixelUI/ready-pixel',
 				'littleman/pixelUI/set-pixel',
 				'littleman/pixelUI/date-pixel'		
+			]);
+			introAssets.set('espionage', [
+				'espionage/pixelUI/ready-pixel',
+				'espionage/pixelUI/set-pixel',
+				'espionage/pixelUI/date-pixel'		
 			]);
 			introAssets.set('fasttravel', [
 				'fasttravel/pixelUI/ready-pixel',
@@ -3047,6 +3080,12 @@ class PlayState extends MusicBeatState
 							camFollow.y = dad.getMidpoint().y - 430;
 							camFollow.x = dad.getMidpoint().x - 10;
 							defaultCamZoom = 1.2;
+						
+						case 'jaziel':
+							camFollow.y = dad.getMidpoint().y - 200;
+							camFollow.x = dad.getMidpoint().x - -300;
+							defaultCamZoom = 0.7;
+
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120;
 							camFollow.x = dad.getMidpoint().x - -420;
@@ -3101,8 +3140,12 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.9;
 					case 'littleman':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 260;
+						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
+					case 'espionage':
+						camFollow.x = boyfriend.getMidpoint().x - 400;
+						camFollow.y = boyfriend.getMidpoint().y - 400;
+						defaultCamZoom = 0.8;
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
@@ -3838,6 +3881,11 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('littleman'))
 				{
 					pixelShitPart1 = 'littleman/pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
+			if (curStage.startsWith('espionage'))
+				{
+					pixelShitPart1 = 'espionage/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
 			if (curStage.startsWith('fasttravel'))

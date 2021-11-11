@@ -281,12 +281,12 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('characters/bfMinecraft');
 				animation.addByPrefix('idle', 'bfMinecraft Idle', 24, false);
 				animation.addByPrefix('singUP', 'bfMinecraft up note', 24, false);
-				animation.addByPrefix('singLEFT', 'bfMinecraft left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'bfMinecraft right note', 24, false);
+				animation.addByPrefix('singLEFT', 'bfMinecraft right note', 24, false);
+				animation.addByPrefix('singRIGHT', 'bfMinecraft left note', 24, false);
 				animation.addByPrefix('singDOWN', 'bfMinecraft down note', 24, false);
 				animation.addByPrefix('singUPmiss', 'bfMinecraft up miss', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'bfMinecraft left miss', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'bfMinecraft right miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'bfMinecraft right miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'bfMinecraft left miss', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'bfMinecraft down miss', 24, false);
 				animation.addByPrefix('shield', 'bfMinecraft shield', 24, false);
 
@@ -904,6 +904,27 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'jaziel':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/jaziel');
+				animation.addByPrefix('idle', 'jaziel idle', 24, false);
+				animation.addByPrefix('singUP', 'jaziel your mother', 24, false);
+				animation.addByPrefix('singLEFT', 'jaziel your mother', 24, false);
+				animation.addByPrefix('singRIGHT', 'jaziel your mother', 24, false);
+				animation.addByPrefix('singDOWN', 'jaziel your mother', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -250, -260);
+				addOffset("singRIGHT", -250, -260);
+				addOffset("singLEFT", -250, -260);
+				addOffset("singDOWN", -250, -260);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.9));
+				updateHitbox();
+
+				antialiasing = false;
 			case 'jeb':
 				iconColor = 'FFFFFFFF';
 				frames = Paths.getSparrowAtlas('jeb/jeb', 'shared');
