@@ -7,5 +7,6 @@ fasttravel
 notch
 templeentrance
 littleman
+espionage
 diamonds
 dev
