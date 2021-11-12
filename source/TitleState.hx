@@ -43,6 +43,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var cakey:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -171,7 +172,7 @@ class TitleState extends MusicBeatState
 		logoBl.updateHitbox();
 		logoBl.y += 150;
 		logoBl.x += 200;
-		FlxTween.tween(logoBl, {y: logoBl.y + 30}, 1, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {y: logoBl.y + 30}, 1, {ease: FlxEase.quintInOut, type: PINGPONG});
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
@@ -223,6 +224,14 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
+
+		cakey = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('CakeyWasHere'));
+		add(cakey);
+		cakey.visible = false;
+		cakey.setGraphicSize(Std.int(cakey.width * 0.8));
+		cakey.updateHitbox();
+		cakey.screenCenter(X);
+		cakey.antialiasing = true;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -397,11 +406,11 @@ class TitleState extends MusicBeatState
 		FlxG.log.add(curBeat);
 
 	 FlxTween.tween(FlxG.camera, {zoom:1.02}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
-		
+		var cake:Bool = false;
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['TracedInPurple (Tiago)', 'Shibecicle', 'TheGaboDiaz', 'Nosadx']);
+				createCoolText(['TracedInPurple (Tiago)', 'TheGaboDiaz', 'and the Vs Steve Team']);
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -413,26 +422,33 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
+				if (FlxG.random.bool(15.5))
+				{
+					cake = true;
+					trace('CAKEY WAS HERE LOL');
+					createCoolText(['Ayo,', 'Cake was here...']);
+				}
 				else
-					createCoolText(['Tux', 'Steve']);
+					createCoolText(['Kade Engine', 'highly Modified by']);
+
 			case 7:
-				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
+				if (cake = true)
+				{
+					createCoolText(['hehehhee']);
+					cakey.visible = true;
+				}
 				else
 				{
-					addMoreText('Ayy');
+					addMoreText('TracedInPurple');
 					ngSpr.visible = true;
 				}
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-			// credTextShit.visible = false;
+				if (cake = true)
+					cakey.visible = false;
 
-			// credTextShit.text = 'Shoutouts Tom Fulp';
-			// credTextShit.screenCenter();
 			case 9:
 				createCoolText([curWacky[0]]);
 			// credTextShit.visible = true;
@@ -451,7 +467,7 @@ class TitleState extends MusicBeatState
 				addMoreText('Funkin');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Vs Steve - Full Week'); // credTextShit.text += '\nFunkin';
+				addMoreText('Vs Steve'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
@@ -465,6 +481,7 @@ class TitleState extends MusicBeatState
 		if (!skippedIntro)
 		{
 			remove(ngSpr);
+			remove(cakey);
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);

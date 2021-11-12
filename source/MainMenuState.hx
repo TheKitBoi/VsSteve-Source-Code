@@ -51,6 +51,9 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 
+	var scroll:Bool = true;
+	var tween:FlxTween;
+
 	override function create()
 	{
 		#if windows
@@ -147,7 +150,7 @@ class MainMenuState extends MusicBeatState
 				case 5: //uoh?
 					butos.setPosition(butos.x + 250, 550);
 				case 6: //extras
-				    butos.setPosition(butos.x, 390);
+				    butos.setPosition(butos.x, 405);
 			}
 			menuItems.add(butos);
 		}
@@ -180,8 +183,7 @@ class MainMenuState extends MusicBeatState
 
 	var canClick:Bool = true;
 	var usingMouse:Bool = false;
-	var scroll:Bool = true;
-	var tween:FlxTween;
+	
 
 	override function update(elapsed:Float)
 	{
@@ -202,23 +204,23 @@ class MainMenuState extends MusicBeatState
 	
 		if(scroll == true)
 		{
-           scroll = false;
-           menuBG.x = 1280;
-           menuBGClone.x = 0;
-           //"menuBG".visible = false;
-           FlxTween.tween(menuBG, {x: -1600}, 90, {
-           onComplete: function(twn:FlxTween)
-       		{
-       			tween = FlxTween.tween(menuBG, { x: -2880 }, 90);
-       			FlxTween.tween(menuBGClone, {x: 0}, 90, {
-       			onComplete: function(twn:FlxTween)
-       			{
-       			    tween.cancel();
-       			    scroll = true;
-       			}
-       			});
-            }
-            });
+          	scroll = false;
+          	menuBG.x = 1280;
+          	menuBGClone.x = 0;
+          	//"menuBG".visible = false;
+          	FlxTween.tween(menuBG, {x: -1600}, 90, {
+          	onComplete: function(twn:FlxTween)	
+			{
+				tween = FlxTween.tween(menuBG, { x: -2880 }, 90);
+				FlxTween.tween(menuBGClone, {x: 0}, 90, {
+				onComplete: function(twn:FlxTween)
+				{
+					tween.cancel();
+				    scroll = true;
+				}
+				});
+			}
+			});
         }
 
 		menuItems.forEach(function(spr:FlxSprite)

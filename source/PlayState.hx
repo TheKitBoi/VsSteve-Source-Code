@@ -230,6 +230,15 @@ class PlayState extends MusicBeatState
 	//Fast Travel shit
 	private var floatvalue:Float = 0;
 	private var runvalue:Float = 0;
+	
+	private var fasttravelbg:FlxSprite;
+	private var fasttravelbgClone:FlxSprite;
+	var scroll:Bool = false;
+	var tween:FlxTween;
+
+	
+	
+	
 	private var hero:Float = 0;
 
 
@@ -632,13 +641,13 @@ class PlayState extends MusicBeatState
 			 		stev.updateHitbox();
 			 		add(stev);
 
-					//notchStanding = new FlxSprite(165, -70);
-				    //notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
-					//notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
-					//notchStanding.scrollFactor.set(0.9, 0.9);
-					//notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
-					//notchStanding.updateHitbox();
-			 		//add(notchStanding);
+					notchStanding = new FlxSprite(165, -70);
+				    notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
+					notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
+					notchStanding.scrollFactor.set(0.9, 0.9);
+					notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
+					notchStanding.updateHitbox();
+			 		add(notchStanding);
 
 
 					var widShit = Std.int(bgSky.width * 6);
@@ -684,10 +693,15 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.7;
 					camMovement = 0.8;
 
-					var fasttravelbg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
+					fasttravelbg = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
 					fasttravelbg.scale.set(1.4, 1.4);
 					fasttravelbg.updateHitbox();
 					add(fasttravelbg);
+
+					fasttravelbgClone = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
+					fasttravelbgClone.scale.set(1.4, 1.4);
+					fasttravelbgClone.updateHitbox();
+					add(fasttravelbgClone);
 
 					alexHorse = new FlxSprite(50, 55);
 				    alexHorse.frames = Paths.getSparrowAtlas('fasttravel/alexHorse');
@@ -716,6 +730,9 @@ class PlayState extends MusicBeatState
 			 		add(steveHorse);
 
 					fasttravelbg.updateHitbox();
+					fasttravelbgClone.updateHitbox();
+
+					scroll = true;
 
 			}
 			case 'littleman':
@@ -1147,11 +1164,10 @@ class PlayState extends MusicBeatState
 				duoDad = new Character(10, 530, 'alexchill');
 				add(duoDad);
 				hasDuoDad = true;
-
-			case 'gapple':
-				remove(notchStanding);
-
 		}
+		if (curStage == 'notch' && SONG.song.toLowerCase() == 'gapple')
+			remove(notchStanding);
+
 		add(boyfriend);
 
 		if (curStage == 'cave')
@@ -2666,13 +2682,18 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
+		if (SONG.song.toLowerCase() == 'espionage')
+		{
+			cpuStrums.visible = false;
+		}
+
 		if (SONG.song.toLowerCase() == 'suit up')
-			{
-				if (FlxG.keys.justPressed.SPACE)
-					{
-					   boyfriend.playAnim('block', true);
-					}
-			}
+		{
+			if (FlxG.keys.justPressed.SPACE)
+				{
+				   boyfriend.playAnim('block', true);
+				}
+		}
 
 		if (dad.animation.curAnim.name == 'hit')
 			{
@@ -2819,6 +2840,7 @@ class PlayState extends MusicBeatState
 
 		if (curStage.startsWith('fasttravel') /*|| curStage.startsWith('school')*/)
 		{
+			//Horse Movement
 			dad.y += Math.sin(floatvalue);
 			dad.y += Math.cos(floatvalue);
 			boyfriend.y += Math.sin(floatvalue);
@@ -2830,16 +2852,34 @@ class PlayState extends MusicBeatState
 			gfHorse.y += Math.sin(floatvalue);
 			gfHorse.y += Math.cos(floatvalue);
 			dad.x += Math.sin(runvalue);
-			//dad.x += Math.cos(runvalue);
 			boyfriend.x += Math.sin(runvalue);
-			//boyfriend.x += Math.cos(runvalue);
 			alexHorse.x += Math.sin(runvalue);
-			//alexHorse.x += Math.cos(runvalue);
 			steveHorse.x += Math.sin(runvalue);
-			//steveHorse.x += Math.cos(runvalue);
 			gfHorse.x += Math.sin(runvalue);
-			//gfHorse.x += Math.cos(runvalue);
-		}//
+
+			//Panoramaaaaaaa
+			//litterally basically a copy paste from the main menu but FU-
+			if(scroll == true)
+				{
+					  scroll = false;
+					  fasttravelbg.x = 1280;
+					  fasttravelbgClone.x = 0;
+					  //"menuBG".visible = false;
+					  FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
+					  onComplete: function(twn:FlxTween)	
+					{
+						tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
+						FlxTween.tween(fasttravelbg, {x: 0}, 90, {
+						onComplete: function(twn:FlxTween)
+						{
+							tween.cancel();
+							scroll = true;
+						}
+						});
+					}
+					});
+				}
+		}
 
 		if (dad.curCharacter == "herobrine"){
 			dad.y += Math.sin(hero);
@@ -4562,7 +4602,7 @@ class PlayState extends MusicBeatState
 
 				if (health > 1)
 				{
-					health -= 5;
+					health -= 0.75;
 				}
 				else{
 					health -= 0.25;
@@ -4682,34 +4722,26 @@ class PlayState extends MusicBeatState
 		}
 		if (SONG.song.toLowerCase() == 'espionage')
 		{
-					switch (curStep)
+			switch (curStep)
+			{
+				case 1:
+					
+					for (i in cpuStrums) 
+						{
+							FlxTween.tween(i, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
+						}
+
+						cpuStrums.visible = true;
+				//needs to be finished
+				//ill probably need help with the camera zoom on every note hit of Jaziel
+				//i also need the steps where gabo wants jaziels notes to appear
+				
+				case 20:
+					for (i in cpuStrums) 
 					{
-					case 0:
-						for (i in playerStrums) 
-						{
-							FlxTween.tween(i, {alpha: 0}, 3, {ease: FlxEase.linear});
-						}
-						for (i in cpuStrums) 
-						{
-							FlxTween.tween(i, {alpha: 0}, 3, {ease: FlxEase.linear});
-						}
-					case 5:
-					//needs to be finished
-					//ill probably need help with the camera zoom on every note hit of Jaziel
-					//i also need the steps where gabo wants jaziels notes to appear
-			
-					case 30:
-						for (i in playerStrums) 
-						{	
-							FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.linear});
-						}
-						for (i in cpuStrums) 
-						{
-							FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.linear});
-						}
+						FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.quintOut});
 					}
-			
-			
+			}		
 		}			
 		#if windows
 		if (executeModchart && luaModchart != null)
