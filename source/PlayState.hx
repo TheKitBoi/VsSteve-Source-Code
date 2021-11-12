@@ -1155,14 +1155,14 @@ class PlayState extends MusicBeatState
 		add(boyfriend);
 
 		if (curStage == 'cave')
-			{
-				var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
-					lanterns.scrollFactor.set(2, 1);
-					lanterns.y += 390;
-					lanterns.x += 615;
-					lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
-				add(lanterns);
-			}
+		{
+			var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
+				lanterns.scrollFactor.set(2, 1);
+				lanterns.y += 390;
+				lanterns.x += 615;
+				lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
+			add(lanterns);
+		}
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			achievementBlock = new FlxSprite(1100, 300);
@@ -4680,6 +4680,37 @@ class PlayState extends MusicBeatState
 			}
 
 		}
+		if (SONG.song.toLowerCase() == 'espionage')
+		{
+					switch (curStep)
+					{
+					case 0:
+						for (i in playerStrums) 
+						{
+							FlxTween.tween(i, {alpha: 0}, 3, {ease: FlxEase.linear});
+						}
+						for (i in cpuStrums) 
+						{
+							FlxTween.tween(i, {alpha: 0}, 3, {ease: FlxEase.linear});
+						}
+					case 5:
+					//needs to be finished
+					//ill probably need help with the camera zoom on every note hit of Jaziel
+					//i also need the steps where gabo wants jaziels notes to appear
+			
+					case 30:
+						for (i in playerStrums) 
+						{	
+							FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.linear});
+						}
+						for (i in cpuStrums) 
+						{
+							FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.linear});
+						}
+					}
+			
+			
+		}			
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{
