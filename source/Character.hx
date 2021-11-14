@@ -905,7 +905,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'jaziel':
-				iconColor = 'FF2B5480';
+				iconColor = 'FFFF0000';
 				frames = Paths.getSparrowAtlas('characters/jaziel');
 				animation.addByPrefix('idle', 'jaziel idle', 24, false);
 				animation.addByPrefix('singUP', 'jaziel your mother', 24, false);
@@ -925,6 +925,29 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
+
+			case 'bos':
+				iconColor = 'FFFFC45E';
+				frames = Paths.getSparrowAtlas('characters/bos');
+				animation.addByPrefix('idle', 'bos idle', 24, false);
+				animation.addByPrefix('singUP', 'bos up', 24, false);
+				animation.addByPrefix('singLEFT', 'bos left', 24, false);
+				animation.addByPrefix('singRIGHT', 'bos right', 24, false);
+				animation.addByPrefix('singDOWN', 'bos down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -251, -263);
+				addOffset("singRIGHT", -252, -260);
+				addOffset("singLEFT", -213, -256);
+				addOffset("singDOWN", -250, -250);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.9));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'jeb':
 				iconColor = 'FFFFFFFF';
 				frames = Paths.getSparrowAtlas('jeb/jeb', 'shared');

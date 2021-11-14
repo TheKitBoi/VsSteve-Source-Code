@@ -174,6 +174,7 @@ class PlayState extends MusicBeatState
 	var stev:FlxSprite; 
 	var notchStanding:FlxSprite; 
 	var gfminecraft:FlxSprite; 
+	var irfan:FlxSprite; 
 	var fc:Bool = true;
 
 	//Blockinf Stuff
@@ -754,6 +755,33 @@ class PlayState extends MusicBeatState
 					littlebg.updateHitbox();
 
 			}
+			case 'tutorial':
+			{
+					curStage = 'tutorial';
+
+					defaultCamZoom = 0.7;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var tutorial:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('tutorial/tutorial'));
+					tutorial.scrollFactor.set(0.95, 0.95);
+					tutorial.y -= 300;
+					tutorial.x -= 370;
+					tutorial.setGraphicSize(Std.int(tutorial.width * 7));
+					add(tutorial);
+
+					irfan = new FlxSprite(350, 150);
+				    irfan.frames = Paths.getSparrowAtlas('tutorial/irfan');
+					irfan.animation.addByPrefix('bop', 'irfan idle', 24, false);
+					irfan.scrollFactor.set(0.95, 0.95);
+					irfan.setGraphicSize(Std.int(irfan.width * 4.7));
+					irfan.updateHitbox();
+			 		add(irfan);
+
+					tutorial.updateHitbox();
+
+			}
 			case 'lost':
 			{
 					curStage = 'lost';
@@ -1059,6 +1087,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 140;
 				dad.y += 150;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case 'bos':
+				dad.x -= 140;
+				dad.y += 60;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'jeb':
 				dad.x -= 90;
 				dad.y -= 70;
@@ -1118,6 +1150,16 @@ class PlayState extends MusicBeatState
 				gf.x += 230;
 				gf.y += 200;
 			case 'littleman':
+				boyfriend.x += 220;
+				boyfriend.y += 20;
+				gf.x += 240;
+				gf.y += 170;
+			case 'lost':
+				boyfriend.x += 220;
+				boyfriend.y += 20;
+				gf.x += 240;
+				gf.y += 170;
+			case 'tutorial':
 				boyfriend.x += 220;
 				boyfriend.y += 20;
 				gf.x += 240;
@@ -1624,6 +1666,16 @@ class PlayState extends MusicBeatState
 				'littleman/pixelUI/ready-pixel',
 				'littleman/pixelUI/set-pixel',
 				'littleman/pixelUI/date-pixel'		
+			]);
+			introAssets.set('lost', [
+				'lost/pixelUI/ready-pixel',
+				'lost/pixelUI/set-pixel',
+				'lost/pixelUI/date-pixel'		
+			]);
+			introAssets.set('tutorial', [
+				'tutorial/pixelUI/ready-pixel',
+				'tutorial/pixelUI/set-pixel',
+				'tutorial/pixelUI/date-pixel'		
 			]);
 			introAssets.set('espionage', [
 				'espionage/pixelUI/ready-pixel',
@@ -3126,6 +3178,11 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -300;
 							defaultCamZoom = 0.7;
 
+						case 'bos':
+							camFollow.y = dad.getMidpoint().y - 200;
+							camFollow.x = dad.getMidpoint().x - -300;
+							defaultCamZoom = 0.7;
+
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120;
 							camFollow.x = dad.getMidpoint().x - -420;
@@ -3179,6 +3236,14 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 260;
 						defaultCamZoom = 0.9;
 					case 'littleman':
+						camFollow.x = boyfriend.getMidpoint().x - 400;
+						camFollow.y = boyfriend.getMidpoint().y - 360;
+						defaultCamZoom = 0.9;
+					case 'lost':
+						camFollow.x = boyfriend.getMidpoint().x - 400;
+						camFollow.y = boyfriend.getMidpoint().y - 360;
+						defaultCamZoom = 0.9;
+					case 'tutorial':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
@@ -3921,6 +3986,16 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('littleman'))
 				{
 					pixelShitPart1 = 'littleman/pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
+				if (curStage.startsWith('lost'))
+					{
+						pixelShitPart1 = 'lost/pixelUI/';
+						pixelShitPart2 = '-pixel';
+					}
+			if (curStage.startsWith('tutorial'))
+				{
+					pixelShitPart1 = 'tutorial/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
 			if (curStage.startsWith('espionage'))
@@ -4921,7 +4996,10 @@ class PlayState extends MusicBeatState
 					alexHorse.animation.play('bop', false);
 					steveHorse.animation.play('bop', false);
 				}
-
+			case 'tutorial':
+				if(FlxG.save.data.distractions){
+					irfan.animation.play('bop', false);
+				}
 		}
 	}
 
