@@ -196,6 +196,12 @@ class PlayState extends MusicBeatState
 
 	public static var campaignScore:Int = 0;
 
+	public static var dadnoteMovementXoffset:Int = 0;
+	public static var dadnoteMovementYoffset:Int = 0;
+
+	public static var bfnoteMovementXoffset:Int = 0;
+	public static var bfnoteMovementYoffset:Int = 0;
+
 	var defaultCamZoom:Float = 1.05;
 
 	public static var daPixelZoom:Float = 6;
@@ -324,6 +330,12 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
+
+		dadnoteMovementXoffset = 0;
+		dadnoteMovementYoffset = 0;
+
+		bfnoteMovementXoffset = 0;
+		bfnoteMovementYoffset = 0;
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -1094,7 +1106,7 @@ class PlayState extends MusicBeatState
 			case 'jeb':
 				dad.x -= 90;
 				dad.y -= 70;
-				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);			
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);		
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -3061,6 +3073,8 @@ class PlayState extends MusicBeatState
 					offsetX = luaModchart.getVar("followXOffset", "float");
 					offsetY = luaModchart.getVar("followYOffset", "float");
 				}
+				camFollow.setPosition(dad.getMidpoint().x + 150 + dadnoteMovementXoffset, dad.getMidpoint().y - 100 + offsetY + dadnoteMovementYoffset);
+				
 				#end
 				camFollow.setPosition(dad.getMidpoint().x + 150 + offsetX, dad.getMidpoint().y - 100 + offsetY);
 				#if windows
@@ -3179,9 +3193,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.7;
 
 						case 'bos':
-							camFollow.y = dad.getMidpoint().y - 200;
-							camFollow.x = dad.getMidpoint().x - -300;
-							defaultCamZoom = 0.7;
+                            camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
+                            camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
+                            defaultCamZoom = 0.7;
 
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120;
@@ -3202,7 +3216,7 @@ class PlayState extends MusicBeatState
 					offsetY = luaModchart.getVar("followYOffset", "float");
 				}
 				#end
-				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX, boyfriend.getMidpoint().y - 100 + offsetY);
+				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX + bfnoteMovementXoffset, boyfriend.getMidpoint().y - 100 + offsetY + bfnoteMovementYoffset);
 
 				#if windows
 				if (luaModchart != null)
@@ -3245,7 +3259,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.9;
 					case 'tutorial':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 360;
+						camFollow.y = boyfriend.getMidpoint().y - 400;
 						defaultCamZoom = 0.9;
 					case 'espionage':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
@@ -3467,12 +3481,16 @@ class PlayState extends MusicBeatState
 								{
 									case 2:
 										dad.playAnim('singUP' + altAnim, true);
+										dadnoteMovementYoffset = -25;
 									case 3:
 										dad.playAnim('singRIGHT' + altAnim, true);
+										dadnoteMovementXoffset = 25;
 									case 1:
 										dad.playAnim('singDOWN' + altAnim, true);
+										dadnoteMovementYoffset = 25;
 									case 0:
 										dad.playAnim('singLEFT' + altAnim, true);
+										dadnoteMovementXoffset = -25;
 								}
 							}
 
@@ -4588,12 +4606,16 @@ class PlayState extends MusicBeatState
 						{
 							case 2:
 								boyfriend.playAnim('singUP', true);
+								bfnoteMovementYoffset = -25;
 							case 3:
 								boyfriend.playAnim('singRIGHT', true);
+								bfnoteMovementXoffset = 25;
 							case 1:
 								boyfriend.playAnim('singDOWN', true);
+								bfnoteMovementYoffset = 25;
 							case 0:
 								boyfriend.playAnim('singLEFT', true);
+								bfnoteMovementXoffset = -25;
 						}
 					}
 					#if windows
