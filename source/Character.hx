@@ -977,9 +977,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('deathConfirm', "bfMinecraftDies.png respawnConfirm", 24, false);
 				animation.play('firstDeath');
 	
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 11);
-				addOffset('deathConfirm', 37, 69);
+				addOffset('firstDeath', 47, 11);
+				addOffset('deathLoop', -500, -129);
+				addOffset('deathConfirm', -500, -129);
 				playAnim('firstDeath');
 				setGraphicSize(Std.int(width * 5));
 				updateHitbox();
