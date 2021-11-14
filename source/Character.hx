@@ -969,6 +969,24 @@ class Character extends FlxSprite
 				updateHitbox();
 	
 				antialiasing = false;
+
+			case 'bfminecraft-death': // tragically and sadly:((
+				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');
+				animation.addByPrefix('firstDeath', "bfMinecraftDies.png Dies", 24, false);
+				animation.addByPrefix('deathLoop', "bfMinecraftDies.png respawnButton", 24, true);
+				animation.addByPrefix('deathConfirm', "bfMinecraftDies.png respawnConfirm", 24, false);
+				animation.play('firstDeath');
+	
+				addOffset('firstDeath', 37, 11);
+				addOffset('deathLoop', 37, 11);
+				addOffset('deathConfirm', 37, 69);
+				playAnim('firstDeath');
+				setGraphicSize(Std.int(width * 5));
+				updateHitbox();
+	
+				antialiasing = false;
+					
+				flipX = true;
 		}
 
 		dance();
