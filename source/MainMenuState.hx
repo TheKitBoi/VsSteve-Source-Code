@@ -81,7 +81,6 @@ class MainMenuState extends MusicBeatState
 
 		menuBG = new FlxSprite().loadGraphic(Paths.image("menuBG"));
 		menuBG.y -= 500;
-		menuBG.x -= 650;
 		menuBG.scale.set(1.3, 1.3);
 		menuBG.updateHitbox();
 		menuBG.antialiasing = false;
@@ -89,7 +88,6 @@ class MainMenuState extends MusicBeatState
 
 		menuBGClone = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
 		menuBGClone.y -= 500;
-		menuBGClone.x -= 650;
 		menuBGClone.scale.set(1.3, 1.3);
 		menuBGClone.updateHitbox();
 		menuBGClone.antialiasing = false;
@@ -207,7 +205,7 @@ class MainMenuState extends MusicBeatState
           	scroll = false;
           	menuBG.x = 1280;
           	menuBGClone.x = 0;
-          	//"menuBG".visible = false;
+          	menuBG.visible = false;
           	FlxTween.tween(menuBG, {x: -1600}, 90, {
           	onComplete: function(twn:FlxTween)	
 			{
@@ -325,8 +323,7 @@ class MainMenuState extends MusicBeatState
 				System.exit(0);
 
 			case 'credits':
-				trace("Soon");
-				System.exit(0);
+				FlxG.switchState(new Credits());
 			case 'bonus':
 				FlxG.switchState(new FreeplayStateBonus());
 				trace("bonus songs!");
