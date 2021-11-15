@@ -325,8 +325,8 @@ class MainMenuState extends MusicBeatState
 			case 'credits':
 				FlxG.switchState(new Credits());
 			case 'bonus':
-				FlxG.switchState(new FreeplayStateBonus());
-				trace("bonus songs!");
+				FlxG.switchState(new ExtrasState());
+				trace("extras");
 		}
 	}
 

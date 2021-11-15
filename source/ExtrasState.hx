@@ -23,7 +23,7 @@ import Discord.DiscordClient;
 
 using StringTools;
 
-class MainMenuState extends MusicBeatState
+class ExtrasState extends MusicBeatState
 {
 	var curSelected:Int = 0;
 	var menuBG:FlxSprite;
@@ -213,9 +213,9 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new FreeplayStateBonus());
 				trace("bonus songs!");
 
-			//case 'other songs':
-			//	FlxG.switchState(new FreeplayStateOthers());
-			//	trace("Other Songs");
+			case 'other songs':
+				FlxG.switchState(new FreeplayStateOthers());
+				trace("Other Songs");
 
 		}
 	}

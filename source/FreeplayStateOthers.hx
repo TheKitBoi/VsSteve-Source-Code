@@ -19,7 +19,7 @@ using StringTools;
 
 class FreeplayStateOthers extends MusicBeatState
 {
-	var songs:Array<SongMetadata2> = [];
+	var songs:Array<SongMetadata3> = [];
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
@@ -42,7 +42,7 @@ class FreeplayStateOthers extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			songs.push(new SongMetadata2(data[0], Std.parseInt(data[2]), data[1]));
+			songs.push(new SongMetadata3(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
 		/* 
@@ -143,7 +143,7 @@ class FreeplayStateOthers extends MusicBeatState
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
 	{
-		songs.push(new SongMetadata2(songName, weekNum, songCharacter));
+		songs.push(new SongMetadata3(songName, weekNum, songCharacter));
 	}
 
 	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>)
@@ -294,7 +294,7 @@ class FreeplayStateOthers extends MusicBeatState
 	}
 }
 
-class SongMetadata2
+class SongMetadata3
 {
 	public var songName:String = "";
 	public var week:Int = 0;
