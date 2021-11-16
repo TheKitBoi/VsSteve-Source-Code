@@ -1144,8 +1144,8 @@ class PlayState extends MusicBeatState
 			case 'house':
 				boyfriend.x += 200;
 				boyfriend.y += 215;
-				gf.x += 180;
-				gf.y += 340;				
+				gf.x += 240;
+				gf.y += 400;				
 			case 'cave':
 				boyfriend.x += 200;
 				boyfriend.y += 215;
@@ -1154,12 +1154,12 @@ class PlayState extends MusicBeatState
 			case 'notch':
 				boyfriend.x += 520;
 				boyfriend.y += 50;
-				gf.x += 350;
-				gf.y += 200;
+				gf.x += 390;
+				gf.y += 230;
 			case 'endless':
 				boyfriend.x += 520;
 				boyfriend.y += 50;
-				gf.x += 230;
+				gf.x += 280;
 				gf.y += 200;
 			case 'littleman':
 				boyfriend.x += 220;
