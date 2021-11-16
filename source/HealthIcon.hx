@@ -17,7 +17,7 @@ class HealthIcon extends FlxSprite
 
 		antialiasing = false;
 		animation.add('bf-pixel', [0, 2, 1], 0, false, isPlayer);
-		animation.add('bfminecraft', [0, 2, 1], 0, false, isPlayer);
+		animation.add('bfminecraft', [41, 43, 42], 0, false, isPlayer);
 		animation.add('tuxsteveuoh', [5, 6, 7], 0, false, isPlayer);
 		animation.add('stevelucky', [5, 6, 7], 0, false, isPlayer);
 		animation.add('senpai-angry', [8, 6, 9], 0, false, isPlayer);
