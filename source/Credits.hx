@@ -61,8 +61,9 @@ class Credits extends MusicBeatState
 		#end
 
 		bg = new FlxSprite().loadGraphic(Paths.image('creditsBGTest'));
-        bg.x -= 650;
+        	bg.x += 650;
 		bg.scale.set(1.4, 1.4);
+		bg.updateHitbox();
 		add(bg);
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
