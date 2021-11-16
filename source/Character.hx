@@ -927,7 +927,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'bos':
-				iconColor = 'FFFFC45E';
+				iconColor = 'FFF5AE00';
 				frames = Paths.getSparrowAtlas('characters/bos');
 				animation.addByPrefix('idle', 'bos idle', 24, false);
 				animation.addByPrefix('singUP', 'bos up', 24, false);

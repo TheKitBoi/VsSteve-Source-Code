@@ -26,23 +26,23 @@ class Credits extends MusicBeatState
 		['Vs Steve Team'],
 		['TheGaboDiaz', 'gabo', 'Creator - Main artist & animator, Main Composer, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
 		['TracedInPurple', 'tiago', 'Co-Creator - Main Coder, Main Composer, Artist for Several Sprites, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
-		['Nosa', 'unknown'/*'nosa'*/, 'Dialogue Portraits Coder', '', 0xFF8FD8D4],
-		['Shibecicle', 'unknown'/*'shibe'*/, 'Old Menu Artist, Collaborator', '', 0xFFDA0837],
-        ['Undernity', 'undernity', 'Extra Coder, Helper, Collaborator', '', 0xFF7DE206],
-        ['Vidz', 'unknown'/*'vidz'*/, 'Extra Coder, Helper', '', 0xFF337BAB],
+		['Nosa', 'unknown', 'Dialogue Portraits Coder', '', 0xFF8FD8D4],
+		['Shibecicle', 'unknown', 'Old Menu Artist, Collaborator', '', 0xFFDA0837],
+    	['Undernity', 'undernity', 'Extra Coder, Helper, Collaborator', '', 0xFF7DE206],
+    	['Vidz', 'unknown', 'Extra Coder, Helper', '', 0xFF337BAB],
 		['Chromasen', 'chroma', 'Extra Coder, Helper', '', 0xFF52EB80],
-        ['TaeYai', 'tae', 'Helper, Coder', '', 0xFF56F5B3],
-        ['OutMance', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', '', 0xFFDEDD4E],
-        ['Tanka', 'unknown'/*'tanka'*/, 'Collaborator, Creator of "Dont Funk at Night"', '', 0xFF337BAB],
-        ['Somf', 'unknown'/*'somf'*/, 'Ultra-Hardcore Charter', '', 0xFF9FE3DA],
-        ['Duftea', 'duftea', 'Ultra-Hardcore Charter', '', 0xFFC90076],
-        [''],
+		['TaeYai', 'tae', 'Helper, Coder', '', 0xFF56F5B3],
+    	['OutMance', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', '', 0xFFDEDD4E],
+    	['Tanka', 'unknown', 'Collaborator, Creator of "Dont Funk at Night"', '', 0xFF337BAB],
+    	['Somf', 'unknown', 'Ultra-Hardcore Charter', '', 0xFF9FE3DA],
+    	['Duftea', 'duftea', 'Ultra-Hardcore Charter', '', 0xFFC90076],
+    	[''],
 		['Special thanks to...'],
 		['Irfan', 'irfan', 'Playtester, Supporter', '', 0xFFABDA65],
 		['Jaziel', 'jaziel', 'Supporter', '', 0xFFE20606],
 		['MinecraftBoss27_', 'minecraftboss', 'Playtester, Supporter', '', 0xFFF5AE00],
-        [''],
-        ['Discord', 'unknown', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C],
+    	[''],
+    	['Discord', 'unknown', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
 	];
 
     //background
@@ -61,7 +61,8 @@ class Credits extends MusicBeatState
 		#end
 
 		bg = new FlxSprite().loadGraphic(Paths.image('creditsBGTest'));
-        	bg.x += 650;
+        bg.x -= 50;
+		bg.y -= 20;
 		bg.scale.set(1.4, 1.4);
 		bg.updateHitbox();
 		add(bg);
@@ -85,7 +86,7 @@ class Credits extends MusicBeatState
 			if(isSelectable) 
             {				
                 var icon:AttachedSprite = new AttachedSprite('crediticons/' + creditsStuff[i][1]);
-                icon.xAdd = optionText.width + 10;
+                icon.xAdd = optionText.width + 5;
 			    icon.sprTracker = optionText;
 	
 				// using a FlxGroup is too much fuss!
@@ -128,6 +129,10 @@ class Credits extends MusicBeatState
 
 		if (controls.BACK)
 		{
+			if(colorTween != null) {
+				colorTween.cancel();
+			}
+			FlxG.sound.play(Paths.sound('cancelMenu'));
 			FlxG.switchState(new MainMenuState());
 		}
 		if(accepted) {
@@ -160,14 +165,14 @@ class Credits extends MusicBeatState
 			});
 		}
 
-		var bullShit:Int = 0;
+		var selctthing:Int = 0;
 
 		for (item in grpOptions.members)
 		{
-			item.targetY = bullShit - curSelected;
-			bullShit++;
+			item.targetY = selctthing - curSelected;
+			selctthing++;
 
-			if(!unselectableCheck(bullShit-1)) {
+			if(!unselectableCheck(selctthing-1)) {
 				item.alpha = 0.6;
 				if (item.targetY == 0) {
 					item.alpha = 1;

@@ -1206,10 +1206,12 @@ class PlayState extends MusicBeatState
 		}
 
 		add(gf);
-		if (curStage == 'cave')
+
+		if (curStage == 'cave' || curStage == 'espionage' || curStage == 'dev' || curStage == 'tutorial' || curStage == 'endless')
 		{
 			remove(gf);
 		}
+
 		add(dad);
 
 		switch (SONG.song.toLowerCase())
@@ -1240,7 +1242,6 @@ class PlayState extends MusicBeatState
 			achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
 			achievementBlock.antialiasing = false;
 			achievementBlock.alpha = 0;
-			//achievementBlock.screenCenter(X);
 			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
 
 			add(achievementBlock);
@@ -1259,8 +1260,6 @@ class PlayState extends MusicBeatState
 		}
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
-		// doof.x += 70;
-		// doof.y = FlxG.height * 0.5;
 		doof.scrollFactor.set();
 		doof.finishThing = startCountdown;
 
@@ -1328,46 +1327,6 @@ class PlayState extends MusicBeatState
 				add(songName);
 				songName.cameras = [camHUD];
 			}
-
-		// just testing layer shit i guess? idfk haxe k?
-		//this is the black healthbar outline..
-
-		// im planning on making a sandwich like thing.. like.. first the outline, then the healthbar and then the xp bar but a bit transparent
-
-		////OUTLINE SHIT
-		//healthBarBGG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarBGG'));
-		//if (FlxG.save.data.downscroll)
-		//	healthBarBGG.y = 50;
-		//healthBarBGG.screenCenter(X);
-		//healthBarBGG.scrollFactor.set();
-//
-		//add(healthBarBGG);
-//
-		//
-		////HEALTH BAR SHIT -- COLORS YK
-		//healthBar = new FlxBar(healthBarBGG.x + 4, healthBarBGG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBGG.width - 8), Std.int(healthBarBGG.height - 8), this,
-		//	'health', 0, 2);
-		////weird shit layering here
-//
-		//healthBar.scrollFactor.set();
-		//healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-		//// healthBar
-		//add(healthBar);
-		//// maybe like this???
-//
-		////XP BAR SHIT
-		//healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
-		//if (FlxG.save.data.downscroll)
-		//	healthBarBG.y = 50;
-		//healthBarBG.screenCenter(X);
-		//healthBarBG.alpha = 0.7;
-		//healthBarBG.scrollFactor.set();
-		//add(healthBarBG);
-
-
-
-
-
 
 		//OUTLINE SHIT
 		healthBarBGG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarBGGLong'));
@@ -3085,14 +3044,6 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
-					case 'senpai':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 100;
-
-						case 'senpai-angry':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 100;
-
 						case 'tuxsteveuoh':
 							camFollow.y = dad.getMidpoint().y - 500;
 							camFollow.x = dad.getMidpoint().x - 100;
@@ -3289,36 +3240,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
-
-		if (curSong == 'Fresh')
-		{
-			switch (curBeat)
-			{
-				case 16:
-					camZooming = true;
-					gfSpeed = 2;
-				case 48:
-					gfSpeed = 1;
-				case 80:
-					gfSpeed = 2;
-				case 112:
-					gfSpeed = 1;
-				case 163:
-					// FlxG.sound.music.stop();
-					// FlxG.switchState(new TitleState());
-			}
-		}
-
-		if (curSong == 'Bopeebo')
-		{
-			switch (curBeat)
-			{
-				case 128, 129, 130:
-					vocals.volume = 0;
-					// FlxG.sound.music.stop();
-					// FlxG.switchState(new PlayState());
-			}
-		}
 
 		if (health <= 0)
 		{
@@ -3545,7 +3466,7 @@ class PlayState extends MusicBeatState
 								daNote.destroy();
 							}
 						}
-						else if (dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'notch' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'tiago')
+						else if (dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'notch' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'tiago' || dad.curCharacter == 'jeb')
 						{
 
 							if (healthBar.percent > 20)
@@ -3562,7 +3483,7 @@ class PlayState extends MusicBeatState
 								daNote.destroy();
 							}
 						}
-						else if (dad.curCharacter == 'alex' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'tiagoswag')
+						else if (dad.curCharacter == 'alex' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'tiagoswag' || dad.curCharacter == 'bos' || dad.curCharacter == 'jaziel' )
 						{
 
 							if (healthBar.percent > 20)
@@ -4823,21 +4744,29 @@ class PlayState extends MusicBeatState
 			{
 				case 1:
 					
-					for (i in cpuStrums) 
-						{
-							FlxTween.tween(i, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
-						}
-
-						cpuStrums.visible = true;
+					cpuStrums.forEach(function(spr:FlxSprite)
+					{
+						FlxTween.tween(spr, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
+					});
+					cpuStrums.visible = true;
+					//for (i in cpuStrums) 
+					//	{
+					//		FlxTween.tween(i, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
+					//	}
+					//	cpuStrums.visible = true;
 				//needs to be finished
 				//ill probably need help with the camera zoom on every note hit of Jaziel
 				//i also need the steps where gabo wants jaziels notes to appear
 				
 				case 20:
-					for (i in cpuStrums) 
+					//or (i in cpuStrums) 
+					//
+					//	FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.quintOut});
+					//
+					cpuStrums.forEach(function(spr:FlxSprite)
 					{
-						FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.quintOut});
-					}
+						FlxTween.tween(spr, {alpha: 1}, 3, {ease: FlxEase.quintOut});
+					});
 			}		
 		}			
 		#if windows
