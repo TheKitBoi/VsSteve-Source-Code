@@ -950,7 +950,7 @@ class Character extends FlxSprite
 
 			case 'jeb':
 				iconColor = 'FFFFFFFF';
-				frames = Paths.getSparrowAtlas('jeb/jeb', 'shared');
+				frames = Paths.getSparrowAtlas('characters/jeb');
 				animation.addByPrefix('idle', 'jeb idle', 24, false);
 				animation.addByPrefix('singUP', 'jeb up', 24, false);
 				animation.addByPrefix('singLEFT', 'jeb left', 24, false);

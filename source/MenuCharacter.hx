@@ -26,7 +26,7 @@ class MenuCharacter extends FlxSprite
 		'bf' => new CharacterSetting(-300, 135, 0.95, true),
 		'steve' => new CharacterSetting(-200, 170, 1.4),
 		'alex' => new CharacterSetting(-200, 170, 1.4),
-		'bonus' => new CharacterSetting(-200, 170, 1.4)
+		'notchjeb' => new CharacterSetting(-200, 170, 1.4)
 	];
 
 	private var flipped:Bool = false;
@@ -45,7 +45,7 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('bfConfirm', 'BF HEY', 24, false);
 		animation.addByPrefix('steve', "Steve", 24);
 		animation.addByPrefix('alex', "Alex", 24);
-		animation.addByPrefix('bonus', "BONUS", 24);
+		animation.addByPrefix('notchjeb', "NotchandJeb", 24);
 
 		setGraphicSize(Std.int(width * scale));
 		updateHitbox();

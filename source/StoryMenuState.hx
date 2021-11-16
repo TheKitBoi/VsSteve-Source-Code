@@ -24,24 +24,21 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Revenge'], //TIAGO STINKS
 		['Lost', 'Uoh', 'Craft Away', 'Suit Up'],	//TIAGO STINKS VEEEERY BAD
 		['Overseen', 'Iron Picks', 'Underrated', 'Tick Tock'],
 		['Fast Travel', 'Gapple', 'Jeb', 'Removed', 'Last Craft']
 	];
 	var curDifficulty:Int = 1;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true, true, true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['', 'bf', 'gf'],
 		['steve', 'bf', 'gf'],		
 		['alex', 'bf', 'gf'],
-		['alex', 'bf', 'gf']
+		['notchjeb', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
-		"Aww Man",
 		"Crafting Bars",
 		"Xp farms be like",
 		"The Finale"
