@@ -10,12 +10,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 
-class OutdatedSubState extends MusicBeatState
+class WarnCreditState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
-
-	public static var needVer:String = "IDFK LOL";
-	public static var currChanges:String = "dk";
 	
 	private var bgColors:Array<String> = [
 		'#314d7f',
@@ -28,13 +25,13 @@ class OutdatedSubState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuPNG', 'shared'));
-		bg.scale.x *= 1.55;
-		bg.scale.y *= 1.55;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('RevengeBG', 'shared'));
+		bg.scale.x *= 3;
+		bg.scale.y *= 3;
 		bg.screenCenter();
 		add(bg);
 		
-		var kadeLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('vsstevelogo'));
+		var kadeLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('logoBumpin'));
 		kadeLogo.scale.y = 0.3;
 		kadeLogo.scale.x = 0.3;
 		kadeLogo.x -= kadeLogo.frameHeight;
@@ -43,9 +40,12 @@ class OutdatedSubState extends MusicBeatState
 		add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"DISCLAIMER!"
-			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nSoo, if monetization is something for you, then you should skip Revenge out...\n\nAlso, dialog was temporarily disabled because we had no idea\nof how to add it properly lmaoo\n\nRemember that this is a DEMO, so dont expect much from the mod.\n\nPress Space or ESCAPE or ENTER to proceed"
-
+			"This is Credits Menu"
+			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
+			+ "Everything will be complete in the Full Release Update."
+			+ "If you want to still check the current Menu then Press Enter."
+			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
+			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
@@ -80,10 +80,15 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.BACK || controls.ACCEPT)
+		if (controls.BACK)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
+		}
+		else if (controls.ACCEPT)
+		{
+			leftState = true;
+			FlxG.switchState(new Credits());
 		}
 		super.update(elapsed);
 	}

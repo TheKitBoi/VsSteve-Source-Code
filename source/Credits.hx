@@ -19,30 +19,30 @@ class Credits extends MusicBeatState
 {
 	var curSelected:Int = 1;
 
-	private var grpOptions:FlxTypedGroup<Alphabet>;
+	private var grpOptions:FlxTypedGroup<AlphabetSpecial>;
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
-		['Vs Steve Team'],
+		['Vs Steve Team', 'steve'],
 		['TheGaboDiaz', 'gabo', 'Creator - Main artist & animator, Main Composer, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
 		['TracedInPurple', 'tiago', 'Co-Creator - Main Coder, Main Composer, Artist for Several Sprites, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
-		['Nosa', 'unknown', 'Dialogue Portraits Coder', '', 0xFF8FD8D4],
+		['Nosa', 'unknown', 'Dialogue Portraits Coder', 'https://vm.tiktok.com/ZMRvTGRsm/', 0xFF8FD8D4],
 		['Shibecicle', 'unknown', 'Old Menu Artist, Collaborator', '', 0xFFDA0837],
-    	['Undernity', 'undernity', 'Extra Coder, Helper, Collaborator', '', 0xFF7DE206],
-    	['Vidz', 'unknown', 'Extra Coder, Helper', '', 0xFF337BAB],
-		['Chromasen', 'chroma', 'Extra Coder, Helper', '', 0xFF52EB80],
-		['TaeYai', 'tae', 'Helper, Coder', '', 0xFF56F5B3],
-    	['OutMance', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', '', 0xFFDEDD4E],
-    	['Tanka', 'unknown', 'Collaborator, Creator of "Dont Funk at Night"', '', 0xFF337BAB],
-    	['Somf', 'unknown', 'Ultra-Hardcore Charter', '', 0xFF9FE3DA],
-    	['Duftea', 'duftea', 'Ultra-Hardcore Charter', '', 0xFFC90076],
+    	['Undernity', 'undernity', 'Extra Coder, Helper, Collaborator', 'https://twitter.com/UndernityMain', 0xFF7DE206],
+    	['Vidz', 'vidz', 'Extra Coder, Helper', '', 0xFF337BAB],
+		['Chromasen', 'chroma', 'Extra Coder, Helper', 'https://www.youtube.com/channel/UCgGk4oZt3We-ktkEOV9HY1Q', 0xFF52EB80],
+		['TaeYai', 'tae', 'Helper, Coder', 'https://www.youtube.com/c/TaeYai/featured', 0xFF56F5B3],
+    	['OutMance', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', 'https://www.tiktok.com/@.mance', 0xFFDEDD4E],
+    	['Tanka', 'unknown', 'Collaborator, Creator of "Dont Funk at Night"', 'https://www.youtube.com/tankakuka', 0xFF337BAB],
+    	['Somf', 'unknown', 'Ultra-Hardcore Charter', 'https://www.youtube.com/channel/UCspbOv2BXbDANpJyjguce2Q', 0xFF9FE3DA],
+    	['Duftea', 'duftea', 'Ultra-Hardcore Charter', 'https://www.youtube.com/c/Duftea', 0xFFC90076],
     	[''],
 		['Special thanks to...'],
-		['Irfan', 'irfan', 'Playtester, Supporter', '', 0xFFABDA65],
+		['Irfan', 'irfan', 'Playtester, Supporter', 'https://m.youtube.com/channel/UCBvHhreB_EfLe2bdZpZEQIQ', 0xFFABDA65],
 		['Jaziel', 'jaziel', 'Supporter', '', 0xFFE20606],
 		['MinecraftBoss27_', 'minecraftboss', 'Playtester, Supporter', '', 0xFFF5AE00],
     	[''],
-    	['Discord', 'unknown', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
+    	['Discord', 'discord', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
 	];
 
     //background
@@ -61,19 +61,19 @@ class Credits extends MusicBeatState
 		#end
 
 		bg = new FlxSprite().loadGraphic(Paths.image('creditsBGTest'));
-        bg.x -= 50;
+        bg.x -= 10;
 		bg.y -= 20;
-		bg.scale.set(1.4, 1.4);
+		bg.scale.set(1.8, 1.8);
 		bg.updateHitbox();
 		add(bg);
 
-		grpOptions = new FlxTypedGroup<Alphabet>();
+		grpOptions = new FlxTypedGroup<AlphabetSpecial>();
 		add(grpOptions);
 
 		for (i in 0...creditsStuff.length)
 		{
 			var isSelectable:Bool = !unselectableCheck(i);
-			var optionText:Alphabet = new Alphabet(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
+			var optionText:AlphabetSpecial = new AlphabetSpecial(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
 			optionText.isMenuItem = true;
 			optionText.screenCenter(X);
 			if(isSelectable) 

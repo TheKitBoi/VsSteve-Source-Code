@@ -323,7 +323,7 @@ class MainMenuState extends MusicBeatState
 				System.exit(0);
 
 			case 'credits':
-				FlxG.switchState(new Credits());
+				FlxG.switchState(new WarnCreditState());
 			case 'bonus':
 				FlxG.switchState(new ExtrasState());
 				trace("extras");
