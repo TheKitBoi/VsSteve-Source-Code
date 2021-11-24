@@ -12,7 +12,7 @@ import lime.app.Application;
 
 class WarnCreditState extends MusicBeatState
 {
-	public static var leftState:Bool = false;
+	public static var leftStateWarn:Bool = false;
 	
 	private var bgColors:Array<String> = [
 		'#314d7f',
@@ -26,8 +26,8 @@ class WarnCreditState extends MusicBeatState
 	{
 		super.create();
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('RevengeBG', 'shared'));
-		bg.scale.x *= 3;
-		bg.scale.y *= 3;
+		bg.scale.x *= 5;
+		bg.scale.y *= 5;
 		bg.screenCenter();
 		add(bg);
 		
@@ -82,12 +82,12 @@ class WarnCreditState extends MusicBeatState
 	{
 		if (controls.BACK)
 		{
-			leftState = true;
+			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
 		else if (controls.ACCEPT)
 		{
-			leftState = true;
+			leftStateWarn = true;
 			FlxG.switchState(new Credits());
 		}
 		super.update(elapsed);
