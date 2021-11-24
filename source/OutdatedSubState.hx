@@ -10,7 +10,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 
-class InfoState extends MusicBeatState
+class OutdatedSubState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 

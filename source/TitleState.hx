@@ -330,16 +330,16 @@ class TitleState extends MusicBeatState
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !InfoState.leftState && MainMenuState.nightly == "")
+				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
 					{
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
-						InfoState.needVer = returnedData[0];
-						InfoState.currChanges = returnedData[1];
-						FlxG.switchState(new InfoState());
+						OutdatedSubState.needVer = returnedData[0];
+						OutdatedSubState.currChanges = returnedData[1];
+						FlxG.switchState(new OutdatedSubState());
 					}
 					else
 					{
-						FlxG.switchState(new InfoState());
+						FlxG.switchState(new OutdatedSubState());
 					}
 				}
 				
@@ -350,7 +350,7 @@ class TitleState extends MusicBeatState
 				
 				http.request();
 			});
-			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
+			 FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
 		if (pressedEnter && !skippedIntro && initialized)
