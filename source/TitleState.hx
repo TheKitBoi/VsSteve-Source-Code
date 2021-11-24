@@ -425,7 +425,7 @@ class TitleState extends MusicBeatState
 				if (FlxG.random.bool(15.5))
 				{
 					cake = true;
-					trace('CAKEY WAS HERE LOL');
+					trace('CAKEY WAS HERE LOL...');
 					createCoolText(['Ayo,', 'Cake was here...']);
 				}
 				else
