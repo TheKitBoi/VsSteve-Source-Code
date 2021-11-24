@@ -1226,6 +1226,10 @@ class PlayState extends MusicBeatState
 
 		add(boyfriend);
 
+		if (curStage == 'notch' && SONG.song.toLowerCase() == 'retired')
+			remove(notchStanding);
+
+		add(boyfriend);
 		if (curStage == 'cave')
 		{
 			var lanterns:FlxSprite = new FlxSprite(-200).loadGraphic(Paths.image('cave/lanterns'));
