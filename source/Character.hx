@@ -669,6 +669,28 @@ class Character extends FlxSprite
 	
 				antialiasing = false;
 
+			case 'alexnormal':
+				iconColor = 'FFF5AE00';
+				frames = Paths.getSparrowAtlas('characters/alexnormal');
+				animation.addByPrefix('idle', 'alexnormal idle', 24, false);
+				animation.addByPrefix('singUP', 'alexnormal up', 24, false);
+				animation.addByPrefix('singLEFT', 'alexnormal left', 24, false);
+				animation.addByPrefix('singRIGHT', 'alexnormal right', 24, false);
+				animation.addByPrefix('singDOWN', 'alexnormal down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -251, -233);
+				addOffset("singRIGHT", -251, -263);
+				addOffset("singLEFT", -249, -265);
+				addOffset("singDOWN", -250, -265);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.9));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'alex':
 				iconColor = 'FF9AFF9A';
 				frames = Paths.getSparrowAtlas('characters/alex');
@@ -690,7 +712,6 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
-
 
 			case 'alexchill':
 				iconColor = 'FF9AFF9A';
