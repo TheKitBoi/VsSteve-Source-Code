@@ -670,7 +670,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'alexnormal':
-				iconColor = 'FFF5AE00';
+				iconColor = 'FF9AFF9A';
 				frames = Paths.getSparrowAtlas('characters/alexnormal');
 				animation.addByPrefix('idle', 'alexnormal idle', 24, false);
 				animation.addByPrefix('singUP', 'alexnormal up', 24, false);
@@ -843,20 +843,21 @@ class Character extends FlxSprite
 			case 'alexpickaxe':
 				iconColor = 'FF9AFF9A';
 				frames = Paths.getSparrowAtlas('characters/alexpickaxe');
-				animation.addByPrefix('idle', 'alex Idle', 24, false);
-				animation.addByPrefix('singUP', 'alex UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'alex LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'alex RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'alex DOWN NOTE', 24, false);
+				animation.addByPrefix('idle', 'alexpickaxe idle', 24, false);
+				animation.addByPrefix('singUP', 'alexpickaxe up', 24, false);
+				animation.addByPrefix('singLEFT', 'alexpickaxe left', 24, false);
+				animation.addByPrefix('singRIGHT', 'alexpickaxe right', 24, false);
+				animation.addByPrefix('singDOWN', 'alexpickaxe down', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -255, -261);
+				addOffset("singRIGHT", -261, -263);
+				addOffset("singLEFT", -249, -265);
+				addOffset("singDOWN", -250, -261);
+
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 5.9));
 				updateHitbox();
 
 				antialiasing = false;
@@ -864,20 +865,23 @@ class Character extends FlxSprite
 			case 'alexpickaxemad':
 				iconColor = 'FF9AFF9A';
 				frames = Paths.getSparrowAtlas('characters/alexpickaxemad');
-				animation.addByPrefix('idle', 'alex Idle', 24, false);
-				animation.addByPrefix('singUP', 'alex UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'alex LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'alex RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'alex DOWN NOTE', 24, false);
+				animation.addByPrefix('idle', 'alexpickaxemad idle', 24, false);
+				animation.addByPrefix('singUP', 'alexpickaxemad up', 24, false);
+				animation.addByPrefix('singLEFT', 'alexpickaxemad left', 24, false);
+				animation.addByPrefix('singRIGHT', 'alexpickaxemad right', 24, false);
+				animation.addByPrefix('singDOWN', 'alexpickaxemad down', 24, false);
+				animation.addByPrefix('unequipPickaxe', 'alexpickaxemad unequip', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				addOffset('idle', -249, -259);
+				addOffset("singUP", -255, -259);
+				addOffset("singRIGHT", -261, -259);
+				addOffset("singLEFT", -255, -259);
+				addOffset("singDOWN", -249, -259);
+				addOffset("unequipPickaxe", -214, -259);
+
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 5.9));
 				updateHitbox();
 
 				antialiasing = false;
