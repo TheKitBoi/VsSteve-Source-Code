@@ -4900,6 +4900,13 @@ class PlayState extends MusicBeatState
 			if (curBeat % 2 == 0 && dad.animOffsets.exists('danceRight'))
 				dad.playAnim('danceRight');
 		}
+		if (curSong == 'Lost') {
+				{
+				remove(dad);
+				}
+		
+		}
+
 		if (curSong == 'Iron Picks') {
 			if (curStep == 1407)
 				{
