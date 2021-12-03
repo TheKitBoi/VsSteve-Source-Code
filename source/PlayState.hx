@@ -3123,8 +3123,8 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -300;
 							defaultCamZoom = 0.5;
 						case 'stevehorse':
-							camFollow.y = dad.getMidpoint().y - 200;
-							camFollow.x = dad.getMidpoint().x - -170;
+							camFollow.y = dad.getMidpoint().y - 200 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -170 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.7;
 
 						case 'stevefnm':
@@ -3173,8 +3173,8 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.7;
 
 						case 'notch':
-							camFollow.y = dad.getMidpoint().y - 120;
-							camFollow.x = dad.getMidpoint().x - -420;
+							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -420 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.8;
 
 						case 'endless':
@@ -3218,8 +3218,8 @@ class PlayState extends MusicBeatState
                             defaultCamZoom = 0.7;
 
 						case 'jeb':
-							camFollow.y = dad.getMidpoint().y - 120;
-							camFollow.x = dad.getMidpoint().x - -420;
+							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -420 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.8;
 				}
 
@@ -3266,8 +3266,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 240;
 						defaultCamZoom = 0.8;
 					case 'notch':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 200 + dadnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'templeentrance':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
@@ -3282,16 +3282,16 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
 					case 'tutorial':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 400;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 400 + dadnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'espionage':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 400;
 						defaultCamZoom = 0.8;
 					case 'fasttravel':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 260;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 260 + dadnoteMovementYoffset;
 						defaultCamZoom = 0.75;
 					case 'dev':
 						camFollow.x = boyfriend.getMidpoint().x - 650;
@@ -4942,7 +4942,19 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
-		if (curSong == 'gapple' && curBeat >= 28 && curBeat < 64)
+		if (curSong == 'gapple' && curBeat >= 32 && curBeat < 64)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
+		if (curSong == 'gapple' && curBeat >= 96 && curBeat < 128)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
+		if (curSong == 'gapple' && curBeat >= 228 && curBeat < 288)
 		{
 			FlxG.camera.zoom += 0.025;
 			camHUD.zoom += 0.03;
