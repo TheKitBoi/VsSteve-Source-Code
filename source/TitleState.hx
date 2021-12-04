@@ -51,9 +51,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
-		#end
 		
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
@@ -330,16 +327,16 @@ class TitleState extends MusicBeatState
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
+				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !InfoState.leftState && MainMenuState.nightly == "")
 					{
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
-						OutdatedSubState.needVer = returnedData[0];
-						OutdatedSubState.currChanges = returnedData[1];
-						FlxG.switchState(new OutdatedSubState());
+						InfoState.needVer = returnedData[0];
+						InfoState.currChanges = returnedData[1];
+						FlxG.switchState(new InfoState());
 					}
 					else
 					{
-						FlxG.switchState(new OutdatedSubState());
+						FlxG.switchState(new InfoState());
 					}
 				}
 				
@@ -350,7 +347,7 @@ class TitleState extends MusicBeatState
 				
 				http.request();
 			});
-			 FlxG.sound.play(Paths.music('titleShoot'), 0.7);
+			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
 		if (pressedEnter && !skippedIntro && initialized)
@@ -425,7 +422,7 @@ class TitleState extends MusicBeatState
 				if (FlxG.random.bool(15.5))
 				{
 					cake = true;
-					trace('CAKEY WAS HERE LOL...');
+					trace('CAKEY WAS HERE LOL');
 					createCoolText(['Ayo,', 'Cake was here...']);
 				}
 				else
