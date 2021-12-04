@@ -53,6 +53,9 @@ class MainMenuState extends MusicBeatState
 
 	var scroll:Bool = true;
 	var tween:FlxTween;
+	var pano:FlxSprite;
+	var panoclone:FlxSprite;
+	var startscroll:Bool;
 
 	override function create()
 	{
@@ -79,28 +82,25 @@ class MainMenuState extends MusicBeatState
 		//menuBG.scale.set(1.3, 1.3);
 		//add(menuBG);
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image("menuBG"));
-		menuBG.y -= 500;
-		menuBG.scale.set(1.3, 1.3);
-		menuBG.updateHitbox();
-		menuBG.antialiasing = false;
-		add(menuBG);
+        camFollow = new FlxObject(0, 0, 0, 0);
+		add(camFollow);
 
-		menuBGClone = new FlxSprite().loadGraphic(Paths.image("menuBGClone"));
-		menuBGClone.y -= 500;
-		menuBGClone.scale.set(1.3, 1.3);
-		menuBGClone.updateHitbox();
-		menuBGClone.antialiasing = false;
-		add(menuBGClone);
+		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
+		pano.antialiasing = true;
+		pano.updateHitbox();
+		add(pano);
 
+		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoclone.antialiasing = true;
+		panoclone.updateHitbox();
+		add(panoclone);
+		
+		startscroll = true;
 		
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("minecraf"));
-		minecraft.setGraphicSize(Std.int(minecraft.width * 1.1));
-		minecraft.updateHitbox();
-		minecraft.screenCenter(X);
-		minecraft.x -= 630;
-		minecraft.y -= 300;
-		minecraft.antialiasing = false;
+        minecraft.antialiasing = false;
+		minecraft.screenCenter();
+        minecraft.updateHitbox();
 		add(minecraft);
 
 		
@@ -111,10 +111,6 @@ class MainMenuState extends MusicBeatState
 		tigoBabo.setGraphicSize(Std.int(tigoBabo.width * 0.4));
 		tigoBabo.updateHitbox();
 		add(tigoBabo);
-
-
-		camFollow = new FlxObject(0, 0, 0, 0);
-		add(camFollow);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		
@@ -157,8 +153,6 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
-
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -199,27 +193,27 @@ class MainMenuState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
-	
-		if(scroll == true)
-		{
-          	scroll = false;
-          	menuBG.x = 1280;
-          	menuBGClone.x = 0;
-          	menuBG.visible = false;
-          	FlxTween.tween(menuBG, {x: -1600}, 90, {
-          	onComplete: function(twn:FlxTween)	
+
+		if (startscroll == true)
 			{
-				tween = FlxTween.tween(menuBG, { x: -2880 }, 90);
-				FlxTween.tween(menuBGClone, {x: 0}, 90, {
+				startscroll = false;
+				panoclone.x = 1280;
+				pano.x = 0;
+				//pano.visible = false;
+				FlxTween.tween(pano, {x: -1600}, 90, {
 				onComplete: function(twn:FlxTween)
-				{
-					tween.cancel();
-				    scroll = true;
-				}
-				});
+			{
+				tween = FlxTween.tween(pano, { x: -2880 }, 90);
+				FlxTween.tween(panoclone, {x: 0}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween.cancel();
+				startscroll = true;
 			}
-			});
-        }
+		});
+			}
+		});
+			}
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{

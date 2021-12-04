@@ -45,6 +45,8 @@ class TitleState extends MusicBeatState
 	var ngSpr:FlxSprite;
 	var cakey:FlxSprite;
 
+    var tween:FlxTween;
+
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
@@ -122,6 +124,9 @@ class TitleState extends MusicBeatState
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
+    var pano:FlxSprite;
+	var panoclone:FlxSprite;
+	var startscroll:Bool;
 
 	function startIntro()
 	{
@@ -154,6 +159,16 @@ class TitleState extends MusicBeatState
 
 		Conductor.changeBPM(102);
 		persistentUpdate = true;
+
+        pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
+		pano.antialiasing = true;
+		pano.updateHitbox();
+		add(pano);
+
+		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoclone.antialiasing = true;
+		panoclone.updateHitbox();
+		add(panoclone);
 
 		new FlxSprite(100, FlxG.height * 0.10);
 		var bg: FlxSprite = new FlxSprite(-100, -65).loadGraphic(Paths.image('stevetitle'));
@@ -350,6 +365,27 @@ class TitleState extends MusicBeatState
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
+        if (startscroll == true)
+            {
+                startscroll = false;
+                panoclone.x = 1280;
+                pano.x = 0;
+                //pano.visible = false;
+                FlxTween.tween(pano, {x: -1600}, 90, {
+                onComplete: function(twn:FlxTween)
+            {
+                tween = FlxTween.tween(pano, { x: -2880 }, 90);
+                FlxTween.tween(panoclone, {x: 0}, 90, {
+                onComplete: function(twn:FlxTween)
+            {
+                tween.cancel();
+                startscroll = true;
+            }
+        });
+            }
+        });
+            }
+
 		if (pressedEnter && !skippedIntro && initialized)
 		{
 			skipIntro();
@@ -483,6 +519,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 			skippedIntro = true;
+            startscroll = true;
 		}
 	}
 }

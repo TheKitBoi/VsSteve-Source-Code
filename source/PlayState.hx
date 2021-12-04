@@ -162,6 +162,7 @@ class PlayState extends MusicBeatState
 
 	var songName:FlxText;
 
+	// Bg Characters
 	var doggo:FlxSprite; 
 	var alexPickaxeBG:FlxSprite; 
 	var catto:FlxSprite; 
@@ -176,6 +177,8 @@ class PlayState extends MusicBeatState
 	var notchStanding:FlxSprite; 
 	var gfminecraft:FlxSprite; 
 	var irfan:FlxSprite; 
+
+
 	var fc:Bool = true;
 
 	//Blockinf Stuff
@@ -3198,8 +3201,8 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 1.0;
 
 						case 'tiagoSwag':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 50;
+							camFollow.y = dad.getMidpoint().y - 430 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - 50 + dadnoteMovementXoffset;
 							defaultCamZoom = 1.2;
 
 						case 'gabo':
