@@ -100,13 +100,14 @@ class MainMenuState extends MusicBeatState
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("minecraf"));
         minecraft.antialiasing = false;
 		minecraft.screenCenter();
+		minecraft.y -= 225;
         minecraft.updateHitbox();
 		add(minecraft);
 
 		
 		tigoBabo = new FlxSprite().loadGraphic(Paths.image("Creators"));
-		tigoBabo.y += 250;
-		tigoBabo.x += 350;
+		tigoBabo.y += 750;
+		tigoBabo.x += 550;
 		tigoBabo.antialiasing = false;
 		tigoBabo.setGraphicSize(Std.int(tigoBabo.width * 0.4));
 		tigoBabo.updateHitbox();

@@ -2949,26 +2949,27 @@ class PlayState extends MusicBeatState
 
 			//Panoramaaaaaaa
 			//litterally basically a copy paste from the main menu but FU-
-			if(scroll == true)
-				{
-					  scroll = false;
-					  fasttravelbg.x = 1280;
-					  fasttravelbgClone.x = 0;
-					  //"menuBG".visible = false;
-					  FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
-					  onComplete: function(twn:FlxTween)	
-					{
-						tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
-						FlxTween.tween(fasttravelbg, {x: 0}, 90, {
-						onComplete: function(twn:FlxTween)
-						{
-							tween.cancel();
-							scroll = true;
-						}
-						});
-					}
-					});
-				}
+
+			if (scroll == true)
+			{
+				scroll = false;
+				fasttravelbgClone.x = 1280;
+				fasttravelbg.x = 0;
+				//pano.visible = false;
+				FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
+				FlxTween.tween(fasttravelbgClone, {x: 0}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween.cancel();
+				scroll = true;
+			}
+		});
+			}
+		});
+			}
 		}
 
 		if (dad.curCharacter == "herobrine"){
