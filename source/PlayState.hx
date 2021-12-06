@@ -162,7 +162,6 @@ class PlayState extends MusicBeatState
 
 	var songName:FlxText;
 
-	// Bg Characters
 	var doggo:FlxSprite; 
 	var alexPickaxeBG:FlxSprite; 
 	var catto:FlxSprite; 
@@ -177,8 +176,6 @@ class PlayState extends MusicBeatState
 	var notchStanding:FlxSprite; 
 	var gfminecraft:FlxSprite; 
 	var irfan:FlxSprite; 
-
-
 	var fc:Bool = true;
 
 	//Blockinf Stuff
@@ -2949,27 +2946,26 @@ class PlayState extends MusicBeatState
 
 			//Panoramaaaaaaa
 			//litterally basically a copy paste from the main menu but FU-
-
-			if (scroll == true)
-			{
-				scroll = false;
-				fasttravelbgClone.x = 1280;
-				fasttravelbg.x = 0;
-				//pano.visible = false;
-				FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
-				onComplete: function(twn:FlxTween)
-			{
-				tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
-				FlxTween.tween(fasttravelbgClone, {x: 0}, 90, {
-				onComplete: function(twn:FlxTween)
-			{
-				tween.cancel();
-				scroll = true;
-			}
-		});
-			}
-		});
-			}
+			if(scroll == true)
+				{
+					  scroll = false;
+					  fasttravelbg.x = 1280;
+					  fasttravelbgClone.x = 0;
+					  //"menuBG".visible = false;
+					  FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
+					  onComplete: function(twn:FlxTween)	
+					{
+						tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
+						FlxTween.tween(fasttravelbg, {x: 0}, 90, {
+						onComplete: function(twn:FlxTween)
+						{
+							tween.cancel();
+							scroll = true;
+						}
+						});
+					}
+					});
+				}
 		}
 
 		if (dad.curCharacter == "herobrine"){
@@ -3202,8 +3198,8 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 1.0;
 
 						case 'tiagoSwag':
-							camFollow.y = dad.getMidpoint().y - 430 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - 50 + dadnoteMovementXoffset;
+							camFollow.y = dad.getMidpoint().y - 430;
+							camFollow.x = dad.getMidpoint().x - 50;
 							defaultCamZoom = 1.2;
 
 						case 'gabo':
@@ -4820,17 +4816,17 @@ class PlayState extends MusicBeatState
 			}
 
 		}
-		if (SONG.song.toLowerCase() == 'espionage')
-		{
-			switch (curStep)
-			{
-				case 1:
-					
-					cpuStrums.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
-					});
-					cpuStrums.visible = true;
+		//if (SONG.song.toLowerCase() == 'espionage')
+		//{
+		//	switch (curStep)
+		//	{
+		//		case 1:
+		//			
+		//			cpuStrums.forEach(function(spr:FlxSprite)
+		//			{
+		//				FlxTween.tween(spr, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
+		//			});
+		//			cpuStrums.visible = true;
 					//for (i in cpuStrums) 
 					//	{
 					//		FlxTween.tween(i, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
@@ -4840,17 +4836,17 @@ class PlayState extends MusicBeatState
 				//ill probably need help with the camera zoom on every note hit of Jaziel
 				//i also need the steps where gabo wants jaziels notes to appear
 				
-				case 20:
+		//		case 20:
 					//or (i in cpuStrums) 
 					//
 					//	FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.quintOut});
 					//
-					cpuStrums.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {alpha: 1}, 3, {ease: FlxEase.quintOut});
-					});
-			}		
-		}			
+		//			cpuStrums.forEach(function(spr:FlxSprite)
+		//			{
+		//				FlxTween.tween(spr, {alpha: 1}, 3, {ease: FlxEase.quintOut});
+		//			});
+		//	}		
+		//}			
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{

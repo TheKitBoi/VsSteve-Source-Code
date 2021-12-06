@@ -788,38 +788,6 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'notch':
-				iconColor = 'FFd7711a';
-				frames = Paths.getSparrowAtlas('characters/Notch');
-				animation.addByPrefix('idle', 'Notch Idle', 24, false);
-				animation.addByPrefix('singUP', 'Notch upNormal', 24, false);
-				animation.addByPrefix('singLEFT', 'Notch left', 24, false);
-				animation.addByPrefix('singRIGHT', 'Notch right', 24, false);
-				animation.addByPrefix('singDOWN', 'Notch downNormal', 24, false);
-
-				animation.addByPrefix('singUP-alt', 'Notch upGapple', 24, false);
-
-				animation.addByPrefix('singDOWN-alt', 'Notch downGapple', 24, false);
-				animation.addByPrefix('singLEFT-alt', 'Notch left', 24, false);
-				animation.addByPrefix('singRIGHT-alt', 'Notch right', 24, false);
-
-				addOffset('idle', -250, -260);
-				addOffset("singUP", -260, -260);
-				addOffset("singRIGHT", -252, -260);
-				addOffset("singLEFT", -250, -260);
-				addOffset("singDOWN", -248, -267);
-				addOffset("singUP-alt", -262, -260);
-				addOffset("singRIGHT-alt", -249, -261);
-				addOffset("singLEFT-alt", -250, -265);
-				addOffset("singDOWN-alt", -250, -257);
-
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 6.1));
-				updateHitbox();
-
-				antialiasing = false;
-
 			case 'endless':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/endless');
@@ -972,6 +940,56 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
+
+			case 'irfan':
+				iconColor = 'FFF5AE00';
+				frames = Paths.getSparrowAtlas('characters/irfan');
+				animation.addByPrefix('idle', 'irfan idle', 24, false);
+				animation.addByPrefix('singUP', 'irfan up', 24, false);
+				animation.addByPrefix('singLEFT', 'irfan left', 24, false);
+				animation.addByPrefix('singRIGHT', 'irfan right', 24, false);
+				animation.addByPrefix('singDOWN', 'irfan down', 24, false);
+				animation.addByPrefix('bonk', 'irfan bonk', 24, false);
+
+				addOffset('idle', -251, -258);
+				addOffset("singUP", -251, -258);
+				addOffset("singRIGHT", -256, -258);
+				addOffset("singLEFT", -251, -258);
+				addOffset("singDOWN", -256, -258);
+				addOffset("bonk", -239, -258);
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.8));
+				updateHitbox();
+
+				antialiasing = false;
+
+			case 'notch':
+				iconColor = 'FFd7711a';
+				frames = Paths.getSparrowAtlas('characters/notch');
+				animation.addByPrefix('idle', 'notch idle', 24, false);
+				animation.addByPrefix('singUP', 'notch up', 24, false);
+				animation.addByPrefix('singLEFT', 'notch left', 24, false);
+				animation.addByPrefix('singRIGHT', 'notch right', 24, false);
+				animation.addByPrefix('singDOWN', 'notch down', 24, false);
+				animation.addByPrefix('gappledown', 'notch gappledown', 24, false);
+				animation.addByPrefix('gappleup', 'notch gappleup', 24, false);
+	
+				addOffset('idle', -246, -264);
+				addOffset("singUP", -240, -270);
+				addOffset("singRIGHT", -246, -270);
+				addOffset("singLEFT", -246, -264);
+				addOffset("singDOWN", -252, -270);
+				addOffset("gappledown", -240, -270);
+				addOffset("gappleup", -234, -270);
+	
+				playAnim('idle');
+	
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+	
+				antialiasing = false;
+
 
 			case 'jeb':
 				iconColor = 'FFFFFFFF';
