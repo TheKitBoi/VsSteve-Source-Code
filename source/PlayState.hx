@@ -1273,6 +1273,10 @@ class PlayState extends MusicBeatState
 		if (curStage == 'notch' && SONG.song.toLowerCase() == 'retired')
 			remove(notchStanding);
 
+		if (curStage == 'tutorial' && SONG.song.toLowerCase() == 'bonk')
+			remove(irfan);
+
+
 		add(boyfriend);
 
 		if (curStage == 'mine')
@@ -3216,6 +3220,11 @@ class PlayState extends MusicBeatState
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
                             camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
                             defaultCamZoom = 0.7;
+						
+						case 'irfan':
+                            camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
+                            camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
+                            defaultCamZoom = 1;
 
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;

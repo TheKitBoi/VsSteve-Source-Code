@@ -22,4 +22,6 @@ tiago
 tiagoswag
 gabo
 jaziel
+bos
+irfan
 jeb

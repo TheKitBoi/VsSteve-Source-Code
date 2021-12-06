@@ -942,7 +942,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'irfan':
-				iconColor = 'FFF5AE00';
+				iconColor = 'FF32CD32';
 				frames = Paths.getSparrowAtlas('characters/irfan');
 				animation.addByPrefix('idle', 'irfan idle', 24, false);
 				animation.addByPrefix('singUP', 'irfan up', 24, false);
