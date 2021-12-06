@@ -770,8 +770,8 @@ class PlayState extends MusicBeatState
 
 					steveHorse = new FlxSprite(-300, 385);
 				    steveHorse.frames = Paths.getSparrowAtlas('fasttravel/steveHorse');
-					steveHorse.animation.addByPrefix('bop', 'steveHorse idle', 24, false);
-					steveHorse.scrollFactor.set(1, 1);
+					steveHorse.animation.addByPrefix('bop', 'steveHorse idle', 24, false); 
+					steveHorse.scrollFactor.set(1, 1); 
 					steveHorse.scale.set(1.1, 1.1);
 					steveHorse.setGraphicSize(Std.int(steveHorse.width * 6));
 					steveHorse.updateHitbox();
@@ -1298,7 +1298,7 @@ class PlayState extends MusicBeatState
 				lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 			add(lanterns);
 		}
-		if (SONG.song.toLowerCase() == 'suit up')
+		if (SONG.song.toLowerCase() == 'suit up' || SONG.song.toLowerCase() == 'bonk')
 		{
 			achievementBlock = new FlxSprite(1100, 300);
 			achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
@@ -2309,6 +2309,41 @@ class PlayState extends MusicBeatState
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
 
+				case 'notch':
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/notch-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+					babyArrow.updateHitbox();
+					babyArrow.scrollFactor.set();
+
 				case 'Majin':
 					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes','week6'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
@@ -2498,6 +2533,41 @@ class PlayState extends MusicBeatState
 					}
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
+
+				case 'hardcore-notch':
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/notch-hardcore-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+					babyArrow.updateHitbox();
+					babyArrow.scrollFactor.set();
 
 				case 'hardcore-aww':
 					babyArrow.loadGraphic(Paths.image('creeps/pixelUI/aww-hardcore-pixels'), true, 17, 17);
@@ -2778,7 +2848,7 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-		if (SONG.song.toLowerCase() == 'suit up')
+		if (SONG.song.toLowerCase() == 'suit up' || SONG.song.toLowerCase() == 'bonk')
 		{
 			if (FlxG.keys.justPressed.SPACE)
 				{
@@ -3224,7 +3294,7 @@ class PlayState extends MusicBeatState
 						case 'irfan':
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
                             camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
-                            defaultCamZoom = 1;
+                            defaultCamZoom = 0.85;
 
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
@@ -3275,8 +3345,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 240;
 						defaultCamZoom = 0.8;
 					case 'notch':
-						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
-						camFollow.y = boyfriend.getMidpoint().y - 200 + dadnoteMovementYoffset;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 200 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'templeentrance':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
@@ -3291,16 +3361,16 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
 					case 'tutorial':
-						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
-						camFollow.y = boyfriend.getMidpoint().y - 400 + dadnoteMovementYoffset;
-						defaultCamZoom = 0.9;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 400 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.7;
 					case 'espionage':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 400;
 						defaultCamZoom = 0.8;
 					case 'fasttravel':
-						camFollow.x = boyfriend.getMidpoint().x - 400 + dadnoteMovementXoffset;
-						camFollow.y = boyfriend.getMidpoint().y - 260 + dadnoteMovementYoffset;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 260 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.75;
 					case 'dev':
 						camFollow.x = boyfriend.getMidpoint().x - 650;
@@ -3503,12 +3573,7 @@ class PlayState extends MusicBeatState
 							{
 								spr.animation.play('confirm', true);
 							}
-							if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school') || spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('awwman') || spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('cave')  )
-							{
-								spr.centerOffsets();
-							}
-							else
-								spr.centerOffsets();
+							spr.centerOffsets();
 						});
 
 
@@ -3538,6 +3603,8 @@ class PlayState extends MusicBeatState
 							{
 								daNote.kill();
 								notes.remove(daNote, true);
+								if (daNote.noteType == 5)
+									GappleEffect();
 								daNote.destroy();
 								health -= 0.010;
 							}
@@ -3555,6 +3622,8 @@ class PlayState extends MusicBeatState
 							{
 								daNote.kill();
 								notes.remove(daNote, true);
+								if (daNote.noteType == 5)
+									GappleEffect();
 								daNote.destroy();
 								health -= 0.020;
 							}
@@ -3571,6 +3640,8 @@ class PlayState extends MusicBeatState
 							if (healthBar.percent > 20)
 							{
 								daNote.kill();
+								if (daNote.noteType == 5)
+									GappleEffect();
 								notes.remove(daNote, true);
 								daNote.destroy();
 								health -= 0.030;
@@ -3587,6 +3658,8 @@ class PlayState extends MusicBeatState
 							if (healthBar.percent > 20)
 							{
 								daNote.kill();
+								if (daNote.noteType == 5)
+									GappleEffect();
 								notes.remove(daNote, true);
 								daNote.destroy();
 								health -= 0.025;
@@ -4699,6 +4772,18 @@ class PlayState extends MusicBeatState
 		}
 
 
+		function GappleEffect():Void
+		{
+			healthBar.createFilledBar(0xFFEAD127, FlxColor.fromString('#' + boyfriend.iconColor));
+			health -= 0.25;
+			defaultCamZoom = 1;
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+				{
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				}
+			);
+		}
+
 		function blockFail()
 		{
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
@@ -4709,7 +4794,8 @@ class PlayState extends MusicBeatState
 				{
 					health -= 0.75;
 				}
-				else{
+				else
+				{
 					health -= 0.25;
 				}	
 				
@@ -4784,6 +4870,37 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+
+
+
+
+		function bonkEvent()
+		{
+			trace('prepare to bonk');
+			blockWarning();
+			achievementBlock.animation.play('block', true);
+			pressedSpace = false;
+			detectAttack = true;
+			//steveAttack(); needs pre pare
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			{
+				if (pressedSpace)
+				{
+					bfBlock();
+					trace('Successful Block');
+					FlxG.camera.shake(0.02, 0.02);
+					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.6);
+				}
+				else
+				{
+					pressedSpace = false;
+					detectAttack = false;
+					blockFail();
+					trace('Haha, hit');
+				}
+			});
+		}
+
 	override function stepHit()
 	{
 		super.stepHit();
@@ -4825,6 +4942,21 @@ class PlayState extends MusicBeatState
 			}
 
 		}
+
+
+		if (dad.curCharacter == 'irfan' && SONG.song.toLowerCase() == 'bonk')
+			{
+				switch (curStep)
+				{
+					case 392 | 425 | 457 | 490 | 650 | 714 | 842 | 906 | 938 | 970 | 1002 | 1162 | 1226:
+						bonkEvent();
+					//case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
+					//	steveAttack();
+					//case 804 | 806 | 820 | 822:
+					//	steveAttack();
+				}
+	
+			}
 		//if (SONG.song.toLowerCase() == 'espionage')
 		//{
 		//	switch (curStep)

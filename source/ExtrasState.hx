@@ -26,10 +26,9 @@ using StringTools;
 class ExtrasState extends MusicBeatState
 {
 	var curSelected:Int = 0;
-	var menuBG:FlxSprite;
-	var menuBGClone:FlxSprite;
+	var pano:FlxSprite;
+	var panoClone:FlxSprite;
 	var logoBl:FlxSprite;
-	var tigoBabo:FlxSprite;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -42,6 +41,10 @@ class ExtrasState extends MusicBeatState
 
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
+
+	var tween:FlxTween;
+	var startscroll:Bool;
+
 
 
 	override function create()
@@ -61,12 +64,17 @@ class ExtrasState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image("menuBG"));
-		menuBG.y -= 500;
-		menuBG.scale.set(1.3, 1.3);
-		menuBG.updateHitbox();
-		menuBG.antialiasing = false;
-		add(menuBG);
+		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
+		pano.antialiasing = true;
+		pano.screenCenter(X);
+		pano.updateHitbox();
+		add(pano);
+
+		panoClone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoClone.antialiasing = true;
+		panoClone.screenCenter(X);
+		panoClone.updateHitbox();
+		add(panoClone);
 
 
 		camFollow = new FlxObject(0, 0, 0, 0);
@@ -92,9 +100,9 @@ class ExtrasState extends MusicBeatState
 			switch(i) 
 			{
 				case 0: //Bonus Songs
-				    butos.setPosition(butos.x - 110, 400);
+				    butos.setPosition(butos.x - 300, 400);
 				case 1: //Other Songs
-				    butos.setPosition(butos.x + 110, 400);
+				    butos.setPosition(butos.x + 300, 400);
 			}
 			menuItems.add(butos);
 		}
@@ -131,6 +139,29 @@ class ExtrasState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}	
 
+
+		if (startscroll == true)
+			{
+				startscroll = false;
+				panoClone.x = 1280;
+				pano.x = 0;
+				//pano.visible = false;
+				FlxTween.tween(pano, {x: -1600}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween = FlxTween.tween(pano, { x: -2880 }, 90);
+				FlxTween.tween(panoClone, {x: 0}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween.cancel();
+				startscroll = true;
+			}
+		});
+			}
+		});
+			}
+
+
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			if(usingMouse)
@@ -161,7 +192,7 @@ class ExtrasState extends MusicBeatState
 				
 					if (controls.BACK)
 					{
-						FlxG.switchState(new TitleState());
+						FlxG.switchState(new MainMenuState());
 					}
 				}
 				

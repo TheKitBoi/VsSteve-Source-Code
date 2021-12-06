@@ -24,8 +24,8 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Lost', 'Uoh', 'Craft Away', 'Suit Up'],	//TIAGO STINKS VEEEERY BAD
-		['Overseen', 'Iron Picks', 'Underrated', 'Tick Tock'],
+		['Lost', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
+		['Overseen', 'Mine', 'Iron Picks', 'Copper', 'Underrated', 'Tick Tock'],
 		['Fast Travel', 'Gapple', 'Jeb', 'Removed', 'Last Craft']
 	];
 	var curDifficulty:Int = 1;
@@ -41,7 +41,7 @@ class StoryMenuState extends MusicBeatState
 	var weekNames:Array<String> = [
 		"Crafting Bars",
 		"Xp farms be like",
-		"The Finale"
+		"The Finale?"
 	];
 
 	var txtWeekTitle:FlxText;

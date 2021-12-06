@@ -1399,10 +1399,12 @@ class ChartingState extends MusicBeatState
 			var noteType = 0;
 			if (FlxG.keys.pressed.ONE)
 				noteType = 1;
-			if (FlxG.keys.pressed.ALT)
+			if (FlxG.keys.pressed.ALT) // poison
 				noteType = 2;
-			if (FlxG.keys.pressed.CONTROL)
+			if (FlxG.keys.pressed.CONTROL) // wither 
 				noteType = 3;
+			if (FlxG.keys.pressed.G) // Gold Apple notes
+				noteType = 5;
 			if (FlxG.keys.pressed.B)
 				noteType = 10;
 			if (n != null)

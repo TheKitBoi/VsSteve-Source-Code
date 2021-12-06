@@ -51,7 +51,6 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 
-	var scroll:Bool = true;
 	var tween:FlxTween;
 	var pano:FlxSprite;
 	var panoclone:FlxSprite;

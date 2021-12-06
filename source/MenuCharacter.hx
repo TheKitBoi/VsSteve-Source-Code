@@ -45,7 +45,9 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('bfConfirm', 'BF HEY', 24, false);
 		animation.addByPrefix('steve', "Steve", 24);
 		animation.addByPrefix('alex', "Alex", 24);
-		animation.addByPrefix('notchjeb', "NotchandJeb", 24);
+		animation.addByPrefix('notchjeb', "BONUS", 24);
+
+		//animation.addByPrefix('notchjeb', "NotchandJeb", 24);
 
 		setGraphicSize(Std.int(width * scale));
 		updateHitbox();

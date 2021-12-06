@@ -428,6 +428,18 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
+
+
+		var cake:Bool = false;
+		
+		if (FlxG.random.bool(15.5))
+		{
+			cake = true;
+			trace('Cake is now here...');
+		}
+			
+
+
 		logoBl.animation.play('bump');
 		danceLeft = !danceLeft;
 
@@ -439,7 +451,7 @@ class TitleState extends MusicBeatState
 		FlxG.log.add(curBeat);
 
 	 FlxTween.tween(FlxG.camera, {zoom:1.02}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
-		var cake:Bool = false;
+		
 		switch (curBeat)
 		{
 			case 1:
@@ -455,9 +467,8 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				if (FlxG.random.bool(15.5))
+				if (cake = true)
 				{
-					cake = true;
 					trace('CAKEY WAS HERE LOL');
 					createCoolText(['Ayo,', 'Cake was here...']);
 				}
