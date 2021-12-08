@@ -632,7 +632,7 @@ class PlayState extends MusicBeatState
 					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
 					add(caveLeaves);
 
-					minijukebox = new FlxSprite(580, 565);
+					minijukebox = new FlxSprite(580, 540);
 				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
 					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
 					minijukebox.scrollFactor.set(0.95, 0.95);
@@ -1092,8 +1092,8 @@ class PlayState extends MusicBeatState
 				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexchill':
-				dad.x += 25;
-				dad.y += 360;
+				dad.x -= 100;
+				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'alexsunday':
 				dad.x -= 140;
@@ -3232,8 +3232,8 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.85;
 
 						case 'alexchill':
-							camFollow.y = dad.getMidpoint().y - 400;
-							camFollow.x = dad.getMidpoint().x - 10;
+							camFollow.y = dad.getMidpoint().y - 140;
+							camFollow.x = dad.getMidpoint().x - 0;
 							defaultCamZoom = 0.8;
 
 						case 'alexpickaxe':
