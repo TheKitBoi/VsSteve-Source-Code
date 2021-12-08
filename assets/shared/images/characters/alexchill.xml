@@ -1,75 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="alexchill.png">
-	<!-- Created with Adobe Animate version 20.0.0.17400 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="alex DOWN NOTE instance 10000" x="0" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10001" x="0" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10002" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10003" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10004" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10005" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10006" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10007" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10008" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10009" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10010" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10011" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10012" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex DOWN NOTE instance 10013" x="135" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10000" x="270" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10001" x="270" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10002" x="405" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10003" x="405" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10004" x="540" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10005" x="540" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10006" x="675" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10007" x="675" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10008" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10009" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10010" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10011" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10012" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex Idle instance 10013" x="810" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10000" x="945" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10001" x="945" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10002" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10003" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10004" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10005" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10006" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10007" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10008" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10009" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10010" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10011" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10012" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex LEFT NOTE instance 10013" x="1080" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10000" x="1215" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10001" x="1215" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10002" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10003" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10004" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10005" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10006" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10007" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10008" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10009" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10010" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10011" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10012" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex RIGHT NOTE instance 10013" x="1350" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10000" x="1485" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10001" x="1485" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10002" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10003" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10004" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10005" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10006" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10007" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10008" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10009" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10010" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10011" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10012" x="1620" y="0" width="125" height="164"/>
-	<SubTexture name="alex UP NOTE instance 10013" x="1620" y="0" width="125" height="164"/>
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="alexchill.png"><SubTexture name="alexchill idle0000" x="0" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill idle0001" x="129" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill idle0002" x="258" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill idle0003" x="387" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill idle0004" x="0" y="113" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill idle0005" x="129" y="113" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill left0000" x="258" y="113" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill left0001" x="387" y="113" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill left0002" x="0" y="226" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill down0000" x="129" y="226" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill down0001" x="258" y="226" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill down0002" x="387" y="226" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill up0000" x="0" y="339" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill up0001" x="129" y="339" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill up0002" x="258" y="339" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill right0000" x="387" y="339" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill right0001" x="0" y="452" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<SubTexture name="alexchill right0002" x="129" y="452" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
 </TextureAtlas>
