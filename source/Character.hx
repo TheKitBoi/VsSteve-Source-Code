@@ -965,6 +965,27 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'jesse':
+				iconColor = 'FFFF0000';
+				frames = Paths.getSparrowAtlas('characters/jesse');
+				animation.addByPrefix('idle', 'jesse idle', 24, false);
+				animation.addByPrefix('singUP', 'jesse up', 24, false);
+				animation.addByPrefix('singLEFT', 'jesse left', 24, false);
+				animation.addByPrefix('singRIGHT', 'jesse right', 24, false);
+				animation.addByPrefix('singDOWN', 'jesse down', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 57, 11);
+				addOffset("singRIGHT", 40, 9);
+				addOffset("singLEFT", 40, 0);
+				addOffset("singDOWN", 20, 10);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 1.1));
+
+				antialiasing = true;
+
 			case 'notch':
 				iconColor = 'FFd7711a';
 				frames = Paths.getSparrowAtlas('characters/notch');

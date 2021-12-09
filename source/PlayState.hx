@@ -167,6 +167,7 @@ class PlayState extends MusicBeatState
 	var catto:FlxSprite; 
 	var sheep:FlxSprite; 
 	var minijukebox:FlxSprite; 
+	var musicnotes:FlxSprite; 
 	var alecs:FlxSprite; 
 	var gfHorse:FlxSprite;
 	var alexHorse:FlxSprite;
@@ -829,6 +830,29 @@ class PlayState extends MusicBeatState
 					tutorial.updateHitbox();
 
 			}
+			case 'mcsm':
+			{
+					curStage = 'mcsm';
+
+					defaultCamZoom = 0.96;
+					camMovement = 0.2;
+
+					var treehouse = new FlxSprite().loadGraphic(Paths.image('mcsm/treehouse'));
+					treehouse.scrollFactor.set(0.95, 0.95);
+					treehouse.y -= 175;
+					treehouse.x -= 350;
+					treehouse.setGraphicSize(Std.int(treehouse.width * 1.5));
+					treehouse.antialiasing = true;
+					add(treehouse);
+
+					musicnotes = new FlxSprite(0, 0);
+				    musicnotes.frames = Paths.getSparrowAtlas('mcsm/notes');
+					musicnotes.animation.addByPrefix('bop', 'notes idle', 24, false);
+					musicnotes.scrollFactor.set(0.95, 0.95);
+					musicnotes.setGraphicSize(Std.int(musicnotes.width * 4.5));
+					musicnotes.updateHitbox();
+			 		add(musicnotes);
+			}
 			case 'lost':
 			{
 					curStage = 'lost';
@@ -1142,6 +1166,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 140;
 				dad.y += 60;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case 'jesse':
+				dad.x -= 300;
+				dad.y += 0;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'jeb':
 				dad.x -= 90;
 				dad.y -= 70;
@@ -1218,6 +1246,11 @@ class PlayState extends MusicBeatState
 			case 'tutorial':
 				boyfriend.x += 220;
 				boyfriend.y += 20;
+				gf.x += 240;
+				gf.y += 170;
+			case 'mcsm':
+				boyfriend.x -= 120;
+				boyfriend.y -= 75;
 				gf.x += 240;
 				gf.y += 170;
 			case 'espionage':
@@ -1715,6 +1748,11 @@ class PlayState extends MusicBeatState
 				'tutorial/pixelUI/ready-pixel',
 				'tutorial/pixelUI/set-pixel',
 				'tutorial/pixelUI/date-pixel'		
+			]);
+			introAssets.set('mcsm', [
+				'mcsm/pixelUI/ready-pixel',
+				'mcsm/pixelUI/set-pixel',
+				'mcsm/pixelUI/date-pixel'		
 			]);
 			introAssets.set('espionage', [
 				'espionage/pixelUI/ready-pixel',
@@ -3290,6 +3328,11 @@ class PlayState extends MusicBeatState
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
                             camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
                             defaultCamZoom = 0.7;
+
+						case 'jesse':
+							camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -160 + dadnoteMovementXoffset;
+                            defaultCamZoom = 0.7;
 						
 						case 'irfan':
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
@@ -3363,6 +3406,10 @@ class PlayState extends MusicBeatState
 					case 'tutorial':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 400 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.7;
+					case 'mcsm':
+						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
 					case 'espionage':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
@@ -4095,6 +4142,11 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('tutorial'))
 				{
 					pixelShitPart1 = 'tutorial/pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
+			if (curStage.startsWith('mcsm'))
+				{
+					pixelShitPart1 = 'mcsm/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
 			if (curStage.startsWith('espionage'))
@@ -5175,6 +5227,10 @@ class PlayState extends MusicBeatState
 			case 'cave':
 				if(FlxG.save.data.distractions){
 					minijukebox.animation.play('bop', false);
+				}
+			case 'mcsm':
+				if(FlxG.save.data.distractions){
+					musicnotes.animation.play('bop', false);
 				}
 			case 'notch':
 				if(FlxG.save.data.distractions){

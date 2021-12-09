@@ -16,6 +16,7 @@ class HealthIcon extends FlxSprite
 		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 
 		antialiasing = false;
+		animation.add('bf', [0, 2, 1], 0, false, isPlayer);
 		animation.add('bf-pixel', [0, 2, 1], 0, false, isPlayer);
 		animation.add('bfminecraft', [41, 43, 42], 0, false, isPlayer);
 		animation.add('tuxsteveuoh', [5, 6, 7], 0, false, isPlayer);
@@ -46,6 +47,7 @@ class HealthIcon extends FlxSprite
 		animation.add('jaziel', [39, 39, 39], 0, false, isPlayer);
 		animation.add('bos', [40, 40, 40], 0, false, isPlayer);
 		animation.add('irfan', [44, 44, 44], 0, false, isPlayer);
+		animation.add('jesse', [40, 40, 40], 0, false, isPlayer);
 		animation.add('jeb', [36, 37, 38], 0, false, isPlayer);
 		animation.play(char);
 
