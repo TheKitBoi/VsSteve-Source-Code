@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="jesse.png"><SubTexture name="jesse idle0000" x="0" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0001" x="778" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0002" x="1556" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0003" x="2334" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0004" x="3112" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0005" x="3890" y="0" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0006" x="0" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0007" x="778" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0008" x="1556" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0009" x="2334" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0010" x="3112" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse idle0011" x="3890" y="730" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0000" x="0" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0001" x="778" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0002" x="1556" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0003" x="2334" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0004" x="3112" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse left0005" x="3890" y="1460" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0000" x="0" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0001" x="778" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0002" x="1556" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0003" x="2334" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0004" x="3112" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse down0005" x="3890" y="2190" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0000" x="0" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0001" x="778" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0002" x="1556" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0003" x="2334" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0004" x="3112" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse up0005" x="3890" y="2920" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0000" x="0" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0001" x="778" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0002" x="1556" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0003" x="2334" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0004" x="3112" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+<SubTexture name="jesse right0005" x="3890" y="3650" width="778" height="730" frameX="0" frameY="0" frameWidth="778" frameHeight="730" />
+</TextureAtlas>
