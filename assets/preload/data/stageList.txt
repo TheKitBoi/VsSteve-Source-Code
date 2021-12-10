@@ -9,6 +9,7 @@ notch
 templeentrance
 littleman
 espionage
+tutorial
 mcsm
 diamonds
 dev
