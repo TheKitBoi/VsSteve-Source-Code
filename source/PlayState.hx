@@ -4924,33 +4924,16 @@ class PlayState extends MusicBeatState
 
 
 
-
+		function bonkAnim()
+		{
+			dad.playAnim('bonk', true);		
+		}
 
 		function bonkEvent()
 		{
-			trace('prepare to bonk');
-			blockWarning();
-			achievementBlock.animation.play('block', true);
-			pressedSpace = false;
-			detectAttack = true;
-			//steveAttack(); needs pre pare
-			new FlxTimer().start(0.5, function(tmr:FlxTimer)
-			{
-				if (pressedSpace)
-				{
-					bfBlock();
-					trace('Successful Block');
-					FlxG.camera.shake(0.02, 0.02);
-					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.6);
-				}
-				else
-				{
-					pressedSpace = false;
-					detectAttack = false;
-					blockFail();
-					trace('Haha, hit');
-				}
-			});
+			health -= 0.4;
+			boyfriend.playAnim('singDOWNmiss', true);
+			FlxG.camera.shake(0.05, 0.05);
 		}
 
 	override function stepHit()
@@ -5000,8 +4983,11 @@ class PlayState extends MusicBeatState
 			{
 				switch (curStep)
 				{
-					case 392 | 425 | 457 | 490 | 650 | 714 | 842 | 906 | 938 | 970 | 1002 | 1162 | 1226:
+					case 395 | 427 | 459 | 492 | 652 | 716 | 844 | 908 | 940 | 972 | 1004 | 1164 | 1228:
 						bonkEvent();
+					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1163 | 1227:
+						bonkAnim();
+	
 					//case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
 					//	steveAttack();
 					//case 804 | 806 | 820 | 822:
