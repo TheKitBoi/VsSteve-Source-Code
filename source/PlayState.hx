@@ -5121,6 +5121,30 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
+		if (curSong == 'copper' && curBeat >= 128 && curBeat < 160)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
+		if (curSong == 'copper' && curBeat >= 168 && curBeat < 192)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
+		if (curSong == 'copper' && curBeat >= 200 && curBeat < 208)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
+		if (curSong == 'copper' && curBeat >= 216 && curBeat < 224)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.03;
+			trace(FlxG.camera.zoom);
+		}
 		if (curSong == 'gapple' && curBeat >= 32 && curBeat < 64)
 		{
 			FlxG.camera.zoom += 0.025;
