@@ -16,15 +16,13 @@ class HealthIcon extends FlxSprite
 		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 
 		antialiasing = false;
-		animation.add('bf', [0, 2, 1], 0, false, isPlayer);
-		animation.add('bf-pixel', [0, 2, 1], 0, false, isPlayer);
+		animation.add('bf', [0, 1, 2], 0, false, isPlayer);
+		animation.add('bf-pixel', [3, 5, 4], 0, false, isPlayer);
 		animation.add('bfminecraft', [41, 43, 42], 0, false, isPlayer);
-		animation.add('tuxsteveuoh', [5, 6, 7], 0, false, isPlayer);
-		animation.add('stevelucky', [5, 6, 7], 0, false, isPlayer);
-		animation.add('senpai-angry', [8, 6, 9], 0, false, isPlayer);
 		animation.add('gf-pixel', [23, 25, 24], 0, false, isPlayer);
-		animation.add('steve-armor', [10, 6, 11], 0, false, isPlayer);
+		animation.add('tuxsteveuoh', [5, 6, 7], 0, false, isPlayer);
 		animation.add('tuxsteve', [8, 6, 9], 0, false, isPlayer);
+		animation.add('steve-armor', [10, 6, 11], 0, false, isPlayer);
 		animation.add('tuxstevewhatever', [8, 6, 9], 0, false, isPlayer);
 		animation.add('stevehorse', [5, 6, 7], 0, false, isPlayer);
 		animation.add('stevefnm', [8, 6, 9], 0, false, isPlayer);
