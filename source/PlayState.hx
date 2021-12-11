@@ -2344,18 +2344,20 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.add('pressed', [7, 11], 12, false);
 							babyArrow.animation.add('confirm', [15, 19], 24, false);
 					}
-				babyArrow.updateHitbox();
-				babyArrow.scrollFactor.set();
+					babyArrow.updateHitbox();
+					babyArrow.scrollFactor.set();
 
 				case 'notch':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/notch-pixels'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('temple/pixelUI/notch-pixels'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
 					babyArrow.animation.add('purplel', [4]);
+
 					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
 					babyArrow.updateHitbox();
 					babyArrow.antialiasing = false;
+
 					switch (Math.abs(i))
 					{
 						case 0:
@@ -2571,41 +2573,6 @@ class PlayState extends MusicBeatState
 					}
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
-
-				case 'hardcore-notch':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/notch-hardcore-pixels'), true, 17, 17);
-					babyArrow.animation.add('green', [6]);
-					babyArrow.animation.add('red', [7]);
-					babyArrow.animation.add('blue', [5]);
-					babyArrow.animation.add('purplel', [4]);
-					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
-					babyArrow.updateHitbox();
-					babyArrow.antialiasing = false;
-					switch (Math.abs(i))
-					{
-						case 0:
-							babyArrow.x += Note.swagWidth * 0;
-							babyArrow.animation.add('static', [0]);
-							babyArrow.animation.add('pressed', [4, 8], 12, false);
-							babyArrow.animation.add('confirm', [12, 16], 24, false);
-						case 1:
-							babyArrow.x += Note.swagWidth * 1;
-							babyArrow.animation.add('static', [1]);
-							babyArrow.animation.add('pressed', [5, 9], 12, false);
-							babyArrow.animation.add('confirm', [13, 17], 24, false);
-						case 2:
-							babyArrow.x += Note.swagWidth * 2;
-							babyArrow.animation.add('static', [2]);
-							babyArrow.animation.add('pressed', [6, 10], 12, false);
-							babyArrow.animation.add('confirm', [14, 18], 12, false);
-						case 3:
-							babyArrow.x += Note.swagWidth * 3;
-							babyArrow.animation.add('static', [3]);
-							babyArrow.animation.add('pressed', [7, 11], 12, false);
-							babyArrow.animation.add('confirm', [15, 19], 24, false);
-					}
-					babyArrow.updateHitbox();
-					babyArrow.scrollFactor.set();
 
 				case 'hardcore-aww':
 					babyArrow.loadGraphic(Paths.image('creeps/pixelUI/aww-hardcore-pixels'), true, 17, 17);
@@ -4823,15 +4790,23 @@ class PlayState extends MusicBeatState
 			});
 		}
 
+		var gappleActivated:Bool = false;
 
 		function GappleEffect():Void
 		{
 			healthBar.createFilledBar(0xFFEAD127, FlxColor.fromString('#' + boyfriend.iconColor));
 			health -= 0.25;
-			defaultCamZoom = 1;
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+			gappleActivated = true;
+			new FlxTimer().start(2, function(gapple:FlxTimer)
 				{
-					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+					
+					if(gappleActivated = true)
+						gapple.reset();
+					else
+					{
+						gappleActivated = false;
+						healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));	
+					}
 				}
 			);
 		}
@@ -5292,14 +5267,3 @@ class PlayState extends MusicBeatState
 //but look at me now makin special notes and coding for 2 mods.
 //never give up!!!
 //- Nosadx
-
-
-
-// hi me chromasen and i will teach u how to code
-// so u see if (curSong.toLowerCase == 'gapple') it means what song rn
-// (curSong.toLowerCase == 'gapple' curStep >= 133) it means what curstep for what mid song event
-// (curSong.toLowerCase == 'gapple' curStep >= 133)
-//{
-//  gf.playAnim = 'fard';      if it animation exists she will fard
-//}
-// thats it tahnk u for watching now pay me my 25 dol

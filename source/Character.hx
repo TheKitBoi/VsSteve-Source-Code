@@ -994,16 +994,20 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'notch left', 24, false);
 				animation.addByPrefix('singRIGHT', 'notch right', 24, false);
 				animation.addByPrefix('singDOWN', 'notch down', 24, false);
-				animation.addByPrefix('gappledown', 'notch gappledown', 24, false);
-				animation.addByPrefix('gappleup', 'notch gappleup', 24, false);
+				animation.addByPrefix('singDOWN-alt', 'notch gappledown', 24, false);
+				animation.addByPrefix('singUP-alt', 'notch gappleup', 24, false);
+				animation.addByPrefix('singLEFT-alt', 'notch left', 24, false);
+				animation.addByPrefix('singRIGHT-alt', 'notch right', 24, false);
 	
 				addOffset('idle', -246, -264);
 				addOffset("singUP", -240, -270);
 				addOffset("singRIGHT", -246, -270);
 				addOffset("singLEFT", -246, -264);
 				addOffset("singDOWN", -252, -270);
-				addOffset("gappledown", -240, -270);
-				addOffset("gappleup", -234, -270);
+				addOffset("singDOWN-alt", -240, -270);
+				addOffset("singUP-alt", -234, -270);
+				addOffset("singRIGHT-alt", -246, -270);
+				addOffset("singLEFT-alt", -246, -264);
 	
 				playAnim('idle');
 	
