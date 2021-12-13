@@ -3337,7 +3337,7 @@ class PlayState extends MusicBeatState
 					case 'school':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 210;
-						defaultCamZoom = 1.0;
+						defaultCamZoom = 0.6;
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -3380,8 +3380,8 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.7;
 					case 'espionage':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 400;
-						defaultCamZoom = 0.8;
+						camFollow.y = boyfriend.getMidpoint().y - 300;
+						defaultCamZoom = 0.6;
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 260 + bfnoteMovementYoffset;

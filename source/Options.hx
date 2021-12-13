@@ -502,26 +502,29 @@ class AccuracyDOption extends Option
 	}
 }
 
-class CustomizeGameplay extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
+// UNFUNCTIONAL, FIXED LATER!!!
 
-	public override function press():Bool
-	{
-		trace("switch");
-		FlxG.switchState(new GameplayCustomizeState());
-		return false;
-	}
 
-	private override function updateDisplay():String
-	{
-		return "Customize Gameplay";
-	}
-}
+//class CustomizeGameplay extends Option
+//{
+//	public function new(desc:String)
+//	{
+//		super();
+//		description = desc;
+//	}
+//
+//	public override function press():Bool
+//	{
+//		trace("switch");
+//		FlxG.switchState(new GameplayCustomizeState());
+//		return false;
+//	}
+//
+//	private override function updateDisplay():String
+//	{
+//		return "Customize Gameplay";
+//	}
+//}
 
 class WatermarkOption extends Option
 {

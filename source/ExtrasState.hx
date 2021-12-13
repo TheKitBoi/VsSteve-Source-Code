@@ -26,14 +26,13 @@ using StringTools;
 class ExtrasState extends MusicBeatState
 {
 	var curSelected:Int = 0;
-	var pano:FlxSprite;
-	var panoClone:FlxSprite;
-	var logoBl:FlxSprite;
-
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
-
+	#if !switch
 	var optionShit:Array<String> = ['bonus songs', 'other songs'];
+	#else
+	var optionShit:Array<String> = ['bonus songs', 'other songs'];
+	#end
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
@@ -43,15 +42,15 @@ class ExtrasState extends MusicBeatState
 	public static var finishedFunnyMove:Bool = false;
 
 	var tween:FlxTween;
+	var pano:FlxSprite;
+	var panoclone:FlxSprite;
 	var startscroll:Bool;
-
-
 
 	override function create()
 	{
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Extras Menu", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
@@ -63,22 +62,20 @@ class ExtrasState extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 
+        camFollow = new FlxObject(0, 0, 0, 0);
+		add(camFollow);
 
 		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
 		pano.antialiasing = true;
-		pano.screenCenter(X);
 		pano.updateHitbox();
 		add(pano);
 
-		panoClone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
-		panoClone.antialiasing = true;
-		panoClone.screenCenter(X);
-		panoClone.updateHitbox();
-		add(panoClone);
-
-
-		camFollow = new FlxObject(0, 0, 0, 0);
-		add(camFollow);
+		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoclone.antialiasing = true;
+		panoclone.updateHitbox();
+		add(panoclone);
+		
+		startscroll = true;
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		
@@ -99,10 +96,10 @@ class ExtrasState extends MusicBeatState
 			butos.scrollFactor.set();
 			switch(i) 
 			{
-				case 0: //Bonus Songs
-				    butos.setPosition(butos.x - 300, 400);
-				case 1: //Other Songs
-				    butos.setPosition(butos.x + 300, 400);
+				case 0: //bonus Songs
+					butos.setPosition(butos.x, 275);
+				case 1: //Old Songs
+					butos.setPosition(butos.x, 340);
 			}
 			menuItems.add(butos);
 		}
@@ -110,8 +107,6 @@ class ExtrasState extends MusicBeatState
 		add(menuItems);
 
 		firstStart = false;
-
-		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -137,20 +132,19 @@ class ExtrasState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		}	
-
+		}
 
 		if (startscroll == true)
 			{
 				startscroll = false;
-				panoClone.x = 1280;
+				panoclone.x = 1280;
 				pano.x = 0;
 				//pano.visible = false;
 				FlxTween.tween(pano, {x: -1600}, 90, {
 				onComplete: function(twn:FlxTween)
 			{
 				tween = FlxTween.tween(pano, { x: -2880 }, 90);
-				FlxTween.tween(panoClone, {x: 0}, 90, {
+				FlxTween.tween(panoclone, {x: 0}, 90, {
 				onComplete: function(twn:FlxTween)
 			{
 				tween.cancel();
@@ -160,7 +154,6 @@ class ExtrasState extends MusicBeatState
 			}
 		});
 			}
-
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
@@ -202,12 +195,11 @@ class ExtrasState extends MusicBeatState
 
 	function selectSomething()
 	{
-
+		
 		selectedSomethin = true;
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		
 		canClick = false;
-
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			if (curSelected != spr.ID)
@@ -230,7 +222,7 @@ class ExtrasState extends MusicBeatState
 					});
 			}
 		});
-		
+			
 	}
 
 	function goToState()
@@ -239,7 +231,6 @@ class ExtrasState extends MusicBeatState
 
 		switch (daChoice)
 		{
-	
 			case 'bonus songs':
 				FlxG.switchState(new FreeplayStateBonus());
 				trace("bonus songs!");
@@ -247,7 +238,6 @@ class ExtrasState extends MusicBeatState
 			case 'other songs':
 				FlxG.switchState(new FreeplayStateOthers());
 				trace("Other Songs");
-
 		}
 	}
 
