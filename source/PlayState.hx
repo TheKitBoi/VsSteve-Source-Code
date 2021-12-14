@@ -830,6 +830,22 @@ class PlayState extends MusicBeatState
 					tutorial.updateHitbox();
 
 			}
+			case 'tf2':
+			{
+					curStage = 'tf2';
+
+					defaultCamZoom = 0.96;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var tf2:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('tf2/tf2'));
+					tf2.scrollFactor.set(0.95, 0.95);
+					tf2.y += 450;
+					tf2.x += 550;
+					tf2.setGraphicSize(Std.int(tf2.width * 6.5));
+					add(tf2);
+			}
 			case 'mcsm':
 			{
 					curStage = 'mcsm';
@@ -1166,6 +1182,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 140;
 				dad.y += 60;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case 'irfan':
+				dad.x -= 170;
+				dad.y += 135;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'jesse':
 				dad.x -= 300;
 				dad.y += 0;
@@ -1248,6 +1268,11 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 20;
 				gf.x += 240;
 				gf.y += 170;
+			case 'tf2':
+				boyfriend.x += 85;
+				boyfriend.y += 150;
+				gf.x += 180;
+				gf.y += 340;
 			case 'mcsm':
 				boyfriend.x -= 120;
 				boyfriend.y -= 75;
@@ -1749,6 +1774,11 @@ class PlayState extends MusicBeatState
 				'tutorial/pixelUI/set-pixel',
 				'tutorial/pixelUI/date-pixel'		
 			]);
+			introAssets.set('tf2', [
+				'tf2/pixelUI/ready-pixel',
+				'tf2/pixelUI/set-pixel',
+				'tf2/pixelUI/date-pixel'
+			]);	
 			introAssets.set('mcsm', [
 				'mcsm/pixelUI/ready-pixel',
 				'mcsm/pixelUI/set-pixel',
@@ -3303,8 +3333,8 @@ class PlayState extends MusicBeatState
 						
 						case 'irfan':
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
-                            camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
-                            defaultCamZoom = 0.85;
+                            camFollow.x = dad.getMidpoint().x - 100 + dadnoteMovementXoffset;
+                            defaultCamZoom = 0.7;
 
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
@@ -3374,6 +3404,10 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 400 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
+					case 'tf2':
+						camFollow.x = boyfriend.getMidpoint().x - 280;
+						camFollow.y = boyfriend.getMidpoint().y - 350;
+						defaultCamZoom = 0.8;
 					case 'mcsm':
 						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
@@ -4111,6 +4145,11 @@ class PlayState extends MusicBeatState
 					pixelShitPart1 = 'tutorial/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
+			if (curStage.startsWith('tf2'))
+			{
+				pixelShitPart1 = 'tf2/pixelUI/';
+				pixelShitPart2 = '-pixel';
+			}
 			if (curStage.startsWith('mcsm'))
 				{
 					pixelShitPart1 = 'mcsm/pixelUI/';
@@ -4906,9 +4945,9 @@ class PlayState extends MusicBeatState
 
 		function bonkEvent()
 		{
-			health -= 0.4;
+			health -= 0.65;
 			boyfriend.playAnim('singDOWNmiss', true);
-			FlxG.camera.shake(0.05, 0.05);
+			FlxG.camera.shake(0.025, 0.025);
 		}
 
 	override function stepHit()
