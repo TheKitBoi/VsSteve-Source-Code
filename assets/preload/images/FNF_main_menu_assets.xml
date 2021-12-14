@@ -15,7 +15,7 @@
     <SubTexture name="bonus basic0000" x="0" y="1000" width="423" height="53" frameWidth="423" frameHeight="53" />
     <SubTexture name="bonus white0000" x="0" y="1100" width="423" height="53" frameWidth="423" frameHeight="53" />
     <SubTexture name="bonus songs basic0000" x="0" y="1200" width="423" height="53" frameWidth="423" frameHeight="53" />
-    <SubTexture name="bonus songs mode white0000" x="0" y="1300" width="423" height="53" frameWidth="423" frameHeight="53" />
+    <SubTexture name="bonus songs white0000" x="0" y="1300" width="423" height="53" frameWidth="423" frameHeight="53" />
     <SubTexture name="other songs basic0000" x="0" y="1400" width="423" height="53" frameWidth="423" frameHeight="53" />
     <SubTexture name="other songs white0000" x="0" y="1500" width="423" height="53" frameWidth="423" frameHeight="53" />
 </TextureAtlas>
