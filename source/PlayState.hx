@@ -1140,7 +1140,7 @@ class PlayState extends MusicBeatState
 				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'notch':
-				dad.x -= 90;
+				dad.x += 50;
 				dad.y -= 70;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'endless':
@@ -3283,7 +3283,7 @@ class PlayState extends MusicBeatState
 
 						case 'notch':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - -420 + dadnoteMovementXoffset;
+							camFollow.x = dad.getMidpoint().x - -200 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.8;
 
 						case 'endless':
