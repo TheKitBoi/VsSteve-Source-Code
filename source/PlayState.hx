@@ -1506,7 +1506,7 @@ class PlayState extends MusicBeatState
 			add(replayTxt);
 		}
 		// Literally copy-paste of the above, fu
-		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
+		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 
@@ -2414,6 +2414,43 @@ class PlayState extends MusicBeatState
 					babyArrow.updateHitbox();
 					babyArrow.scrollFactor.set();
 
+				case 'hardcore-notch':
+					babyArrow.loadGraphic(Paths.image('temple/pixelUI/notch-hardcore-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+					babyArrow.updateHitbox();
+					babyArrow.scrollFactor.set();
+
 				case 'Majin':
 					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes','week6'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
@@ -2883,7 +2920,7 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-		if (SONG.song.toLowerCase() == 'suit up' || SONG.song.toLowerCase() == 'bonk')
+		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			if (FlxG.keys.justPressed.SPACE)
 				{
@@ -2891,7 +2928,7 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		if (dad.animation.curAnim.name == 'hit')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk')
 			{
 				if (dad.animation.finished)
 				{
@@ -3596,7 +3633,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit')
+						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -3682,7 +3719,7 @@ class PlayState extends MusicBeatState
 								daNote.destroy();
 							}
 						}
-						else if (dad.curCharacter == 'alex' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'tiagoswag' || dad.curCharacter == 'bos' || dad.curCharacter == 'jaziel' )
+						else if (dad.curCharacter == 'alex' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'tiagoswag' || dad.curCharacter == 'bos' || dad.curCharacter == 'jaziel' || dad.curCharacter == 'irfan'  )
 						{
 
 							if (healthBar.percent > 20)
@@ -3905,16 +3942,6 @@ class PlayState extends MusicBeatState
 
 					trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 
-					if (SONG.song.toLowerCase() == 'eggnog')
-					{
-						var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-							-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-						blackShit.scrollFactor.set();
-						add(blackShit);
-						camHUD.visible = false;
-
-						FlxG.sound.play(Paths.sound('Lights_Shut_off'));
-					}
 
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
@@ -4554,14 +4581,8 @@ class PlayState extends MusicBeatState
 						spr.animation.play('static');
 					//dumbass pixel shit offset
 					//fucking bullshit but works LOL
-					if (spr.animation.curAnim.name == 'confirm' && curStage.startsWith('school') || (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('awwman')) || (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('cave')) || (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('devs') || (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('notch'))))
-					{
-						spr.centerOffsets();
-					}
-					else
-					{
-						spr.centerOffsets();
-					}
+					spr.centerOffsets();
+
 				});
 			}
 
@@ -4882,6 +4903,10 @@ class PlayState extends MusicBeatState
 		{
 			dad.playAnim("hit", true);
 		}
+		function stevePrepare()
+		{
+			dad.playAnim("prepare", true);
+		}
 
 		var pressedSpace:Bool = false;
 
@@ -4945,7 +4970,7 @@ class PlayState extends MusicBeatState
 
 		function bonkEvent()
 		{
-			health -= 0.65;
+			health -= 0.5;
 			boyfriend.playAnim('singDOWNmiss', true);
 			FlxG.camera.shake(0.025, 0.025);
 		}
@@ -4978,18 +5003,17 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 122:
-					//steveAttack(); needs prepare
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 | 846 | 848 | 864 | 866 | 880 | 1166:
 					slashEvent();
+					stevePrepare();
 				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
 					steveAttack();
 				case  800 | 802 | 816 | 818:
 					slashEvent();
+					stevePrepare();
 				case 804 | 806 | 820 | 822:
 					steveAttack();
 			}
-
 		}
 
 
@@ -5123,7 +5147,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);

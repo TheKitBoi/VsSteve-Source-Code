@@ -459,14 +459,16 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'SteveArmor left', 24, false);
 				animation.addByPrefix('singRIGHT', 'SteveArmor right', 24, false);
 				animation.addByPrefix('singDOWN', 'SteveArmor down', 24, false);
+				animation.addByPrefix('prepare', 'SteveArmor prepare', 24, false);
 				animation.addByPrefix('hit', 'SteveArmor hit', 24, false);
 
 				addOffset('idle', -250, -260);
-				addOffset("singUP", -247, -256);
-				addOffset("singRIGHT", -249, -254);
-				addOffset("singLEFT", -244, -259);
-				addOffset("singDOWN", -256, -260);
-				addOffset("hit", -220, -240);
+				addOffset("singUP", -227, -256);
+				addOffset("singRIGHT", -239, -254);
+				addOffset("singLEFT", -234, -259);
+				addOffset("singDOWN", -226, -260);
+				addOffset("prepare", -280, -260);
+				addOffset("hit", -280, -260);
 				playAnim('idle');
 
 				setGraphicSize(Std.int(width * 6));
@@ -474,6 +476,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+				
 			case 'giantalex':
 				iconColor = 'FFFF0000';
 				frames = Paths.getSparrowAtlas('characters/giantalex');

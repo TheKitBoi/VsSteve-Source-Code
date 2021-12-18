@@ -168,6 +168,40 @@ class Note extends FlxSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 
+			case 'hardcore-notch':
+				loadGraphic(Paths.image('weeb/pixelUI/notch-hardcore-pixels','week6'), true, 17, 17);
+
+				if (noteType == 5)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/notch-arrowEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
 
 			case 'Majin':
 				loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes','week6'), true, 17, 17);
