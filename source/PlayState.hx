@@ -80,6 +80,7 @@ class PlayState extends MusicBeatState
 	var camMovement:Float = 0.09;
 
 	public static var songPosBG:FlxSprite;
+	public static var songPosXP:FlxSprite;
 	public static var songPosBar:FlxBar;
 
 	public static var rep:Replay;
@@ -1437,8 +1438,27 @@ class PlayState extends MusicBeatState
 				songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), this,
 					'songPositionBar', 0, 90000);
 				songPosBar.scrollFactor.set();
-				songPosBar.createFilledBar(FlxColor.GRAY, FlxColor.CYAN);
+				if(dad.curCharacter == 'notch')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
+				else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+				else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
+				else if(dad.curCharacter == 'irfan')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#32CD32'));
+				else if(dad.curCharacter == 'jaziel')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
+				else
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
 				add(songPosBar);
+
+				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+				if (FlxG.save.data.downscroll)
+					songPosXP.y = FlxG.height * 0.9 + 45; 
+				songPosXP.screenCenter(X);
+				songPosXP.alpha = 0.65;
+				songPosXP.scrollFactor.set();
+				add(songPosXP);
 
 				var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
 				if (FlxG.save.data.downscroll)
@@ -1446,6 +1466,7 @@ class PlayState extends MusicBeatState
 				songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 				songName.scrollFactor.set();
 				add(songName);
+
 				songName.cameras = [camHUD];
 			}
 
@@ -1462,13 +1483,10 @@ class PlayState extends MusicBeatState
 		//HEALTH BAR SHIT -- COLORS YK
 		healthBar = new FlxBar(healthBarBGG.x + 4, healthBarBGG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBGG.width - 8), Std.int(healthBarBGG.height - 8), this,
 			'health', 0, 2);
-		//weird shit layering here
-
 		healthBar.scrollFactor.set();
 		healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
 		// healthBar
 		add(healthBar);
-		// maybe like this???
 
 		//XP BAR SHIT
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBarLong'));
@@ -1533,6 +1551,7 @@ class PlayState extends MusicBeatState
 		{
 			songPosBG.cameras = [camHUD];
 			songPosBar.cameras = [camHUD];
+			songPosXP.cameras = [camHUD];
 		}
 		kadeEngineWatermark.cameras = [camHUD];
 		if (loadRep)
@@ -2089,6 +2108,7 @@ class PlayState extends MusicBeatState
 		{
 			remove(songPosBG);
 			remove(songPosBar);
+			remove(songPosXP);
 			remove(songName);
 
 			songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBarBGG'));
@@ -2102,8 +2122,29 @@ class PlayState extends MusicBeatState
 				'songPositionBar', 0, songLength - 1000);
 			songPosBar.numDivisions = 1000;
 			songPosBar.scrollFactor.set();
-			songPosBar.createFilledBar(FlxColor.GRAY, FlxColor.CYAN);
+			if(dad.curCharacter == 'notch')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
+			else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+			else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
+			else if(dad.curCharacter == 'irfan')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#32CD32'));
+			else if(dad.curCharacter == 'jaziel')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
+			else
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+
+				
 			add(songPosBar);
+
+			songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+			if (FlxG.save.data.downscroll)
+				songPosXP.y = FlxG.height * 0.9 + 45; 
+			songPosXP.screenCenter(X);
+			songPosXP.alpha = 0.65;
+			songPosXP.scrollFactor.set();
+			add(songPosXP);
 
 			var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
 			if (FlxG.save.data.downscroll)
@@ -2114,15 +2155,10 @@ class PlayState extends MusicBeatState
 
 			songPosBG.cameras = [camHUD];
 			songPosBar.cameras = [camHUD];
+			songPosXP.cameras = [camHUD];
 			songName.cameras = [camHUD];
 		}
 
-		// Song check real quick
-		switch(curSong)
-		{
-			case 'Bopeebo' | 'Philly' | 'Blammed' | 'Cocoa' | 'Eggnog': allowedToHeadbang = true;
-			default: allowedToHeadbang = false;
-		}
 
 		#if windows
 		// Updating Discord Rich Presence (with Time Left)
@@ -3663,11 +3699,11 @@ class PlayState extends MusicBeatState
 
 
 						var daSprite = dad;
-								switch (daNote.noteType)
-								{
-									case 10:
-										daSprite = duoDad;
-								}
+							switch (daNote.noteType)
+							{
+								case 10:
+									daSprite = duoDad;
+							}
 
 						#if windows
 						if (luaModchart != null)
