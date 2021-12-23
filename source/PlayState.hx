@@ -741,7 +741,7 @@ class PlayState extends MusicBeatState
 					curStage = 'fasttravel';
 
 					defaultCamZoom = 0.7;
-					camMovement = 0.8;
+					camMovement = 1.3;
 
 					fasttravelbg = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
 					fasttravelbg.scale.set(1.4, 1.4);
@@ -1327,14 +1327,8 @@ class PlayState extends MusicBeatState
 		if (curStage == 'notch' && SONG.song.toLowerCase() == 'gapple')
 			remove(notchStanding);
 
-		add(boyfriend);
-
 		if (curStage == 'notch' && SONG.song.toLowerCase() == 'retired')
 			remove(notchStanding);
-
-		if (curStage == 'tutorial' && SONG.song.toLowerCase() == 'bonk')
-			remove(irfan);
-
 
 		add(boyfriend);
 
@@ -1357,7 +1351,7 @@ class PlayState extends MusicBeatState
 				lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 			add(lanterns);
 		}
-		if (SONG.song.toLowerCase() == 'suit up' || SONG.song.toLowerCase() == 'bonk')
+		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			achievementBlock = new FlxSprite(1100, 300);
 			achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
@@ -1441,13 +1435,15 @@ class PlayState extends MusicBeatState
 				if(dad.curCharacter == 'notch')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
 				else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#2B5480'));
 				else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
 				else if(dad.curCharacter == 'irfan')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#32CD32'));
 				else if(dad.curCharacter == 'jaziel')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
+				else if(dad.curCharacter == 'bos')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF8008'));
 				else
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
 				add(songPosBar);
@@ -1461,6 +1457,7 @@ class PlayState extends MusicBeatState
 				add(songPosXP);
 
 				var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
+				songName.x -= 13;
 				if (FlxG.save.data.downscroll)
 					songName.y -= 3;
 				songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -2125,13 +2122,15 @@ class PlayState extends MusicBeatState
 			if(dad.curCharacter == 'notch')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
 			else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
-				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#2B5480'));
 			else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
 			else if(dad.curCharacter == 'irfan')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#32CD32'));
 			else if(dad.curCharacter == 'jaziel')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
+			else if(dad.curCharacter == 'bos')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF8008'));
 			else
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
 
@@ -2149,6 +2148,7 @@ class PlayState extends MusicBeatState
 			var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
 			if (FlxG.save.data.downscroll)
 				songName.y -= 3;
+			songName.x -= 13;
 			songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			songName.scrollFactor.set();
 			add(songName);
@@ -3128,25 +3128,25 @@ class PlayState extends MusicBeatState
 
 			//Panoramaaaaaaa
 			//litterally basically a copy paste from the main menu but FU-
-			if(scroll == true)
+			if (scroll == true)
 				{
-					  scroll = false;
-					  fasttravelbg.x = 1280;
-					  fasttravelbgClone.x = 0;
-					  //"menuBG".visible = false;
-					  FlxTween.tween(fasttravelbg, {x: -1600}, 90, {
-					  onComplete: function(twn:FlxTween)	
-					{
-						tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 90);
-						FlxTween.tween(fasttravelbg, {x: 0}, 90, {
-						onComplete: function(twn:FlxTween)
-						{
-							tween.cancel();
-							scroll = true;
-						}
-						});
-					}
-					});
+					scroll = false;
+					fasttravelbgClone.x = 1280;
+					fasttravelbg.x = 0;
+					//pano.visible = false;
+					FlxTween.tween(fasttravelbg, {x: -1600}, 10, {
+					onComplete: function(twn:FlxTween)
+				{
+					tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 10);
+					FlxTween.tween(fasttravelbgClone, {x: 0}, 10, {
+					onComplete: function(twn:FlxTween)
+				{
+					tween.cancel();
+					scroll = true;
+				}
+			});
+				}
+			});
 				}
 		}
 
@@ -4571,6 +4571,15 @@ class PlayState extends MusicBeatState
 							trace('mash violations ' + mashViolations);
 							scoreTxt.color = FlxColor.RED;
 							noteMiss(0,null);
+							health -= 100;
+							trace('Kicked For Spamming');
+							//do the spamming state and spamming assets tommorow or smth
+
+							// basically kill/kick bf for spamming, make a menu for that, and send to main menu
+							// open KickedMenuu.hx make it work like MainMenuState.hx mixed with GameoverState.hx
+							// Minecraft background with text and buttons to go back
+
+							//due till 26th November
 						}
 						else
 							mashViolations++;
