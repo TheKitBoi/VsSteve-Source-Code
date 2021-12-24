@@ -97,9 +97,9 @@ class ExtrasState extends MusicBeatState
 			switch(i) 
 			{
 				case 0: //bonus Songs
-					butos.setPosition(butos.x, 275);
+					butos.setPosition(butos.x, 300);
 				case 1: //Old Songs
-					butos.setPosition(butos.x, 340);
+					butos.setPosition(butos.x, 365);
 			}
 			menuItems.add(butos);
 		}
@@ -204,8 +204,8 @@ class ExtrasState extends MusicBeatState
 		{
 			if (curSelected != spr.ID)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 0.7, false);
-				FlxTween.tween(spr, {alpha: 0}, 1.3, {
+				FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
+				FlxTween.tween(spr, {alpha: 0}, 0.6, {
 					ease: FlxEase.quadOut,
 					onComplete: function(twn:FlxTween)
 					{
@@ -215,7 +215,7 @@ class ExtrasState extends MusicBeatState
 			}
 			else
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 0.7, false);
+				FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 					{
 						goToState();

@@ -3557,6 +3557,26 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
 		}
+		if (mashViolations > 4)
+		{
+			defaultCamZoom = 0.6;
+			boyfriend.stunned = true;
+			persistentUpdate = false;
+			persistentDraw = false;
+			paused = true;
+			trace('KICK');
+
+			vocals.stop();
+			FlxG.sound.music.stop();
+			openSubState(new SpammingSubState());
+
+			#if windows
+			// Kickked doesn't get his own variable because it's only used here
+			DiscordClient.changePresence("KICKED FOR SPAMMING -- " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy),"\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
+			#end
+
+			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+		}
 
 		if (unspawnNotes[0] != null)
 		{
@@ -4571,8 +4591,7 @@ class PlayState extends MusicBeatState
 							trace('mash violations ' + mashViolations);
 							scoreTxt.color = FlxColor.RED;
 							noteMiss(0,null);
-							health -= 100;
-							trace('Kicked For Spamming');
+							trace('Warned For Spamming');
 							//do the spamming state and spamming assets tommorow or smth
 
 							// basically kill/kick bf for spamming, make a menu for that, and send to main menu
