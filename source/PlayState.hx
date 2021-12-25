@@ -3557,7 +3557,7 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
 		}
-		if (mashViolations > 4)
+		if (mashViolations > 8)
 		{
 			defaultCamZoom = 0.6;
 			boyfriend.stunned = true;
@@ -4586,7 +4586,7 @@ class PlayState extends MusicBeatState
 
 					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay)
 					{
-						if (mashViolations > 4)
+						if (mashViolations > 3)
 						{
 							trace('mash violations ' + mashViolations);
 							scoreTxt.color = FlxColor.RED;
@@ -4597,7 +4597,7 @@ class PlayState extends MusicBeatState
 							// basically kill/kick bf for spamming, make a menu for that, and send to main menu
 							// open KickedMenuu.hx make it work like MainMenuState.hx mixed with GameoverState.hx
 							// Minecraft background with text and buttons to go back
-
+							mashViolations++;
 							//due till 26th November
 						}
 						else
