@@ -3153,16 +3153,28 @@ class PlayState extends MusicBeatState
 		if (dad.curCharacter == "herobrine"){
 			dad.y += Math.sin(hero);
 		}
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
+		//iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
+		//iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
 
+		//iconP1.updateHitbox();
+		//iconP2.updateHitbox();
+
+
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP1.scale.set(mult, mult);
 		iconP1.updateHitbox();
+
+		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP2.scale.set(mult, mult);
 		iconP2.updateHitbox();
 
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+
+		//iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+		//iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 
 		if (health > 2)
 			health = 2;
@@ -3557,7 +3569,7 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
 		}
-		if (mashViolations > 8)
+		if (mashViolations > 15)
 		{
 			defaultCamZoom = 0.6;
 			boyfriend.stunned = true;
@@ -4586,7 +4598,7 @@ class PlayState extends MusicBeatState
 
 					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay)
 					{
-						if (mashViolations > 3)
+						if (mashViolations > 4)
 						{
 							trace('mash violations ' + mashViolations);
 							scoreTxt.color = FlxColor.RED;
@@ -4598,7 +4610,6 @@ class PlayState extends MusicBeatState
 							// open KickedMenuu.hx make it work like MainMenuState.hx mixed with GameoverState.hx
 							// Minecraft background with text and buttons to go back
 							mashViolations++;
-							//due till 26th November
 						}
 						else
 							mashViolations++;
@@ -5273,8 +5284,9 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 
-		iconP1.setGraphicSize(Std.int(iconP1.width + 40));
-		iconP2.setGraphicSize(Std.int(iconP2.width + 40));
+
+		iconP1.scale.set(1.2, 1.2);
+		iconP2.scale.set(1.2, 1.2);
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
@@ -5334,7 +5346,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'mine':
 				if(FlxG.save.data.distractions){
-					minijukebox.animation.play('bop', false);
+					minijukebox.animation.play('bop', true);
 				}
 			case 'cave':
 				if(FlxG.save.data.distractions){
