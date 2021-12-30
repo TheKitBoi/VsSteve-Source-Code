@@ -576,7 +576,7 @@ class OffsetMenu extends Option
 		return "Time your offset";
 	}
 }
-class BotPlay extends Option
+class SpectatorMode extends Option
 {
 	public function new(desc:String)
 	{
@@ -586,12 +586,12 @@ class BotPlay extends Option
 	
 	public override function press():Bool
 	{
-		FlxG.save.data.botplay = !FlxG.save.data.botplay;
-		trace('BotPlay : ' + FlxG.save.data.botplay);
+		FlxG.save.data.SpectatorMode = !FlxG.save.data.SpectatorMode;
+		trace('Spectator Mode : ' + FlxG.save.data.SpectatorMode);
 		display = updateDisplay();
 		return true;
 	}
 	
 	private override function updateDisplay():String
-		return "BotPlay " + (FlxG.save.data.botplay ? "on" : "off");
+		return "Spectator Mode " + (FlxG.save.data.SpectatorMode ? "on" : "off");
 }

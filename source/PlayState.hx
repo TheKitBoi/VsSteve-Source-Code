@@ -182,6 +182,8 @@ class PlayState extends MusicBeatState
 
 	//Blockinf Stuff
 	var achievementBlock:FlxSprite;
+	var blackStuff:FlxSprite;
+	var whiteStuff:FlxSprite;
 	var detectAttack:Bool = false;
 
 	var bgGirls:BackgroundGirls;
@@ -225,8 +227,8 @@ class PlayState extends MusicBeatState
 	private var allowedToHeadbang:Bool = false;
 	// Per song additive offset
 	public static var songOffset:Float = 0;
-	// BotPlay text
-	private var botPlayState:FlxText;
+	// SpectatorMode text
+	private var SpectatorModeState:FlxText;
 	// Replay shit
 	private var saveNotes:Array<Float> = [];
 
@@ -351,7 +353,7 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nBotPlay : ' + FlxG.save.data.botplay);
+		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nSpectator Mode : ' + FlxG.save.data.SpectatorMode);
 
 		//i disabled dialogues by replacing names with lmao, LMAOOOOOOOO -babobias
     //haha enbaled dialogues go BRRRRRRR -Taigo
@@ -1351,6 +1353,8 @@ class PlayState extends MusicBeatState
 				lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 			add(lanterns);
 		}
+
+
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			achievementBlock = new FlxSprite(1100, 300);
@@ -1361,6 +1365,19 @@ class PlayState extends MusicBeatState
 			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
 
 			add(achievementBlock);
+
+
+			blackStuff = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 6, FlxG.height * 6, FlxColor.BLACK);
+			blackStuff.scrollFactor.set();
+			add(blackStuff);
+
+			blackStuff.alpha = 0;
+
+			whiteStuff = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 6, FlxG.height * 6, FlxColor.WHITE);
+			whiteStuff.scrollFactor.set();
+			add(whiteStuff);
+
+			whiteStuff.alpha = 0;
 		}
 
 
@@ -1369,7 +1386,7 @@ class PlayState extends MusicBeatState
 			FlxG.watch.addQuick('rep rpesses',repPresses);
 			FlxG.watch.addQuick('rep releases',repReleases);
 
-			FlxG.save.data.botplay = true;
+			FlxG.save.data.SpectatorMode = true;
 			FlxG.save.data.scrollSpeed = rep.replay.noteSpeed;
 			FlxG.save.data.downscroll = rep.replay.isDownscroll;
 			// FlxG.watch.addQuick('Queued',inputsQueued);
@@ -1510,7 +1527,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		if (offsetTesting)
 			scoreTxt.x += 300;
-		if(FlxG.save.data.botplay) scoreTxt.x = FlxG.width / 2 - 20;													  
+		if(FlxG.save.data.SpectatorMode) scoreTxt.x = FlxG.width / 2 - 20;													  
 		add(scoreTxt);
 		// idk how I SHOULD MAKE THIS WORK WITH THE SECOND HEALTHBAR BGG LMAOOOOO HELP
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
@@ -1521,11 +1538,11 @@ class PlayState extends MusicBeatState
 			add(replayTxt);
 		}
 		// Literally copy-paste of the above, fu
-		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "", 20);
-		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
-		botPlayState.scrollFactor.set();
+		SpectatorModeState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "", 20);
+		SpectatorModeState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		SpectatorModeState.scrollFactor.set();
 
-		if(FlxG.save.data.botplay && !loadRep) add(botPlayState);
+		if(FlxG.save.data.SpectatorMode && !loadRep) add(SpectatorModeState);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -2980,8 +2997,11 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
 			camHUD.visible = !camHUD.visible;
+
+		if(FlxG.save.data.SpectatorMode)
+			camHUD.visible = false;
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -3636,8 +3656,8 @@ class PlayState extends MusicBeatState
 								else
 									daNote.y += daNote.height / 2;
 
-								// If not in botplay, only clip sustain notes when properly hit, botplay gets to clip it everytime
-								if(!FlxG.save.data.botplay)
+								// If not in SpectatorMode, only clip sustain notes when properly hit, SpectatorMode gets to clip it everytime
+								if(!FlxG.save.data.SpectatorMode)
 								{
 									if((!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit) && daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
 									{
@@ -3666,7 +3686,7 @@ class PlayState extends MusicBeatState
 							{
 								daNote.y -= daNote.height / 2;
 
-								if(!FlxG.save.data.botplay)
+								if(!FlxG.save.data.SpectatorMode)
 								{
 									if((!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit) && daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
 									{
@@ -3927,7 +3947,7 @@ class PlayState extends MusicBeatState
 			rep.SaveReplay(saveNotes);
 		else
 		{
-			FlxG.save.data.botplay = false;
+			FlxG.save.data.SpectatorMode = false;
 			FlxG.save.data.scrollSpeed = 1;
 			FlxG.save.data.downscroll = false;
 		}
@@ -4281,7 +4301,7 @@ class PlayState extends MusicBeatState
 			rating.velocity.x -= FlxG.random.int(0, 10);
 
 			var msTiming = HelperFunctions.truncateFloat(noteDiff, 3);
-			if(FlxG.save.data.botplay) msTiming = 0;							   
+			if(FlxG.save.data.SpectatorMode) msTiming = 0;							   
 
 			if (currentTimingShown != null)
 				remove(currentTimingShown);
@@ -4327,7 +4347,7 @@ class PlayState extends MusicBeatState
 			if (currentTimingShown.alpha != 1)
 				currentTimingShown.alpha = 1;
 
-			if(!FlxG.save.data.botplay) add(currentTimingShown);
+			if(!FlxG.save.data.SpectatorMode) add(currentTimingShown);
 
 			var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 			comboSpr.screenCenter();
@@ -4344,7 +4364,7 @@ class PlayState extends MusicBeatState
 
 			comboSpr.velocity.x += FlxG.random.int(1, 10);
 			currentTimingShown.velocity.x += comboSpr.velocity.x;
-			if(!FlxG.save.data.botplay) add(rating);
+			if(!FlxG.save.data.SpectatorMode) add(rating);
 
 
 			//currentTimingShown.updateHitbox();
@@ -4492,8 +4512,8 @@ class PlayState extends MusicBeatState
 				};
 				#end
 
-				// Prevent player input if botplay is on
-				if(FlxG.save.data.botplay)
+				// Prevent player input if SpectatorMode is on
+				if(FlxG.save.data.SpectatorMode)
 				{
 					holdArray = [false, false, false, false];
 					pressArray = [false, false, false, false];
@@ -4596,7 +4616,7 @@ class PlayState extends MusicBeatState
 									noteMiss(shit, null);
 						}
 
-					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay)
+					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.SpectatorMode)
 					{
 						if (mashViolations > 4)
 						{
@@ -4623,8 +4643,8 @@ class PlayState extends MusicBeatState
 					!FlxG.save.data.downscroll && daNote.y < strumLine.y)
 					{
 						// Force good note hit regardless if it's too late to hit it or not as a fail safe
-						if(FlxG.save.data.botplay && daNote.canBeHit && daNote.mustPress ||
-						FlxG.save.data.botplay && daNote.tooLate && daNote.mustPress)
+						if(FlxG.save.data.SpectatorMode && daNote.canBeHit && daNote.mustPress ||
+						FlxG.save.data.SpectatorMode && daNote.tooLate && daNote.mustPress)
 						{
 							if(loadRep)
 							{
@@ -4642,7 +4662,7 @@ class PlayState extends MusicBeatState
 					}
 				});
 
-				if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && (!holdArray.contains(true) || FlxG.save.data.botplay))
+				if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && (!holdArray.contains(true) || FlxG.save.data.SpectatorMode))
 				{
 					if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
 						boyfriend.playAnim('idle');
@@ -4973,6 +4993,41 @@ class PlayState extends MusicBeatState
 			}
 		
 		}
+		
+		function blackFade()
+		{
+			new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			{
+				blackStuff.alpha += 0.075;
+	
+				if (blackStuff.alpha < 1)
+				{
+					tmr.reset(0.01);
+				}
+				else
+				{
+				remove(dad);
+				dad = new Character(100 - 90, 100 + 190, 'steve-armor');
+				add(dad);
+				}
+		
+			});
+		}
+
+		function whiteFade()
+		{
+			whiteStuff.alpha = 1;
+			new FlxTimer().start(0.001, function(tmr:FlxTimer)
+			{
+				whiteStuff.alpha -= 0.05;
+	
+				if (whiteStuff.alpha > 0)
+				{
+					tmr.reset(0.001);
+				}
+
+			});
+		}
 
 		function steveAttack()
 		{
@@ -5074,14 +5129,20 @@ class PlayState extends MusicBeatState
 					}
 			}
 
-		if (dad.curCharacter == 'steve-armor' && SONG.song.toLowerCase() == 'suit up')
+		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			switch (curStep)
 			{
-				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 | 846 | 848 | 864 | 866 | 880 | 1166:
+				case 110:
+					blackFade();
+				case 124:
+					remove(blackStuff);
+					whiteFade();
+					stevePrepare();
+				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 /*846*/ | 848 | 864 | 866 | 880 | 1166:
 					slashEvent();
 					stevePrepare();
-				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
+				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1170:
 					steveAttack();
 				case  800 | 802 | 816 | 818:
 					slashEvent();

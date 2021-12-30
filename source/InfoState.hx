@@ -44,7 +44,7 @@ class InfoState extends MusicBeatState
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
-			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nSoo, if monetization is something for you, then you should skip Revenge out...\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
 
 			);
 		
