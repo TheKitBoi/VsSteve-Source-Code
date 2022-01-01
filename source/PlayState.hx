@@ -711,6 +711,22 @@ class PlayState extends MusicBeatState
 					bgStreet.updateHitbox();
 
 			}
+			case 'entity':
+			{
+					curStage = 'entity';
+
+					defaultCamZoom = 0.96;
+					camMovement = 0.2;
+
+					var forest = new FlxSprite().loadGraphic(Paths.image('entity/forest'));
+					forest.scrollFactor.set(0.95, 0.95);
+					forest.y -= 700;
+					forest.x -= 1600;
+					forest.setGraphicSize(Std.int(forest.width * 6));
+					add(forest);
+
+					forest.updateHitbox();
+			}
 			case 'templeentrance':
 			{
 					curStage = 'templeentrance';
@@ -1146,6 +1162,10 @@ class PlayState extends MusicBeatState
 				dad.x += 50;
 				dad.y -= 70;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+			case '303':
+				dad.x -= 140;
+				dad.y += 240;
+				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'endless':
 				dad.x -= 1100;
 				dad.y -= 600;
@@ -1251,6 +1271,11 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 50;
 				gf.x += 390;
 				gf.y += 230;
+			case 'entity':
+				boyfriend.x += 500;
+				boyfriend.y += 215;
+				gf.x += 240;
+				gf.y += 400;
 			case 'endless':
 				boyfriend.x += 520;
 				boyfriend.y += 50;
@@ -1766,6 +1791,11 @@ class PlayState extends MusicBeatState
 				'house/pixelUI/ready-pixel',
 				'house/pixelUI/set-pixel',
 				'house/pixelUI/date-pixel'
+			]);
+			introAssets.set('entity', [
+				'entity/pixelUI/ready-pixel',
+				'entity/pixelUI/set-pixel',
+				'entity/pixelUI/date-pixel'
 			]);
 			introAssets.set('mine', [
 				'mine/pixelUI/ready-pixel',
@@ -3361,6 +3391,11 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -170;
 							defaultCamZoom = 0.7;
 
+						case '303':
+							camFollow.y = dad.getMidpoint().y - 300 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
+							defaultCamZoom = 0.5;
+
 						case 'alex':
 							camFollow.y = dad.getMidpoint().y - 140;
 							camFollow.x = dad.getMidpoint().x - -300;
@@ -3493,6 +3528,10 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 200 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.9;
+					case 'entity':
+						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.55;
 					case 'templeentrance':
 						camFollow.x = boyfriend.getMidpoint().x - 400;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
@@ -4218,6 +4257,11 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('house'))
 			{
 				pixelShitPart1 = 'house/pixelUI/';
+				pixelShitPart2 = '-pixel';
+			}
+			if (curStage.startsWith('entity'))
+			{
+				pixelShitPart1 = 'entity/pixelUI/';
 				pixelShitPart2 = '-pixel';
 			}
 			if (curStage.startsWith('cave'))

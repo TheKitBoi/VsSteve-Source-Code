@@ -1042,6 +1042,28 @@ class Character extends FlxSprite
 	
 				antialiasing = false;
 
+			case '303':
+				iconColor = 'FFFF0000';
+				frames = Paths.getSparrowAtlas('characters/303');
+				animation.addByPrefix('idle', '303 idle', 24, false);
+				animation.addByPrefix('singUP', '303 up', 24, false);
+				animation.addByPrefix('singLEFT', '303 left', 24, false);
+				animation.addByPrefix('singRIGHT', '303 right', 24, false);
+				animation.addByPrefix('singDOWN', '303 down', 24, false);
+
+				addOffset('idle', -252, -258);
+				addOffset("singUP", -259, -240);
+				addOffset("singRIGHT", -277, -234);
+				addOffset("singLEFT", -235, -264);
+				addOffset("singDOWN", -250, -240);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 7));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'bfminecraft-death': // tragically and sadly:((
 				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');
 				animation.addByPrefix('firstDeath', "bfMinecraftDies.png Dies", 24, false);
