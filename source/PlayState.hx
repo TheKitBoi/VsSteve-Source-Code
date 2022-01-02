@@ -1409,6 +1409,14 @@ class PlayState extends MusicBeatState
 			whiteStuff.alpha = 0;
 		}
 
+		if(SONG.song.toLowerCase() == 'entity')
+		{
+			dad.alpha = 0;
+			camHUD.alpha = 0;
+		}
+			
+
+
 
 		if (loadRep)
 		{
@@ -5207,6 +5215,34 @@ class PlayState extends MusicBeatState
 						});
 					}
 			}
+
+		if(SONG.song.toLowerCase() == 'entity')
+		{
+			switch (curStep)
+			{
+				case 180:
+				new FlxTimer().start(0.01, function(tmr:FlxTimer)
+				{
+					camHUD.alpha += 0.075;
+		
+					if (camHUD.alpha < 1)
+					{
+						tmr.reset(0.01);
+					}
+				});
+
+				case 566:
+					new FlxTimer().start(0.01, function(tmr:FlxTimer)
+						{
+							dad.alpha += 0.065;
+				
+							if (dad.alpha < 1)
+							{
+								tmr.reset(0.01);
+							}
+						});
+				}			
+		}
 
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
