@@ -382,6 +382,10 @@ class PlayState extends MusicBeatState
     */
 
     }
+	if (SONG.song.toLowerCase() == 'entity')
+	{
+		health = 2;
+	}
 
 		switch(SONG.stage)
 		{
@@ -715,8 +719,8 @@ class PlayState extends MusicBeatState
 			{
 					curStage = 'entity';
 
-					defaultCamZoom = 0.96;
-					camMovement = 0.2;
+					defaultCamZoom = 0.85;
+					camMovement = 1;
 
 					var forest = new FlxSprite().loadGraphic(Paths.image('entity/forest'));
 					forest.scrollFactor.set(0.95, 0.95);
@@ -1486,11 +1490,16 @@ class PlayState extends MusicBeatState
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
 				else if(dad.curCharacter == 'bos')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF8008'));
+				else if(dad.curCharacter == '303')
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
 				else
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
 				add(songPosBar);
 
-				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+				if (dad.curCharacter == '303')
+					songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('bossbarfront'));
+				else 
+					songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
 				if (FlxG.save.data.downscroll)
 					songPosXP.y = FlxG.height * 0.9 + 45; 
 				songPosXP.screenCenter(X);
@@ -1552,7 +1561,8 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		if (offsetTesting)
 			scoreTxt.x += 300;
-		if(FlxG.save.data.SpectatorMode) scoreTxt.x = FlxG.width / 2 - 20;													  
+		if(FlxG.save.data.SpectatorMode) 
+		scoreTxt.x = FlxG.width / 2 - 20;													  
 		add(scoreTxt);
 		// idk how I SHOULD MAKE THIS WORK WITH THE SECOND HEALTHBAR BGG LMAOOOOO HELP
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
@@ -1567,7 +1577,8 @@ class PlayState extends MusicBeatState
 		SpectatorModeState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		SpectatorModeState.scrollFactor.set();
 
-		if(FlxG.save.data.SpectatorMode && !loadRep) add(SpectatorModeState);
+		if(FlxG.save.data.SpectatorMode && !loadRep) 
+		add(SpectatorModeState);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -2178,13 +2189,18 @@ class PlayState extends MusicBeatState
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
 			else if(dad.curCharacter == 'bos')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF8008'));
+			else if(dad.curCharacter == '303')
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
 			else
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
 
 				
 			add(songPosBar);
 
-			songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+			if (dad.curCharacter == '303')
+				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('bossbarfront'));
+			else 
+				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
 			if (FlxG.save.data.downscroll)
 				songPosXP.y = FlxG.height * 0.9 + 45; 
 			songPosXP.screenCenter(X);
@@ -3507,7 +3523,7 @@ class PlayState extends MusicBeatState
 					case 'school':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 210;
-						defaultCamZoom = 0.6;
+						defaultCamZoom = 0.9;
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
@@ -3563,7 +3579,7 @@ class PlayState extends MusicBeatState
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 260 + bfnoteMovementYoffset;
-						defaultCamZoom = 0.75;
+						defaultCamZoom = 0.8;
 					case 'dev':
 						camFollow.x = boyfriend.getMidpoint().x - 650;
 						camFollow.y = boyfriend.getMidpoint().y - 350;
@@ -3808,7 +3824,18 @@ class PlayState extends MusicBeatState
 
 						daNote.active = false;
 
-						if (dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'smollalex')
+
+						if (dad.curCharacter == '303')
+						{
+							{
+								daNote.kill();
+								notes.remove(daNote, true);
+								daNote.destroy();
+								if (health > 0.01)
+									health -= 0.0005;
+							}
+						}
+						else if (dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'smollalex')
 						{
 
 							if (healthBar.percent > 20)
@@ -4192,7 +4219,9 @@ class PlayState extends MusicBeatState
 						score = 200;
 						ss = false;
 						goods++;
-						if (health < 2)
+						if (SONG.song.toLowerCase() == 'entity')
+							health += 0.00001;
+						else if (health < 2)
 							health += 0.04;
 						else if (health < 2 && storyDifficulty == 2)
 							health += 0.02;
@@ -4214,7 +4243,9 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						if (health < 2)
+						if (SONG.song.toLowerCase() == 'entity')
+							health += 0.00001;
+						else if (health < 2)
 							health += 0.06;
 						else if (health < 2 && storyDifficulty == 2)
 							health += 0.03;
@@ -4345,7 +4376,8 @@ class PlayState extends MusicBeatState
 			rating.velocity.x -= FlxG.random.int(0, 10);
 
 			var msTiming = HelperFunctions.truncateFloat(noteDiff, 3);
-			if(FlxG.save.data.SpectatorMode) msTiming = 0;							   
+			if(FlxG.save.data.SpectatorMode) 
+				msTiming = 0;							   
 
 			if (currentTimingShown != null)
 				remove(currentTimingShown);
@@ -4391,7 +4423,7 @@ class PlayState extends MusicBeatState
 			if (currentTimingShown.alpha != 1)
 				currentTimingShown.alpha = 1;
 
-			if(!FlxG.save.data.SpectatorMode) add(currentTimingShown);
+			add(currentTimingShown);
 
 			var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 			comboSpr.screenCenter();
@@ -4408,7 +4440,7 @@ class PlayState extends MusicBeatState
 
 			comboSpr.velocity.x += FlxG.random.int(1, 10);
 			currentTimingShown.velocity.x += comboSpr.velocity.x;
-			if(!FlxG.save.data.SpectatorMode) add(rating);
+			add(rating);
 
 
 			//currentTimingShown.updateHitbox();
@@ -5018,11 +5050,11 @@ class PlayState extends MusicBeatState
 
 				if (health > 1)
 				{
-					health -= 0.75;
+					health -= 0.4;
 				}
 				else
 				{
-					health -= 0.25;
+					health -= 0.20;
 				}	
 				
 			});
@@ -5144,7 +5176,10 @@ class PlayState extends MusicBeatState
 
 		function bonkEvent()
 		{
-			health -= 0.5;
+			if (health > 0.45)
+				health -= 0.45;
+			else 
+				health -= 0.2;
 			boyfriend.playAnim('singDOWNmiss', true);
 			FlxG.camera.shake(0.025, 0.025);
 		}

@@ -20,7 +20,7 @@ class Highscore
 		NGio.postScore(score, song);
 		#end
 
-		if(!FlxG.save.data.botplay)
+		if(!FlxG.save.data.SpectatorMode)
 		{
 			if (songScores.exists(daSong))
 			{
@@ -29,7 +29,7 @@ class Highscore
 			}
 			else
 				setScore(daSong, score);
-		}else trace('BotPlay detected. Score saving is disabled.');
+		}else trace('Spectator detected. Score saving is disabled.');
 	}
 
 	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
@@ -39,7 +39,7 @@ class Highscore
 		NGio.postScore(score, "Week " + week);
 		#end
 
-		if(!FlxG.save.data.botplay)
+		if(!FlxG.save.data.SpectatorMode)
 		{
 			var daWeek:String = formatSong('week' + week, diff);
 
@@ -50,7 +50,7 @@ class Highscore
 			}
 			else
 				setScore(daWeek, score);
-		}else trace('BotPlay detected. Score saving is disabled.');
+		}else trace('Spectatpr detected. Score saving is disabled.');
 	}
 
 	/**

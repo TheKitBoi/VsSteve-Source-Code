@@ -91,12 +91,13 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
 
+
 	override function update(elapsed:Float)
 	{
 		if (pauseMusic.volume < 0.5)
 			pauseMusic.volume += 0.01 * elapsed;
 
-		super.update(elapsed);
+		super.update(elapsed);	
 
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
@@ -184,7 +185,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Exit to menu":
 					if(PlayState.loadRep)
 					{
-						FlxG.save.data.botplay = false;
+						FlxG.save.data.SpectatorMode = false;
 						FlxG.save.data.scrollSpeed = 1;
 						FlxG.save.data.downscroll = false;
 					}
