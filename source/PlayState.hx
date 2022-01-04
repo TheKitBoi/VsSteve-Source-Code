@@ -831,7 +831,7 @@ class PlayState extends MusicBeatState
 					curStage = 'tutorial';
 
 					defaultCamZoom = 0.7;
-					camMovement = 0.2;
+					camMovement = 1;
 
 					var repositionShit = -200;
 
@@ -858,7 +858,7 @@ class PlayState extends MusicBeatState
 					curStage = 'tf2';
 
 					defaultCamZoom = 0.96;
-					camMovement = 0.2;
+					camMovement = 1;
 
 					var repositionShit = -200;
 
@@ -1016,6 +1016,9 @@ class PlayState extends MusicBeatState
 			case 'stage':
 				{						
 						defaultCamZoom = 0.9;
+
+						camMovement = 0.2;
+
 						curStage = 'stage';
 						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
 						bg.antialiasing = true;
@@ -1068,6 +1071,36 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 			}
 		}
+		//if (curStage == 'cave')
+		//{
+		//		var images = []; // character wont lag while changing dad
+		//		var xml = [];
+		//		trace("caching images...");
+	//
+		//		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
+		//		{
+		//			if (!i.endsWith(".png"))
+		//				continue;
+		//			images.push(i);
+	//
+		//			if (!i.endsWith(".xml"))
+		//				continue;
+		//			xml.push(i);
+		//		}
+		//		for (i in images)
+		//		{
+		//			var replaced = i.replace(".png","");
+		//			FlxG.bitmap.add(Paths.image("characters/" + replaced,"shared"));
+		//			trace("cached " + replaced);
+		//		}
+		//	
+		//	for (i in xml)
+		//		{
+		//			var replaced = i.replace(".xml","");
+		//			FlxG.bitmap.add(Paths.image("characters/" + replaced,"shared"));
+		//			trace("cached " + replaced);
+		//		}
+		//}
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -3035,21 +3068,21 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
+		{
+			if (dad.animation.finished)
 			{
-				if (dad.animation.finished)
-				{
-					dad.dance();
-				}
+				dad.dance();
 			}
+		}
 
 		if (boyfriend.animation.curAnim.name == 'block')
+		{
+			if (boyfriend.animation.finished)
 			{
-				if (boyfriend.animation.finished)
-				{
-					boyfriend.playAnim('idle');
-				}
+				boyfriend.playAnim('idle');
 			}
+		}
 
 		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
 			camHUD.visible = !camHUD.visible;
@@ -3784,7 +3817,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk')
+						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk' || dad.animation.curAnim.name != 'unequipPickaxe')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -4333,11 +4366,11 @@ class PlayState extends MusicBeatState
 					pixelShitPart1 = 'littleman/pixelUI/';
 					pixelShitPart2 = '-pixel';
 				}
-				if (curStage.startsWith('lost'))
-					{
-						pixelShitPart1 = 'lost/pixelUI/';
-						pixelShitPart2 = '-pixel';
-					}
+			if (curStage.startsWith('lost'))
+				{
+					pixelShitPart1 = 'lost/pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
 			if (curStage.startsWith('tutorial'))
 				{
 					pixelShitPart1 = 'tutorial/pixelUI/';
@@ -5232,16 +5265,40 @@ class PlayState extends MusicBeatState
 				});
 
 				case 566:
-					new FlxTimer().start(0.01, function(tmr:FlxTimer)
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
 						{
-							dad.alpha += 0.065;
+							dad.alpha += 0.01;
 				
 							if (dad.alpha < 1)
 							{
-								tmr.reset(0.01);
+								tmr.reset(0.001);
 							}
 						});
 				}			
+		}
+
+		if (SONG.song.toLowerCase() == 'iron picks') 
+		{
+			switch (curStep)
+			{
+				case 1407:
+					remove(dad);
+					dad = new Character(100, 100, 'alexpickaxemad');
+					add(dad);
+			}
+		}
+
+		if (SONG.song.toLowerCase() == 'copper')
+		{
+			switch (curStep)
+			{
+				case 1024:
+					dad.playAnim('unequipPickaxe', true);
+					
+					//if (dad.animation.curAnim.name == 'unequipPickaxe')
+					
+
+			}
 		}
 
 		if (SONG.song.toLowerCase() == 'suit up')
@@ -5284,37 +5341,7 @@ class PlayState extends MusicBeatState
 				}
 	
 			}
-		//if (SONG.song.toLowerCase() == 'espionage')
-		//{
-		//	switch (curStep)
-		//	{
-		//		case 1:
-		//			
-		//			cpuStrums.forEach(function(spr:FlxSprite)
-		//			{
-		//				FlxTween.tween(spr, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
-		//			});
-		//			cpuStrums.visible = true;
-					//for (i in cpuStrums) 
-					//	{
-					//		FlxTween.tween(i, {alpha: 0}, 0.00001, {ease: FlxEase.quintOut});
-					//	}
-					//	cpuStrums.visible = true;
-				//needs to be finished
-				//ill probably need help with the camera zoom on every note hit of Jaziel
-				//i also need the steps where gabo wants jaziels notes to appear
-				
-		//		case 20:
-					//or (i in cpuStrums) 
-					//
-					//	FlxTween.tween(i, {alpha: 1}, 3, {ease: FlxEase.quintOut});
-					//
-		//			cpuStrums.forEach(function(spr:FlxSprite)
-		//			{
-		//				FlxTween.tween(spr, {alpha: 1}, 3, {ease: FlxEase.quintOut});
-		//			});
-		//	}		
-		//}			
+
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{
@@ -5323,10 +5350,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (dad.curCharacter == 'spooky' && curStep % 4 == 2)
-		{
-			// dad.dance();
-		}
 
 
 		// yes this updates every step.
@@ -5341,10 +5364,6 @@ class PlayState extends MusicBeatState
 		#end
 
 	}
-
-	var lightningStrikeBeat:Int = 0;
-	var lightningOffset:Int = 8;
-
 	override function beatHit()
 	{
 		super.beatHit();
@@ -5368,21 +5387,11 @@ class PlayState extends MusicBeatState
 			if (curBeat % 2 == 0 && dad.animOffsets.exists('danceRight'))
 				dad.playAnim('danceRight');
 		}
-		if (curSong == 'Lost') {
+		if (curSong == 'Lost')
+		{
 				{
 				remove(dad);
 				}
-		
-		}
-
-		if (curSong == 'Iron Picks') {
-			if (curStep == 1407)
-				{
-					remove(dad);
-					dad = new Character(100, 100, 'alexpickaxemad');
-					add(dad);
-				}
-		
 		}
 
 
@@ -5398,18 +5407,12 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.animation.curAnim.name != 'unequipPickaxe' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
-		// HARDCODING FOR MILF ZOOMS!
-		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
-		{
-			FlxG.camera.zoom += 0.015;
-			camHUD.zoom += 0.03;
-		}
 		if (curSong == 'copper' && curBeat >= 128 && curBeat < 160)
 		{
 			FlxG.camera.zoom += 0.025;
@@ -5477,7 +5480,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing"))
+		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("unequipPickaxe"))
 		{
 			dad.dance();
 			if (hasDuoDad)
