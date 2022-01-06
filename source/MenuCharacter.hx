@@ -22,11 +22,11 @@ class CharacterSetting
 class MenuCharacter extends FlxSprite
 {
 	private static var settings:Map<String, CharacterSetting> = [
-		'gf' => new CharacterSetting(390, 180, 1.45, true),
-		'bf' => new CharacterSetting(-300, 135, 0.95, true),
-		'steve' => new CharacterSetting(-200, 170, 1.4),
-		'alex' => new CharacterSetting(-200, 170, 1.4),
-		'notchjeb' => new CharacterSetting(-200, 170, 1.4)
+		'gf' => new CharacterSetting(0, -100, 1.45, true),
+		'bf' => new CharacterSetting(-600, -300, 0.95, true),
+		'steve' => new CharacterSetting(-600, -100, 1.4),
+		'alex' => new CharacterSetting(-600, -100, 1.4),
+		'notch' => new CharacterSetting(-600, -50, 1.4)
 	];
 
 	private var flipped:Bool = false;
@@ -40,16 +40,14 @@ class MenuCharacter extends FlxSprite
 
 		frames = Paths.getSparrowAtlas('campaign_menu_UI_characters');
 
-		animation.addByPrefix('gf', "GF Dancing Beat", 24);
-		animation.addByPrefix('bf', "BF idle dance", 24);
-		animation.addByPrefix('bfConfirm', 'BF HEY', 24, false);
-		animation.addByPrefix('steve', "Steve", 24);
-		animation.addByPrefix('alex', "Alex", 24);
-		animation.addByPrefix('notchjeb', "BONUS", 24);
+		animation.addByPrefix('gf', "gf", 24);
+		animation.addByPrefix('bf', "boyfriend", 24);
+		animation.addByPrefix('bfConfirm', 'bfhey', 24, false);
+		animation.addByPrefix('steve', "steve", 24);
+		animation.addByPrefix('alex', "alex", 24);
+		animation.addByPrefix('notch', "notch", 24);
 
-		//animation.addByPrefix('notchjeb', "NotchandJeb", 24);
-
-		setGraphicSize(Std.int(width * scale));
+		setGraphicSize(Std.int(width * 2.5));
 		updateHitbox();
 	}
 

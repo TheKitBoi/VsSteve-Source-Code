@@ -26,7 +26,7 @@ class StoryMenuState extends MusicBeatState
 	var weekData:Array<Dynamic> = [
 		['Lost', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
 		['Overseen', 'Mine', 'Iron Picks', 'Copper', 'Underrated', 'Tick Tock'],
-		['Fast Travel', 'Gapple', 'Jeb', 'Removed', 'Last Craft']
+		['Fast Travel', 'Gapple', 'Retired']
 	];
 	var curDifficulty:Int = 1;
 
@@ -34,8 +34,8 @@ class StoryMenuState extends MusicBeatState
 
 	var weekCharacters:Array<Dynamic> = [
 		['steve', 'bf', 'gf'],		
-		['alex', 'bf', 'gf'],
-		['notchjeb', 'bf', 'gf']
+		['alex', 'bf', ''],
+		['notch', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
