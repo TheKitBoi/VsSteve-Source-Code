@@ -125,23 +125,6 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 
-			case 'no-gf':
-				iconColor = 'FFB03060';
-				tex = Paths.getSparrowAtlas('characters/no-gf');
-				frames = tex;
-				animation.addByIndices('singUP', 'GF IDLE', [2], "", 24, false);
-				animation.addByIndices('danceLeft', 'GF IDLE', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF IDLE', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-
-				addOffset('danceLeft', 0);
-				addOffset('danceRight', 0);
-
-				playAnim('danceRight');
-
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
-				antialiasing = false;
-
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
 				frames = tex;
@@ -186,59 +169,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-			case 'bf-christmas':
-				var tex = Paths.getSparrowAtlas('characters/bfChristmas');
-				frames = tex;
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
 
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
-
-				playAnim('idle');
-
-				flipX = true;
-			case 'bf-car':
-				var tex = Paths.getSparrowAtlas('characters/bfCar');
-				frames = tex;
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				playAnim('idle');
-
-				flipX = true;
 			case 'bf-pixel':
 				frames = Paths.getSparrowAtlas('characters/bfPixel');
 				animation.addByPrefix('idle', 'BF IDLE', 24, false);
@@ -251,7 +182,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHTmiss', 'BF RIGHT MISS', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'BF DOWN MISS', 24, false);
 				animation.addByPrefix('block', 'BF BLOCK', 24, false);
-
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -263,6 +194,7 @@ class Character extends FlxSprite
 				addOffset("singLEFTmiss");
 				addOffset("singDOWNmiss");
 				addOffset("block");
+				addOffset("hey", 12, -6);
 
 
 				setGraphicSize(Std.int(width * 6));
@@ -408,27 +340,6 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'tiagoswag':
-				iconColor = 'FF800080';
-				frames = Paths.getSparrowAtlas('characters/TiagoSwag');
-				animation.addByPrefix('idle', 'TiagoSwag Idle', 24, false);
-				animation.addByPrefix('singUP', 'TiagoSwag UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'TiagoSwag LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'TiagoSwag RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'TiagoSwag DOWN NOTE', 24, false);
-		
-				addOffset('idle', -3, -3);
-				addOffset("singUP", -18, 14);
-				addOffset("singRIGHT", -4, -21);
-				addOffset("singLEFT", 19, -5);
-				addOffset("singDOWN", 12, -12);
-		
-				playAnim('idle');
-		
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				antialiasing = false;
 
 			case 'senpai-angry':
 				iconColor = 'FF264B73';
@@ -607,70 +518,6 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 				
-			case 'stevefnm':
-				iconColor = 'FF2B5480';
-				frames = Paths.getSparrowAtlas('characters/stevefnm');
-				animation.addByPrefix('idle', 'stevefnm Idle', 24, false);
-				animation.addByPrefix('singUP', 'stevefnm up', 24, false);
-				animation.addByPrefix('singLEFT', 'stevefnm left', 24, false);
-				animation.addByPrefix('singRIGHT', 'stevefnm right', 24, false);
-				animation.addByPrefix('singDOWN', 'stevefnm down', 24, false);
-
-
-				addOffset('idle', -250, -260);
-				addOffset("singUP", -260, -260);
-				addOffset("singRIGHT", -252, -260);
-				addOffset("singLEFT", -250, -260);
-				addOffset("singDOWN", -248, -267);
-
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				antialiasing = false;
-
-			case 'stevematt':
-				iconColor = 'FF2B5480';
-				frames = Paths.getSparrowAtlas('characters/stevematt');
-				animation.addByPrefix('idle', 'steve Idle', 24, false);
-				animation.addByPrefix('singUP', 'steve UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'steve LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'steve RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'steve DOWN NOTE', 24, false);
-	
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
-				playAnim('idle');
-	
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-	
-				antialiasing = false;
-
-			case 'stevelucky':
-				iconColor = 'FF2B5480';
-				frames = Paths.getSparrowAtlas('characters/stevelucky');
-				animation.addByPrefix('idle', 'steve Idle', 24, false);
-				animation.addByPrefix('singUP', 'steve UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'steve LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'steve RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'steve DOWN NOTE', 24, false);
-	
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
-				playAnim('idle');
-	
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-	
-				antialiasing = false;
 
 			case 'alexnormal':
 				iconColor = 'FF9AFF9A';
@@ -857,28 +704,6 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
-
-			case 'spirit':
-				frames = Paths.getPackerAtlas('characters/spirit');
-				animation.addByPrefix('idle', "idle spirit_", 24, false);
-				animation.addByPrefix('singUP', "up_", 24, false);
-				animation.addByPrefix('singRIGHT', "right_", 24, false);
-				animation.addByPrefix('singLEFT', "left_", 24, false);
-				animation.addByPrefix('singDOWN', "spirit down_", 24, false);
-
-				addOffset('idle', -220, -280);
-				addOffset('singUP', -220, -240);
-				addOffset("singRIGHT", -220, -280);
-				addOffset("singLEFT", -200, -280);
-				addOffset("singDOWN", 170, 110);
-
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				playAnim('idle');
-
-				antialiasing = false;
-				
 
 			case 'gabo':
 				iconColor = 'FF8FD8D4';

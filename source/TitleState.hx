@@ -428,18 +428,6 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-
-
-		var cake:Bool = false;
-		
-		if (FlxG.random.bool(15.5))
-		{
-			cake = true;
-			trace('Cake is now here...');
-		}
-			
-
-
 		logoBl.animation.play('bump');
 		//danceLeft = !danceLeft;
 
@@ -455,7 +443,8 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['TracedInPurple (Tiago)', 'TheGaboDiaz', 'and the Vs Steve Team']);
+				createCoolText(['TheGaboDiaz', 'TracedInPurple']);
+				addMoreText('and the Vs Steve Team');
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -467,31 +456,20 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				if (cake = true)
-				{
-					trace('CAKEY WAS HERE LOL');
-					createCoolText(['Ayo,', 'Cake was here...']);
-				}
-				else
-					createCoolText(['Kade Engine', 'highly Modified by']);
+			
+				createCoolText(['Kade Engine', 'highly Modified by']);
 
 			case 7:
-				if (cake = true)
-				{
-					createCoolText(['hehehhee']);
-					cakey.visible = true;
-				}
-				else
-				{
-					addMoreText('TracedInPurple');
-					ngSpr.visible = true;
-				}
+
+
+				addMoreText('TracedInPurple');
+				ngSpr.visible = true;
+		
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-				if (cake = true)
-					cakey.visible = false;
+
 
 			case 9:
 				createCoolText([curWacky[0]]);

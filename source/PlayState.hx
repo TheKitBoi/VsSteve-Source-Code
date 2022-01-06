@@ -477,8 +477,8 @@ class PlayState extends MusicBeatState
 					bg.animation.addByPrefix('idle', 'background 2', 24);
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.8, 0.9);
-					bg.scale.set(6, 6);
-					add(bg);
+					bg.scale.set(6, 6); 
+					add(bg); 
 
 					/* 
 							var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
@@ -5088,7 +5088,7 @@ class PlayState extends MusicBeatState
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
 				boyfriend.playAnim('singDOWNmiss', true);	
-
+				iconP1.animation.curAnim.curFrame = 3;
 				if (health > 1)
 				{
 					health -= 0.4;
@@ -5100,6 +5100,10 @@ class PlayState extends MusicBeatState
 				
 			});
 			FlxG.camera.shake(0.05, 0.05);
+			new FlxTimer().start(0.3, function(tmr:FlxTimer)
+			{
+				iconP1.animation.curAnim.curFrame = 0;
+			});
 		}
 
 		function bfBlock()
@@ -5153,6 +5157,11 @@ class PlayState extends MusicBeatState
 		function stevePrepare()
 		{
 			dad.playAnim("prepare", true);
+		}
+
+		function alexUnequip()
+		{
+			dad.playAnim("unequipPickaxe", true);
 		}
 
 		var pressedSpace:Bool = false;
@@ -5222,7 +5231,13 @@ class PlayState extends MusicBeatState
 			else 
 				health -= 0.2;
 			boyfriend.playAnim('singDOWNmiss', true);
+			iconP1.animation.curAnim.curFrame = 2;
 			FlxG.camera.shake(0.025, 0.025);
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			{
+				iconP1.animation.curAnim.curFrame = 0;
+
+			});
 		}
 
 	override function stepHit()
@@ -5293,11 +5308,26 @@ class PlayState extends MusicBeatState
 			switch (curStep)
 			{
 				case 1024:
-					dad.playAnim('unequipPickaxe', true);
-					
+					//dad.playAnim('unequipPickaxe', true);
+					alexUnequip();
 					//if (dad.animation.curAnim.name == 'unequipPickaxe')
 					
 
+			}
+		}
+
+		if (SONG.song.toLowerCase() == 'whatever')
+		{
+			switch (curStep)
+			{
+				case 392 | 408 | 424 | 440 | 456 | /*hey in note*/ 472 | /*hey in note*/ 488 | /*hey in note*/ 504 | 520 | 536 | 552 | 568:
+					boyfriend.playAnim('hey', true);
+				
+				case 1416 | 1432 | 1448 | 1464 | 1480 | 1496 | 1512 | 1528:
+					boyfriend.playAnim('hey', true);
+				case 1544:
+						boyfriend.playAnim('hey', true);
+ 
 			}
 		}
 
@@ -5314,7 +5344,7 @@ class PlayState extends MusicBeatState
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 /*846*/ | 848 | 864 | 866 | 880 | 1166:
 					slashEvent();
 					stevePrepare();
-				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1170:
+				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1172:
 					steveAttack();
 				case  800 | 802 | 816 | 818:
 					slashEvent();
