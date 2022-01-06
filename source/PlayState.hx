@@ -1156,8 +1156,8 @@ class PlayState extends MusicBeatState
 				dad.y -= 0;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteveuoh':
-				dad.x += 150;
-				dad.y += 360;
+				dad.x -= 140;
+				dad.y += 200;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'tuxsteve':
 				dad.x -= 140;
@@ -3410,8 +3410,8 @@ class PlayState extends MusicBeatState
 				switch (dad.curCharacter)
 				{
 						case 'tuxsteveuoh':
-							camFollow.y = dad.getMidpoint().y - 500;
-							camFollow.x = dad.getMidpoint().x - 100;
+							camFollow.y = dad.getMidpoint().y - 175;
+							camFollow.x = dad.getMidpoint().x - -250;
 							defaultCamZoom = 0.6;
 
 						case 'tuxsteve':
