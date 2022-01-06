@@ -545,22 +545,23 @@ class Character extends FlxSprite
 			case 'tuxsteveuoh':
 				iconColor = 'FF2B5480';
 				frames = Paths.getSparrowAtlas('characters/tuxsteveuoh');
-				animation.addByPrefix('idle', 'tux steve Idle', 24, false);
-				animation.addByPrefix('singUP', 'tux steve UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'tux steve LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'tux steve RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'tux steve DOWN NOTE', 24, false);
-	
-				addOffset('idle');
-				addOffset("singUP", 5, 37);
-				addOffset("singRIGHT");
-				addOffset("singLEFT", 40);
-				addOffset("singDOWN", 14);
+				animation.addByPrefix('idle', 'tuxsteveuoh idle', 24, false);
+				animation.addByPrefix('singUP', 'tuxsteveuoh up', 24, false);
+				animation.addByPrefix('singLEFT', 'tuxsteveuoh left', 24, false);
+				animation.addByPrefix('singRIGHT', 'tuxsteveuoh right', 24, false);
+				animation.addByPrefix('singDOWN', 'tuxsteveuoh down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -274, -242);
+				addOffset("singRIGHT", -292, -277);
+				addOffset("singLEFT", -256, -260);
+				addOffset("singDOWN", -244, -260);
+
 				playAnim('idle');
-	
-				setGraphicSize(Std.int(width * 6));
+
+				setGraphicSize(Std.int(width * 5.8));
 				updateHitbox();
-	
+
 				antialiasing = false;
 
 			case 'tuxsteve':
