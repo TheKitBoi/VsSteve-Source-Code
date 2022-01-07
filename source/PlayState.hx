@@ -904,9 +904,9 @@ class PlayState extends MusicBeatState
 					var lost:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('lost/lost'));
 					lost.scrollFactor.set(0.95, 0.95);
 					add(lost);
-					lost.y -= 220;
+					lost.y -= 600;
 					lost.x -= 200;
-					lost.setGraphicSize(Std.int(lost.width * daPixelZoom));
+					lost.setGraphicSize(Std.int(lost.width * 8.5));
 
 					lost.updateHitbox();
 
@@ -5373,6 +5373,15 @@ class PlayState extends MusicBeatState
 					//if (dad.animation.curAnim.name == 'unequipPickaxe')
 					
 
+			}
+		}
+
+		if (SONG.song.toLowerCase() == 'practice')
+		{
+			switch (curStep)
+			{
+				case 516 | 524 | 532 | 540 |  548| 556 | 564 | 572| 580 | 588 | 596| 604 | 612 | 620 | 628 | 636:
+					gf.playAnim('hey', true);
 			}
 		}
 
