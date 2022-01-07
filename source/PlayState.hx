@@ -3060,12 +3060,21 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
+		if(FlxG.keys.justPressed.E && oneTimeUse == false)
+		{
+			Regen();
+		}
+		if(FlxG.keys.justPressed.T && oneTimeUse == false)
+		{
+			Strength();
+		}
+
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
 			if (FlxG.keys.justPressed.SPACE)
-				{
-				   boyfriend.playAnim('block', true);
-				}
+			{
+			   boyfriend.playAnim('block', true);
+			}
 		}
 
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
@@ -3169,7 +3178,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.NINE)
 		{
-			trace('Hello, no secret here heheheeheheheheheehehehehhe');
+			iconP1.animation.curAnim.curFrame = 3;
 		}
 
 		switch (curStage)
@@ -3285,12 +3294,15 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
-		if (healthBar.percent < 20)
+		if (healthBar.percent < 20 && hurtIcon == false)
 			iconP1.animation.curAnim.curFrame = 1;
-		else if (healthBar.percent > 80)
+		else if (healthBar.percent > 80 && hurtIcon == false)
 			iconP1.animation.curAnim.curFrame = 2;
-		else
+		else if (hurtIcon = false)
 			iconP1.animation.curAnim.curFrame = 0;
+
+		if (hurtIcon = true)
+			iconP1.animation.curAnim.curFrame = 3;
 
 		if (healthBar.percent > 80)
 			iconP2.animation.curAnim.curFrame = 1;
@@ -3298,6 +3310,7 @@ class PlayState extends MusicBeatState
 			iconP2.animation.curAnim.curFrame = 2;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
+
 
 
 		/* if (FlxG.keys.justPressed.NINE)
@@ -5062,6 +5075,46 @@ class PlayState extends MusicBeatState
 			});
 		}
 
+		var oneTimeUse:Bool = false;
+		var healthGain:Float = 0;
+
+		function Regen():Void
+			{
+				oneTimeUse = true;
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFFF75A7);
+				new FlxTimer().start(0.001, function(swagTimer:FlxTimer)
+				{
+					health += 0.0005;
+					healthGain += 0.0005;
+					if (healthGain < 3)
+					{
+						swagTimer.reset(); 
+					}
+					else
+					{
+						healthGain = 0;
+						healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+	
+					}
+				});
+			}
+
+			var strengthActive:Bool = false;
+//
+			function Strength()
+			{
+				oneTimeUse = true;
+				strengthActive = true;
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFA50000);
+				new FlxTimer().start(30, function(swagTimer:FlxTimer)
+				{
+					strengthActive = false;
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				});
+			}
+
+
+
 		var gappleActivated:Bool = false;
 
 		function GappleEffect():Void
@@ -5083,12 +5136,14 @@ class PlayState extends MusicBeatState
 			);
 		}
 
+		var hurtIcon:Bool = false;
+
 		function blockFail()
 		{
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
 				boyfriend.playAnim('singDOWNmiss', true);	
-				iconP1.animation.curAnim.curFrame = 3;
+				hurtIcon = true;
 				if (health > 1)
 				{
 					health -= 0.4;
@@ -5100,10 +5155,15 @@ class PlayState extends MusicBeatState
 				
 			});
 			FlxG.camera.shake(0.05, 0.05);
-			new FlxTimer().start(0.3, function(tmr:FlxTimer)
+
+			new FlxTimer().start(0.75, function(tmr:FlxTimer)
 			{
-				iconP1.animation.curAnim.curFrame = 0;
+				hurtIcon = false;
 			});
+			//new FlxTimer().start(0.3, function(tmr:FlxTimer)
+			//{
+			//	iconP1.animation.curAnim.curFrame = 0;
+			//});
 		}
 
 		function bfBlock()
@@ -5231,7 +5291,7 @@ class PlayState extends MusicBeatState
 			else 
 				health -= 0.2;
 			boyfriend.playAnim('singDOWNmiss', true);
-			iconP1.animation.curAnim.curFrame = 2;
+			iconP1.animation.curAnim.curFrame = 3;
 			FlxG.camera.shake(0.025, 0.025);
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{

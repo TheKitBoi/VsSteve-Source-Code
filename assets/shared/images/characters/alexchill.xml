@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="alexchill.png"><SubTexture name="alexchill idle0000" x="0" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
+<TextureAtlas imagePath="alexchill.png">
+<SubTexture name="alexchill idle0000" x="0" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
 <SubTexture name="alexchill idle0001" x="129" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
 <SubTexture name="alexchill idle0002" x="258" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />
 <SubTexture name="alexchill idle0003" x="387" y="0" width="129" height="113" frameX="0" frameY="0" frameWidth="129" frameHeight="113" />

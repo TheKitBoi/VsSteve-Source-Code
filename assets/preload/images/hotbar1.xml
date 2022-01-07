@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hothbar1.png">
+	<SubTexture name="hotbarMic 0000" x="166" y="0" width="73" height="73"/>
+	<SubTexture name="hotbarShield 0000" x="0" y="0" width="73" height="73"/>
+	<SubTexture name="hotbarPotion 0000" x="0" y="0" width="73" height="73"/>
+</TextureAtlas>
