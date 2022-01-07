@@ -5382,11 +5382,16 @@ class PlayState extends MusicBeatState
 			{
 				case 392 | 408 | 424 | 440 | 456 | /*hey in note*/ 472 | /*hey in note*/ 488 | /*hey in note*/ 504 | 520 | 536 | 552 | 568:
 					boyfriend.playAnim('hey', true);
+					gf.playAnim('hey', true);
+
 				
 				case 1416 | 1432 | 1448 | 1464 | 1480 | 1496 | 1512 | 1528:
 					boyfriend.playAnim('hey', true);
+					gf.playAnim('hey', true);
+
 				case 1544:
 						boyfriend.playAnim('hey', true);
+						gf.playAnim('hey', true);
  
 			}
 		}
@@ -5503,6 +5508,12 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
+		if (curSong == 'whatever' && curBeat >= 288 && curBeat < 352)
+			{
+				FlxG.camera.zoom += 0.025;
+				camHUD.zoom += 0.03;
+				trace(FlxG.camera.zoom);
+			}
 		if (curSong == 'copper' && curBeat >= 128 && curBeat < 160)
 		{
 			FlxG.camera.zoom += 0.025;
