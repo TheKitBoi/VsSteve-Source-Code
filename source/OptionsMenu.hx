@@ -88,6 +88,7 @@ class OptionsMenu extends MusicBeatState
 			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, options[i].getName(), true, false, true);
 			controlLabel.isMenuItem = true;
 			controlLabel.targetY = i;
+			controlLabel.screenCenter(X);
 			grpControls.add(controlLabel);
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
@@ -132,6 +133,7 @@ class OptionsMenu extends MusicBeatState
 						var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, options[i].getName(), true, false);
 						controlLabel.isMenuItem = true;
 						controlLabel.targetY = i;
+						controlLabel.screenCenter(X);
 						grpControls.add(controlLabel);
 						// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 					}
@@ -224,6 +226,7 @@ class OptionsMenu extends MusicBeatState
 							var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, currentSelectedCat.getOptions()[i].getDisplay(), true, false);
 							controlLabel.isMenuItem = true;
 							controlLabel.targetY = i;
+							controlLabel.screenCenter(X);
 							grpControls.add(controlLabel);
 							// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 						}
