@@ -24,7 +24,7 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Lost', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
+		['Practice', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
 		['Overseen', 'Mine', 'Iron Picks', 'Copper', 'Underrated', 'Tick Tock'],
 		['Fast Travel', 'Gapple', 'Retired']
 	];
