@@ -22,11 +22,11 @@ class CharacterSetting
 class MenuCharacter extends FlxSprite
 {
 	private static var settings:Map<String, CharacterSetting> = [
-		'gf' => new CharacterSetting(0, -100, 1.45, true),
-		'bf' => new CharacterSetting(-600, -300, 0.95, true),
-		'steve' => new CharacterSetting(-600, -100, 1.4),
-		'alex' => new CharacterSetting(-600, -100, 1.4),
-		'notch' => new CharacterSetting(-600, -50, 1.4)
+		'gf' => new CharacterSetting(100, -75, 1.45, true),
+		'bf' => new CharacterSetting(-650, -325, 0.95, true),
+		'steve' => new CharacterSetting(-500, -100, 1.4),
+		'alex' => new CharacterSetting(-500, -100, 1.4),
+		'notch' => new CharacterSetting(-500, -25, 1.4)
 	];
 
 	private var flipped:Bool = false;
@@ -47,7 +47,7 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('alex', "alex", 24);
 		animation.addByPrefix('notch', "notch", 24);
 
-		setGraphicSize(Std.int(width * 2.5));
+		setGraphicSize(Std.int(width * 4));
 		updateHitbox();
 	}
 
@@ -67,7 +67,7 @@ class MenuCharacter extends FlxSprite
 
 		var setting:CharacterSetting = settings[character];
 		offset.set(setting.x, setting.y);
-		setGraphicSize(Std.int(width * setting.scale));
+		//setGraphicSize(Std.int(width * setting.scale));
 		flipX = setting.flipped != flipped;
 	}
 }
