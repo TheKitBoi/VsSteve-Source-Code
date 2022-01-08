@@ -248,7 +248,7 @@ class PlayState extends MusicBeatState
 	var scroll:Bool = false;
 	var tween:FlxTween;
 
-	
+	var hurtIcon:Bool = false;
 	
 	
 	private var hero:Float = 0;
@@ -3060,11 +3060,16 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-		if(FlxG.keys.justPressed.E && oneTimeUse == false)
+		if (SONG.song.toLowerCase() == 'practice')
+		{
+			cpuStrums.visible = false;
+		}
+
+		if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
 		{
 			Regen();
 		}
-		if(FlxG.keys.justPressed.T && oneTimeUse == false)
+		if(FlxG.keys.justPressed.T && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUse == false)
 		{
 			Strength();
 		}
@@ -3294,15 +3299,16 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
-		if (healthBar.percent < 20 && hurtIcon == false)
-			iconP1.animation.curAnim.curFrame = 1;
-		else if (healthBar.percent > 80 && hurtIcon == false)
-			iconP1.animation.curAnim.curFrame = 2;
-		else if (hurtIcon = false)
-			iconP1.animation.curAnim.curFrame = 0;
-
 		if (hurtIcon = true)
 			iconP1.animation.curAnim.curFrame = 3;
+		else if (healthBar.percent < 20)
+			iconP1.animation.curAnim.curFrame = 1;
+		else if (healthBar.percent > 80)
+			iconP1.animation.curAnim.curFrame = 2;
+		else
+			iconP1.animation.curAnim.curFrame = 0;
+
+		
 
 		if (healthBar.percent > 80)
 			iconP2.animation.curAnim.curFrame = 1;
@@ -5079,25 +5085,25 @@ class PlayState extends MusicBeatState
 		var healthGain:Float = 0;
 
 		function Regen():Void
+		{
+			oneTimeUse = true;
+			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFFF75A7);
+			new FlxTimer().start(0.0075, function(swagTimer:FlxTimer)
 			{
-				oneTimeUse = true;
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFFF75A7);
-				new FlxTimer().start(0.001, function(swagTimer:FlxTimer)
+				health += 0.0005;
+				healthGain += 0.0005;
+				if (healthGain < 3)
 				{
-					health += 0.0005;
-					healthGain += 0.0005;
-					if (healthGain < 3)
-					{
-						swagTimer.reset(); 
-					}
-					else
-					{
-						healthGain = 0;
-						healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-	
-					}
-				});
-			}
+					swagTimer.reset(); 
+				}
+				else
+				{
+					healthGain = 0;
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+
+				}
+			});
+		}
 
 			var strengthActive:Bool = false;
 //
@@ -5136,7 +5142,7 @@ class PlayState extends MusicBeatState
 			);
 		}
 
-		var hurtIcon:Bool = false;
+		
 
 		function blockFail()
 		{
@@ -5168,7 +5174,7 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			if (FlxG.keys.justPressed.SPACE)
+			if (FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
 				boyfriend.playAnim('block', true);
 			}

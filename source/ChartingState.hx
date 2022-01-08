@@ -136,7 +136,7 @@ class ChartingState extends MusicBeatState
 		add(gridBlackLine);
 
 		curRenderedNotes = new FlxTypedGroup<Note>();
-		curRenderedSustains = new FlxTypedGroup<FlxSprite>();
+		curRenderedSustains = new FlxTypedGroup<FlxSprite>(FlxColor.GRAY);
 
 		FlxG.mouse.visible = true;
 		FlxG.save.bind('funkin', 'ninjamuffin99');
@@ -1257,7 +1257,7 @@ class ChartingState extends MusicBeatState
 				if (daSus > 0)
 				{
 					var sustainVis:FlxSprite = new FlxSprite(note.x + (GRID_SIZE / 2),
-						note.y + GRID_SIZE).makeGraphic(8, Math.floor(FlxMath.remapToRange(daSus, 0, Conductor.stepCrochet * _song.notes[curSection].lengthInSteps, 0, gridBG.height)));
+						note.y + GRID_SIZE).makeGraphic(8, Math.floor(FlxMath.remapToRange(daSus, 0, Conductor.stepCrochet * _song.notes[curSection].lengthInSteps, 0, gridBG.height)), FlxColor.GRAY);
 					curRenderedSustains.add(sustainVis);
 				}
 			}

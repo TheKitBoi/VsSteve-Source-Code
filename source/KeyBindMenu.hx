@@ -37,21 +37,25 @@ class KeyBindMenu extends FlxSubState
     var keyTextDisplay:FlxText;
     var keyWarning:FlxText;
     var warningTween:FlxTween;
-    var keyText:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT"];
-    var defaultKeys:Array<String> = ["A", "S", "W", "D", "R"];
-    var defaultGpKeys:Array<String> = ["DPAD_LEFT", "DPAD_DOWN", "DPAD_UP", "DPAD_RIGHT"];
+    var keyText:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT", "REGEN. POTION", "STRENGTH POTION"];
+    var defaultKeys:Array<String> = ["A", "S", "W", "D", "E", "T", "R"];
+    var defaultGpKeys:Array<String> = ["DPAD_LEFT", "DPAD_DOWN", "DPAD_UP", "DPAD_RIGHT" , "A", "A", "B"];
     var curSelected:Int = 0;
 
     var keys:Array<String> = [FlxG.save.data.leftBind,
                               FlxG.save.data.downBind,
                               FlxG.save.data.upBind,
-                              FlxG.save.data.rightBind];
+                              FlxG.save.data.rightBind,
+                              FlxG.save.data.regenPotionBind,
+                              FlxG.save.data.strengthPotionBind];
     var gpKeys:Array<String> = [FlxG.save.data.gpleftBind,
                               FlxG.save.data.gpdownBind,
                               FlxG.save.data.gpupBind,
-                              FlxG.save.data.gprightBind];
+                              FlxG.save.data.gprightBind,
+                              FlxG.save.data.gregenPotionBind,
+                              FlxG.save.data.gstrengthPotionBind];
     var tempKey:String = "";
-    var blacklist:Array<String> = ["ESCAPE", "ENTER", "BACKSPACE", "SPACE", "TAB"];
+    var blacklist:Array<String> = ["ESCAPE", "ENTER", "BACKSPACE", "TAB"];
 
     var blackBox:FlxSprite;
     var infoText:FlxText;
@@ -81,7 +85,7 @@ class KeyBindMenu extends FlxSubState
 
         keyTextDisplay = new FlxText(-10, 0, 1280, "", 72);
 		keyTextDisplay.scrollFactor.set(0, 0);
-		keyTextDisplay.setFormat("VCR OSD Mono", 42, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		keyTextDisplay.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		keyTextDisplay.borderSize = 2;
 		keyTextDisplay.borderQuality = 3;
 
@@ -90,7 +94,7 @@ class KeyBindMenu extends FlxSubState
 
         infoText = new FlxText(-10, 580, 1280, 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Escape'} to save, ${KeyBinds.gamepad ? 'LEFT Trigger' : 'Backspace'} to leave without saving. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})', 72);
 		infoText.scrollFactor.set(0, 0);
-		infoText.setFormat("VCR OSD Mono", 24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		infoText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		infoText.borderSize = 2;
 		infoText.borderQuality = 3;
         infoText.alpha = 0;
@@ -255,7 +259,7 @@ class KeyBindMenu extends FlxSubState
 
         if (KeyBinds.gamepad)
         {
-            for(i in 0...4){
+            for(i in 0...6){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
                 trace(gpKeys[i]);
@@ -265,9 +269,10 @@ class KeyBindMenu extends FlxSubState
         }
         else
         {
-            for(i in 0...4){
+            for(i in 0...6){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
+            
                 keyTextDisplay.text += textStart + keyText[i] + ": " + ((keys[i] != keyText[i]) ? (keys[i] + " / ") : "" ) + keyText[i] + " ARROW\n";
 
             }
@@ -283,11 +288,15 @@ class KeyBindMenu extends FlxSubState
         FlxG.save.data.downBind = keys[1];
         FlxG.save.data.leftBind = keys[0];
         FlxG.save.data.rightBind = keys[3];
+        FlxG.save.data.regenPotionBind = keys[4];
+        FlxG.save.data.strengthPotionBind = keys[5];
         
         FlxG.save.data.gpupBind = gpKeys[2];
         FlxG.save.data.gpdownBind = gpKeys[1];
         FlxG.save.data.gpleftBind = gpKeys[0];
         FlxG.save.data.gprightBind = gpKeys[3];
+        FlxG.save.data.gregenPotionBind = keys[4];
+        FlxG.save.data.gstrengthPotionBind = keys[5];
 
         FlxG.save.flush();
 
@@ -297,7 +306,7 @@ class KeyBindMenu extends FlxSubState
 
     function reset(){
 
-        for(i in 0...5){
+        for(i in 0...6){
             keys[i] = defaultKeys[i];
         }
         quit();
@@ -396,9 +405,9 @@ class KeyBindMenu extends FlxSubState
     {
         curSelected += _amount;
                 
-        if (curSelected > 3)
+        if (curSelected > 5)
             curSelected = 0;
         if (curSelected < 0)
-            curSelected = 3;
+            curSelected = 5;
     }
 }
