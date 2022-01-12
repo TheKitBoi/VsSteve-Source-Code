@@ -3616,8 +3616,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
 					case 'lost':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 360;
+						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 305 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'tutorial':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
