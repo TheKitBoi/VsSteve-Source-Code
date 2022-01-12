@@ -213,6 +213,7 @@ class OptionsMenu extends MusicBeatState
 						grpControls.remove(grpControls.members[curSelected]);
 						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, currentSelectedCat.getOptions()[curSelected].getDisplay(), true, false);
 						ctrl.isMenuItem = true;
+						ctrl.screenCenter(X);
 						grpControls.add(ctrl);
 					}
 				}
@@ -277,11 +278,13 @@ class OptionsMenu extends MusicBeatState
 			bullShit++;
 
 			item.alpha = 0.6;
+			item.screenCenter(X);
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
 			if (item.targetY == 0)
 			{
 				item.alpha = 1;
+				item.screenCenter(X);
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}

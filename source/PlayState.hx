@@ -288,7 +288,7 @@ class PlayState extends MusicBeatState
 		switch (storyDifficulty)
 		{
 			case 0:
-				storyDifficultyText = "Normal";
+				storyDifficultyText = "Peaceful";
 			case 1:
 				storyDifficultyText = "Hard";
 			case 2:
@@ -4147,7 +4147,7 @@ class PlayState extends MusicBeatState
 					var difficulty:String = "";
 
 					if (storyDifficulty == 0)
-						difficulty = '-normal';
+						difficulty = '-peaceful';
 
 					if (storyDifficulty == 3)
 						difficulty = '-ultrahardcore';

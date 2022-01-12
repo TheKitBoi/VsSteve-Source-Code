@@ -69,7 +69,7 @@ class Highscore
 		var daSong:String = song;
 
 		if (diff == 0)
-			daSong += '-normal';
+			daSong += '-peaceful';
 		else if (diff == 3)
 			daSong += '-ultrahardcore';
 
