@@ -3060,11 +3060,6 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-		if (SONG.song.toLowerCase() == 'practice')
-		{
-			cpuStrums.visible = false;
-		}
-
 		if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
 		{
 			Regen();
