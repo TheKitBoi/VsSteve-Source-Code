@@ -4,7 +4,7 @@ function start(song) -- arguments, the song name
     for i = 4, 7 do -- go to the center
         tweenPosXAngle(i, _G['defaultStrum'..i..'X'] - 275,getActorAngle(i) + 0, 0.6, 'setDefault')
     end
-    for i = 0, 3 do -- go to the center
+    for i = 0, 3 do -- go off screen
         tweenPosXAngle(i, _G['defaultStrum'..i..'X'] - 500,getActorAngle(i) + 0, 0.6, 'setDefault')
     end
 
