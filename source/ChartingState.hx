@@ -1029,7 +1029,12 @@ class ChartingState extends MusicBeatState
 			+ "\nCurStep: " 
 			+ curStep
 			+ "\nCurBeat: "
-			+ curBeat;
+			+ curBeat
+			+ "\nHold CTRL to add a Wither Note!"
+			+ "\nHold ALT to add a Posion Note!"
+			+ "\nHold G to add a Gapple Note!";
+
+
 		super.update(elapsed);
 	}
 

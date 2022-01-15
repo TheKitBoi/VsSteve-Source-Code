@@ -249,6 +249,7 @@ class PlayState extends MusicBeatState
 	var tween:FlxTween;
 
 	var hurtIcon:Bool = false;
+	public var strengthActive:Bool = false;
 	
 	
 	private var hero:Float = 0;
@@ -295,19 +296,6 @@ class PlayState extends MusicBeatState
 				storyDifficultyText = "Hardcore";
 			case 3:
 				storyDifficultyText = "Ultra Hardcore";
-		}
-
-		iconRPC = SONG.player2;
-
-		// To avoid having duplicate images in Discord assets
-		switch (iconRPC)
-		{
-			case 'senpai-angry':
-				iconRPC = 'senpai';
-			case 'monster-christmas':
-				iconRPC = 'monster';
-			case 'mom-car':
-				iconRPC = 'mom';
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
@@ -2479,6 +2467,82 @@ class PlayState extends MusicBeatState
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
 
+				case 'funkyArrows':
+					babyArrow.loadGraphic(Paths.image('lost/pixelUI/funkyArrows-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+				babyArrow.updateHitbox();
+				babyArrow.scrollFactor.set();
+
+
+
+				case 'hardcore-funkyArrows':
+					babyArrow.loadGraphic(Paths.image('lost/pixelUI/funkyArrows-hardcore-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+				babyArrow.updateHitbox();
+				babyArrow.scrollFactor.set();
+
 
 				case 'alex':
 					babyArrow.loadGraphic(Paths.image('cave/pixelUI/alex-arrows-pixels'), true, 17, 17);
@@ -4000,10 +4064,15 @@ class PlayState extends MusicBeatState
 							daNote.kill();
 							notes.remove(daNote, true);
 							daNote.destroy();
+							if (strengthActive == true)
+							{
+								health += 0.1;
+								trace('worked?');
+							}
 						}
 						else if(storyDifficulty == 2)
 						{
-							health -= 0.05;
+							health -= 0.2;
 							vocals.volume = 0;
 							if (theFunne)
 								noteMiss(daNote.noteData, daNote);
@@ -4011,8 +4080,7 @@ class PlayState extends MusicBeatState
 						else if(storyDifficulty == 3)
 						{
 
-								health -= 0.75;
-
+							health -= 0.5;
 
 							vocals.volume = 0;
 							if (theFunne)
@@ -4282,6 +4350,7 @@ class PlayState extends MusicBeatState
 						else if (health < 2 && storyDifficulty == 3)
 							health += 0.01;
 
+
 						if (FlxG.save.data.accuracyMod == 0)
 							totalNotesHit += 0.75;
 					}
@@ -4303,8 +4372,11 @@ class PlayState extends MusicBeatState
 							health += 0.06;
 						else if (health < 2 && storyDifficulty == 2)
 							health += 0.03;
+
 						else if (health < 2 && storyDifficulty == 3)
 							health += 0.015;
+				
+							
 
 
 						if (FlxG.save.data.accuracyMod == 0)
@@ -4560,7 +4632,7 @@ class PlayState extends MusicBeatState
 				if (combo >= 10 || combo == 0)
 					add(numScore);
 
-				FlxTween.tween(numScore, {alpha: 0}, 0.4, {
+				FlxTween.tween(numScore, {alpha: 0}, 0.1, {
 					onComplete: function(tween:FlxTween)
 					{
 						numScore.destroy();
@@ -4588,7 +4660,7 @@ class PlayState extends MusicBeatState
 				}
 			});
 
-			FlxTween.tween(comboSpr, {alpha: 0}, 0.2, {
+			FlxTween.tween(comboSpr, {alpha: 0}, 0.1, {
 				onComplete: function(tween:FlxTween)
 				{
 					coolText.destroy();
@@ -5099,19 +5171,21 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-			var strengthActive:Bool = false;
-//
-			function Strength()
+			
+		function Strength()
+		{
+			oneTimeUse = true;
+			strengthActive = true;
+			trace('StrengthActive is ' + strengthActive);
+
+			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFA50000);
+			new FlxTimer().start(30, function(swagTimer:FlxTimer)
 			{
-				oneTimeUse = true;
-				strengthActive = true;
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFA50000);
-				new FlxTimer().start(30, function(swagTimer:FlxTimer)
-				{
-					strengthActive = false;
-					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-				});
-			}
+				strengthActive = false;
+				trace('StrengthActive is ' + strengthActive);
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+			});
+		}
 
 
 
