@@ -249,7 +249,7 @@ class PlayState extends MusicBeatState
 	var tween:FlxTween;
 
 	var hurtIcon:Bool = false;
-	public var strengthActive:Bool = false;
+	var strengthActive:Bool = false;
 	
 	
 	private var hero:Float = 0;
@@ -4064,11 +4064,8 @@ class PlayState extends MusicBeatState
 							daNote.kill();
 							notes.remove(daNote, true);
 							daNote.destroy();
-							if (strengthActive == true)
-							{
-								health += 0.1;
-								trace('worked?');
-							}
+							health += 0.005;
+							
 						}
 						else if(storyDifficulty == 2)
 						{
@@ -4286,25 +4283,14 @@ class PlayState extends MusicBeatState
 			switch(daRating)
 			{
 				case 'shit':
-					if (daNote.noteType == 2)
-					{
-						PoisonDrain();
-					}
-					else if (daNote.noteType == 3)
-					{
-						WitherDrain();
-					}
-					else
-					{
-						score = -300;
-						combo = 0;
-						misses++;
-						health -= 0.02;
-						ss = false;
-						shits++;
-						if (FlxG.save.data.accuracyMod == 0)
-							totalNotesHit += 0.25;
-					}
+					score = -300;
+					combo = 0;
+					misses++;
+					health -= 0.02;
+					ss = false;
+					shits++;
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0.25;
 
 				case 'bad':
 					if (daNote.noteType == 2)
@@ -5026,6 +5012,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+
 		function goodNoteHit(note:Note, resetMashViolation = true):Void
 			{
 
@@ -5158,7 +5145,7 @@ class PlayState extends MusicBeatState
 			{
 				health += 0.0005;
 				healthGain += 0.0005;
-				if (healthGain < 3)
+				if (healthGain < 2)
 				{
 					swagTimer.reset(); 
 				}
@@ -5172,20 +5159,20 @@ class PlayState extends MusicBeatState
 		}
 
 			
-		function Strength()
-		{
-			oneTimeUse = true;
-			strengthActive = true;
-			trace('StrengthActive is ' + strengthActive);
-
-			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFA50000);
-			new FlxTimer().start(30, function(swagTimer:FlxTimer)
+		
+		function Strength():Void
 			{
-				strengthActive = false;
+				oneTimeUse = true;
+				strengthActive = true;
 				trace('StrengthActive is ' + strengthActive);
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-			});
-		}
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFA50000);
+				new FlxTimer().start(30, function(swagTimer:FlxTimer)
+				{
+					strengthActive = false;
+					trace('StrengthActive is ' + strengthActive);
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				});
+			}
 
 
 
@@ -5234,10 +5221,6 @@ class PlayState extends MusicBeatState
 			{
 				hurtIcon = false;
 			});
-			//new FlxTimer().start(0.3, function(tmr:FlxTimer)
-			//{
-			//	iconP1.animation.curAnim.curFrame = 0;
-			//});
 		}
 
 		function bfBlock()
