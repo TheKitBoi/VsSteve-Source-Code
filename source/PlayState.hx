@@ -580,6 +580,14 @@ class PlayState extends MusicBeatState
 					mine.setGraphicSize(Std.int(mine.width * 5.5));
 					add(mine);
 
+					var caveLeaves:FlxSprite = new FlxSprite(-200, 0);
+					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves');
+					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
+					caveLeaves.animation.play('leaves');
+					caveLeaves.scrollFactor.set(0.85, 0.85);
+					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
+					add(caveLeaves);
+
 					minijukebox = new FlxSprite(535, 395);
 				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
 					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
@@ -606,27 +614,20 @@ class PlayState extends MusicBeatState
 
 					var repositionShit = -200;
 
+					var caveLeaves:FlxSprite = new FlxSprite(-100, -20);
+					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves');
+					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
+					caveLeaves.animation.play('leaves');
+					caveLeaves.scrollFactor.set(0.96, 0.96);
+					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
+					add(caveLeaves);
+
 					var caveFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/floor'));
 					caveFloor.scrollFactor.set(0.95, 0.95);
 					caveFloor.y -= 0;
 					caveFloor.x -= 500;
 					caveFloor.setGraphicSize(Std.int(caveFloor.width * 6.5));
 					add(caveFloor);
-
-					//var lanterns:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/lanterns'));
-					//lanterns.scrollFactor.set(3, 1);
-					//lanterns.y -= 0;
-					//lanterns.x -= 500;
-					//lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
-
-
-					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
-					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
-					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
-					caveLeaves.animation.play('leaves');
-					caveLeaves.scrollFactor.set(0.85, 0.85);
-					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
-					add(caveLeaves);
 
 					minijukebox = new FlxSprite(580, 540);
 				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
@@ -639,7 +640,6 @@ class PlayState extends MusicBeatState
 
 					caveBG.updateHitbox();
 					caveFloor.updateHitbox();
-					//lanterns.updateHitbox();
 					caveLeaves.updateHitbox();
 			}
 			case 'notch':
@@ -1924,65 +1924,7 @@ class PlayState extends MusicBeatState
 					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 					ready.scrollFactor.set();
 					ready.updateHitbox();
-
-					if (curStage.startsWith('school'))
-						ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
-
-					ready.screenCenter();
-					add(ready);
-					FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							ready.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
-
-					if (curStage.startsWith('awwman'))
-						ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
-
-					ready.screenCenter();
-					add(ready);
-					FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							ready.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
-
-					if (curStage.startsWith('cave'))
-						ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
-
-					ready.screenCenter();
-					add(ready);
-					FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							ready.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
-
-					if (curStage.startsWith('devs'))
-						ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
-
-					ready.screenCenter();
-					add(ready);
-					FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							ready.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
-
-					if (curStage.startsWith('notch'))
-						ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
+					ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
 
 					ready.screenCenter();
 					add(ready);
@@ -1999,8 +1941,7 @@ class PlayState extends MusicBeatState
 					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 					set.scrollFactor.set();
 
-					if (curStage.startsWith('school'))
-						set.setGraphicSize(Std.int(set.width * daPixelZoom));
+					set.setGraphicSize(Std.int(set.width * daPixelZoom));
 
 					set.screenCenter();
 					add(set);
@@ -2012,135 +1953,11 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('intro2' + altSuffix), 0.6);
-					if (curStage.startsWith('awwman'))
-						set.setGraphicSize(Std.int(set.width * daPixelZoom));
-
-					set.screenCenter();
-					add(set);
-					FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							set.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro2' + altSuffix), 0.6);
-
-					if (curStage.startsWith('cave'))
-						set.setGraphicSize(Std.int(set.width * daPixelZoom));
-
-					set.screenCenter();
-					add(set);
-					FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							set.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro2' + altSuffix), 0.6);
-
-					if (curStage.startsWith('devs'))
-						set.setGraphicSize(Std.int(set.width * daPixelZoom));
-
-					set.screenCenter();
-					add(set);
-					FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							set.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro2' + altSuffix), 0.6);
-
-					if (curStage.startsWith('notch'))
-						set.setGraphicSize(Std.int(set.width * daPixelZoom));
-
-					set.screenCenter();
-					add(set);
-					FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							set.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('intro2' + altSuffix), 0.6);
-
 
 				case 3:
 					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 					go.scrollFactor.set();
-
-					if (curStage.startsWith('school'))
-						go.setGraphicSize(Std.int(go.width * daPixelZoom));
-
-					go.updateHitbox();
-
-					go.screenCenter();
-					add(go);
-					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							go.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
-
-					if (curStage.startsWith('awwman'))
-						go.setGraphicSize(Std.int(go.width * daPixelZoom));
-
-					go.updateHitbox();
-
-					go.screenCenter();
-					add(go);
-					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							go.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
-
-					if (curStage.startsWith('cave'))
-						go.setGraphicSize(Std.int(go.width * daPixelZoom));
-
-					go.updateHitbox();
-
-					go.screenCenter();
-					add(go);
-					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							go.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
-
-
-					if (curStage.startsWith('devs'))
-						go.setGraphicSize(Std.int(go.width * daPixelZoom));
-
-					go.updateHitbox();
-
-					go.screenCenter();
-					add(go);
-					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							go.destroy();
-						}
-					});
-					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
-
-
-					if (curStage.startsWith('notch'))
-						go.setGraphicSize(Std.int(go.width * daPixelZoom));
+					go.setGraphicSize(Std.int(go.width * daPixelZoom));
 
 					go.updateHitbox();
 

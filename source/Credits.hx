@@ -19,7 +19,7 @@ class Credits extends MusicBeatState
 {
 	var curSelected:Int = 1;
 
-	private var grpOptions:FlxTypedGroup<AlphabetSpecial>;
+	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
@@ -32,6 +32,7 @@ class Credits extends MusicBeatState
     	['Vidz', 'vidz', 'Extra Coder, Helper', '', 0xFF337BAB],
 		['Chromasen', 'chroma', 'Extra Coder, Helper', 'https://www.youtube.com/channel/UCgGk4oZt3We-ktkEOV9HY1Q', 0xFF52EB80],
 		['TaeYai', 'tae', 'Helper, Coder', 'https://www.youtube.com/c/TaeYai/featured', 0xFF56F5B3],
+		['MinecraftBoss27_', 'minecraftboss', 'Individual Map Builder', '', 0xFFF5AE00],
     	['OutMance', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', 'https://www.tiktok.com/@.mance', 0xFFDEDD4E],
     	['Tanka', 'unknown', 'Collaborator, Creator of "Dont Funk at Night"', 'https://www.youtube.com/tankakuka', 0xFF337BAB],
     	['Somf', 'unknown', 'Ultra-Hardcore Charter', 'https://www.youtube.com/channel/UCspbOv2BXbDANpJyjguce2Q', 0xFF9FE3DA],
@@ -40,7 +41,6 @@ class Credits extends MusicBeatState
 		['Special thanks to...'],
 		['Irfan', 'irfan', 'Playtester, Supporter', 'https://m.youtube.com/channel/UCBvHhreB_EfLe2bdZpZEQIQ', 0xFFABDA65],
 		['Jaziel', 'jaziel', 'Supporter', '', 0xFFE20606],
-		['MinecraftBoss27_', 'minecraftboss', 'Playtester, Supporter', '', 0xFFF5AE00],
     	[''],
     	['Discord', 'discord', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
 	];
@@ -67,13 +67,13 @@ class Credits extends MusicBeatState
 		bg.updateHitbox();
 		add(bg);
 
-		grpOptions = new FlxTypedGroup<AlphabetSpecial>();
+		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 
 		for (i in 0...creditsStuff.length)
 		{
 			var isSelectable:Bool = !unselectableCheck(i);
-			var optionText:AlphabetSpecial = new AlphabetSpecial(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
+			var optionText:Alphabet = new Alphabet(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
 			optionText.isMenuItem = true;
 			optionText.screenCenter(X);
 			if(isSelectable) 

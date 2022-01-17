@@ -40,15 +40,14 @@ class WarnCreditState extends MusicBeatState
 		add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"This is Credits Menu"
-			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
-			+ "Everything will be complete in the Full Release Update."
-			+ "If you want to still check the current Menu then Press Enter."
-			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
+			"You are entering an Unfinished Corner of Mod\n"
+			+ "Currently, this menu is uncomplete and Buggy, so please be patient. Everything will be complete in the Full Release Update.\n"
+			+ "If you want to still check the current Menu then Press Enter, Press Escape/Backspace to go Back. \n"
+			+ "Be aware that the text might be broken.\n"
+			+ "Press Enter on an Icon to Visit their Social Media (If Available)"
 			);
 		
-		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
+		txt.setFormat("vcr.ttf", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
 		txt.borderSize = 3;
 		txt.borderStyle = FlxTextBorderStyle.OUTLINE;
