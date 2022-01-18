@@ -1,3 +1,4 @@
+import Options.SpectatorMode;
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
 import openfl.geom.Matrix;
@@ -2952,7 +2953,7 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
-			if (FlxG.keys.justPressed.SPACE)
+			if (FlxG.keys.justPressed.SPACE && FlxG.save.data.SpectatorMode || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]) && FlxG.save.data.SpectatorMode)
 			{
 			   boyfriend.playAnim('block', true);
 			}
@@ -5042,7 +5043,7 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			if (FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
+			if (FlxG.keys.justPressed.SPACE && FlxG.save.data.SpectatorMode || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]) && FlxG.save.data.SpectatorMode)
 			{
 				boyfriend.playAnim('block', true);
 			}
@@ -5294,11 +5295,21 @@ class PlayState extends MusicBeatState
 					stevePrepare();
 				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1172:
 					steveAttack();
+					if(FlxG.save.data.SpectatorMode)
+						{
+							pressedSpace = true;
+							boyfriend.playAnim('block', true);
+						}
 				case  800 | 802 | 816 | 818:
 					slashEvent();
 					stevePrepare();
 				case 804 | 806 | 820 | 822:
 					steveAttack();
+					if(FlxG.save.data.SpectatorMode)
+						{
+							pressedSpace = true;
+							boyfriend.playAnim('block', true);
+						}
 			}
 		}
 

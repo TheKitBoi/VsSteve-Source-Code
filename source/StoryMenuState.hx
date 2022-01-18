@@ -139,7 +139,7 @@ class StoryMenuState extends MusicBeatState
 
 		for (i in 0...weekData.length)
 		{
-			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height + 10, i);
+			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height - 30, i);
 			weekThing.y += ((weekThing.height) * i);
 			weekThing.targetY = i;
 			weekThing.updateHitbox();
@@ -181,31 +181,6 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 124");
 
-		//leftArrow = new FlxSprite(grpWeekText.members[0].x + grpWeekText.members[0].width + 10, grpWeekText.members[0].y + 10);
-		////leftArrow.frames = ui_tex;
-		//leftArrow.animation.addByPrefix('idle', "arrow left");
-		//leftArrow.animation.addByPrefix('press', "arrow push left");
-		//leftArrow.animation.play('idle');
-		//difficultySelectors.add(leftArrow);
-//
-		//sprDifficulty = new FlxSprite(leftArrow.x + 130, leftArrow.y);
-		////sprDifficulty.frames = ui_tex;
-		//sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
-		//sprDifficulty.animation.addByPrefix('hard', 'NHARD');
-		//sprDifficulty.animation.addByPrefix('hardcore', 'HARDCORE');
-		//sprDifficulty.animation.addByPrefix('ultrahardcore', 'ULTRA HARDCORE');
-		//sprDifficulty.animation.play('normal');
-		//changeDifficulty();
-//
-		//rightArrow = new FlxSprite(sprDifficulty.x + sprDifficulty.width + 50, leftArrow.y);
-		////rightArrow.frames = ui_tex;
-		//rightArrow.animation.addByPrefix('idle', 'arrow right');
-		//rightArrow.animation.addByPrefix('press', "arrow push right", 24, false);
-		//rightArrow.animation.play('idle');
-		//difficultySelectors.add(rightArrow);
-		//
-		//difficultySelectors.add(sprDifficulty);
-		
 		diffs = new FlxSprite(0, 340);
 		diffs.frames = Paths.getSparrowAtlas('Diffs');
 		diffs.animation.addByPrefix('easy', 'Easy', 24);
