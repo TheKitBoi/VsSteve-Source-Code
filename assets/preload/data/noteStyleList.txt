@@ -1,4 +1,6 @@
 normal
+funkyArrows
+hardcore-funkyArrows
 pixel
 alex
 notch
