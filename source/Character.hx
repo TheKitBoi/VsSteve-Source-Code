@@ -216,14 +216,13 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('characters/bfMinecraft');
 				animation.addByPrefix('idle', 'bfMinecraft Idle', 24, false);
 				animation.addByPrefix('singUP', 'bfMinecraft up note', 24, false);
-				animation.addByPrefix('singLEFT', 'bfMinecraft right note', 24, false);
-				animation.addByPrefix('singRIGHT', 'bfMinecraft left note', 24, false);
+				animation.addByPrefix('singLEFT', 'bfMinecraft left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'bfMinecraft right note', 24, false);
 				animation.addByPrefix('singDOWN', 'bfMinecraft down note', 24, false);
 				animation.addByPrefix('singUPmiss', 'bfMinecraft up miss', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'bfMinecraft right miss', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'bfMinecraft left miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'bfMinecraft left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'bfMinecraft right miss', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'bfMinecraft down miss', 24, false);
-				animation.addByPrefix('shield', 'bfMinecraft shield', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -234,9 +233,8 @@ class Character extends FlxSprite
 				addOffset("singRIGHTmiss");
 				addOffset("singLEFTmiss");
 				addOffset("singDOWNmiss");
-				addOffset("shield");
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 5.8));
 				updateHitbox();
 
 				playAnim('idle');
