@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="hothbar1.png">
-	<SubTexture name="hotbarMic 0000" x="166" y="0" width="73" height="73"/>
-	<SubTexture name="hotbarShield 0000" x="0" y="0" width="73" height="73"/>
-	<SubTexture name="hotbarPotion 0000" x="0" y="0" width="73" height="73"/>
+	<SubTexture name="hotbarMic 0000" x="0" y="0" width="24" height="63"/>
+	<SubTexture name="hotbarShield 0000" x="0" y="71" width="24" height="63"/>
+	<SubTexture name="hotbarPotion 0000" x="0" y="141" width="24" height="63"/>
+	<SubTexture name="hotbarMicNOP 0000" x="58" y="0" width="24" height="63"/>
+	<SubTexture name="hotbarShieldNOP 0000" x="58" y="71" width="24" height="63"/>
+	<SubTexture name="hotbarPotionNOP 0000" x="58" y="141" width="24" height="63"/>
+	<SubTexture name="hotbarMicNOS 0000" x="116" y="0" width="24" height="63"/>
+	<SubTexture name="hotbarShieldNOS 0000" x="116" y="71" width="24" height="63"/>
+	<SubTexture name="hotbarPotionNOS 0000" x="116" y="141" width="24" height="63"/>
+	<SubTexture name="hotbarMicNOSP 0000" x="166" y="0" width="24" height="63"/>
+	<SubTexture name="hotbarShieldNOSP 0000" x="166" y="71" width="24" height="63"/>
+	<SubTexture name="hotbarPotionNOSP 0000" x="166" y="141" width="24" height="63"/>
 </TextureAtlas>

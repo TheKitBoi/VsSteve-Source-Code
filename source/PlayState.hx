@@ -181,6 +181,11 @@ class PlayState extends MusicBeatState
 	var irfan:FlxSprite; 
 	var fc:Bool = true;
 
+	//HOT BAR VARIABLES
+	var hotbar:FlxSprite;
+
+
+
 	//Blockinf Stuff
 	var achievementBlock:FlxSprite;
 	var blackStuff:FlxSprite;
@@ -1429,6 +1434,23 @@ class PlayState extends MusicBeatState
 			add(whiteStuff);
 
 			whiteStuff.alpha = 0;
+
+			hotbar = new FlxSprite();
+			hotbar.frames = Paths.getSparrowAtlas('hotbar1');
+			hotbar.animation.addByPrefix('NormalMic', 'hotbarMic', 24, false);
+			hotbar.animation.addByPrefix('NormalShield', 'hotbarShield', 24, false);
+			hotbar.animation.addByPrefix('NormalPotion', 'hotbarPotion', 24, false);
+			hotbar.animation.addByPrefix('Diff1Mic', 'hotbarMicNOP', 24, false);
+			hotbar.animation.addByPrefix('Diff1Shield', 'hotbarShieldNOP', 24, false);
+			hotbar.animation.addByPrefix('Diff1Potion', 'hotbarPotionNOP', 24, false);
+			hotbar.animation.addByPrefix('Diff2Mic', 'hotbarMicNOS', 24, false);
+			hotbar.animation.addByPrefix('Diff2Shield', 'hotbarShieldNOS', 24, false);
+			hotbar.animation.addByPrefix('Diff2Potion', 'hotbarPotionNOS', 24, false);
+			hotbar.animation.addByPrefix('Diff3Mic', 'hotbarMicNOSP', 24, false);
+			hotbar.animation.addByPrefix('Diff3Shield', 'hotbarShieldNOSP', 24, false);
+			hotbar.animation.addByPrefix('Diff3Potion', 'hotbarPotionNOSP', 24, false);
+			hotbar.antialiasing = false;
+			hotbar.setGraphicSize(Std.int(hotbar.width * 2.5));
 		}
 
 		if(SONG.song.toLowerCase() == 'entity')
@@ -4707,7 +4729,8 @@ class PlayState extends MusicBeatState
 
 			songScore -= 10;
 
-			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			//FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			FlxG.sound.play(Paths.soundRandom('misc/hit', 1, 3), 0.75);
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
 			if (boyfriend.animation.curAnim.name != 'block')
@@ -5021,7 +5044,8 @@ class PlayState extends MusicBeatState
 		{
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
-				boyfriend.playAnim('singDOWNmiss', true);	
+				boyfriend.playAnim('singDOWNmiss', true);
+				FlxG.sound.play(Paths.soundRandom('hit/misc', 1, 3), 0.1);
 				hurtIcon = true;
 				if (health > 1)
 				{
@@ -5116,7 +5140,7 @@ class PlayState extends MusicBeatState
 					bfBlock();
 					trace('Successful Block');
 					FlxG.camera.shake(0.02, 0.02);
-					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.6);
+					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.8);
 				}
 				else
 				{
