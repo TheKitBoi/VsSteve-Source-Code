@@ -1450,6 +1450,7 @@ class PlayState extends MusicBeatState
 			hotbar.animation.addByPrefix('Diff3Shield', 'hotbarShieldNOSP', 24, false);
 			hotbar.animation.addByPrefix('Diff3Potion', 'hotbarPotionNOSP', 24, false);
 			hotbar.antialiasing = false;
+			hotbar.playAnim('NormalMic', true);
 			hotbar.setGraphicSize(Std.int(hotbar.width * 2.5));
 		}
 
