@@ -1065,36 +1065,7 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 			}
 		}
-		//if (curStage == 'cave')
-		//{
-		//		var images = []; // character wont lag while changing dad
-		//		var xml = [];
-		//		trace("caching images...");
-	//
-		//		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
-		//		{
-		//			if (!i.endsWith(".png"))
-		//				continue;
-		//			images.push(i);
-	//
-		//			if (!i.endsWith(".xml"))
-		//				continue;
-		//			xml.push(i);
-		//		}
-		//		for (i in images)
-		//		{
-		//			var replaced = i.replace(".png","");
-		//			FlxG.bitmap.add(Paths.image("characters/" + replaced,"shared"));
-		//			trace("cached " + replaced);
-		//		}
-		//	
-		//	for (i in xml)
-		//		{
-		//			var replaced = i.replace(".xml","");
-		//			FlxG.bitmap.add(Paths.image("characters/" + replaced,"shared"));
-		//			trace("cached " + replaced);
-		//		}
-		//}
+	
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -1434,25 +1405,47 @@ class PlayState extends MusicBeatState
 			add(whiteStuff);
 
 			whiteStuff.alpha = 0;
-
-			hotbar = new FlxSprite();
-			hotbar.frames = Paths.getSparrowAtlas('hotbar1');
-			hotbar.animation.addByPrefix('NormalMic', 'hotbarMic', 24, false);
-			hotbar.animation.addByPrefix('NormalShield', 'hotbarShield', 24, false);
-			hotbar.animation.addByPrefix('NormalPotion', 'hotbarPotion', 24, false);
-			hotbar.animation.addByPrefix('Diff1Mic', 'hotbarMicNOP', 24, false);
-			hotbar.animation.addByPrefix('Diff1Shield', 'hotbarShieldNOP', 24, false);
-			hotbar.animation.addByPrefix('Diff1Potion', 'hotbarPotionNOP', 24, false);
-			hotbar.animation.addByPrefix('Diff2Mic', 'hotbarMicNOS', 24, false);
-			hotbar.animation.addByPrefix('Diff2Shield', 'hotbarShieldNOS', 24, false);
-			hotbar.animation.addByPrefix('Diff2Potion', 'hotbarPotionNOS', 24, false);
-			hotbar.animation.addByPrefix('Diff3Mic', 'hotbarMicNOSP', 24, false);
-			hotbar.animation.addByPrefix('Diff3Shield', 'hotbarShieldNOSP', 24, false);
-			hotbar.animation.addByPrefix('Diff3Potion', 'hotbarPotionNOSP', 24, false);
-			hotbar.antialiasing = false;
-			hotbar.playAnim('NormalMic', true);
-			hotbar.setGraphicSize(Std.int(hotbar.width * 2.5));
 		}
+
+
+		hotbar = new FlxSprite();
+		hotbar.frames = Paths.getSparrowAtlas('hotbar1');
+
+		//FOR SONGS THAT USE SHIELD
+		hotbar.animation.addByPrefix('Mic', 'MicSelALL', 24, false);
+		hotbar.animation.addByPrefix('Shield', 'ShieldSelALL', 24, false);
+		hotbar.animation.addByPrefix('Potion', 'PotionSelALL', 24, false);
+
+		//FOR AFTER USING POTIOM IN SHIELD SONGS
+		hotbar.animation.addByPrefix('MicNoPotion', 'MicSelNoPotion', 24, false);
+		hotbar.animation.addByPrefix('ShieldNoPotion', 'ShieldSelNoPotion', 24, false);
+		hotbar.animation.addByPrefix('PotionNoPotion', 'EmtpySelNoPotion', 24, false);
+
+		//FOR MOSTLY ALL SONGS
+		hotbar.animation.addByPrefix('MicNoShield', 'MicSelNoShield', 24, false);
+		hotbar.animation.addByPrefix('ShieldNoShield', 'EmptyNoShield', 24, false);
+		hotbar.animation.addByPrefix('PotionNoShield', 'PotionSelNoShield', 24, false);
+
+		//FOR MOSTLY ALL SONGS AND AFTER USING POTION
+		hotbar.animation.addByPrefix('MicNoSP', 'MicSelOnly', 24, false);
+		hotbar.animation.addByPrefix('ShieldNoSP', 'EmptySNoSP', 24, false);
+		hotbar.animation.addByPrefix('PotionNoSP', 'EmptyPNoSP', 24, false);
+		
+		hotbar.antialiasing = false;
+		hotbar.setGraphicSize(Std.int(hotbar.width * 3));
+		hotbar.screenCenter();
+		hotbar.x += 575;
+		hotbar.updateHitbox();
+		hotbar.scrollFactor.set();
+		hotbar.animation.play('MicNoShield', false);
+		
+		if(SONG.song.toLowerCase() == 'suit up')
+			hotbar.animation.play('Mic', false);
+
+
+		add(hotbar);
+
+
 
 		if(SONG.song.toLowerCase() == 'entity')
 		{
@@ -1460,8 +1453,6 @@ class PlayState extends MusicBeatState
 			camHUD.alpha = 0;
 		}
 			
-
-
 
 		if (loadRep)
 		{
@@ -1641,6 +1632,17 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		
+
+		//if(SONG.song.toLowerCase() == 'suit up' && oneTimeUse == false)
+		//{
+		//	hotbar.animation.play('MicNoSP', true);
+		//}
+		//else if(SONG.song.toLowerCase() == 'suit up' && oneTimeUse == true)
+		//{
+		//	hotbar.animation.play('MicNoPotion', true);
+		//}
+
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
@@ -1650,6 +1652,7 @@ class PlayState extends MusicBeatState
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		hotbar.cameras = [camHUD];
 		if (FlxG.save.data.songPosition)
 		{
 			songPosBG.cameras = [camHUD];
@@ -2960,27 +2963,57 @@ class PlayState extends MusicBeatState
 			detectSpace();
 		}
 
+		if (SONG.song.toLowerCase() == 'practice')
+		{
+			hotbar.animation.play('MicNoSP', false);
+		}
+
+
 		if (SONG.song.toLowerCase() == 'espionage')
 		{
 			cpuStrums.visible = false;
 		}
-
-		if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
+		if (SONG.song.toLowerCase() != 'practice')
 		{
-			Regen();
+			if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
+			{
+				if(SONG.song.toLowerCase() == 'suit up')
+					hotbar.animation.play('Potion', true);
+				else 
+					hotbar.animation.play('PotionNoShield', true);
+
+				FlxG.sound.play(Paths.sound('misc/drink'), 0.75);
+				Regen();
+			}
 		}
+		
+		/*
+
+		UN-USED FOR THIS UPDATE
+
 		if(FlxG.keys.justPressed.T && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUse == false)
 		{
 			Strength();
 		}
+		*/
 
+
+		//BROKEN 
+
+		/*
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
-			if (FlxG.keys.justPressed.SPACE && FlxG.save.data.SpectatorMode || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]) && FlxG.save.data.SpectatorMode)
+			if (FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
-			   boyfriend.playAnim('block', true);
+				boyfriend.playAnim('block', true);
+			 if(oneTimeUse == false)
+				 hotbar.animation.play('Shield', true);
+			 else
+				hotbar.animation.play('ShieldNoPotion', true);
+
 			}
 		}
+		*/
 
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
 		{
@@ -4983,6 +5016,7 @@ class PlayState extends MusicBeatState
 		{
 			oneTimeUse = true;
 			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFFF75A7);
+
 			new FlxTimer().start(0.0075, function(swagTimer:FlxTimer)
 			{
 				health += 0.0005;
@@ -4998,6 +5032,14 @@ class PlayState extends MusicBeatState
 
 				}
 			});
+
+			new FlxTimer().start(0.2, function(tmr:FlxTimer)
+				{
+					if(SONG.song.toLowerCase() == 'suit up')
+				   		hotbar.animation.play('MicNoPotion', true);
+					else
+						hotbar.animation.play('MicNoSP', true);
+				});
 		}
 
 			
@@ -5046,8 +5088,7 @@ class PlayState extends MusicBeatState
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
 				boyfriend.playAnim('singDOWNmiss', true);
-				FlxG.sound.play(Paths.soundRandom('hit/misc', 1, 3), 0.1);
-				hurtIcon = true;
+				FlxG.sound.play(Paths.soundRandom('misc/hit', 1, 3), 0.75);
 				if (health > 1)
 				{
 					health -= 0.4;
@@ -5060,17 +5101,24 @@ class PlayState extends MusicBeatState
 			});
 			FlxG.camera.shake(0.05, 0.05);
 
-			new FlxTimer().start(0.75, function(tmr:FlxTimer)
-			{
-				hurtIcon = false;
-			});
 		}
 
 		function bfBlock()
 		{
-			if (FlxG.keys.justPressed.SPACE && FlxG.save.data.SpectatorMode || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]) && FlxG.save.data.SpectatorMode)
+			if (FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
 				boyfriend.playAnim('block', true);
+				if(oneTimeUse == false)
+					hotbar.animation.play('Shield', true);
+				else
+				   hotbar.animation.play('ShieldNoPotion', true);
+				new FlxTimer().start(0.2, function(tmr:FlxTimer)
+					{
+						if(oneTimeUse == false)
+							hotbar.animation.play('Mic', true);
+						else
+						   hotbar.animation.play('MicNoPotion', true);
+					});
 			}
 		
 		}
@@ -5320,21 +5368,21 @@ class PlayState extends MusicBeatState
 					stevePrepare();
 				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1172:
 					steveAttack();
-					if(FlxG.save.data.SpectatorMode)
-						{
-							pressedSpace = true;
-							boyfriend.playAnim('block', true);
-						}
+					//if(FlxG.save.data.SpectatorMode)
+					//	{
+					//		pressedSpace = true;
+					//		boyfriend.playAnim('block', true);
+					//	}
 				case  800 | 802 | 816 | 818:
 					slashEvent();
 					stevePrepare();
 				case 804 | 806 | 820 | 822:
 					steveAttack();
-					if(FlxG.save.data.SpectatorMode)
-						{
-							pressedSpace = true;
-							boyfriend.playAnim('block', true);
-						}
+					//if(FlxG.save.data.SpectatorMode)
+					//	{
+					//		pressedSpace = true;
+					//		boyfriend.playAnim('block', true);
+					//	}
 			}
 		}
 
