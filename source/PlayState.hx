@@ -3943,19 +3943,34 @@ class PlayState extends MusicBeatState
 						}
 						else if(storyDifficulty == 2)
 						{
-							health -= 0.2;
-							vocals.volume = 0;
-							if (theFunne)
-								noteMiss(daNote.noteData, daNote);
+							if (daNote.noteType == 2 || daNote.noteType == 3)
+							{
+								vocals.volume = 1;
+							}
+							else
+								{
+									health -= 0.2;
+								vocals.volume = 0;
+								if (theFunne)
+									noteMiss(daNote.noteData, daNote);
+								}
+						
 						}
 						else if(storyDifficulty == 3)
 						{
-
+							if (daNote.noteType == 2 || daNote.noteType == 3)
+							{
+								vocals.volume = 1;
+							}
+							else
+							{
 							health -= 0.5;
 
 							vocals.volume = 0;
 							if (theFunne)
-								noteMiss(daNote.noteData, daNote);	
+								noteMiss(daNote.noteData, daNote);		
+							}
+							
 						}
 						else 
 						{
@@ -5239,13 +5254,7 @@ class PlayState extends MusicBeatState
 			else 
 				health -= 0.2;
 			boyfriend.playAnim('singDOWNmiss', true);
-			iconP1.animation.curAnim.curFrame = 3;
 			FlxG.camera.shake(0.025, 0.025);
-			new FlxTimer().start(0.5, function(tmr:FlxTimer)
-			{
-				iconP1.animation.curAnim.curFrame = 0;
-
-			});
 		}
 
 	override function stepHit()
@@ -5532,8 +5541,11 @@ class PlayState extends MusicBeatState
 		}
 
 
-		iconP1.scale.set(1.2, 1.2);
-		iconP2.scale.set(1.2, 1.2);
+		iconP1.scale.set(1.15, 1.15);
+		iconP2.scale.set(1.15, 1.15);
+		
+		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
+		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();

@@ -258,7 +258,7 @@ class Note extends FlxSprite
 
 				if (isSustainNote)
 				{
-					loadGraphic(Paths.image('weeb/pixelUI/notch-arrowEnds','week6'), true, 7, 6);
+					loadGraphic(Paths.image('weeb/pixelUI/notch-hardcoreEnds','week6'), true, 7, 6);
 
 					animation.add('purpleholdend', [4]);
 					animation.add('greenholdend', [6]);
