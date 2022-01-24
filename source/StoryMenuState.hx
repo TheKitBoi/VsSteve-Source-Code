@@ -333,6 +333,8 @@ class StoryMenuState extends MusicBeatState
 			{
 				case 0:
 					diffic = '-normal';
+				case 2:
+					diffic = '-hardcore';
 				case 3:
 					diffic = '-ultrahardcore';
 			}

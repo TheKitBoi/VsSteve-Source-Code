@@ -1590,7 +1590,7 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 
 		// Add Kade Engine watermark
-		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardore" : storyDifficulty == 2 ? "Hardore" : storyDifficulty == 1 ? "Hard" : "Normal") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
+		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardcore" : storyDifficulty == 2 ? "Hardcore" : storyDifficulty == 1 ? "Hard" : "Peaceful") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
@@ -4096,6 +4096,9 @@ class PlayState extends MusicBeatState
 
 					if (storyDifficulty == 0)
 						difficulty = '-peaceful';
+
+					if (storyDifficulty == 2)
+						difficulty = '-hardcore';
 
 					if (storyDifficulty == 3)
 						difficulty = '-ultrahardcore';
