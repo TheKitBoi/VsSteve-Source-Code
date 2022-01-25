@@ -1450,7 +1450,6 @@ class PlayState extends MusicBeatState
 		if(SONG.song.toLowerCase() == 'entity')
 		{
 			dad.alpha = 0;
-			camHUD.alpha = 0;
 		}
 			
 
@@ -2958,6 +2957,14 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+
+		if(SONG.song.toLowerCase() == 'entity')
+		{
+			cpuStrums.visible = false;
+			if (health > 0.03)
+				health -= 0.0001;
+		}
+
 		if (detectAttack)
 		{
 			detectSpace();
@@ -2973,8 +2980,12 @@ class PlayState extends MusicBeatState
 		{
 			cpuStrums.visible = false;
 		}
+
 		if (SONG.song.toLowerCase() != 'practice')
 		{
+			cpuStrums.visible = false;
+
+			
 			if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
 			{
 				if(SONG.song.toLowerCase() == 'suit up')
@@ -3816,15 +3827,22 @@ class PlayState extends MusicBeatState
 
 						daNote.active = false;
 
-
 						if (dad.curCharacter == '303')
 						{
+							if (healthBar.percent > 20)
+							{
+								daNote.kill();
+								notes.remove(daNote, true);
+								if (daNote.noteType == 5)
+									GappleEffect();
+								daNote.destroy();
+								health -= 0.0002;
+							}
+							else (healthBar.percent < 20);
 							{
 								daNote.kill();
 								notes.remove(daNote, true);
 								daNote.destroy();
-								if (health > 0.01)
-									health -= 0.0005;
 							}
 						}
 						else if (dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'smollalex')
@@ -3949,7 +3967,7 @@ class PlayState extends MusicBeatState
 							}
 							else
 								{
-									health -= 0.2;
+									health -= 0.1;
 								vocals.volume = 0;
 								if (theFunne)
 									noteMiss(daNote.noteData, daNote);
@@ -3964,7 +3982,7 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-							health -= 0.5;
+							health -= 0.25;
 
 							vocals.volume = 0;
 							if (theFunne)
@@ -4220,7 +4238,7 @@ class PlayState extends MusicBeatState
 						ss = false;
 						goods++;
 						if (SONG.song.toLowerCase() == 'entity')
-							health += 0.00001;
+							health += 0.002;
 						else if (health < 2)
 							health += 0.04;
 						else if (health < 2 && storyDifficulty == 2)
@@ -4245,7 +4263,7 @@ class PlayState extends MusicBeatState
 					else
 					{
 						if (SONG.song.toLowerCase() == 'entity')
-							health += 0.00001;
+							health += 0.005;
 						else if (health < 2)
 							health += 0.06;
 						else if (health < 2 && storyDifficulty == 2)
@@ -4474,7 +4492,7 @@ class PlayState extends MusicBeatState
 
 			var comboSplit:Array<String> = (combo + "").split('');
 
-			if (comboSplit.length == 2)
+			if (comboSplit.length == 1)
 				seperatedScore.push(0); // make sure theres a 0 in front or it looks weird lol!
 
 			for(i in 0...comboSplit.length)
@@ -4507,7 +4525,7 @@ class PlayState extends MusicBeatState
 				numScore.velocity.y -= FlxG.random.int(140, 160);
 				numScore.velocity.x = FlxG.random.float(-5, 5);
 
-				if (combo >= 10 || combo == 0)
+				if (combo >= 1 || combo == 0)
 					add(numScore);
 
 				FlxTween.tween(numScore, {alpha: 0}, 0.1, {
@@ -4734,7 +4752,8 @@ class PlayState extends MusicBeatState
 									goodNoteHit(daNote);
 									boyfriend.holdTimer = daNote.sustainLength;
 								}
-							}else {
+							}
+							else if (daNote.noteType == 0 || daNote.noteType == 1) {
 								goodNoteHit(daNote);
 								boyfriend.holdTimer = daNote.sustainLength;
 							}
@@ -5288,16 +5307,16 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 180:
-				new FlxTimer().start(0.01, function(tmr:FlxTimer)
-				{
-					camHUD.alpha += 0.075;
-		
-					if (camHUD.alpha < 1)
-					{
-						tmr.reset(0.01);
-					}
-				});
+				//case 180:
+				//new FlxTimer().start(0.01, function(tmr:FlxTimer)
+				//{
+				//	camHUD.alpha += 0.075;
+		//
+				//	if (camHUD.alpha < 1)
+				//	{
+				//		tmr.reset(0.01);
+				//	}
+				//});
 
 				case 566:
 					new FlxTimer().start(0.001, function(tmr:FlxTimer)
