@@ -51,6 +51,7 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import openfl.filters.ColorMatrixFilter
 
 #if windows
 import Discord.DiscordClient;
@@ -351,6 +352,10 @@ class PlayState extends MusicBeatState
 
 		//i disabled dialogues by replacing names with lmao, LMAOOOOOOOO -babobias
     //haha enbaled dialogues go BRRRRRRR -Taigo
+	
+	
+		FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
+        camHUD.setFilters([ShadersHandler.chromaticAberration]);
 		switch (SONG.song.toLowerCase())
 		{
 			case 'lmao':
@@ -5340,6 +5345,15 @@ class PlayState extends MusicBeatState
 						});
 				}			
 		}
+		if(SONG.song.toLowerCase() == 'entity')
+			{
+				switch (curBeat)
+				{
+					case 2:
+						FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
+						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+				}
+			}
 
 		if(SONG.song.toLowerCase() == 'espionage')
 			{
