@@ -1453,6 +1453,11 @@ class PlayState extends MusicBeatState
 		}
 			
 
+		if(SONG.song.toLowerCase() == 'espionage')
+			{
+				dad.alpha = 0;
+			}
+			
 		if (loadRep)
 		{
 			FlxG.watch.addQuick('rep rpesses',repPresses);
@@ -2965,6 +2970,11 @@ class PlayState extends MusicBeatState
 				health -= 0.0001;
 		}
 
+		if(SONG.song.toLowerCase() == 'espionage')
+			{
+				cpuStrums.visible = false;
+			}
+
 		if (detectAttack)
 		{
 			detectSpace();
@@ -3476,9 +3486,9 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 1.2;
 						
 						case 'jaziel':
-							camFollow.y = dad.getMidpoint().y - 200;
-							camFollow.x = dad.getMidpoint().x - -300;
-							defaultCamZoom = 0.7;
+							camFollow.y = dad.getMidpoint().y - 100;
+							camFollow.x = dad.getMidpoint().x - -200;
+							defaultCamZoom = 0.6;
 
 						case 'bos':
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
@@ -3576,9 +3586,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
 					case 'espionage':
-						camFollow.x = boyfriend.getMidpoint().x - 400;
-						camFollow.y = boyfriend.getMidpoint().y - 300;
-						defaultCamZoom = 0.75;
+						camFollow.x = boyfriend.getMidpoint().x - 300 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 300 + bfnoteMovementYoffset;
+						defaultCamZoom = 1;
 					case 'fasttravel':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 260 + bfnoteMovementYoffset;
@@ -5331,6 +5341,34 @@ class PlayState extends MusicBeatState
 				}			
 		}
 
+		if(SONG.song.toLowerCase() == 'espionage')
+			{
+				switch (curStep)
+				{
+					//case 180:
+					//new FlxTimer().start(0.01, function(tmr:FlxTimer)
+					//{
+					//	camHUD.alpha += 0.075;
+			//
+					//	if (camHUD.alpha < 1)
+					//	{
+					//		tmr.reset(0.01);
+					//	}
+					//});
+	
+					case 64:
+						new FlxTimer().start(0.001, function(tmr:FlxTimer)
+							{
+								dad.alpha += 0.01;
+					
+								if (dad.alpha < 1)
+								{
+									tmr.reset(0.001);
+								}
+							});
+					}			
+			}
+	
 		if (SONG.song.toLowerCase() == 'iron picks') 
 		{
 			switch (curStep)
@@ -5554,6 +5592,20 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 			trace(FlxG.camera.zoom);
 		}
+
+		if (curSong == 'espionage' && curBeat >= 32 && curBeat < 160)
+			{
+				FlxG.camera.zoom += 0.05;
+				camHUD.zoom += 0.03;
+				trace(FlxG.camera.zoom);
+			}
+
+		if (curSong == 'espionage' && curBeat >= 224 && curBeat < 288)
+			{
+				FlxG.camera.zoom += 0.05;
+				camHUD.zoom += 0.03;
+				trace(FlxG.camera.zoom);
+			}
 
 
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
