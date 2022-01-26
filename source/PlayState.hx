@@ -51,7 +51,7 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-import openfl.filters.ColorMatrixFilter
+import openfl.filters.ColorMatrixFilter;
 
 #if windows
 import Discord.DiscordClient;
@@ -354,8 +354,8 @@ class PlayState extends MusicBeatState
     //haha enbaled dialogues go BRRRRRRR -Taigo
 	
 	
-		FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
-        camHUD.setFilters([ShadersHandler.chromaticAberration]);
+
+
 		switch (SONG.song.toLowerCase())
 		{
 			case 'lmao':
@@ -1509,6 +1509,17 @@ class PlayState extends MusicBeatState
 		}
 
 		add(camFollow);
+
+
+		// DISABLED UNTIL HELP COMES
+		//if(SONG.song.toLowerCase() == 'entity')
+		//{
+		//	var vgs:VideoGlitchShader;
+		//	vgs = new VideoGlitchShader();
+//
+		//	camGame.setFilters([new ShaderFilter(vgs)]);
+		//	camHUD.setFilters([new ShaderFilter(vgs)]);
+		//}
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
@@ -5026,8 +5037,12 @@ class PlayState extends MusicBeatState
 			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
 			new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
 			{
-				health -= 0.05;
-				healthLost += 0.05;
+				if(!paused)
+				{
+					health -= 0.05;
+					healthLost += 0.05;
+				}
+				
 				if (healthLost < 0.75)
 				{
 					swagTimer.reset();
@@ -5046,8 +5061,11 @@ class PlayState extends MusicBeatState
 			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF3e0707);
 			new FlxTimer().start(0.75, function(swagTimer:FlxTimer)
 			{
+				if(!paused)
+				{
 				health -= 0.125;
 				healthLost += 0.125;
+				}
 				if (healthLost < 1.75)
 				{
 					swagTimer.reset();
@@ -5071,8 +5089,12 @@ class PlayState extends MusicBeatState
 
 			new FlxTimer().start(0.0075, function(swagTimer:FlxTimer)
 			{
-				health += 0.0005;
-				healthGain += 0.0005;
+				if(!paused)
+				{
+					health += 0.0005;
+					healthGain += 0.0005;
+				}
+				
 				if (healthGain < 2)
 				{
 					swagTimer.reset(); 
@@ -5345,15 +5367,6 @@ class PlayState extends MusicBeatState
 						});
 				}			
 		}
-		if(SONG.song.toLowerCase() == 'entity')
-			{
-				switch (curBeat)
-				{
-					case 2:
-						FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
-						camHUD.setFilters([ShadersHandler.chromaticAberration]);
-				}
-			}
 
 		if(SONG.song.toLowerCase() == 'espionage')
 			{
@@ -5451,21 +5464,21 @@ class PlayState extends MusicBeatState
 					stevePrepare();
 				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1172:
 					steveAttack();
-					//if(FlxG.save.data.SpectatorMode)
-					//	{
-					//		pressedSpace = true;
-					//		boyfriend.playAnim('block', true);
-					//	}
+					if(FlxG.save.data.SpectatorMode)
+						{
+							pressedSpace = true;
+							boyfriend.playAnim('block', true);
+						}
 				case  800 | 802 | 816 | 818:
 					slashEvent();
 					stevePrepare();
 				case 804 | 806 | 820 | 822:
 					steveAttack();
-					//if(FlxG.save.data.SpectatorMode)
-					//	{
-					//		pressedSpace = true;
-					//		boyfriend.playAnim('block', true);
-					//	}
+					if(FlxG.save.data.SpectatorMode)
+						{
+							pressedSpace = true;
+							boyfriend.playAnim('block', true);
+						}
 			}
 		}
 
