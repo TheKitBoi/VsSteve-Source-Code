@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="r9k.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="r9k0000" x="0" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0001" x="0" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0002" x="1571" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0003" x="3142" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0004" x="3142" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0005" x="4713" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0006" x="4713" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0007" x="6284" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0008" x="6284" y="0" width="1571" height="866"/>
+	<SubTexture name="r9k0009" x="0" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0010" x="1571" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0011" x="1571" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0012" x="3142" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0013" x="4713" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0014" x="4713" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0015" x="4713" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0016" x="6284" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0017" x="6284" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0018" x="6284" y="866" width="1571" height="866"/>
+	<SubTexture name="r9k0019" x="0" y="1732" width="1571" height="866"/>
+	<SubTexture name="r9k0020" x="0" y="1732" width="1571" height="866"/>
+</TextureAtlas>

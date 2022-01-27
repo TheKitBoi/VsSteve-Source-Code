@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yotsuba.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Ysitting0000" x="0" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0001" x="0" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0002" x="0" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0003" x="0" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0004" x="0" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0005" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0006" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0007" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0008" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0009" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0010" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0011" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0012" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0013" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0014" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0015" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting0016" x="152" y="0" width="152" height="152"/>
+	<SubTexture name="Ysitting20000" x="304" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0000" x="456" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0001" x="456" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0002" x="608" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0003" x="760" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0004" x="0" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0005" x="152" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0006" x="152" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0007" x="304" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0008" x="456" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0009" x="456" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0010" x="456" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0011" x="456" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0012" x="456" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0013" x="608" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0014" x="608" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0015" x="608" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0016" x="608" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0017" x="608" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0018" x="760" y="152" width="152" height="152"/>
+	<SubTexture name="Ysleeping0019" x="0" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0020" x="0" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0021" x="152" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0022" x="304" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0023" x="608" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0024" x="456" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0025" x="456" y="0" width="152" height="152"/>
+	<SubTexture name="Ysleeping0026" x="456" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0027" x="456" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0028" x="456" y="304" width="152" height="152"/>
+	<SubTexture name="Ysleeping0029" x="456" y="304" width="152" height="152"/>
+	<SubTexture name="Ystanding0000" x="608" y="304" width="152" height="152"/>
+	<SubTexture name="ygrave0000" x="760" y="304" width="152" height="152"/>
+</TextureAtlas>

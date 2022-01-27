@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="harmony.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="vrage_2t30000" x="0" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30001" x="0" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30002" x="568" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30003" x="1136" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30004" x="1704" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30005" x="2272" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30006" x="2840" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30007" x="3408" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30008" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30009" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30010" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30011" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30012" x="3408" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30013" x="3408" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30014" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30015" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30016" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30017" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30018" x="3408" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30019" x="3408" y="0" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30020" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30021" x="0" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30022" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30023" x="568" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30024" x="1136" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30025" x="1704" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30026" x="1704" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30027" x="2272" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30028" x="2272" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30029" x="2840" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30030" x="2840" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30031" x="3408" y="492" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30032" x="0" y="984" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30033" x="568" y="984" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30034" x="1136" y="984" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30035" x="1136" y="984" width="568" height="492" frameX="0" frameY="-4" frameWidth="568" frameHeight="496"/>
+	<SubTexture name="vrage_2t30036" x="1704" y="984" width="568" height="496"/>
+	<SubTexture name="vrage_2t30037" x="1704" y="984" width="568" height="496"/>
+	<SubTexture name="vrage_2t30038" x="2272" y="984" width="568" height="496"/>
+	<SubTexture name="vrage_2t30039" x="2272" y="984" width="568" height="496"/>
+	<SubTexture name="vrage_2t30040" x="2840" y="984" width="568" height="496"/>
+	<SubTexture name="vrage_2t30041" x="2840" y="984" width="568" height="496"/>
+</TextureAtlas>

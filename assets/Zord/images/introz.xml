@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="introz.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zord_intro0000" x="0" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0001" x="0" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0002" x="0" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0003" x="0" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0004" x="1328" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0005" x="1328" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0006" x="2656" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0007" x="3984" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0008" x="5312" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0009" x="6640" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0010" x="6640" y="0" width="1328" height="748"/>
+	<SubTexture name="zord_intro0011" x="0" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0012" x="1328" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0013" x="1328" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0014" x="2656" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0015" x="3984" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0016" x="5312" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0017" x="6640" y="748" width="1328" height="748"/>
+	<SubTexture name="zord_intro0018" x="0" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0019" x="1328" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0020" x="2656" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0021" x="3984" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0022" x="5312" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0023" x="6640" y="1496" width="1328" height="748"/>
+	<SubTexture name="zord_intro0024" x="0" y="2244" width="1328" height="748"/>
+	<SubTexture name="zord_intro0025" x="1328" y="2244" width="1328" height="748"/>
+	<SubTexture name="zord_intro0026" x="1328" y="2244" width="1328" height="748"/>
+	<SubTexture name="zord_intro0027" x="2656" y="2244" width="1328" height="748"/>
+	<SubTexture name="zord_intro0028" x="3984" y="2244" width="1328" height="748"/>
+</TextureAtlas>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pardonUs.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="chuckie_pardonus0000" x="0" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0001" x="0" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0002" x="624" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0003" x="624" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0004" x="1248" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0005" x="1248" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0006" x="1872" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0007" x="2496" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0008" x="3120" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0009" x="3120" y="0" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0010" x="0" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0011" x="0" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0012" x="0" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0013" x="624" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0014" x="624" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0015" x="1248" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0016" x="1248" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0017" x="1872" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0018" x="1872" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0019" x="2496" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0020" x="2496" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0021" x="3120" y="765" width="624" height="765"/>
+	<SubTexture name="chuckie_pardonus0022" x="3120" y="765" width="624" height="765"/>
+</TextureAtlas>

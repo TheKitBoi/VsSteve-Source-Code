@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="GF-v.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="gf0000" x="0" y="0" width="283" height="267"/>
+	<SubTexture name="gf0001" x="0" y="0" width="283" height="267"/>
+	<SubTexture name="gf0002" x="283" y="0" width="283" height="267"/>
+	<SubTexture name="gf0003" x="283" y="0" width="283" height="267"/>
+	<SubTexture name="gf0004" x="566" y="0" width="283" height="267"/>
+	<SubTexture name="gf0005" x="566" y="0" width="283" height="267"/>
+	<SubTexture name="gf0006" x="849" y="0" width="283" height="267"/>
+	<SubTexture name="gf0007" x="1132" y="0" width="283" height="267"/>
+	<SubTexture name="gf0008" x="1415" y="0" width="283" height="267"/>
+	<SubTexture name="gf0009" x="1415" y="0" width="283" height="267"/>
+	<SubTexture name="gf0010" x="1698" y="0" width="283" height="267"/>
+	<SubTexture name="gf0011" x="1698" y="0" width="283" height="267"/>
+	<SubTexture name="gf0012" x="1698" y="0" width="283" height="267"/>
+	<SubTexture name="gf0013" x="0" y="267" width="283" height="267"/>
+	<SubTexture name="gf0014" x="0" y="267" width="283" height="267"/>
+	<SubTexture name="gf0015" x="283" y="267" width="283" height="267"/>
+	<SubTexture name="gf0016" x="283" y="267" width="283" height="267"/>
+	<SubTexture name="gf0017" x="566" y="267" width="283" height="267"/>
+	<SubTexture name="gf0018" x="849" y="267" width="283" height="267"/>
+	<SubTexture name="gf0019" x="1132" y="267" width="283" height="267"/>
+	<SubTexture name="gf0020" x="1132" y="267" width="283" height="267"/>
+	<SubTexture name="gf0021" x="1415" y="267" width="283" height="267"/>
+	<SubTexture name="gf0022" x="1698" y="267" width="283" height="267"/>
+	<SubTexture name="gf0023" x="0" y="534" width="283" height="267"/>
+	<SubTexture name="gf0024" x="0" y="534" width="283" height="267"/>
+	<SubTexture name="gf0025" x="283" y="534" width="283" height="267"/>
+	<SubTexture name="gf0026" x="283" y="534" width="283" height="267"/>
+	<SubTexture name="gf0027" x="566" y="534" width="283" height="267"/>
+	<SubTexture name="gf0028" x="849" y="534" width="283" height="267"/>
+	<SubTexture name="gf0029" x="849" y="534" width="283" height="267"/>
+	<SubTexture name="gf_hey0000" x="1132" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0001" x="1132" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0002" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0003" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0004" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0005" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0006" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0007" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0008" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0009" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0010" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0011" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0012" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0013" x="1414" y="534" width="282" height="266"/>
+	<SubTexture name="gf_hey0014" x="1414" y="534" width="282" height="266"/>
+</TextureAtlas>

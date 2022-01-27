@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="groom.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="homoor_groom0000" x="0" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0001" x="0" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0002" x="531" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0003" x="531" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0004" x="1062" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0005" x="1593" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0006" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0007" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0008" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0009" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0010" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0011" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0012" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0013" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0014" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0015" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0016" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0017" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0018" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0019" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0020" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0021" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0022" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0023" x="2124" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0024" x="2655" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0025" x="3186" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0026" x="3186" y="0" width="531" height="712"/>
+	<SubTexture name="homoor_groom0027" x="0" y="712" width="531" height="712"/>
+	<SubTexture name="homoor_groom0028" x="0" y="712" width="531" height="712"/>
+	<SubTexture name="homoor_groom0029" x="0" y="712" width="531" height="712"/>
+	<SubTexture name="homoor_groom0030" x="0" y="712" width="531" height="712"/>
+	<SubTexture name="homoor_groom0031" x="0" y="712" width="531" height="712"/>
+	<SubTexture name="homoor_groom0032" x="0" y="712" width="531" height="712"/>
+</TextureAtlas>

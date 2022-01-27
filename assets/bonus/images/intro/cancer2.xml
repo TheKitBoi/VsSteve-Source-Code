@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cancer2.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cancer_intro_20000" x="0" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20001" x="0" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20002" x="786" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20003" x="786" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20004" x="1572" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20005" x="1572" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20006" x="2358" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20007" x="2358" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20008" x="3144" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20009" x="3144" y="0" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20010" x="0" y="894" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20011" x="0" y="894" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20012" x="786" y="894" width="786" height="894"/>
+	<SubTexture name="cancer_intro_20013" x="786" y="894" width="786" height="894"/>
+</TextureAtlas>

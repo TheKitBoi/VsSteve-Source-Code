@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sagebf.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bf_up_intro0000" x="0" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0001" x="0" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0002" x="336" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0003" x="336" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0004" x="672" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0005" x="672" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0006" x="1008" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0007" x="1344" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0008" x="1344" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0009" x="1680" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0010" x="1680" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0011" x="0" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0012" x="336" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0013" x="672" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0014" x="672" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0015" x="1008" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0016" x="1344" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0017" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0018" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0019" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0020" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0021" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0022" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0023" x="1680" y="354" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0024" x="0" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0025" x="0" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0026" x="336" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0027" x="336" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0028" x="0" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0029" x="0" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0030" x="336" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0031" x="336" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0032" x="672" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0033" x="672" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0034" x="1008" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0035" x="1008" y="0" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0036" x="672" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0037" x="672" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0038" x="672" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0039" x="672" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0040" x="672" y="708" width="336" height="354"/>
+	<SubTexture name="bf_up_intro0041" x="672" y="708" width="336" height="354"/>
+</TextureAtlas>

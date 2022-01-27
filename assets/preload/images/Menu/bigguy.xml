@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bigguy.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="biggiy0000" x="0" y="0" width="1482" height="720"/>
+	<SubTexture name="biggiy0001" x="1482" y="0" width="1482" height="720"/>
+	<SubTexture name="biggiy0002" x="1482" y="0" width="1482" height="720"/>
+	<SubTexture name="biggiy0003" x="0" y="720" width="1482" height="720"/>
+	<SubTexture name="biggiy0004" x="0" y="720" width="1482" height="720"/>
+	<SubTexture name="biggiy0005" x="1482" y="720" width="1482" height="720"/>
+	<SubTexture name="biggiy0006" x="0" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0007" x="0" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0008" x="0" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0009" x="1482" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0010" x="1482" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0011" x="1482" y="1440" width="1482" height="720"/>
+	<SubTexture name="biggiy0012" x="1482" y="720" width="1482" height="720"/>
+	<SubTexture name="biggiy0013" x="1482" y="720" width="1482" height="720"/>
+	<SubTexture name="biggiy0014" x="1482" y="720" width="1482" height="720"/>
+</TextureAtlas>

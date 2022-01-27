@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="introh.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="handintro0000" x="0" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0001" x="0" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0002" x="1137" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0003" x="1137" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0004" x="2274" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0005" x="2274" y="0" width="1137" height="646"/>
+	<SubTexture name="handintro0006" x="0" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0007" x="1137" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0008" x="1137" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0009" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0010" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0011" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0012" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0013" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0014" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0015" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0016" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0017" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0018" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0019" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0020" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0021" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0022" x="2274" y="646" width="1137" height="646"/>
+	<SubTexture name="handintro0023" x="2274" y="646" width="1137" height="646"/>
+</TextureAtlas>

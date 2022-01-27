@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="head.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ebolagrl0000" x="0" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0001" x="0" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0002" x="235" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0003" x="235" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0004" x="470" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0005" x="470" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0006" x="705" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0007" x="705" y="0" width="235" height="218"/>
+	<SubTexture name="ebolagrl0008" x="0" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0009" x="0" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0010" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0011" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0012" x="470" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0013" x="470" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0014" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0015" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0016" x="470" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0017" x="470" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0018" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0019" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0020" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0021" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0022" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0023" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0024" x="235" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0025" x="705" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0026" x="705" y="218" width="235" height="218"/>
+	<SubTexture name="ebolagrl0027" x="0" y="436" width="235" height="218"/>
+	<SubTexture name="ebolagrl0028" x="0" y="436" width="235" height="218"/>
+	<SubTexture name="ebolagrl0029" x="235" y="436" width="235" height="218"/>
+</TextureAtlas>

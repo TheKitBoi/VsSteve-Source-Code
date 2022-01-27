@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="diff.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="de0000" x="0" y="0" width="234" height="53"/>
+	<SubTexture name="dh0000" x="0" y="53" width="234" height="53"/>
+	<SubTexture name="dn0000" x="0" y="106" width="234" height="53"/>
+</TextureAtlas>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ports.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="week0port0000" x="0" y="0" width="477" height="177"/>
+	<SubTexture name="week1port0000" x="477" y="0" width="477" height="177"/>
+	<SubTexture name="week2port0000" x="954" y="0" width="477" height="177"/>
+	<SubTexture name="week3port0000" x="1431" y="0" width="477" height="177"/>
+	<SubTexture name="week4port0000" x="0" y="177" width="477" height="177"/>
+	<SubTexture name="week5port0000" x="477" y="177" width="477" height="177"/>
+	<SubTexture name="week5portalt0000" x="954" y="177" width="477" height="177"/>
+	<SubTexture name="week6port0000" x="1431" y="177" width="477" height="177"/>
+	<SubTexture name="week6port30000" x="0" y="354" width="477" height="177"/>
+	<SubTexture name="weekcanport0000" x="477" y="354" width="477" height="177"/>
+	<SubTexture name="weekmonport 0000" x="954" y="354" width="477" height="177"/>
+	<SubTexture name="weeksneed0000" x="1431" y="354" width="477" height="177"/>
+	<SubTexture name="weektank0000" x="0" y="531" width="477" height="177"/>
+	<SubTexture name="weekvport0000" x="477" y="531" width="477" height="177"/>
+	<SubTexture name="weekzord0000" x="954" y="531" width="477" height="177"/>
+</TextureAtlas>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="nigger.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="nigger0000" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0001" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0002" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0003" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0004" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0005" x="79" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0006" x="79" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0007" x="158" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0008" x="158" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0009" x="237" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0010" x="237" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0011" x="316" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0012" x="316" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0013" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0014" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0015" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0016" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0017" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0018" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0019" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0020" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0021" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0022" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0023" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0024" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0025" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0026" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0027" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0028" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0029" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0030" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0031" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0032" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0033" x="395" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0034" x="0" y="94" width="79" height="94"/>
+	<SubTexture name="nigger0035" x="0" y="94" width="79" height="94"/>
+	<SubTexture name="nigger0036" x="158" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0037" x="158" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0038" x="79" y="94" width="79" height="94"/>
+	<SubTexture name="nigger0039" x="79" y="94" width="79" height="94"/>
+	<SubTexture name="nigger0040" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0041" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0042" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0043" x="0" y="0" width="79" height="94"/>
+	<SubTexture name="nigger0044" x="0" y="0" width="79" height="94"/>
+</TextureAtlas>

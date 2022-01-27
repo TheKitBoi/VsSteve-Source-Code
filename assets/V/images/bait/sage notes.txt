@@ -1,0 +1,3 @@
+Sage notes are added by using :
+
+Numpad 2 + leftmouse

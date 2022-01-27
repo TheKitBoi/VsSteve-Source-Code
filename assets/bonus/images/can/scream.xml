@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="scream.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cancer_scream0000" x="0" y="0" width="787" height="802"/>
+	<SubTexture name="cancer_scream0001" x="787" y="0" width="787" height="802"/>
+	<SubTexture name="cancer_scream0002" x="1574" y="0" width="787" height="802"/>
+	<SubTexture name="cancer_scream0003" x="2361" y="0" width="787" height="802"/>
+	<SubTexture name="cancer_scream0004" x="3148" y="0" width="787" height="802"/>
+	<SubTexture name="cancer_scream0005" x="0" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0006" x="787" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0007" x="787" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0008" x="1574" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0009" x="1574" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0010" x="0" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0011" x="0" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0012" x="787" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0013" x="2361" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0014" x="3148" y="802" width="787" height="802"/>
+	<SubTexture name="cancer_scream0015" x="0" y="1604" width="787" height="802"/>
+	<SubTexture name="cancer_scream0016" x="0" y="1604" width="787" height="802"/>
+</TextureAtlas>

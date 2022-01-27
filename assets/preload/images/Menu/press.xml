@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="press.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="b10000" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20000" x="262" y="0" width="262" height="262"/>
+	<SubTexture name="b20001" x="262" y="0" width="262" height="262"/>
+	<SubTexture name="b20002" x="524" y="0" width="262" height="262"/>
+	<SubTexture name="b20003" x="524" y="0" width="262" height="262"/>
+	<SubTexture name="b20004" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20005" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20006" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20007" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20008" x="0" y="0" width="262" height="262"/>
+	<SubTexture name="b20009" x="0" y="0" width="262" height="262"/>
+</TextureAtlas>

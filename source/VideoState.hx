@@ -32,14 +32,21 @@ class VideoState extends MusicBeatState
 	public var defaultText:String = "";
 	public var doShit:Bool = false;
 	public var pauseText:String = "Press P To Pause/Unpause";
+	public var autoPause:Bool = false;
+	public var musicPaused:Bool = false;
 
-	public function new(source:String, toTrans:FlxState, frameSkipLimit:Int = -1)
+	public function new(source:String, toTrans:FlxState, frameSkipLimit:Int = -1, autopause:Bool = false)
 	{
 		super();
 		
+		autoPause = autopause;
+		
 		leSource = source;
 		transClass = toTrans;
-
+		if (frameSkipLimit != -1 && GlobalVideo.isWebm)
+		{
+			GlobalVideo.getWebm().webm.SKIP_STEP_LIMIT = frameSkipLimit;	
+		}
 	}
 	
 	override function create()
@@ -70,7 +77,7 @@ class VideoState extends MusicBeatState
 		txt = new FlxText(0, 0, FlxG.width,
 			defaultText,
 			32);
-		txt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
+		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
 		add(txt);
 
@@ -114,6 +121,12 @@ class VideoState extends MusicBeatState
 				doShit = true;
 			//}, 1);
 		//}
+		
+		if (autoPause && FlxG.sound.music != null && FlxG.sound.music.playing)
+		{
+			musicPaused = true;
+			FlxG.sound.music.pause();
+		}
 	}
 	
 	override function update(elapsed:Float)
@@ -184,18 +197,23 @@ class VideoState extends MusicBeatState
 			}
 		}
 		
-		if (controls.ACCEPT || GlobalVideo.get().ended || GlobalVideo.get().stopped)
+		if (FlxG.keys.justPressed.ENTER || GlobalVideo.get().ended || GlobalVideo.get().stopped)
 		{
 			txt.visible = false;
 			GlobalVideo.get().hide();
 			GlobalVideo.get().stop();
 		}
 		
-		if (controls.ACCEPT || GlobalVideo.get().ended)
+		if (FlxG.keys.justPressed.ENTER || GlobalVideo.get().ended)
 		{
 			notDone = false;
 			FlxG.sound.music.volume = fuckingVolume;
 			txt.text = pauseText;
+			if (musicPaused)
+			{
+				musicPaused = false;
+				FlxG.sound.music.resume();
+			}
 			FlxG.autoPause = true;
 			FlxG.switchState(transClass);
 		}

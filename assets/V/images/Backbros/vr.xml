@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="vr.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="vr0000" x="0" y="0" width="586" height="514"/>
+	<SubTexture name="vr0001" x="0" y="0" width="586" height="514"/>
+	<SubTexture name="vr0002" x="0" y="0" width="586" height="514"/>
+	<SubTexture name="vr0003" x="586" y="0" width="586" height="514"/>
+	<SubTexture name="vr0004" x="586" y="0" width="586" height="514"/>
+	<SubTexture name="vr0005" x="586" y="0" width="586" height="514"/>
+	<SubTexture name="vr0006" x="1172" y="0" width="586" height="514"/>
+	<SubTexture name="vr0007" x="1172" y="0" width="586" height="514"/>
+	<SubTexture name="vr0008" x="1172" y="0" width="586" height="514"/>
+	<SubTexture name="vr0009" x="0" y="514" width="586" height="514"/>
+	<SubTexture name="vr0010" x="0" y="514" width="586" height="514"/>
+	<SubTexture name="vr0011" x="0" y="514" width="586" height="514"/>
+	<SubTexture name="vr0012" x="586" y="514" width="586" height="514"/>
+	<SubTexture name="vr0013" x="586" y="514" width="586" height="514"/>
+	<SubTexture name="vr0014" x="586" y="514" width="586" height="514"/>
+	<SubTexture name="vr0015" x="1172" y="514" width="586" height="514"/>
+	<SubTexture name="vr0016" x="1172" y="514" width="586" height="514"/>
+	<SubTexture name="vr0017" x="1172" y="514" width="586" height="514"/>
+	<SubTexture name="vr0018" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0019" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0020" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0021" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0022" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0023" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0024" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0025" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0026" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0027" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0028" x="0" y="1028" width="586" height="514"/>
+	<SubTexture name="vr0029" x="0" y="1028" width="586" height="514"/>
+</TextureAtlas>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="black.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="black0000" x="0" y="0" width="1283" height="722"/>
+	<SubTexture name="black0001" x="1283" y="0" width="1283" height="722"/>
+	<SubTexture name="black0002" x="2566" y="0" width="1283" height="722"/>
+	<SubTexture name="black0003" x="0" y="722" width="1283" height="722"/>
+	<SubTexture name="black0004" x="1283" y="722" width="1283" height="722"/>
+	<SubTexture name="black0005" x="2566" y="722" width="1283" height="722"/>
+	<SubTexture name="black0006" x="2566" y="722" width="1283" height="722"/>
+	<SubTexture name="black0007" x="2566" y="722" width="1283" height="722"/>
+	<SubTexture name="black0008" x="2566" y="722" width="1283" height="722"/>
+	<SubTexture name="black0009" x="2566" y="722" width="1283" height="722"/>
+	<SubTexture name="black0010" x="0" y="1444" width="1283" height="722"/>
+	<SubTexture name="black0011" x="1283" y="1444" width="1283" height="722"/>
+	<SubTexture name="black0012" x="2566" y="1444" width="1283" height="722"/>
+	<SubTexture name="black0013" x="0" y="2166" width="1283" height="722"/>
+	<SubTexture name="black0014" x="0" y="2166" width="1283" height="722"/>
+	<SubTexture name="black0015" x="0" y="2166" width="1283" height="722"/>
+	<SubTexture name="black0016" x="0" y="2166" width="1283" height="722"/>
+	<SubTexture name="black0017" x="0" y="2166" width="1283" height="722"/>
+	<SubTexture name="black0018" x="0" y="2166" width="1283" height="722"/>
+</TextureAtlas>

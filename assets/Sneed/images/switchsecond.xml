@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="switchsecond.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bsneed_switch_20000" x="0" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20001" x="0" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20002" x="0" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20003" x="0" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20004" x="0" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20005" x="1356" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20006" x="1356" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20007" x="2712" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20008" x="2712" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20009" x="4068" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20010" x="4068" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20011" x="5424" y="0" width="1356" height="1119"/>
+	<SubTexture name="bsneed_switch_20012" x="5424" y="0" width="1356" height="1119"/>
+	<SubTexture name="bsneed_switch_20013" x="5424" y="0" width="1356" height="1119"/>
+	<SubTexture name="bsneed_switch_20014" x="5424" y="0" width="1356" height="1119"/>
+	<SubTexture name="bsneed_switch_20015" x="6780" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20016" x="6780" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20017" x="6780" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20018" x="6780" y="0" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20019" x="0" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20020" x="0" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20021" x="1356" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20022" x="1356" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20023" x="2712" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20024" x="2712" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20025" x="4068" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20026" x="4068" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20027" x="5424" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20028" x="5424" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20029" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20030" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20031" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20032" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20033" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20034" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20035" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20036" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20037" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+	<SubTexture name="bsneed_switch_20038" x="6780" y="1119" width="1356" height="1055" frameX="0" frameY="0" frameWidth="1356" frameHeight="1119"/>
+</TextureAtlas>

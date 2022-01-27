@@ -1,27 +1,16 @@
 package;
 
 import lime.utils.Assets;
-import flixel.FlxG;
-#if sys
-import sys.io.File;
-#end
 
 using StringTools;
 
 class CoolUtil
 {
-	public static var difficultyArray:Array<String> = ['PEACEFUL', "HARD", "HARDCORE", "ULTRA HARDCORE"];
+	public static var difficultyArray:Array<String> = ['Easy', "Normal", "Hard"];
 
-	public static function difficultyString():String
+	public static function difficultyFromInt(difficulty:Int):String
 	{
-		return difficultyArray[PlayState.storyDifficulty];
-	}
-
-	public static function boundTo(value:Float, min:Float, max:Float):Float {
-		var newValue:Float = value;
-		if(newValue < min) newValue = min;
-		else if(newValue > max) newValue = max;
-		return newValue;
+		return difficultyArray[difficulty];
 	}
 
 	public static function coolTextFile(path:String):Array<String>
@@ -56,13 +45,5 @@ class CoolUtil
 			dumbArray.push(i);
 		}
 		return dumbArray;
-	}
-
-	public static function browserLoad(site:String) {
-		#if linux
-		Sys.command('/usr/bin/xdg-open', [site, "&"]);
-		#else
-		FlxG.openURL(site);
-		#end
 	}
 }

@@ -20,9 +20,6 @@ class KeyBinds
         FlxG.save.data.downBind = "S";
         FlxG.save.data.leftBind = "A";
         FlxG.save.data.rightBind = "D";
-        FlxG.save.data.blockBind = "SPACE";
-        FlxG.save.data.regenPotionBind = "E";
-        FlxG.save.data.strengthPotionBind = "T";
         FlxG.save.data.killBind = "R";
         FlxG.save.data.gpupBind = "DPAD_UP";
         FlxG.save.data.gpdownBind = "DPAD_DOWN";
@@ -58,13 +55,6 @@ class KeyBinds
         }
         if (StringTools.contains(FlxG.save.data.rightBind,"NUMPAD"))
             FlxG.save.data.rightBind = "D";
-
-        if(FlxG.save.data.regenPotionBind == null){
-            FlxG.save.data.regenPotionBind = "E";
-        }
-        if(FlxG.save.data.strengthPotionBind == null){
-            FlxG.save.data.strengthPotionBind = "T";
-        }
         
         if(FlxG.save.data.gpupBind == null){
             FlxG.save.data.gpupBind = "DPAD_UP";
@@ -81,6 +71,10 @@ class KeyBinds
         if(FlxG.save.data.gprightBind == null){
             FlxG.save.data.gprightBind = "DPAD_RIGHT";
             trace("No GRIGHT");
+        }
+	if(FlxG.save.data.killBind == null){
+            FlxG.save.data.killBind = "R";
+            trace("No KILL");
         }
 
         trace('${FlxG.save.data.leftBind}-${FlxG.save.data.downBind}-${FlxG.save.data.upBind}-${FlxG.save.data.rightBind}');

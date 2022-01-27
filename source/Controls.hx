@@ -494,6 +494,7 @@ class Controls extends FlxActionSet
 		loadKeyBinds();
 		/*if (reset)
 			removeKeyboard();
+
 		keyboardScheme = scheme;
 		
 		#if (haxe >= "4.0.0")
@@ -593,7 +594,7 @@ class Controls extends FlxActionSet
 		inline bindKeys(Control.RIGHT, [FlxKey.fromString(FlxG.save.data.rightBind), FlxKey.RIGHT]);
 		inline bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 		inline bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
-		inline bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
+		inline bindKeys(Control.PAUSE, [ENTER, ESCAPE]);
 		inline bindKeys(Control.RESET, [FlxKey.fromString(FlxG.save.data.killBind)]);
 	}
 

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="trv.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="trv0000" x="0" y="0" width="320" height="298"/>
+	<SubTexture name="trv0001" x="320" y="0" width="320" height="298"/>
+	<SubTexture name="trv0002" x="640" y="0" width="320" height="298"/>
+	<SubTexture name="trv0003" x="960" y="0" width="320" height="298"/>
+	<SubTexture name="trv0004" x="1280" y="0" width="320" height="298"/>
+	<SubTexture name="trv0005" x="1600" y="0" width="320" height="298"/>
+	<SubTexture name="trv0006" x="1920" y="0" width="320" height="298"/>
+	<SubTexture name="trv0007" x="2240" y="0" width="320" height="298"/>
+	<SubTexture name="trv0008" x="2560" y="0" width="320" height="298"/>
+	<SubTexture name="trv0009" x="2880" y="0" width="320" height="298"/>
+	<SubTexture name="trv0010" x="3200" y="0" width="320" height="298"/>
+	<SubTexture name="trv0011" x="3520" y="0" width="320" height="298"/>
+	<SubTexture name="trv0012" x="0" y="298" width="320" height="298"/>
+	<SubTexture name="trv0013" x="320" y="298" width="320" height="298"/>
+	<SubTexture name="trv0014" x="640" y="298" width="320" height="298"/>
+	<SubTexture name="trv0015" x="960" y="298" width="320" height="298"/>
+	<SubTexture name="trv0016" x="1280" y="298" width="320" height="298"/>
+	<SubTexture name="trv0017" x="1600" y="298" width="320" height="298"/>
+	<SubTexture name="trv0018" x="1920" y="298" width="320" height="298"/>
+	<SubTexture name="trv0019" x="2240" y="298" width="320" height="298"/>
+	<SubTexture name="trv0020" x="2560" y="298" width="320" height="298"/>
+	<SubTexture name="trv0021" x="2880" y="298" width="320" height="298"/>
+	<SubTexture name="trv0022" x="3200" y="298" width="320" height="298"/>
+	<SubTexture name="trv0023" x="3520" y="298" width="320" height="298"/>
+	<SubTexture name="trv0024" x="0" y="596" width="320" height="298"/>
+	<SubTexture name="trv0025" x="320" y="596" width="320" height="298"/>
+	<SubTexture name="trv0026" x="640" y="596" width="320" height="298"/>
+	<SubTexture name="trv0027" x="960" y="596" width="320" height="298"/>
+	<SubTexture name="trv0028" x="1280" y="596" width="320" height="298"/>
+	<SubTexture name="trv0029" x="1600" y="596" width="320" height="298"/>
+	<SubTexture name="trv0030" x="1920" y="596" width="320" height="298"/>
+	<SubTexture name="trv0031" x="2240" y="596" width="320" height="298"/>
+	<SubTexture name="trv0032" x="2560" y="596" width="320" height="298"/>
+	<SubTexture name="trv0033" x="2880" y="596" width="320" height="298"/>
+	<SubTexture name="trv0034" x="3200" y="596" width="320" height="298"/>
+	<SubTexture name="trv0035" x="3520" y="596" width="320" height="298"/>
+	<SubTexture name="trv0036" x="0" y="894" width="320" height="298"/>
+	<SubTexture name="trv0037" x="320" y="894" width="320" height="298"/>
+	<SubTexture name="trv0038" x="640" y="894" width="320" height="298"/>
+	<SubTexture name="trv0039" x="960" y="894" width="320" height="298"/>
+	<SubTexture name="trv0040" x="1280" y="894" width="320" height="298"/>
+	<SubTexture name="trv0041" x="1600" y="894" width="320" height="298"/>
+	<SubTexture name="trv0042" x="1920" y="894" width="320" height="298"/>
+	<SubTexture name="trv0043" x="2240" y="894" width="320" height="298"/>
+	<SubTexture name="trv0044" x="2560" y="894" width="320" height="298"/>
+	<SubTexture name="trv0045" x="2880" y="894" width="320" height="298"/>
+	<SubTexture name="trv0046" x="3200" y="894" width="320" height="298"/>
+	<SubTexture name="trv0047" x="3520" y="894" width="320" height="298"/>
+	<SubTexture name="trv0048" x="0" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0049" x="320" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0050" x="640" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0051" x="960" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0052" x="1280" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0053" x="1600" y="1192" width="320" height="298"/>
+	<SubTexture name="trv0054" x="1920" y="1192" width="320" height="298"/>
+</TextureAtlas>

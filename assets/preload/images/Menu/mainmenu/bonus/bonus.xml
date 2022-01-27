@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bonus.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bonus-idle0000" x="0" y="0" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0000" x="283" y="0" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0001" x="283" y="0" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0002" x="566" y="0" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0003" x="566" y="0" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0004" x="0" y="169" width="283" height="169"/>
+	<SubTexture name="Bonus-selected0005" x="0" y="169" width="283" height="169"/>
+</TextureAtlas>

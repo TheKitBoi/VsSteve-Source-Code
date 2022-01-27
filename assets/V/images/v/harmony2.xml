@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="harmony2.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="v_tomic0000" x="0" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0001" x="0" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0002" x="568" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0003" x="568" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0004" x="1136" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0005" x="1704" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0006" x="2272" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0007" x="2272" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0008" x="2840" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0009" x="3408" y="0" width="568" height="494"/>
+	<SubTexture name="v_tomic0010" x="0" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0011" x="0" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0012" x="0" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0013" x="0" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0014" x="0" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0015" x="568" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0016" x="568" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0017" x="1136" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0018" x="1704" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0019" x="2272" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0020" x="2840" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0021" x="3408" y="494" width="568" height="494"/>
+	<SubTexture name="v_tomic0022" x="0" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0023" x="568" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0024" x="1136" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0025" x="1704" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0026" x="1704" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0027" x="1704" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0028" x="2272" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0029" x="2272" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0030" x="2272" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0031" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0032" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0033" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0034" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0035" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0036" x="2840" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0037" x="3408" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0038" x="3408" y="988" width="568" height="494"/>
+	<SubTexture name="v_tomic0039" x="0" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0040" x="0" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0041" x="568" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0042" x="568" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0043" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0044" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0045" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0046" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0047" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0048" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0049" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0050" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0051" x="1136" y="1482" width="568" height="494"/>
+	<SubTexture name="v_tomic0052" x="1136" y="1482" width="568" height="494"/>
+</TextureAtlas>
