@@ -1,0 +1,7 @@
+idle -1 3
+singUP 50 57
+singRIGHT 0 -18
+singLEFT 100 -9
+singDOWN 77 -96
+UGH -7 -5
+GOOD 105 18
