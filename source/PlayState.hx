@@ -525,7 +525,7 @@ class PlayState extends MusicBeatState
 					camMovement = 0.2;
 
 					var houseBG = new FlxSprite().loadGraphic(Paths.image('house/houseBG'));
-					houseBG.scrollFactor.set(0.1, 0.1);
+					houseBG.scrollFactor.set(1, 1);
 					houseBG.y -= 1200;
 					houseBG.x -= 1500;
 					houseBG.setGraphicSize(Std.int(houseBG.width * 6));
@@ -1446,8 +1446,6 @@ class PlayState extends MusicBeatState
 		
 		if(SONG.song.toLowerCase() == 'suit up')
 			hotbar.animation.play('Mic', false);
-
-
 		add(hotbar);
 
 		if(SONG.song.toLowerCase() == 'entity')
@@ -1542,7 +1540,7 @@ class PlayState extends MusicBeatState
 				if(dad.curCharacter == 'notch')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
 				else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#2B5480'));
+					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#0055D6'));
 				else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
 					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
 				else if(dad.curCharacter == 'irfan')
@@ -2070,7 +2068,7 @@ class PlayState extends MusicBeatState
 			if(dad.curCharacter == 'notch')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
 			else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
-				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#2B5480'));
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#0055D6'));
 			else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
 			else if(dad.curCharacter == 'irfan')
@@ -2091,6 +2089,8 @@ class PlayState extends MusicBeatState
 				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('bossbarfront'));
 			else 
 				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+
+			
 			if (FlxG.save.data.downscroll)
 				songPosXP.y = FlxG.height * 0.9 + 45; 
 			songPosXP.screenCenter(X);

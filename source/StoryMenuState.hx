@@ -44,11 +44,20 @@ class StoryMenuState extends MusicBeatState
 		"The Finale?"
 	];
 
+	var difficultyText:Array<String> = [
+		"Peaceful: ",
+		"Hard",
+		"Hardcore",
+		"Ultra Hardcore"
+	];
+
 	var txtWeekTitle:FlxText;
 
 	var curWeek:Int = 0;
 
 	var txtTracklist:FlxText;
+
+	var txtDifficulty:FlxText;
 
 	var grpWeekText:FlxTypedGroup<MenuItem>;
 	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
@@ -99,19 +108,16 @@ class StoryMenuState extends MusicBeatState
 			if (!FlxG.sound.music.playing)
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
-				
-
 		
 		persistentUpdate = persistentDraw = true;
 		
-		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
+		scoreText = new FlxText(FlxG.width * 0.675, 10, 0, "SCORE: 49324858", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32);
-		scoreText.y += 670;
+		scoreText.y += 660;
 
-		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
-		txtWeekTitle.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
-		txtWeekTitle.y += 670;
-		txtWeekTitle.screenCenter(X);
+		txtWeekTitle = new FlxText(FlxG.width * 0.675, 10, 0, "", 32);
+		txtWeekTitle.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE);
+		txtWeekTitle.y += 550;
 
 		var rankText:FlxText = new FlxText(0, 10);
 		rankText.text = 'RANK: GREAT';
@@ -139,22 +145,21 @@ class StoryMenuState extends MusicBeatState
 
 		for (i in 0...weekData.length)
 		{
-			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height - 30, i);
-			weekThing.y += ((weekThing.height) * i);
-			weekThing.targetY = i;
+			var weekThing:MenuItem = new MenuItem(0, 0, i);
+			weekThing.antialiasing = false;
 			weekThing.updateHitbox();
 			weekThing.screenCenter(X);
 			switch(i) 
 			{
 				case 0: 
-					weekThing.setPosition(weekThing.x - 400, weekThing.y + 100);
+					weekThing.setPosition(weekThing.x, 100);
 				case 1: 
-					weekThing.setPosition(weekThing.x - 150, weekThing.y + 100);
+					weekThing.setPosition(weekThing.x, 175);
 				case 2:
-					weekThing.setPosition(weekThing.x + 150, weekThing.y + 100);
+					weekThing.setPosition(weekThing.x, 250);
 			}
-			weekThing.antialiasing = false;
-			weekThing.updateHitbox();
+			weekThing.screenCenter(X);
+
 			grpWeekText.add(weekThing);
 
 			// Needs an offset thingie
@@ -169,6 +174,7 @@ class StoryMenuState extends MusicBeatState
 				grpLocks.add(lock);
 			}
 		}
+
 
 		trace("Line 96");
 
@@ -210,13 +216,21 @@ class StoryMenuState extends MusicBeatState
 		add(yellowBG);
 		add(grpWeekCharacters);
 
-		txtTracklist = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
+		txtTracklist = new FlxText(FlxG.width * 0.05, 20, 0, "Tracks", 24);
 		txtTracklist.alignment = CENTER;
 		txtTracklist.font = rankText.font;
 		txtTracklist.color = 0xFFFFFFFF;
-		txtTracklist.y += -480;
+		txtTracklist.y += 480;
 		add(txtTracklist);
+
+		txtDifficulty = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Difficulty", 32);
+		txtDifficulty.alignment = CENTER;
+		txtDifficulty.font = rankText.font;
+		txtDifficulty.color = 0xFFFFFFFF;
+		txtDifficulty.y += -480;
+		add(txtDifficulty);
 		// add(rankText);
+
 		add(scoreText);
 		
 		add(txtWeekTitle);
@@ -402,7 +416,7 @@ class StoryMenuState extends MusicBeatState
 		grpWeekCharacters.members[1].setCharacter(weekCharacters[curWeek][1]);
 		grpWeekCharacters.members[2].setCharacter(weekCharacters[curWeek][2]);
 
-		txtTracklist.text = "Tracks\n";
+		txtTracklist.text = "Tracks:";
 		var stringThing:Array<String> = weekData[curWeek];
 
 		for (i in stringThing)
