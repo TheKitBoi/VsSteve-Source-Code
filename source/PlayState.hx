@@ -1450,13 +1450,10 @@ class PlayState extends MusicBeatState
 
 		add(hotbar);
 
-
-
 		if(SONG.song.toLowerCase() == 'entity')
 		{
 			dad.alpha = 0;
 		}
-			
 
 		if(SONG.song.toLowerCase() == 'espionage')
 			{
@@ -4473,7 +4470,7 @@ class PlayState extends MusicBeatState
 
 			add(currentTimingShown);
 
-			var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
+			var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2)); 
 			comboSpr.screenCenter();
 			comboSpr.x = rating.x;
 			comboSpr.y = rating.y + 100;
