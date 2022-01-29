@@ -16,13 +16,9 @@ using StringTools;
 class Note extends FlxSprite
 {
 	public var strumTime:Float = 0;
-	public var baseStrum:Float = 0;
-	
-	public var rStrumTime:Float = 0;
 
 	public var mustPress:Bool = false;
 	public var noteData:Int = 0;
-	public var rawNoteData:Int = 0;
 	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
@@ -30,14 +26,9 @@ class Note extends FlxSprite
 	public var modifiedByLua:Bool = false;
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
-	public var originColor:Int = 0; // The sustain note's original note's color
-	public var noteSection:Int = 0;
-
-	public var noteCharterObject:FlxSprite;
+	public var noteType:Int = 0;
 
 	public var noteScore:Float = 1;
-
-	public var noteYOff:Int = 0;
 
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var PURP_NOTE:Int = 0;
@@ -47,59 +38,21 @@ class Note extends FlxSprite
 
 	public var rating:String = "shit";
 
-	public var modAngle:Float = 0; // The angle set by modcharts
-	public var localAngle:Float = 0; // The angle to be edited inside Note.hx
-
-	public var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
-	public var quantityColor:Array<Int> = [RED_NOTE, 2, BLUE_NOTE, 2, PURP_NOTE, 2, BLUE_NOTE, 2];
-	public var arrowAngles:Array<Int> = [180, 90, 270, 0];
-
-	public var isParent:Bool = false;
-	public var parent:Note = null;
-	public var spotInLine:Int = 0;
-	public var sustainActive:Bool = true;
-
-	public var children:Array<Note> = [];
-	
-	public var nType:String='normal';
-	
-	
-	
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false,?nType:String='normal')
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?noteType:Int = 0) 
 	{
 		super();
 
 		if (prevNote == null)
 			prevNote = this;
-        this.nType=nType;
+
+		this.noteType = noteType;
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
-   
-		
-		
-		
 
 		x += 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
-
-		if (inCharter)
-		{
-			this.strumTime = strumTime;
-			rStrumTime = strumTime;
-		}
-		else
-		{
-			this.strumTime = strumTime;
-			rStrumTime = strumTime - (FlxG.save.data.offset + PlayState.songOffset);
-			#if sys
-			if (PlayState.isSM)
-			{
-				rStrumTime = Math.round(rStrumTime + Std.parseFloat(PlayState.sm.header.OFFSET));
-			}
-			#end
-		}
-
+		this.strumTime = strumTime;
 
 		if (this.strumTime < 0 )
 			this.strumTime = 0;
@@ -108,120 +61,501 @@ class Note extends FlxSprite
 
 		var daStage:String = PlayState.curStage;
 
-		//defaults if no noteStyle was found in chart
-		var noteTypeCheck:String = 'normal';
-
-		if (inCharter)
-		{	
-			var name ='NOTE_assets'; ///stop crashing
-			switch (nType) 
-			{
-			case 'sage':name ="sagenotes";
-			case  'ebola':name="Pnotes";
-		
-			default :name ="NOTE_assets";
-			}
-		
-			
-			frames = Paths.getSparrowAtlas(name);
-
-			for (i in 0...4)
-			{
-				animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
-				animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
-				animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
-			}
-
-			setGraphicSize(Std.int(width * 0.7));
-			updateHitbox();
-			if(FlxG.save.data.antialiasing)
-				{
-					antialiasing = true;
-				}
-		}
-		else
+		switch (PlayState.SONG.noteStyle)
 		{
-			if (PlayState.SONG.noteStyle == null) {
-				switch(PlayState.storyWeek) {case 6: noteTypeCheck = 'pixel';}
-			} else {noteTypeCheck = PlayState.SONG.noteStyle;}
-			
-			switch (noteTypeCheck)
-			{
-				case 'pixel':
-					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
-					if (isSustainNote)
-						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+			case 'pixel':
+				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels','week6'), true, 17, 17);
 
-					for (i in 0...4)
+				if (noteType == 3)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+				case 'funkyArrows':
+					loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-pixels','week6'), true, 17, 17);
+	
+					if (noteType == 3)
 					{
-						animation.add(dataColor[i] + 'Scroll', [i + 4]); // Normal notes
-						animation.add(dataColor[i] + 'hold', [i]); // Holds
-						animation.add(dataColor[i] + 'holdend', [i + 4]); // Tails
+						animation.add('greenScroll', [22]);
+						animation.add('redScroll', [23]);
+						animation.add('blueScroll', [21]);
+						animation.add('purpleScroll', [20]);
 					}
-
+					else
+					{
+						animation.add('greenScroll', [6]);
+						animation.add('redScroll', [7]);
+						animation.add('blueScroll', [5]);
+						animation.add('purpleScroll', [4]);
+					}
+	
+					if (isSustainNote)
+					{
+						loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-arrowEnds','week6'), true, 7, 6);
+	
+						animation.add('purpleholdend', [4]);
+						animation.add('greenholdend', [6]);
+						animation.add('redholdend', [7]);
+						animation.add('blueholdend', [5]);
+	
+						animation.add('purplehold', [0]);
+						animation.add('greenhold', [2]);
+						animation.add('redhold', [3]);
+						animation.add('bluehold', [1]);
+					}
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 					updateHitbox();
-				default:
-					var main ='NOTE_assets';///stop crashing part two
-					switch (nType) 
-					{
-					case 'sage':main ="sagenotes";
-					case  'ebola':main="Pnotes"; 
+
+					case 'hardcore-funkyArrows':
+						loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-hardcore-pixels','week6'), true, 17, 17);
 		
-					default :main ="NOTE_assets";
-					}
-				
-				
-				   frames = Paths.getSparrowAtlas(main);
-
-					for (i in 0...4)
-					{
-						animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
-						animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
-						animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
-					}
-
-					setGraphicSize(Std.int(width * 0.7));
-					updateHitbox();
-					
-					if(FlxG.save.data.antialiasing)
+						if (noteType == 3)
 						{
-							antialiasing = true;
+							animation.add('greenScroll', [22]);
+							animation.add('redScroll', [23]);
+							animation.add('blueScroll', [21]);
+							animation.add('purpleScroll', [20]);
 						}
-			}
-		}
-
-		x += swagWidth * noteData;
-		animation.play(dataColor[noteData] + 'Scroll');
-		originColor = noteData; // The note's origin color will be checked by its sustain notes
-
-		if (FlxG.save.data.stepMania && !isSustainNote)
-		{
-			var strumCheck:Float = rStrumTime;
-
-			// I give up on fluctuating bpms. something has to be subtracted from strumCheck to make them look right but idk what.
-			// I'd use the note's section's start time but neither the note's section nor its start time are accessible by themselves
-			//strumCheck -= ???
-
-			var ind:Int = Std.int(Math.round(strumCheck / (Conductor.stepCrochet / 2)));
-
-			var col:Int = 0;
-			col = quantityColor[ind % 8]; // Set the color depending on the beats
-
-			animation.play(dataColor[col] + 'Scroll');
-			localAngle -= arrowAngles[col];
-			localAngle += arrowAngles[noteData];
-			originColor = col;
-		}
+						else
+						{
+							animation.add('greenScroll', [6]);
+							animation.add('redScroll', [7]);
+							animation.add('blueScroll', [5]);
+							animation.add('purpleScroll', [4]);
+						}
 		
+						if (isSustainNote)
+						{
+							loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-hardcore-arrowEnds','week6'), true, 7, 6);
+		
+							animation.add('purpleholdend', [4]);
+							animation.add('greenholdend', [6]);
+							animation.add('redholdend', [7]);
+							animation.add('blueholdend', [5]);
+		
+							animation.add('purplehold', [0]);
+							animation.add('greenhold', [2]);
+							animation.add('redhold', [3]);
+							animation.add('bluehold', [1]);
+						}
+						setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+						updateHitbox();
+
+			case 'alex':
+				loadGraphic(Paths.image('weeb/pixelUI/alex-arrows-pixels','week6'), true, 17, 17);
+
+				if (noteType == 2)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/alex-arrowEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'notch':
+				loadGraphic(Paths.image('weeb/pixelUI/notch-pixels','week6'), true, 17, 17);
+
+				if (noteType == 5)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/notch-arrowEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'hardcore-notch':
+				loadGraphic(Paths.image('weeb/pixelUI/notch-hardcore-pixels','week6'), true, 17, 17);
+
+				if (noteType == 5)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/notch-hardcoreEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'Majin':
+				loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes','week6'), true, 17, 17);
+
+				if (noteType == 2)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes_ends','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'devs':
+				loadGraphic(Paths.image('weeb/pixelUI/devs-arrows-pixels','week6'), true, 17, 17);
+			
+				if (noteType == 2)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/devs-arrowEnds','week6'), true, 7, 6);
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'aww':
+				loadGraphic(Paths.image('weeb/pixelUI/aww-arrows-pixels','week6'), true, 17, 17);
+				
+				if (noteType == 2)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/aww-arrowEnds','week6'), true, 7, 6);
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'hardcore':
+				loadGraphic(Paths.image('weeb/pixelUI/hardcore-pixels','week6'), true, 17, 17);
+
+				if (noteType == 3)
+					{
+						animation.add('greenScroll', [22]);
+						animation.add('redScroll', [23]);
+						animation.add('blueScroll', [21]);
+						animation.add('purpleScroll', [20]);
+					}
+					else
+					{
+						animation.add('greenScroll', [6]);
+						animation.add('redScroll', [7]);
+						animation.add('blueScroll', [5]);
+						animation.add('purpleScroll', [4]);
+					}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/hardcoreEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+				
+			case 'hardcore-alex':
+				loadGraphic(Paths.image('weeb/pixelUI/alex-hardcore-pixels','week6'), true, 17, 17);
+
+				if (noteType == 2)
+					{
+						animation.add('greenScroll', [22]);
+						animation.add('redScroll', [23]);
+						animation.add('blueScroll', [21]);
+						animation.add('purpleScroll', [20]);
+					}
+					else
+					{
+						animation.add('greenScroll', [6]);
+						animation.add('redScroll', [7]);
+						animation.add('blueScroll', [5]);
+						animation.add('purpleScroll', [4]);
+					}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/alex-hardcoreEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'hardcore-aww':
+				loadGraphic(Paths.image('weeb/pixelUI/aww-hardcore-pixels','week6'), true, 17, 17);
+	
+				animation.add('greenScroll', [6]);
+				animation.add('redScroll', [7]);
+				animation.add('blueScroll', [5]);
+				animation.add('purpleScroll', [4]);
+	
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/aww-hardcoreEnds','week6'), true, 7, 6);
+	
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+	
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+	
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			case 'hardcore-devs':
+				loadGraphic(Paths.image('weeb/pixelUI/devs-hardcore-pixels','week6'), true, 17, 17);
+	
+				animation.add('greenScroll', [6]);
+				animation.add('redScroll', [7]);
+				animation.add('blueScroll', [5]);
+				animation.add('purpleScroll', [4]);
+	
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/devs-hardcoreEnds','week6'), true, 7, 6);
+	
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+	
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+	
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+			
+			default:
+				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels','week6'), true, 17, 17);
+
+				if (noteType == 2)
+				{
+					animation.add('greenScroll', [22]);
+					animation.add('redScroll', [23]);
+					animation.add('blueScroll', [21]);
+					animation.add('purpleScroll', [20]);
+				}
+				else
+				{
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
+				}
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds','week6'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+			}
+
+		switch (noteData)
+		{
+			case 0:
+				x += swagWidth * 0;
+				animation.play('purpleScroll');
+			case 1:
+				x += swagWidth * 1;
+				animation.play('blueScroll');
+			case 2:
+				x += swagWidth * 2;
+				animation.play('greenScroll');
+			case 3:
+				x += swagWidth * 3;
+				animation.play('redScroll');
+		}
+
+		// trace(prevNote);
+
 		// we make sure its downscroll and its a SUSTAIN NOTE (aka a trail, not a note)
 		// and flip it so it doesn't look weird.
 		// THIS DOESN'T FUCKING FLIP THE NOTE, CONTRIBUTERS DON'T JUST COMMENT THIS OUT JESUS
-		// then what is this lol
 		if (FlxG.save.data.downscroll && sustainNote) 
 			flipY = true;
-
-		var stepHeight = (0.45 * Conductor.stepCrochet * FlxMath.roundDecimal(PlayStateChangeables.scrollSpeed == 1 ? PlayState.SONG.speed : PlayStateChangeables.scrollSpeed, 2));
 
 		if (isSustainNote && prevNote != null)
 		{
@@ -230,30 +564,44 @@ class Note extends FlxSprite
 
 			x += width / 2;
 
-			originColor = prevNote.originColor; 
+			switch (noteData)
+			{
+				case 2:
+					animation.play('greenholdend');
+				case 3:
+					animation.play('redholdend');
+				case 1:
+					animation.play('blueholdend');
+				case 0:
+					animation.play('purpleholdend');
+			}
 
-			animation.play(dataColor[originColor] + 'holdend'); // This works both for normal colors and quantization colors
 			updateHitbox();
 
 			x -= width / 2;
-
-			//if (noteTypeCheck == 'pixel')
-			//	x += 30;
-			if (inCharter)
-				x += 30;
+			x += 30;
 
 			if (prevNote.isSustainNote)
 			{
-				prevNote.animation.play(dataColor[prevNote.originColor] + 'hold');
-				prevNote.updateHitbox();
+				switch (prevNote.noteData)
+				{
+					case 0:
+						prevNote.animation.play('purplehold');
+					case 1:
+						prevNote.animation.play('bluehold');
+					case 2:
+						prevNote.animation.play('greenhold');
+					case 3:
+						prevNote.animation.play('redhold');
+				}
 
-				prevNote.scale.y *= (stepHeight + 1) / prevNote.height; // + 1 so that there's no odd gaps as the notes scroll
+				
+				if(FlxG.save.data.scrollSpeed != 1)
+					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * FlxG.save.data.scrollSpeed;
+				else
+					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 				prevNote.updateHitbox();
-				prevNote.noteYOff = Math.round(-prevNote.offset.y);
-
 				// prevNote.setGraphicSize();
-
-				noteYOff = Math.round(-offset.y);
 			}
 		}
 	}
@@ -261,38 +609,15 @@ class Note extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		angle = modAngle + localAngle;
-
-		
-		
-		
-		if (!modifiedByLua)
-		{
-			if (!sustainActive)
-			{
-				alpha = 0.3;
-			}
-		}
 
 		if (mustPress)
 		{
-			// ass
-			if (isSustainNote)
-			{
-				if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * 1.5)
-					&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
-					canBeHit = true;
-				else
-					canBeHit = false;
-			}
+			// The * 0.5 is so that it's easier to hit them too late, instead of too early
+			if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * 1.5)
+				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
+				canBeHit = true;
 			else
-			{
-				if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-					&& strumTime < Conductor.songPosition + Conductor.safeZoneOffset)
-					canBeHit = true;
-				else
-					canBeHit = false;
-			}
+				canBeHit = false;
 
 			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset * Conductor.timeScale && !wasGoodHit)
 				tooLate = true;

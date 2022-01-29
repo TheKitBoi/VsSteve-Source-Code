@@ -1,11 +1,10 @@
 package;
 
-import flixel.input.gamepad.FlxGamepad;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import openfl.Lib;
+import Options;
 import Controls.Control;
-import lime.app.Application;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -16,308 +15,278 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-import flixel.FlxObject;
-import flixel.tweens.FlxEase;
 
 class OptionsMenu extends MusicBeatState
 {
-	 
-	
-	
-	var dumbTexts:FlxTypedGroup<FlxText>;
-	
-	
-	
-	var options:Array<String> =
-	[  	"Key bindings.",
-	    "Full Screen.",
-		"Offset.",
-		"Scroll type.",
-		"Scroll speed.",
-		"Ghost tapping.",
-		"Show FPS.",
-		"Song position.",
-		"Safe frames.",
-		"Accuracy type.",
-		"Restart pressing R.",
-		"FPS Cap.",
-		"Hide slurs.",
-		"Cache.",
-		"Customize Hud.",
-		"Charter grid.",
-		"Sneedify."
-	
-	];	
-	public static var acceptInput:Bool = true;
-	var header:Headers;
-   	var selected:Int = 0;
-  	var baseX:Int=60;
-  	var baseY:Int=242;
-	public var disc:FlxText;
-   override public function create():Void
-    {
-        super.create();
-		
-		if (!FlxG.sound.music.playing)
-			{
-				FlxG.sound.playMusic(Paths.music('breakfast'));
-			}
-		
-		var bg:FlxSprite = new FlxSprite(0,0).loadGraphic(Paths.image('Menu/options/bg'));
-		
-		var bg2:FlxSprite = new FlxSprite(0,0).loadGraphic(Paths.image('Menu/options/bg2'));
-	
+	public static var instance:OptionsMenu;
+	var selector:FlxText;
+	var curSelected:Int = 0;
 
-		dumbTexts = new FlxTypedGroup<FlxText>();
+	var options:Array<OptionCategory> = [
+		new OptionCategory("Gameplay", [
+			new DFJKOption(controls),
+			new SpectatorMode("Disables all the HUD Elements and serves for a good Cinematic Gamplay. PRESS 1 to view the HUD In-Game when Enabled."),
+			new DownscrollOption("Change the layout of the strumline."),
+			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
+			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
+			#if desktop
+			new FPSCapOption("Cap your FPS"),
+			#end
+			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
+			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
+			new ResetButtonOption("Toggle pressing R to gameover."),
+			// new OffsetMenu("Get a note offset based off of your inputs!"),
+			//new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
+		]),
+		new OptionCategory("Appearance", [
+			#if desktop
+			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
+			new RainbowFPSOption("Make the FPS Counter Rainbow"),
+			new AccuracyOption("Display accuracy information."),
+			new NPSDisplayOption("Shows your current Notes Per Second."),
+			new SongPositionOption("Show the songs current position (as a bar)"),
+			#else
+			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay.")
+			#end
+		]),
 		
-		disc = new FlxText("This is a test text lol");
-		disc.setFormat(Paths.font("score.ttf"), 25, FlxColor.fromRGB(82, 41, 26));
-		disc.setPosition(380,629);
+		new OptionCategory("Misc", [
+			#if desktop
+			new FPSOption("Toggle the FPS Counter"),
+			#end
+			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
+			new WatermarkOption("Enable and disable all watermarks from the engine.")
+		])
 		
-		var prup:FlxSprite = new FlxSprite(475,29).loadGraphic(Paths.image('Menu/headers/ops'));
-		header = new Headers(475, 32);
+	];
+
+	public var acceptInput:Bool = true;
+
+	private var currentDescription:String = "";
+	private var grpControls:FlxTypedGroup<Alphabet>;
+	public static var versionShit:FlxText;
+
+	var currentSelectedCat:OptionCategory;
+	var blackBorder:FlxSprite;
+	override function create()
+	{
+		instance = this;
+
+		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGBlue"));
+
+		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
+		menuBG.updateHitbox();
+		menuBG.screenCenter();
+		menuBG.antialiasing = true;
+		add(menuBG);
+
+		grpControls = new FlxTypedGroup<Alphabet>();
+		add(grpControls);
+
+		for (i in 0...options.length)
+		{
+			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, options[i].getName(), true, false, true);
+			controlLabel.isMenuItem = true;
+			controlLabel.targetY = i;
+			controlLabel.screenCenter(X);
+			grpControls.add(controlLabel);
+			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+		}
+
+		currentDescription = "none";
+
+		versionShit = new FlxText(5, FlxG.height + 40, 0, "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset,2) + " - Description - " + currentDescription, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		
-	
-		//layering		
-		add(bg2);
-		add(dumbTexts);	
-		add(bg);
-		add(disc);
-		add(header);
-		add(prup);
-	
-		daOptions();
-		text();		
+		blackBorder = new FlxSprite(-30,FlxG.height + 40).makeGraphic((Std.int(versionShit.width + 900)),Std.int(versionShit.height + 600),FlxColor.BLACK);
+		blackBorder.alpha = 0.5;
+
+		add(blackBorder);
+
+		add(versionShit);
+
+		FlxTween.tween(versionShit,{y: FlxG.height - 18},2,{ease: FlxEase.elasticInOut});
+		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
+
+		super.create();
 	}
 
-	function text()
-		{									
-			for (n in 0...options.length)
-					{																					 
-						var space=(n == selected)? "  " : "";													
-						var ops:FlxText = new FlxText();		
-						ops.setFormat(Paths.font("score.ttf"), 25, FlxColor.fromRGB(66, 26, 82));
-						ops.y=baseY+n*32;						
-						ops.text=space + options[n];													
-						ops.x=baseX;		
-						dumbTexts.add(ops);		  
-					}
-		    
-		}		
-	function fuckYou()
-		{
-			dumbTexts.forEach(function(ops:FlxText)
-			{
-				ops.kill();
-				dumbTexts.remove(ops);
-			});
-		}
-	function change(n:Int)
-		{			
-			selected += n;			
-			if (selected > options.length-1)
-				selected = 0;
-			if (selected < 0)			 		
-				selected = options.length-1;			
-			if(selected<13)
-				baseY=242;
-			
-			if(selected>=13&&FlxG.keys.justPressed.UP)
-				baseY+=30;
-			if(selected>=13&&FlxG.keys.justPressed.DOWN)
-				baseY-=30;
-		    if(selected==options.length-1)
-				baseY=117;
-		
-		
+	var isCat:Bool = false;
 	
 
-
-
-		}	
-    
-	
-	
-	
-	
-	function daOptions()
-		{
-			var curSelect:String = options[selected];
-			switch(curSelect)
-			{
-				
-				case "Sneedify.": 
-					if (FlxG.keys.justPressed.ENTER)
-					FlxG.save.data.sneed=!FlxG.save.data.sneed;
-					
-					FlxG.save.data.sneed ? disc.text="Sneed Engine"  : disc.text="Kade Engine";	
-				case "Full Screen.": 
-					if (FlxG.keys.justPressed.ENTER)
-					FlxG.fullscreen = !FlxG.fullscreen;
-					
-					FlxG.fullscreen ? disc.text="Full Screen is ON"  : disc.text="Full Screen is OFF";	
-				
-				
-				
-				case "Key bindings.": 
-					if (FlxG.keys.justPressed.ENTER)
-					openSubState(new KeyBindMenu());							
-					disc.text="Change input keys.";					
-				case "Offset.":
-					if (FlxG.keys.justPressed.RIGHT)
-						FlxG.save.data.offset += 0.1;
-					if (FlxG.keys.justPressed.LEFT)
-						FlxG.save.data.offset -= 0.1;
-					if (FlxG.keys.justPressed.R)
-						FlxG.save.data.offset = 0;
-					disc.text="Input offset : "+ HelperFunctions.truncateFloat(FlxG.save.data.offset,2) + '- Press R to reset';
-				case "Scroll type.":
-					FlxG.save.data.downscroll ? disc.text="Scroll type : Down" : disc.text="Scroll type : UP";	
-					if (FlxG.keys.justPressed.ENTER)
-						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;	
-				case "Scroll speed.":
-					
-					if (FlxG.keys.justPressed.LEFT)
-						{
-							FlxG.save.data.scrollSpeed -= 0.1;						
-							if (FlxG.save.data.scrollSpeed < 1)
-								FlxG.save.data.scrollSpeed = 1;											
-							if (FlxG.save.data.scrollSpeed > 4)
-								FlxG.save.data.scrollSpeed = 4;											
-						}
-					if (FlxG.keys.justPressed.RIGHT)
-						{
-							FlxG.save.data.scrollSpeed += 0.1;			
-							if (FlxG.save.data.scrollSpeed < 1)
-								FlxG.save.data.scrollSpeed = 1;								
-							if (FlxG.save.data.scrollSpeed > 4)
-								FlxG.save.data.scrollSpeed = 4;							
-						}
-						disc.text="Scroll speed : " + HelperFunctions.truncateFloat(FlxG.save.data.scrollSpeed,1);	
-				case "Ghost tapping.":
-					if (FlxG.keys.justPressed.ENTER)												
-						FlxG.save.data.ghost = !FlxG.save.data.ghost;
-					FlxG.save.data.ghost ? disc.text="Safe input in empty sections : ON" : disc.text="Safe input in empty sections : OFF";																		
-				case "Show FPS.":
-					if (FlxG.keys.justPressed.ENTER)
-						{
-							FlxG.save.data.fps = !FlxG.save.data.fps;
-							(cast (Lib.current.getChildAt(0), Main)).toggleFPS(FlxG.save.data.fps);								
-						}
-						!FlxG.save.data.fps ? disc.text="Display FPS counter : OFF" : disc.text="Display FPS counter : ON";	
-				case "Song position.":
-					if (FlxG.keys.justPressed.ENTER)											
-							FlxG.save.data.songPosition = !FlxG.save.data.songPosition;
-					!FlxG.save.data.songPosition ? disc.text="Bar showing the length of the song : OFF" :disc.text="Bar showing the length of the song : ON ";								
-				case "Safe frames.":
-					if (FlxG.keys.justPressed.LEFT)
-						{	
-							Conductor.safeFrames -= 1;
-							FlxG.save.data.frames = Conductor.safeFrames;								
-							Conductor.recalculateTimings();										
-						}
-					if (FlxG.keys.justPressed.RIGHT)
-						{								
-							Conductor.safeFrames += 1;
-							FlxG.save.data.frames = Conductor.safeFrames;								
-							Conductor.recalculateTimings();									
-						}
-						disc.text = "Ratings:" + Conductor.safeFrames +
-							"|SK:" + HelperFunctions.truncateFloat(45 * Conductor.timeScale, 0) +
-							"ms|GD:" + HelperFunctions.truncateFloat(90 * Conductor.timeScale, 0) +
-							"ms|BD:" + HelperFunctions.truncateFloat(135 * Conductor.timeScale, 0) + 
-							"ms|ST:" + HelperFunctions.truncateFloat(166 * Conductor.timeScale, 0) +
-							"ms|All:" + HelperFunctions.truncateFloat(Conductor.safeZoneOffset,0)+"ms";
-				case "Accuracy type.":											
-					if (FlxG.keys.justPressed.ENTER)												
-							FlxG.save.data.accuracyMod = FlxG.save.data.accuracyMod == 1 ? 0 : 1;															
-						FlxG.save.data.accuracyMod == 0 ?  disc.text="Accurate" : disc.text="Complex";
-				case "Restart pressing R.":						
-					if (FlxG.keys.justPressed.ENTER)												
-							FlxG.save.data.resetButton = !FlxG.save.data.resetButton;
-					!FlxG.save.data.resetButton ? disc.text="R as a restart button : ON" : disc.text="R as a restart button : OFF";		
-				case "FPS Cap.":
-					if (FlxG.keys.justPressed.LEFT)
-							{	
-								if (FlxG.save.data.fpsCap > 290)
-									FlxG.save.data.fpsCap = 290;
-								else if (FlxG.save.data.fpsCap < 60)
-									FlxG.save.data.fpsCap = Application.current.window.displayMode.refreshRate;
-								else
-									FlxG.save.data.fpsCap = FlxG.save.data.fpsCap - 10;
-								(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
-							}
-						if (FlxG.keys.justPressed.RIGHT)
-							{								
-								if (FlxG.save.data.fpsCap >= 290)
-									{
-										FlxG.save.data.fpsCap = 290;
-										(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
-									}
-								else
-										FlxG.save.data.fpsCap = FlxG.save.data.fpsCap + 10;					
-							}
-							disc.text="FPS CAP: " + FlxG.save.data.fpsCap + (FlxG.save.data.fpsCap == Application.current.window.displayMode.refreshRate ? "Hz" : "");
-				case "Hide slurs.":
-					if (FlxG.keys.justPressed.ENTER)												
-							FlxG.save.data.slurs = !FlxG.save.data.slurs;
-					FlxG.save.data.slurs ?  disc.text="Hide slurs : ON" : disc.text="Hide slurs : OFF";		
-				case "Cache.":
-					if (FlxG.keys.justPressed.ENTER)												
-							FlxG.save.data.cacheImages  = !FlxG.save.data.cacheImages;												
-					FlxG.save.data.cacheImages ?  disc.text="Cache Characters : ON" : disc.text="Cache Characters : OFF";		
-				case "Customize Hud.":
-					if (FlxG.keys.justPressed.ENTER)												
-							FlxG.switchState(new GameplayCustomizeState());
-					disc.text="Change the placement of some HUD elements" ;				
-				case "Charter grid.":
-					if (FlxG.keys.justPressed.ENTER)											
-							FlxG.save.data.editor = !FlxG.save.data.editor;
-					FlxG.save.data.editor ?  disc.text="Charter grid : ON" : disc.text="Charter grid : OFF";		
-			}
-			FlxG.save.flush();
-
-
-		}
-
-
-	override public function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
-		super.update(elapsed);		
-		if (acceptInput)
-			{	#if debug
-				if (FlxG.keys.justPressed.K)
-					FlxG.save.data.botplay = !FlxG.save.data.botplay;
-                #end
-		               
-				if (FlxG.keys.justPressed.ESCAPE)						
-					if	(FlxG.save.data.slurs) //  fugg :DDDD
-						FlxG.switchState(new NiggerState());
-					else
-					FlxG.switchState(new MainMenuState());
-					
-		
-                if (FlxG.keys.justPressed.UP)
-							{		
-								fuckYou();
-								change(-1);														
-								text();
-								
-							}
+		super.update(elapsed);
 
-							if (FlxG.keys.justPressed.DOWN)
-							{
-								fuckYou();
-								change(1);				
-								text();
-								
-							}							
-							
-							daOptions();
-							
-							FlxG.save.flush();
-								
+		if(acceptInput)
+		{
+
+			if (controls.BACK && !isCat)
+				FlxG.switchState(new MainMenuState());
+			else if (controls.BACK)
+			{
+				isCat = false;
+				grpControls.clear();
+				for (i in 0...options.length)
+					{
+						var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, options[i].getName(), true, false);
+						controlLabel.isMenuItem = true;
+						controlLabel.targetY = i;
+						controlLabel.screenCenter(X);
+						grpControls.add(controlLabel);
+						// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+					}
+				curSelected = 0;
 			}
+			if (controls.UP_P)
+				changeSelection(-1);
+			if (controls.DOWN_P)
+				changeSelection(1);
+			
+			if (isCat)
+			{
+				
+				if (currentSelectedCat.getOptions()[curSelected].getAccept())
+				{
+					if (FlxG.keys.pressed.SHIFT)
+						{
+							if (FlxG.keys.pressed.RIGHT)
+								currentSelectedCat.getOptions()[curSelected].right();
+							if (FlxG.keys.pressed.LEFT)
+								currentSelectedCat.getOptions()[curSelected].left();
+						}
+					else
+					{
+						if (FlxG.keys.justPressed.RIGHT)
+							currentSelectedCat.getOptions()[curSelected].right();
+						if (FlxG.keys.justPressed.LEFT)
+							currentSelectedCat.getOptions()[curSelected].left();
+					}
+				}
+				else
+				{
 
+					if (FlxG.keys.pressed.SHIFT)
+					{
+						if (FlxG.keys.justPressed.RIGHT)
+							FlxG.save.data.offset += 0.1;
+						else if (FlxG.keys.justPressed.LEFT)
+							FlxG.save.data.offset -= 0.1;
+					}
+					else if (FlxG.keys.pressed.RIGHT)
+						FlxG.save.data.offset += 0.1;
+					else if (FlxG.keys.pressed.LEFT)
+						FlxG.save.data.offset -= 0.1;
+					
+				
+				}
+				if (currentSelectedCat.getOptions()[curSelected].getAccept())
+					versionShit.text =  currentSelectedCat.getOptions()[curSelected].getValue() + " - Description - " + currentDescription;
+				else
+					versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset,2) + " - Description - " + currentDescription;
+			}
+			else
+			{
+				if (FlxG.keys.pressed.SHIFT)
+					{
+						if (FlxG.keys.justPressed.RIGHT)
+							FlxG.save.data.offset += 0.1;
+						else if (FlxG.keys.justPressed.LEFT)
+							FlxG.save.data.offset -= 0.1;
+					}
+					else if (FlxG.keys.pressed.RIGHT)
+						FlxG.save.data.offset += 0.1;
+					else if (FlxG.keys.pressed.LEFT)
+						FlxG.save.data.offset -= 0.1;
+			}
+		
+
+			if (controls.RESET)
+					FlxG.save.data.offset = 0;
+
+			if (controls.ACCEPT)
+			{
+				if (isCat)
+				{
+					if (currentSelectedCat.getOptions()[curSelected].press()) {
+						grpControls.remove(grpControls.members[curSelected]);
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, currentSelectedCat.getOptions()[curSelected].getDisplay(), true, false);
+						ctrl.isMenuItem = true;
+						ctrl.screenCenter(X);
+						grpControls.add(ctrl);
+					}
+				}
+				else
+				{
+					currentSelectedCat = options[curSelected];
+					isCat = true;
+					grpControls.clear();
+					for (i in 0...currentSelectedCat.getOptions().length)
+						{
+							var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, currentSelectedCat.getOptions()[i].getDisplay(), true, false);
+							controlLabel.isMenuItem = true;
+							controlLabel.targetY = i;
+							controlLabel.screenCenter(X);
+							grpControls.add(controlLabel);
+							// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+						}
+					curSelected = 0;
+				}
+			}
+		}
+		FlxG.save.flush();
+	}
+
+	var isSettingControl:Bool = false;
+
+	function changeSelection(change:Int = 0)
+	{
+		#if !switch
+		// NGio.logEvent("Fresh");
+		#end
+		
+		FlxG.sound.play(Paths.sound("scrollMenu"), 0.4);
+
+		curSelected += change;
+
+		if (curSelected < 0)
+			curSelected = grpControls.length - 1;
+		if (curSelected >= grpControls.length)
+			curSelected = 0;
+
+		if (isCat)
+			currentDescription = currentSelectedCat.getOptions()[curSelected].getDescription();
+		else
+			currentDescription = "Please select a category";
+		if (isCat)
+		{
+			if (currentSelectedCat.getOptions()[curSelected].getAccept())
+				versionShit.text =  currentSelectedCat.getOptions()[curSelected].getValue() + " - Description - " + currentDescription;
+			else
+				versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset,2) + " - Description - " + currentDescription;
+		}
+		else
+			versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset,2) + " - Description - " + currentDescription;
+		// selector.y = (70 * curSelected) + 30;
+
+		var bullShit:Int = 0;
+
+		for (item in grpControls.members)
+		{
+			item.targetY = bullShit - curSelected;
+			bullShit++;
+
+			item.alpha = 0.6;
+			item.screenCenter(X);
+			// item.setGraphicSize(Std.int(item.width * 0.8));
+
+			if (item.targetY == 0)
+			{
+				item.alpha = 1;
+				item.screenCenter(X);
+				// item.setGraphicSize(Std.int(item.width));
+			}
+		}
 	}
 }

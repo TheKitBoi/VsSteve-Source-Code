@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="smollalex.png">
+<SubTexture name="smollalex idle0000" x="0" y="0" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex idle0001" x="51" y="0" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex idle0002" x="102" y="0" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex down0000" x="153" y="0" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex down0001" x="0" y="51" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex left0000" x="51" y="51" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex left0001" x="102" y="51" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex right0000" x="153" y="51" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex right0001" x="0" y="102" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex up0000" x="51" y="102" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+<SubTexture name="smollalex up0001" x="102" y="102" width="51" height="51" frameX="0" frameY="0" frameWidth="51" frameHeight="51" />
+</TextureAtlas>

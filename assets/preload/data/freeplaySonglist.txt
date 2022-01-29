@@ -1,27 +1,14 @@
-Tutorial:gf:0
-Bopeebo:dad:1
-Fresh:dad:1
-Dad Battle:dad:1
-Spookeez:spooky:2
-South:spooky:2
-Monster:monster:2
-Pico:pico:3
-Philly Nice:pico:3
-Blammed:pico:3
-Satin Panties:mom:4
-High:mom:4
-Milf:mom:4
-Cocoa:parents-christmas:5
-Eggnog:parents-christmas:5
-Winter Horrorland:monster-christmas:5
-Senpai:senpai:6
-Roses:senpai:6
-Thorns:spirit:6
-ugh:captain:7
-guns:captain:7
-stress:captain:7
-Vidyagaems:v-calm:8
-Sage:v-calm:8
-Harmony:v-calm:8
-nogames:zord:9
-sneed:sneed:10
+Practice:gf-christmas:1
+Uoh:tuxsteveuoh:1
+Craft Away:tuxsteve:1
+Suit Up:steve-armor:1
+Whatever:steve-armor:1
+Overseen:alexnormal:2
+Mine:alexnormal:2
+Iron Picks:alexpickaxe:2
+Copper:alexpickaxemad:2
+Underrated:alex:2
+Tick Tock:alexchill:2
+Fast Travel:stevehorse:3
+Gapple:notch:3
+Retired:notch:3

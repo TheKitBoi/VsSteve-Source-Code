@@ -117,9 +117,9 @@ class AnimationDebug extends FlxState
 			FlxG.camera.zoom += 0.25;
 		if (FlxG.keys.justPressed.Q)
 			FlxG.camera.zoom -= 0.25;
-
-		if (FlxG.keys.justPressed.F)
-			char.flipX = !char.flipX;
+		
+		if (FlxG.keys.pressed.ESCAPE)
+			LoadingState.loadAndSwitchState(new MainMenuState());
 
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
@@ -192,12 +192,7 @@ class AnimationDebug extends FlxState
 			genBoyOffsets(false);
 			char.playAnim(animList[curAnim]);
 		}
-		if (FlxG.keys.justPressed.ESCAPE)
-			{
-				  
-				
-				FlxG.switchState(new MainMenuState());
-			}
+
 		super.update(elapsed);
 	}
 }

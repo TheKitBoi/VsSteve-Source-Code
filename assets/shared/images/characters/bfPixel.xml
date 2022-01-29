@@ -128,4 +128,20 @@
 	<SubTexture name="BF UP NOTE instance 10011" x="166" y="249" width="73" height="73"/>
 	<SubTexture name="BF UP NOTE instance 10012" x="166" y="249" width="73" height="73"/>
 	<SubTexture name="BF UP NOTE instance 10013" x="166" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0000" x="253" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0001" x="253" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0002" x="253" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0003" x="253" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0004" x="333" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0005" x="333" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0006" x="333" y="249" width="73" height="73"/>
+	<SubTexture name="BF BLOCK0007" x="333" y="249" width="73" height="73"/>
+	<SubTexture name="BF HEY0000" x="0" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0001" x="0" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0002" x="0" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0003" x="83" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0004" x="83" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0005" x="83" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0006" x="166" y="329" width="73" height="73"/>
+	<SubTexture name="BF HEY0007" x="166" y="329" width="73" height="73"/>
 </TextureAtlas>

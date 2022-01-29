@@ -1,4 +1,3 @@
-import flixel.input.gamepad.FlxGamepad;
 import openfl.Lib;
 import flixel.FlxG;
 
@@ -6,20 +5,11 @@ class KadeEngineData
 {
     public static function initSave()
     {
-        if (FlxG.save.data.weekUnlocked == null)
-			FlxG.save.data.weekUnlocked = 7;
-
-		if (FlxG.save.data.newInput == null)
+        if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 
 		if (FlxG.save.data.downscroll == null)
 			FlxG.save.data.downscroll = false;
-
-		if (FlxG.save.data.antialiasing == null)
-			FlxG.save.data.antialiasing = true;
-
-		if (FlxG.save.data.missSounds == null)
-			FlxG.save.data.missSounds = true;
 
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
@@ -72,9 +62,6 @@ class KadeEngineData
 
 		if (FlxG.save.data.distractions == null)
 			FlxG.save.data.distractions = true;
-		
-		if (FlxG.save.data.stepMania == null)
-			FlxG.save.data.stepMania = false;
 
 		if (FlxG.save.data.flashing == null)
 			FlxG.save.data.flashing = true;
@@ -88,49 +75,7 @@ class KadeEngineData
 		if (FlxG.save.data.cpuStrums == null)
 			FlxG.save.data.cpuStrums = false;
 
-		if (FlxG.save.data.strumline == null)
-			FlxG.save.data.strumline = false;
-		
-		if (FlxG.save.data.customStrumLine == null)
-			FlxG.save.data.customStrumLine = 0;
-
-		if (FlxG.save.data.camzoom == null)
-			FlxG.save.data.camzoom = true;
-
-		if (FlxG.save.data.scoreScreen == null)
-			FlxG.save.data.scoreScreen = false;
-
-		if (FlxG.save.data.inputShow == null)
-			FlxG.save.data.inputShow = false;
-
-		if (FlxG.save.data.optimize == null)
-			FlxG.save.data.optimize = false;
-		
-		if (FlxG.save.data.cacheImages == null)
-			FlxG.save.data.cacheImages = false;
-
-		if (FlxG.save.data.editor == null)
-			FlxG.save.data.editor = true;
-		if (FlxG.save.data.unlockBonus == null)
-			FlxG.save.data.unlockBonus = false;
-		if (FlxG.save.data.nogames == null)
-			FlxG.save.data.nogames = false;
-		if (FlxG.save.data.slurs == null)
-			FlxG.save.data.slurs = false;
-		if (FlxG.save.data.sneed == null)
-			FlxG.save.data.sneed = false;
-		if (FlxG.save.data.practice == null)
-			FlxG.save.data.practice = false;
-		if (FlxG.save.data.beatenSneed == null)
-			FlxG.save.data.beatenSneed = false;
-		
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-		
-		KeyBinds.gamepad = gamepad != null;
-
 		Conductor.recalculateTimings();
-		PlayerSettings.player1.controls.loadKeyBinds();
-		KeyBinds.keyCheck();
 
 		Main.watermarks = FlxG.save.data.watermark;
 

@@ -68,23 +68,7 @@ class Conductor
 		trace("new BPM map BUDDY " + bpmChangeMap);
 	}
 
-	public static function recalculateTimingStruct(SONG:Song)
-	{
-		for(i in SONG.eventObjects)
-		{
-			/*TimingStruct.addTiming(beat,bpm,endBeat, Std.parseFloat(OFFSET));
-
-            if (changeEvents.length != 0)
-            {
-                var data = TimingStruct.AllTimings[currentIndex - 1];
-                data.endBeat = beat;
-                data.length = (data.endBeat - data.startBeat) / (data.bpm / 60);
-                TimingStruct.AllTimings[currentIndex].startTime = data.startTime + data.length;
-            }*/
-		}
-	}
-
-	public static function changeBPM(newBpm:Float, ?recalcLength = true)
+	public static function changeBPM(newBpm:Float)
 	{
 		bpm = newBpm;
 
