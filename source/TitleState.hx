@@ -184,7 +184,7 @@ class TitleState extends MusicBeatState
 		logoBl.updateHitbox();
 		logoBl.y += 150;
 		logoBl.x += 200;
-		FlxTween.tween(logoBl, {y: logoBl.y + 30}, 1, {ease: FlxEase.quintInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {y: logoBl.y + 30}, 1, {ease: FlxEase.expoInOut, type: PINGPONG});
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 		add(logoBl);
@@ -237,15 +237,8 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
 
-		cakey = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('CakeyWasHere'));
-		add(cakey);
-		cakey.visible = false;
-		cakey.setGraphicSize(Std.int(cakey.width * 0.8));
-		cakey.updateHitbox();
-		cakey.screenCenter(X);
-		cakey.antialiasing = true;
 
-		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.expoInOut, type: PINGPONG});
 
 		FlxG.mouse.visible = false;
 
@@ -438,7 +431,7 @@ class TitleState extends MusicBeatState
 
 		//FlxG.log.add(curBeat);
 
-	 FlxTween.tween(FlxG.camera, {zoom:1.02}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+	 FlxTween.tween(FlxG.camera, {zoom:1.05}, 0.3, {ease: FlxEase.expoInOut, type: BACKWARD});
 		
 		switch (curBeat)
 		{
@@ -460,8 +453,6 @@ class TitleState extends MusicBeatState
 				createCoolText(['Kade Engine', 'highly Modified by']);
 
 			case 7:
-
-
 				addMoreText('TracedInPurple');
 				ngSpr.visible = true;
 		
@@ -469,7 +460,6 @@ class TitleState extends MusicBeatState
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-
 
 			case 9:
 				createCoolText([curWacky[0]]);

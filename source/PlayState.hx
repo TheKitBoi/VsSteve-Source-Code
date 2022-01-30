@@ -5031,7 +5031,10 @@ class PlayState extends MusicBeatState
 
 		function PoisonDrain():Void
 		{
-			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
+			if(storyDifficulty == 2)
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF66298C);
+			else
+				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
 			new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
 			{
 				if(!paused)
@@ -5044,7 +5047,12 @@ class PlayState extends MusicBeatState
 				{
 					swagTimer.reset();
 				}
-				else
+				else if (health < 0.1)
+				{
+					healthLost = 0;
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+				}
+				else 
 				{
 					healthLost = 0;
 					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
