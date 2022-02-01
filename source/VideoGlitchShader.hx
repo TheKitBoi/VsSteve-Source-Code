@@ -13,6 +13,7 @@ class VideoGlitchShader extends FlxShader // https://www.shadertoy.com/view/XtK3
 {
 
   @:glFragmentSource('
+  #pragma header
 
   uniform vec3      iResolution;           // viewport resolution (in pixels)
   uniform float     iTime;                 // shader playback time (in seconds)

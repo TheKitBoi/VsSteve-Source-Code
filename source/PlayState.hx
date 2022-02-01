@@ -2858,9 +2858,9 @@ class PlayState extends MusicBeatState
 
 			if (!isStoryMode)
 			{
-				babyArrow.y -= 40;
+				babyArrow.y -= 10;
 				babyArrow.alpha = 0;
-				FlxTween.tween(babyArrow, {y: babyArrow.y + 40, alpha: 1}, 1, {ease: FlxEase.backInOut, startDelay: 0.5 + (0.2 * i)});
+				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.backInOut, startDelay: 0.5 + (0.2 * i)});
 			}
 
 			babyArrow.ID = i;
@@ -3782,16 +3782,20 @@ class PlayState extends MusicBeatState
 								{
 									case 2:
 										dad.playAnim('singUP' + altAnim, true);
-										dadnoteMovementYoffset = -25;
+										dadnoteMovementYoffset = -40;
+										dadnoteMovementXoffset = 0;
 									case 3:
 										dad.playAnim('singRIGHT' + altAnim, true);
-										dadnoteMovementXoffset = 25;
+										dadnoteMovementXoffset = 40;
+										dadnoteMovementYoffset = 0;	
 									case 1:
 										dad.playAnim('singDOWN' + altAnim, true);
-										dadnoteMovementYoffset = 25;
+										dadnoteMovementYoffset = 40;
+										dadnoteMovementXoffset = 0;
 									case 0:
 										dad.playAnim('singLEFT' + altAnim, true);
-										dadnoteMovementXoffset = -25;
+										dadnoteMovementXoffset = -40;
+										dadnoteMovementYoffset = 0;
 								}
 							}
 
@@ -4958,31 +4962,24 @@ class PlayState extends MusicBeatState
 						switch (note.noteData)
 						{
 							case 2:
+								bfnoteMovementYoffset = -40;
+								bfnoteMovementXoffset = 0;
 								boyfriend.playAnim('singUP', true);
 							case 3:
+								bfnoteMovementXoffset = 40;
+								bfnoteMovementYoffset = 0;
 								boyfriend.playAnim('singRIGHT', true);
 							case 1:
+								bfnoteMovementYoffset = 40;
+								bfnoteMovementXoffset = 0;
 								boyfriend.playAnim('singDOWN', true);
 							case 0:
+								bfnoteMovementXoffset = -40;
+								bfnoteMovementYoffset = 0;
 								boyfriend.playAnim('singLEFT', true);
 						}
 					}
 
-					switch (note.noteData)
-						{
-							case 2:
-								bfnoteMovementYoffset = -40;
-								bfnoteMovementXoffset = 0;
-							case 3:
-								bfnoteMovementXoffset = 40;
-								bfnoteMovementYoffset = 0;
-							case 1:
-								bfnoteMovementYoffset = 40;
-								bfnoteMovementXoffset = 0;
-							case 0:
-								bfnoteMovementXoffset = -40;
-								bfnoteMovementYoffset = 0;
-						}
 					#if windows
 					if (luaModchart != null)
 						luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);

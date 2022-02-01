@@ -1,3 +1,0 @@
-idle 0 0
-singRIGHT 2 -128
-singLEFT 415 -65
