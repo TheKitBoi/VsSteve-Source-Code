@@ -1502,14 +1502,14 @@ class PlayState extends MusicBeatState
 
 
 		// DISABLED UNTIL HELP COMES
-		//if(SONG.song.toLowerCase() == 'entity')
-		//{
-		//	var vgs:VideoGlitchShader;
-		//	vgs = new VideoGlitchShader();
-//
-		//	camGame.setFilters([new ShaderFilter(vgs)]);
-		//	camHUD.setFilters([new ShaderFilter(vgs)]);
-		//}
+		if(SONG.song.toLowerCase() == 'entity')
+		{
+			var vgs:VideoGlitchShader;
+			vgs = new VideoGlitchShader();
+
+			camGame.setFilters([new ShaderFilter(vgs)]);
+			camHUD.setFilters([new ShaderFilter(vgs)]);
+		}
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);

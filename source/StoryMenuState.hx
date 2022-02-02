@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
@@ -22,6 +23,13 @@ using StringTools;
 class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
+
+	//Using MainMenuState Stuff for the Week Buttons and im too Lazy - Tiago
+	var menuItems:FlxTypedGroup<FlxSprite>;
+	public static var finishedFunnyMove:Bool = false;
+	var curSelected:Int = 0;
+
+
 
 	var weekData:Array<Dynamic> = [
 		['Practice', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
@@ -79,7 +87,7 @@ class StoryMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Story Mode Menu", null);
 		#end
 
-
+		FlxG.mouse.visible = true;
 
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGSM")); // TIAGO THIS HERE INCASE yOUR FORGET LOL -- written by tiago
 
@@ -143,37 +151,36 @@ class StoryMenuState extends MusicBeatState
 		
 		trace("Line 70");
 
+		menuItems = new FlxTypedGroup<FlxSprite>();
+		
+
+		var tex = Paths.getSparrowAtlas('FNF_story_menu_assets');
+
 		for (i in 0...weekData.length)
 		{
-			var weekThing:MenuItem = new MenuItem(0, 0, i);
-			weekThing.antialiasing = false;
-			weekThing.updateHitbox();
-			weekThing.screenCenter(X);
+			var butos:FlxSprite = new FlxSprite(0, FlxG.height * 1.2);
+			butos.ID = i;
+			butos.frames = tex;
+			butos.animation.addByPrefix('idle', weekData[i] + " basic", 24);
+			butos.animation.addByPrefix('selected', weekData[i] + " white", 24);
+			butos.animation.play('idle');
+			butos.antialiasing = false;
+			butos.updateHitbox();
+			butos.screenCenter(X);
+			butos.scrollFactor.set();
 			switch(i) 
 			{
-				case 0: 
-					weekThing.setPosition(weekThing.x, 100);
-				case 1: 
-					weekThing.setPosition(weekThing.x, 175);
-				case 2:
-					weekThing.setPosition(weekThing.x, 250);
+				case 0: //Day 1
+					butos.setPosition(butos.x - 110, 550);
+				case 1: //Day 2
+					butos.setPosition(butos.x - 110, 650);
+				case 2: //Day 3
+					butos.setPosition(butos.x - 110, 700);
 			}
-			weekThing.screenCenter(X);
-
-			grpWeekText.add(weekThing);
-
-			// Needs an offset thingie
-			if (!weekUnlocked[i])
-			{
-				var lock:FlxSprite = new FlxSprite(weekThing.width + 10 + weekThing.x);
-				//lock.frames = ui_tex;
-				lock.animation.addByPrefix('lock', 'lock');
-				lock.animation.play('lock');
-				lock.ID = i;
-				lock.antialiasing = true;
-				grpLocks.add(lock);
-			}
+			menuItems.add(butos);
 		}
+
+		add(menuItems);
 
 
 		trace("Line 96");
@@ -242,6 +249,13 @@ class StoryMenuState extends MusicBeatState
 		super.create();
 	}
 
+	//More Main Menu Stuff - Tiago
+	var selectedSomethin:Bool = false;
+
+	var canClick:Bool = true;
+	var usingMouse:Bool = false;
+
+
 	override function update(elapsed:Float)
 	{
 		// scoreText.setFormat('vcr.ttf', 32);
@@ -256,25 +270,11 @@ class StoryMenuState extends MusicBeatState
 
 		difficultySelectors.visible = weekUnlocked[curWeek];
 
-		grpLocks.forEach(function(lock:FlxSprite)
-		{
-			lock.y = grpWeekText.members[lock.ID].y;
-		});
 
 		if (!movedBack)
 		{
 			if (!selectedWeek)
 			{
-				if (controls.RIGHT_P)
-				{
-					changeWeek(-1);
-				}
-
-				if (controls.LEFT_P)
-				{
-					changeWeek(1);
-				}
-				
 					
 				if (controls.UP_P)
 					{
@@ -291,9 +291,43 @@ class StoryMenuState extends MusicBeatState
 					changeDifficulty(-1);
 			}
 
-			if (controls.ACCEPT)
+			//if (controls.ACCEPT)
+			//{
+			//	selectWeek();
+			//}
+		}
+
+		menuItems.forEach(function(spr:FlxSprite)
+		{
+			if(usingMouse)
 			{
-				selectWeek();
+				if(!FlxG.mouse.overlaps(spr))
+					spr.animation.play('idle');
+			}
+
+			if (FlxG.mouse.overlaps(spr))
+			{
+				if(canClick)
+				{
+					curSelected = spr.ID;
+					usingMouse = true;
+					spr.animation.play('selected');
+				}
+
+				if(FlxG.mouse.pressed && canClick)
+				{
+					selectWeek();
+				}
+			}
+		});
+				
+		if (!selectedSomethin)
+		{
+			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+		
+			if (controls.BACK)
+			{
+				FlxG.switchState(new MainMenuState());
 			}
 		}
 		
@@ -332,7 +366,9 @@ class StoryMenuState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 
-				grpWeekText.members[curWeek].startFlashing();
+				canClick = false;
+
+				
 				grpWeekCharacters.members[1].animation.play('bfConfirm');
 				stopspamming = true;
 			}
@@ -384,31 +420,32 @@ class StoryMenuState extends MusicBeatState
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
-	function changeWeek(change:Int = 0):Void
+	function changeItem(huh:Int = 0)
 	{
-		curWeek += change;
-
-		if (curWeek >= weekData.length)
-			curWeek = 0;
-		if (curWeek < 0)
-			curWeek = weekData.length - 1;
-
-		var bullShit:Int = 0;
-
-		for (item in grpWeekText.members)
+		if (finishedFunnyMove)
 		{
-			item.targetY = bullShit - curWeek;
-			if (item.targetY == Std.int(0) && weekUnlocked[curWeek])
-				item.alpha = 1;
-			else
-				item.alpha = 0.6;
-			bullShit++;
+			curSelected += huh;
+
+			if (curSelected >= menuItems.length)
+				curSelected = 0;
+			if (curSelected < 0)
+				curSelected = menuItems.length - 1;
 		}
+		menuItems.forEach(function(spr:FlxSprite)
+		{
+			spr.animation.play('idle');
+			if (spr.ID == curSelected && finishedFunnyMove)
+			{
+				spr.animation.play('selected');
+			}
 
-		FlxG.sound.play(Paths.sound('scrollMenu'));
-
+			spr.updateHitbox();
+		});
 		updateText();
 	}
+
+		
+	
 
 	function updateText()
 	{
