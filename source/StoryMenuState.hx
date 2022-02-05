@@ -30,6 +30,9 @@ class StoryMenuState extends MusicBeatState
 	var curSelected:Int = 0;
 
 
+	//again more copy paste from uhh mainmenu state
+	var optionShit:Array<String> = ['day1', 'day2', 'day3'];
+
 
 	var weekData:Array<Dynamic> = [
 		['Practice', 'Uoh', 'Craft Away', 'Suit Up', 'Whatever'],
@@ -156,13 +159,13 @@ class StoryMenuState extends MusicBeatState
 
 		var tex = Paths.getSparrowAtlas('FNF_story_menu_assets');
 
-		for (i in 0...weekData.length)
+		for (i in 0...optionShit.length)
 		{
 			var butos:FlxSprite = new FlxSprite(0, FlxG.height * 1.2);
 			butos.ID = i;
 			butos.frames = tex;
-			butos.animation.addByPrefix('idle', weekData[i] + " basic", 24);
-			butos.animation.addByPrefix('selected', weekData[i] + " white", 24);
+			butos.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
+			butos.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			butos.animation.play('idle');
 			butos.antialiasing = false;
 			butos.updateHitbox();
@@ -171,11 +174,11 @@ class StoryMenuState extends MusicBeatState
 			switch(i) 
 			{
 				case 0: //Day 1
-					butos.setPosition(butos.x - 110, 550);
+					butos.setPosition(butos.x - 80, 500);
 				case 1: //Day 2
-					butos.setPosition(butos.x - 110, 650);
+					butos.setPosition(butos.x - 80, 575);
 				case 2: //Day 3
-					butos.setPosition(butos.x - 110, 700);
+					butos.setPosition(butos.x - 80, 650);
 			}
 			menuItems.add(butos);
 		}
@@ -387,6 +390,19 @@ class StoryMenuState extends MusicBeatState
 					diffic = '-hardcore';
 				case 3:
 					diffic = '-ultrahardcore';
+			}
+
+			for (i in 0...optionShit.length)
+			{
+				switch(i)
+				{
+					case 0:
+						curWeek = 0;
+					case 1:
+						curWeek = 1;
+					case 2:
+						curWeek = 2;
+				}
 			}
 
 			PlayState.storyDifficulty = curDifficulty;

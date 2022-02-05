@@ -248,6 +248,13 @@ class Note extends FlxSprite
 					animation.add('blueScroll', [21]);
 					animation.add('purpleScroll', [20]);
 				}
+				else if (noteType == 3)
+				{
+					animation.add('greenScroll', [26]);
+					animation.add('redScroll', [27]);
+					animation.add('blueScroll', [25]);
+					animation.add('purpleScroll', [24]);
+				}
 				else
 				{
 					animation.add('greenScroll', [6]);
