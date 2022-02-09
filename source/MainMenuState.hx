@@ -149,6 +149,14 @@ class MainMenuState extends MusicBeatState
 			menuItems.add(butos);
 		}
 
+		var storymenualert:FlxSprite = new FlxSprite().loadGraphic(Paths.image("story mode alert"));
+        storymenualert.antialiasing = false;
+		storymenualert.screenCenter();
+		storymenualert.y -= 135;
+		storymenualert.x += 350;
+        storymenualert.updateHitbox();
+		add(storymenualert);
+
 		add(menuItems);
 
 		firstStart = false;
