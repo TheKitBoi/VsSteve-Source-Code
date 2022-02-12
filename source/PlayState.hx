@@ -5167,7 +5167,7 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			if (FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
+			if (FlxG.keys.justPressed.SPACE)
 			{
 				boyfriend.playAnim('block', true);
 				if(oneTimeUse == false)

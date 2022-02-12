@@ -20,7 +20,6 @@ class KeyBinds
         FlxG.save.data.downBind = "S";
         FlxG.save.data.leftBind = "A";
         FlxG.save.data.rightBind = "D";
-        FlxG.save.data.blockBind = "SPACE";
         FlxG.save.data.regenPotionBind = "E";
         FlxG.save.data.strengthPotionBind = "T";
         FlxG.save.data.killBind = "R";

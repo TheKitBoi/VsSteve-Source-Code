@@ -34,7 +34,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus', 'secret'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -145,6 +145,8 @@ class MainMenuState extends MusicBeatState
 					butos.setPosition(butos.x + 250, 550);
 				case 6: //extras
 				    butos.setPosition(butos.x, 405);
+				case 7: //uoh?
+					butos.setPosition(butos.x + 250, 550);
 			}
 			menuItems.add(butos);
 		}
@@ -265,9 +267,12 @@ class MainMenuState extends MusicBeatState
 	{
 		if (optionShit[curSelected] == 'ouh')
 			{
-				FlxG.sound.play(Paths.sound('ouh'));
-				FlxG.camera.shake(0.05, 0.05);
+				goToState();
 			}
+			else if (optionShit[curSelected] == 'story mode')
+				{
+					goToState();
+				}
 			else
 			{
 				selectedSomethin = true;
@@ -307,15 +312,14 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'story mode':
-				FlxG.switchState(new StoryMenuState());
+				//FlxG.switchState(new StoryMenuState());
+				FlxG.sound.play(Paths.sound('cancelMenu'));			
 				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
 				trace("Freeplay Menu Selected");
 
 			case 'ouh':
-				FlxG.camera.shake(0.05, 0.05);
-				FlxG.sound.play(Paths.sound('ouh'));
 				trace("WHAT THE FUCK HAPPENED");
 
 			case 'options':
@@ -329,6 +333,9 @@ class MainMenuState extends MusicBeatState
 			case 'bonus':
 				FlxG.switchState(new ExtrasState());
 				trace("extras");
+
+			case 'secret ':
+				trace("WHAT THE FUCK HAPPENED");
 		}
 	}
 
