@@ -5408,6 +5408,15 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (SONG.song.toLowerCase() == 'espionage')
+			{
+				switch (curBeat)
+				{
+					case 16 | 17 | 18 | 19 | 20:
+						dad.playAnim('idle-alt', true);
+				}
+			}
+
 		if (SONG.song.toLowerCase() == 'practice')
 		{
 			switch (curStep)
