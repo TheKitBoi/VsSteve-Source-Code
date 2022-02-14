@@ -732,12 +732,14 @@ class Character extends FlxSprite
 				iconColor = 'FFFF0000';
 				frames = Paths.getSparrowAtlas('characters/jaziel');
 				animation.addByPrefix('idle', 'jaziel idle', 24, false);
-				animation.addByPrefix('singUP', 'jaziel your mother', 24, false);
-				animation.addByPrefix('singLEFT', 'jaziel your mother', 24, false);
-				animation.addByPrefix('singRIGHT', 'jaziel your mother', 24, false);
-				animation.addByPrefix('singDOWN', 'jaziel your mother', 24, false);
+				animation.addByPrefix('espionage', 'jaziel espionage', 24, false);
+				animation.addByPrefix('singUP', 'jaziel crouch', 24, false);
+				animation.addByPrefix('singLEFT', 'jaziel crouch', 24, false);
+				animation.addByPrefix('singRIGHT', 'jaziel crouch', 24, false);
+				animation.addByPrefix('singDOWN', 'jaziel crouch', 24, false);
 
 				addOffset('idle', -250, -260);
+				addOffset('espionage', -250, -260);
 				addOffset("singUP", -250, -260);
 				addOffset("singRIGHT", -250, -260);
 				addOffset("singLEFT", -250, -260);
