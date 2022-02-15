@@ -30,11 +30,12 @@ class MainMenuState extends MusicBeatState
 	var menuBGClone:FlxSprite;
 	var logoBl:FlxSprite;
 	var tigoBabo:FlxSprite;
+	var pressCount:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus', 'secret'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -146,7 +147,7 @@ class MainMenuState extends MusicBeatState
 				case 6: //extras
 				    butos.setPosition(butos.x, 405);
 				case 7: //uoh?
-					butos.setPosition(butos.x + 250, 550);
+					butos.setPosition(butos.x + 300, 550);
 			}
 			menuItems.add(butos);
 		}
@@ -178,6 +179,20 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
+		var dimBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("dimBG"));
+        dimBG.antialiasing = false;
+		dimBG.screenCenter(X);
+        dimBG.updateHitbox();
+		add(dimBG);
+		dimBG.visible = false;
+
+		var textBox:FlxSprite = new FlxSprite().loadGraphic(Paths.image("textEnter"));
+        textBox.antialiasing = false;
+		textBox.screenCenter(X);
+        textBox.updateHitbox();
+		add(textBox);
+		textBox.visible = false;
+
 		super.create();
 	}
 
@@ -203,6 +218,60 @@ class MainMenuState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
+
+		var enter:Bool = controls.ACCEPT;
+
+		if (FlxG.keys.justPressed.E)
+			if (pressCount == 0)
+				pressCount = 1;
+			else
+				pressCount == 0;
+
+		if (FlxG.keys.justPressed.N)
+			if (pressCount == 1)
+				pressCount = 2;
+			else
+				pressCount == 0;
+
+		if (FlxG.keys.justPressed.T)
+			if (pressCount == 2)
+				pressCount = 3;
+			else
+				pressCount == 0;
+
+		if (FlxG.keys.justPressed.I)
+			if (pressCount == 3)
+				pressCount = 4;
+			else
+				pressCount == 0;
+		if (FlxG.keys.justPressed.T)
+			if (pressCount == 4)
+				pressCount = 5;
+			else
+				pressCount == 0;
+		if (FlxG.keys.justPressed.Y)
+			if (pressCount == 5)
+				pressCount = 6;
+			else
+				pressCount == 0;
+		if (enter && pressCount == 6)
+			{
+
+				PlayState.SONG = Song.loadFromJson('entity', 'entity');
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 1;
+				PlayState.storyWeek = 4;
+				FlxG.camera.fade(FlxColor.WHITE, 0.5, false);
+
+				//PLAY SPECIAL SOUND
+				//FlxG.sound.play(Paths.sound('confirmMenu'));
+
+				new FlxTimer().start(1.5, function(tmr:FlxTimer)
+				{
+					LoadingState.loadAndSwitchState(new PlayState());
+				});
+			}
+
 
 		if (startscroll == true)
 			{
@@ -266,43 +335,43 @@ class MainMenuState extends MusicBeatState
 	function selectSomething()
 	{
 		if (optionShit[curSelected] == 'ouh')
+		{
+			goToState();
+		}
+		else if (optionShit[curSelected] == 'story mode')
+		{
+			goToState();
+		}
+		else
+		{
+			selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			
+			canClick = false;
+
+			menuItems.forEach(function(spr:FlxSprite)
 			{
-				goToState();
-			}
-			else if (optionShit[curSelected] == 'story mode')
+				if (curSelected != spr.ID)
 				{
-					goToState();
+					FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
+					FlxTween.tween(spr, {alpha: 0}, 0.6, {
+						ease: FlxEase.quadOut,
+						onComplete: function(twn:FlxTween)
+						{
+							spr.kill();
+						}
+					});
 				}
-			else
-			{
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-				
-				canClick = false;
-	
-				menuItems.forEach(function(spr:FlxSprite)
+				else
 				{
-					if (curSelected != spr.ID)
-					{
-						FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
-						FlxTween.tween(spr, {alpha: 0}, 0.6, {
-							ease: FlxEase.quadOut,
-							onComplete: function(twn:FlxTween)
-							{
-								spr.kill();
-							}
+					FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
+					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+						{
+							goToState();
 						});
-					}
-					else
-					{
-						FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
-						new FlxTimer().start(0.3, function(tmr:FlxTimer)
-							{
-								goToState();
-							});
-					}
-				});
-			}
+				}
+			});
+		}
 	}
 
 	function goToState()
@@ -333,9 +402,7 @@ class MainMenuState extends MusicBeatState
 			case 'bonus':
 				FlxG.switchState(new ExtrasState());
 				trace("extras");
-
-			case 'secret ':
-				trace("WHAT THE FUCK HAPPENED");
+			
 		}
 	}
 

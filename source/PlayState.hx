@@ -1,3 +1,5 @@
+//If youre seeing this... Tiago here...
+
 import Options.SpectatorMode;
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
@@ -1502,14 +1504,14 @@ class PlayState extends MusicBeatState
 
 
 		// DISABLED UNTIL HELP COMES
-		if(SONG.song.toLowerCase() == 'entity')
-		{
-			var vgs:VideoGlitchShader;
-			vgs = new VideoGlitchShader();
-
-			camGame.setFilters([new ShaderFilter(vgs)]);
-			camHUD.setFilters([new ShaderFilter(vgs)]);
-		}
+		//if(SONG.song.toLowerCase() == 'entity')
+		//{
+		//	var vgs:VideoGlitchShader;
+		//	vgs = new VideoGlitchShader();
+//
+		//	camGame.setFilters([new ShaderFilter(vgs)]);
+		//	camHUD.setFilters([new ShaderFilter(vgs)]);
+		//}
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
@@ -2976,6 +2978,25 @@ class PlayState extends MusicBeatState
 		{
 			detectSpace();
 		}
+		if(SONG.song.toLowerCase() == 'suit up')
+		{
+		if (FlxG.keys.justPressed.SPACE)
+		{
+			boyfriend.playAnim('block', true);
+			if(oneTimeUse == false)
+				hotbar.animation.play('Shield', true);
+			else
+			   hotbar.animation.play('ShieldNoPotion', true);
+			new FlxTimer().start(0.2, function(tmr:FlxTimer)
+			{
+				if(oneTimeUse == false)
+					hotbar.animation.play('Mic', true);
+				else
+				   hotbar.animation.play('MicNoPotion', true);
+			});
+		}
+		}
+		
 
 		if(SONG.song.toLowerCase() == 'entity')
 		{
@@ -3023,7 +3044,7 @@ class PlayState extends MusicBeatState
 		}
 		*/
 
-		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe' || dad.animation.curAnim.name == 'idle-alt')
 		{
 			if (dad.animation.finished)
 			{
@@ -3489,8 +3510,8 @@ class PlayState extends MusicBeatState
 						
 						case 'irfan':
                             camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
-                            camFollow.x = dad.getMidpoint().x - 100 + dadnoteMovementXoffset;
-                            defaultCamZoom = 0.7;
+                            camFollow.x = dad.getMidpoint().x - 70 + dadnoteMovementXoffset;
+                            defaultCamZoom = 0.6;
 
 						case 'jeb':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
@@ -3565,9 +3586,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 400 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
 					case 'tf2':
-						camFollow.x = boyfriend.getMidpoint().x - 280;
-						camFollow.y = boyfriend.getMidpoint().y - 350;
-						defaultCamZoom = 0.8;
+						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.7;
 					case 'mcsm':
 						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
@@ -3776,7 +3797,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk' || dad.animation.curAnim.name != 'unequipPickaxe')
+						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk' || dad.animation.curAnim.name != 'unequipPickaxe' || dad.animation.curAnim.name == 'idle-alt')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -5175,12 +5196,12 @@ class PlayState extends MusicBeatState
 				else
 				   hotbar.animation.play('ShieldNoPotion', true);
 				new FlxTimer().start(0.2, function(tmr:FlxTimer)
-					{
-						if(oneTimeUse == false)
-							hotbar.animation.play('Mic', true);
-						else
-						   hotbar.animation.play('MicNoPotion', true);
-					});
+				{
+					if(oneTimeUse == false)
+						hotbar.animation.play('Mic', true);
+					else
+					   hotbar.animation.play('MicNoPotion', true);
+				});
 			}
 		
 		}
@@ -5399,29 +5420,31 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 1024:
-					//dad.playAnim('unequipPickaxe', true);
-					alexUnequip();
-					//if (dad.animation.curAnim.name == 'unequipPickaxe')
-					
+				//case 1024:
+				//	//dad.playAnim('unequipPickaxe', true);
+				//	alexUnequip();
+				//	//if (dad.animation.curAnim.name == 'unequipPickaxe')
+				//	
 
 			}
 		}
 
 		if (SONG.song.toLowerCase() == 'espionage')
+		{
+			switch (curStep)
 			{
-				switch (curBeat)
-				{
-					case 16 | 17 | 18 | 19 | 20:
-						dad.playAnim('idle-alt', true);
-				}
+				//lazy and dumb but gets the job done
+				case 64 | 68 | 72 | 76 | 80 | 84 | 88 | 92 | 96 | 100 | 104 | 108 | 112 | 116 | 120:
+					dad.playAnim('idle-alt', true);
+					trace('playing alt anim');
 			}
+		}
 
 		if (SONG.song.toLowerCase() == 'practice')
 		{
 			switch (curStep)
 			{
-				case 516 | 524 | 532 | 540 |  548| 556 | 564 | 572| 580 | 588 | 596| 604 | 612 | 620 | 628 | 636:
+				case 516 | 524 | 532 | 540 | 548 | 556 | 564 | 572 | 580 | 588 | 596 | 604 | 612 | 620 | 628 | 636:
 					gf.playAnim('hey', true);
 			}
 		}
@@ -5544,9 +5567,9 @@ class PlayState extends MusicBeatState
 		}
 		if (curSong == 'Lost')
 		{
-				{
-				remove(dad);
-				}
+			{
+			remove(dad);
+			}
 		}
 
 
@@ -5562,7 +5585,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.animation.curAnim.name != 'unequipPickaxe' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.animation.curAnim.name != 'unequipPickaxe' && dad.animation.curAnim.name == 'idle-alt' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
@@ -5639,14 +5662,42 @@ class PlayState extends MusicBeatState
 		}
 
 
-		iconP1.scale.set(1.15, 1.15);
-		iconP2.scale.set(1.15, 1.15);
-		
-		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
-		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
+		if (curBeat % gfSpeed == 0) 
+			{
+			curBeat % (gfSpeed * 2) == 0 ? 
+			{
+				iconP1.scale.set(1.1, 0.8);
+				iconP2.scale.set(1.1, 1.3);
+				//FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				//FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} 
+			: 
+			{
+				iconP1.scale.set(1.1, 1.3);
+				iconP2.scale.set(1.1, 0.8);
+				FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				
+			}
 
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
+			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
+
+
+
+
+		//iconP1.scale.set(1.15, 1.15);
+		//iconP2.scale.set(1.15, 1.15);
+		//
+		//FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
+		//FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
+//
+		//iconP1.updateHitbox();
+		//iconP2.updateHitbox();
 
 		if (curBeat % gfSpeed == 0)
 		{
@@ -5658,7 +5709,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("unequipPickaxe"))
+		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("unequipPickaxe") || !dad.animation.curAnim.name.startsWith("idle-alt"))
 		{
 			dad.dance();
 			if (hasDuoDad)
@@ -5758,8 +5809,4 @@ class PlayState extends MusicBeatState
 
 
 
-//hi ( a note from vs nosadx go play vs lucky boy plssssss https://gamebanana.com/mods/306796 he is the dude that was in the bg of suit up )
-//also if your trying to code but you feel like your not smart enough to dont worry cause when i first started i didnt know how to do ANYTHING
-//but look at me now makin special notes and coding for 2 mods.
-//never give up!!!
-//- Nosadx
+
