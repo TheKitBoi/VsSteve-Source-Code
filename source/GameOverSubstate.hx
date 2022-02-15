@@ -5,7 +5,9 @@ import flixel.FlxObject;
 import flixel.FlxSubState;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import PlayState;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -77,12 +79,27 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix), 0.3);
+
+			FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.3);
+
+
+			
+				switch (PlayState.SONG.song.toLowerCase())
+				{
+					case 'bonk':
+						new FlxTimer().start(0.5, function(tmr:FlxTimer)
+						{
+							FlxG.sound.play(Paths.soundRandom('voicelines/irfan', 1, 7), 1.2);
+						});
+						
+				}
 		}
 
 		if (FlxG.sound.music.playing)
 		{
 			Conductor.songPosition = FlxG.sound.music.time;
+			//FlxG.sound.music.volume = 0.5;
 		}
 	}
 

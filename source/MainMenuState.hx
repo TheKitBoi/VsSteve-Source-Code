@@ -3,6 +3,7 @@ package;
 import Controls.KeyboardScheme;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxG;
+import flixel.FlxCamera;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
@@ -31,6 +32,8 @@ class MainMenuState extends MusicBeatState
 	var logoBl:FlxSprite;
 	var tigoBabo:FlxSprite;
 	var pressCount:Int = 0;
+	var dimBG:FlxSprite;
+	var pressEnter:FlxSprite;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -162,6 +165,23 @@ class MainMenuState extends MusicBeatState
 
 		add(menuItems);
 
+		dimBG = new FlxSprite().loadGraphic(Paths.image("blackBG"));
+        dimBG.antialiasing = false;
+		dimBG.screenCenter(X);
+        dimBG.updateHitbox();
+		dimBG.alpha = 0;
+		add(dimBG);
+
+		pressEnter = new FlxSprite(0, 0).loadGraphic(Paths.image("enter"));
+        pressEnter.antialiasing = false;
+		pressEnter.setGraphicSize(Std.int(pressEnter.width * 3));
+		pressEnter.screenCenter(X);
+		pressEnter.x -= 160;
+		pressEnter.screenCenter(Y);
+        pressEnter.updateHitbox();
+		pressEnter.alpha = 0;
+		add(pressEnter);
+
 		firstStart = false;
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 12);
@@ -179,19 +199,12 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-		var dimBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("dimBG"));
-        dimBG.antialiasing = false;
-		dimBG.screenCenter(X);
-        dimBG.updateHitbox();
-		add(dimBG);
-		dimBG.visible = false;
-
-		var textBox:FlxSprite = new FlxSprite().loadGraphic(Paths.image("textEnter"));
-        textBox.antialiasing = false;
-		textBox.screenCenter(X);
-        textBox.updateHitbox();
-		add(textBox);
-		textBox.visible = false;
+		//var textBox:FlxSprite = new FlxSprite().loadGraphic(Paths.image("textEnter"));
+        //textBox.antialiasing = false;
+		//textBox.screenCenter(X);
+        //textBox.updateHitbox();
+		//add(textBox);
+		//textBox.visible = false;
 
 		super.create();
 	}
@@ -211,7 +224,8 @@ class MainMenuState extends MusicBeatState
 
 		if (FlxG.mouse.overlaps(tigoBabo))
 		{
-			if(FlxG.mouse.justPressed){
+			if(FlxG.mouse.justPressed)
+			{
 				PlayState.SONG = Song.loadFromJson(Highscore.formatSong('dev battle', 1), 'dev battle');
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
@@ -223,53 +237,227 @@ class MainMenuState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.E)
 			if (pressCount == 0)
+			{
 				pressCount = 1;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						dimBG.alpha += 0.01;
+			
+						if (dimBG.alpha < 0.15)
+						{
+							tmr.reset(0.001);
+						}
+	
+					});
+			}
 			else
+			{
 				pressCount == 0;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						dimBG.alpha -= 0.03;
+			
+						if (dimBG.alpha > 1)
+						{
+							tmr.reset(0.001);
+						}
+	
+					});
+
+			}
 
 		if (FlxG.keys.justPressed.N)
 			if (pressCount == 1)
+			{
 				pressCount = 2;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						dimBG.alpha += 0.01;
+			
+						if (dimBG.alpha < 0.3)
+						{
+							tmr.reset(0.001);
+						}
+	
+					});
+			}
 			else
+			{
 				pressCount == 0;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						dimBG.alpha -= 0.03;
+			
+						if (dimBG.alpha > 1)
+						{
+							tmr.reset(0.001);
+						}
+	
+					});
+			}
 
 		if (FlxG.keys.justPressed.T)
 			if (pressCount == 2)
-				pressCount = 3;
+				{
+					pressCount = 3;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha += 0.01;
+				
+							if (dimBG.alpha < 0.45)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
 			else
-				pressCount == 0;
+				{
+					pressCount == 0;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha -= 0.03;
+				
+							if (dimBG.alpha > 1)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
 
 		if (FlxG.keys.justPressed.I)
 			if (pressCount == 3)
-				pressCount = 4;
+				{
+					pressCount = 4;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha += 0.01;
+				
+							if (dimBG.alpha < 0.60)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
 			else
-				pressCount == 0;
+				{
+					pressCount == 0;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha -= 0.03;
+				
+							if (dimBG.alpha > 1)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
+
 		if (FlxG.keys.justPressed.T)
 			if (pressCount == 4)
-				pressCount = 5;
+				{
+					pressCount = 5;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha += 0.01;
+				
+							if (dimBG.alpha < 0.75)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
 			else
-				pressCount == 0;
+				{
+					pressCount == 0;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha -= 0.03;
+				
+							if (dimBG.alpha > 1)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+				}
+
 		if (FlxG.keys.justPressed.Y)
 			if (pressCount == 5)
-				pressCount = 6;
+				{
+					pressCount = 6;
+					FlxG.sound.music.stop();
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha += 0.01;
+				
+							if (dimBG.alpha < 1)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+					new FlxTimer().start(0.001, function(tmrr:FlxTimer)
+						{
+							pressEnter.alpha += 0.01;
+				
+							if (pressEnter.alpha < 1)
+							{
+								tmrr.reset(0.001);
+							}
+			
+						});
+				}
 			else
-				pressCount == 0;
+				{
+					pressCount == 0;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dimBG.alpha -= 0.03;
+				
+							if (dimBG.alpha > 1)
+							{
+								tmr.reset(0.001);
+							}
+		
+						});
+						
+				}
+				
 		if (enter && pressCount == 6)
 			{
+				//new FlxTimer().start(0.001, function(tmr:FlxTimer)
+				//{
+				//	pressEnter.alpha += 0.01;
+		//
+				//	if (pressEnter.alpha < 1)
+				//	{
+				//		tmr.reset(0.001);
+				//	}
+				//});
+				FlxG.camera.shake(0.05, 360);
 
-				PlayState.SONG = Song.loadFromJson('entity', 'entity');
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = 1;
-				PlayState.storyWeek = 4;
-				FlxG.camera.fade(FlxColor.WHITE, 0.5, false);
-
-				//PLAY SPECIAL SOUND
-				//FlxG.sound.play(Paths.sound('confirmMenu'));
-
-				new FlxTimer().start(1.5, function(tmr:FlxTimer)
+				if(enter)
 				{
-					LoadingState.loadAndSwitchState(new PlayState());
-				});
+					PlayState.SONG = Song.loadFromJson('entity', 'entity');
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 1;
+					PlayState.storyWeek = 4;
+					FlxG.camera.fade(FlxColor.RED, 0.5, false);
+
+					//PLAY SPECIAL SOUND
+					//FlxG.sound.play(Paths.sound('confirmMenu'));
+
+					new FlxTimer().start(1.5, function(tmr:FlxTimer)
+					{
+						LoadingState.loadAndSwitchState(new PlayState());
+					});
+				}
+
 			}
 
 
