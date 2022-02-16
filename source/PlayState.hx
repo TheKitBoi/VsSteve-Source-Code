@@ -1851,97 +1851,97 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
+			
 			introAssets.set('default', ['ready', "set", "go"]);
-			introAssets.set('school', [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel'
-			]);
-			introAssets.set('schoolEvil', [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel'
-			]);
-			introAssets.set('awwman', [
-				'awwman/pixelUI/ready-pixel',
-				'awwman/pixelUI/set-pixel',
-				'awwman/pixelUI/date-pixel'
-			]);
-			introAssets.set('house', [
-				'house/pixelUI/ready-pixel',
-				'house/pixelUI/set-pixel',
-				'house/pixelUI/date-pixel'
-			]);
-			introAssets.set('entity', [
-				'entity/pixelUI/ready-pixel',
-				'entity/pixelUI/set-pixel',
-				'entity/pixelUI/date-pixel'
-			]);
-			introAssets.set('mine', [
-				'mine/pixelUI/ready-pixel',
-				'mine/pixelUI/set-pixel',
-				'mine/pixelUI/date-pixel'
-			]);	
-			introAssets.set('cave', [
-				'cave/pixelUI/ready-pixel',
-				'cave/pixelUI/set-pixel',
-				'cave/pixelUI/date-pixel'
-			]);
-			introAssets.set('endless', [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel'
-			]);
-			introAssets.set('devs', [
-				'devs/pixelUI/ready-pixel',
-				'devs/pixelUI/set-pixel',
-				'devs/pixelUI/date-pixel'			
-			]);
-			introAssets.set('notch', [
-				'temple/pixelUI/ready-pixel',
-				'temple/pixelUI/set-pixel',
-				'temple/pixelUI/date-pixel'			
-			]);
-			introAssets.set('littleman', [
-				'littleman/pixelUI/ready-pixel',
-				'littleman/pixelUI/set-pixel',
-				'littleman/pixelUI/date-pixel'		
-			]);
-			introAssets.set('lost', [
-				'lost/pixelUI/ready-pixel',
-				'lost/pixelUI/set-pixel',
-				'lost/pixelUI/date-pixel'		
-			]);
-			introAssets.set('tutorial', [
-				'tutorial/pixelUI/ready-pixel',
-				'tutorial/pixelUI/set-pixel',
-				'tutorial/pixelUI/date-pixel'		
-			]);
-			introAssets.set('tf2', [
-				'tf2/pixelUI/ready-pixel',
-				'tf2/pixelUI/set-pixel',
-				'tf2/pixelUI/date-pixel'
-			]);	
-			introAssets.set('mcsm', [
-				'mcsm/pixelUI/ready-pixel',
-				'mcsm/pixelUI/set-pixel',
-				'mcsm/pixelUI/date-pixel'		
-			]);
-			introAssets.set('espionage', [
-				'espionage/pixelUI/ready-pixel',
-				'espionage/pixelUI/set-pixel',
-				'espionage/pixelUI/date-pixel'		
-			]);
-			introAssets.set('fasttravel', [
-				'fasttravel/pixelUI/ready-pixel',
-				'fasttravel/pixelUI/set-pixel',
-				'fasttravel/pixelUI/date-pixel'		
-			]);
-			introAssets.set('templeentrance', [
-				'templeentrance/pixelUI/ready-pixel',
-				'templeentrance/pixelUI/set-pixel',
-				'templeentrance/pixelUI/date-pixel'			
-			]);
+			introAssets.set('school', ['ready', "set", "go"]);
+			introAssets.set('schoolevil', ['ready', "set", "go"]);
+			introAssets.set('house', ['ready', "set", "go"]);
+			introAssets.set('entity', ['ready', "set", "go"]);
+			introAssets.set('mine', ['ready', "set", "go"]);
+			introAssets.set('cave', ['ready', "set", "go"]);
+			introAssets.set('notch', ['ready', "set", "go"]);
+			introAssets.set('lost', ['ready', "set", "go"]);
+			introAssets.set('tutorial', ['ready', "set", "go"]);
+			introAssets.set('tf2', ['ready', "set", "go"]);
+			introAssets.set('mcsm', ['ready', "set", "go"]);
+			introAssets.set('espionage', ['ready', "set", "go"]);
+			introAssets.set('fasttravel', ['ready', "set", "go"]);
+			introAssets.set('templeentrance', ['ready', "set", "go"]);
+			//introAssets.set('school', [
+			//	'weeb/pixelUI/ready-pixel',
+			//	'weeb/pixelUI/set-pixel',
+			//	'weeb/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('schoolEvil', [
+			//	'weeb/pixelUI/ready-pixel',
+			//	'weeb/pixelUI/set-pixel',
+			//	'weeb/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('awwman', [
+			//	'awwman/pixelUI/ready-pixel',
+			//	'awwman/pixelUI/set-pixel',
+			//	'awwman/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('house', [
+			//	'house/pixelUI/ready-pixel',
+			//	'house/pixelUI/set-pixel',
+			//	'house/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('entity', [
+			//	'entity/pixelUI/ready-pixel',
+			//	'entity/pixelUI/set-pixel',
+			//	'entity/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('mine', [
+			//	'mine/pixelUI/ready-pixel',
+			//	'mine/pixelUI/set-pixel',
+			//	'mine/pixelUI/date-pixel'
+			//]);	
+			//introAssets.set('cave', [
+			//	'cave/pixelUI/ready-pixel',
+			//	'cave/pixelUI/set-pixel',
+			//	'cave/pixelUI/date-pixel'
+			//]);
+			//introAssets.set('notch', [
+			//	'temple/pixelUI/ready-pixel',
+			//	'temple/pixelUI/set-pixel',
+			//	'temple/pixelUI/date-pixel'			
+			//]);
+			//introAssets.set('lost', [
+			//	'lost/pixelUI/ready-pixel',
+			//	'lost/pixelUI/set-pixel',
+			//	'lost/pixelUI/date-pixel'		
+			//]);
+			//introAssets.set('tutorial', [
+			//	'tutorial/pixelUI/ready-pixel',
+			//	'tutorial/pixelUI/set-pixel',
+			//	'tutorial/pixelUI/date-pixel'		
+			//]);
+			//introAssets.set('tf2', [
+			//	'tf2/pixelUI/ready-pixel',
+			//	'tf2/pixelUI/set-pixel',
+			//	'tf2/pixelUI/date-pixel'
+			//]);	
+			//introAssets.set('mcsm', [
+			//	'mcsm/pixelUI/ready-pixel',
+			//	'mcsm/pixelUI/set-pixel',
+			//	'mcsm/pixelUI/date-pixel'		
+			//]);
+			//introAssets.set('espionage', [
+			//	'espionage/pixelUI/ready-pixel',
+			//	'espionage/pixelUI/set-pixel',
+			//	'espionage/pixelUI/date-pixel'		
+			//]);
+			//introAssets.set('fasttravel', [
+			//	'fasttravel/pixelUI/ready-pixel',
+			//	'fasttravel/pixelUI/set-pixel',
+			//	'fasttravel/pixelUI/date-pixel'		
+			//]);
+			//introAssets.set('templeentrance', [
+			//	'templeentrance/pixelUI/ready-pixel',
+			//	'templeentrance/pixelUI/set-pixel',
+			//	'templeentrance/pixelUI/date-pixel'			
+			//]);
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var altSuffix:String = "";
@@ -1964,7 +1964,8 @@ class PlayState extends MusicBeatState
 					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 					ready.scrollFactor.set();
 					ready.updateHitbox();
-					ready.setGraphicSize(Std.int(ready.width * daPixelZoom));
+					ready.setGraphicSize(Std.int(ready.width * 0.8));
+					ready.y -= 300;
 
 					ready.screenCenter();
 					add(ready);
@@ -1981,7 +1982,8 @@ class PlayState extends MusicBeatState
 					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 					set.scrollFactor.set();
 
-					set.setGraphicSize(Std.int(set.width * daPixelZoom));
+					set.setGraphicSize(Std.int(set.width * 0.8));
+					set.y -= 300;
 
 					set.screenCenter();
 					add(set);
@@ -1997,9 +1999,10 @@ class PlayState extends MusicBeatState
 				case 3:
 					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 					go.scrollFactor.set();
-					go.setGraphicSize(Std.int(go.width * daPixelZoom));
+					go.setGraphicSize(Std.int(go.width * 0.8));
 
 					go.updateHitbox();
+					go.y -= 300;
 
 					go.screenCenter();
 					add(go);
@@ -4539,7 +4542,7 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+					numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 				}
 				numScore.updateHitbox();
 
