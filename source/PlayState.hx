@@ -254,6 +254,10 @@ class PlayState extends MusicBeatState
 	
 	private var fasttravelbg:FlxSprite;
 	private var fasttravelbgClone:FlxSprite;
+	private var bigmountian:FlxSprite;
+	private var smallmountian:FlxSprite;
+	private var smallmountian2:FlxSprite;
+	private var houseFT:FlxSprite;
 	var scroll:Bool = false;
 	var tween:FlxTween;
 
@@ -765,6 +769,16 @@ class PlayState extends MusicBeatState
 					fasttravelbg.scale.set(1.4, 1.4);
 					fasttravelbg.updateHitbox();
 					add(fasttravelbg);
+
+					bigmountian = new FlxSprite().loadGraphic(Paths.image('fasttravel/big_mountain'));
+					bigmountian.scale.set(1.4, 1.4);
+					bigmountian.updateHitbox();
+					add(bigmountian);
+
+					smallmountian = new FlxSprite().loadGraphic(Paths.image('fasttravel/small_mountian'));
+					smallmountian.scale.set(1.4, 1.4);
+					smallmountian.updateHitbox();
+					add(smallmountian);
 
 					fasttravelbgClone = new FlxSprite().loadGraphic(Paths.image('fasttravel/fastTravelBg'));
 					fasttravelbgClone.scale.set(1.4, 1.4);
@@ -1945,7 +1959,7 @@ class PlayState extends MusicBeatState
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var altSuffix:String = "";
-
+//
 			for (value in introAssets.keys())
 			{
 				if (value == curStage)
@@ -3214,29 +3228,36 @@ class PlayState extends MusicBeatState
 
 			//Panoramaaaaaaa
 			//litterally basically a copy paste from the main menu but FU-
-			if (scroll == true)
-				{
-					scroll = false;
-					fasttravelbgClone.x = 1280;
-					fasttravelbg.x = 0;
-					//pano.visible = false;
-					FlxTween.tween(fasttravelbg, {x: -1600}, 10, {
-					onComplete: function(twn:FlxTween)
-				{
-					tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 10);
-					FlxTween.tween(fasttravelbgClone, {x: 0}, 10, {
-					onComplete: function(twn:FlxTween)
-				{
-					tween.cancel();
-					scroll = true;
-				}
+			//if (scroll == true)
+			//	{
+			//		scroll = false;
+			//		fasttravelbgClone.x = 1280;
+			//		fasttravelbg.x = 0;
+			//		//pano.visible = false;
+			//		FlxTween.tween(fasttravelbg, {x: -1600}, 10, {
+			//		onComplete: function(twn:FlxTween)
+			//	{
+			//		tween = FlxTween.tween(fasttravelbg, { x: -2880 }, 10);
+			//		FlxTween.tween(fasttravelbgClone, {x: 0}, 10, {
+			//		onComplete: function(twn:FlxTween)
+			//	{
+			//		tween.cancel();
+			//		scroll = true;
+			//	}
+			//});
+			//	}
+			//});
+			//	}
+
+			new FlxTimer().start(2, function(swagTimer:FlxTimer)
+			{
 			});
-				}
-			});
-				}
+			
+
 		}
 
-		if (dad.curCharacter == "herobrine"){
+		if (dad.curCharacter == "herobrine")
+		{
 			dad.y += Math.sin(hero);
 		}
 		//iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
@@ -4327,86 +4348,90 @@ class PlayState extends MusicBeatState
 			var pixelShitPart1:String = "";
 			var pixelShitPart2:String = '';
 
-			if (curStage.startsWith('school'))
-			{
-				pixelShitPart1 = 'weeb/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('house'))
-			{
-				pixelShitPart1 = 'house/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('entity'))
-			{
-				pixelShitPart1 = 'entity/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('cave'))
-			{
-				pixelShitPart1 = 'cave/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('mine'))
-			{
-				pixelShitPart1 = 'mine/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('awwman'))
-			{
-				pixelShitPart1 = 'awwman/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('devs'))
-			{
-				pixelShitPart1 = 'devs/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('notch'))
-			{
-				pixelShitPart1 = 'temple/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('littleman'))
-				{
-					pixelShitPart1 = 'littleman/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('lost'))
-				{
-					pixelShitPart1 = 'lost/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('tutorial'))
-				{
-					pixelShitPart1 = 'tutorial/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('tf2'))
-			{
-				pixelShitPart1 = 'tf2/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
-			if (curStage.startsWith('mcsm'))
-				{
-					pixelShitPart1 = 'mcsm/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('espionage'))
-				{
-					pixelShitPart1 = 'espionage/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('fasttravel'))
-				{
-					pixelShitPart1 = 'fasttravel/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
-			if (curStage.startsWith('templeentrance'))
-				{
-					pixelShitPart1 = 'templeentrance/pixelUI/';
-					pixelShitPart2 = '-pixel';
-				}
+
+			pixelShitPart1 = 'hudassets/';
+			pixelShitPart2 = '-pixel';
+
+			//if (curStage.startsWith('school'))
+			//{
+			//	pixelShitPart1 = 'weeb/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('house'))
+			//{
+			//	pixelShitPart1 = 'house/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('entity'))
+			//{
+			//	pixelShitPart1 = 'entity/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('cave'))
+			//{
+			//	pixelShitPart1 = 'cave/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('mine'))
+			//{
+			//	pixelShitPart1 = 'mine/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('awwman'))
+			//{
+			//	pixelShitPart1 = 'awwman/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('devs'))
+			//{
+			//	pixelShitPart1 = 'devs/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('notch'))
+			//{
+			//	pixelShitPart1 = 'temple/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('littleman'))
+			//	{
+			//		pixelShitPart1 = 'littleman/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('lost'))
+			//	{
+			//		pixelShitPart1 = 'lost/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('tutorial'))
+			//	{
+			//		pixelShitPart1 = 'tutorial/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('tf2'))
+			//{
+			//	pixelShitPart1 = 'tf2/pixelUI/';
+			//	pixelShitPart2 = '-pixel';
+			//}
+			//if (curStage.startsWith('mcsm'))
+			//	{
+			//		pixelShitPart1 = 'mcsm/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('espionage'))
+			//	{
+			//		pixelShitPart1 = 'espionage/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('fasttravel'))
+			//	{
+			//		pixelShitPart1 = 'fasttravel/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
+			//if (curStage.startsWith('templeentrance'))
+			//	{
+			//		pixelShitPart1 = 'templeentrance/pixelUI/';
+			//		pixelShitPart2 = '-pixel';
+			//	}
 
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();

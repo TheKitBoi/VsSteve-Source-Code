@@ -499,7 +499,7 @@ class MainMenuState extends MusicBeatState
 					spr.animation.play('selected');
 				}
 
-				if(FlxG.mouse.pressed && canClick)
+				if(FlxG.mouse.justPressed && canClick)
 				{
 					selectSomething();
 				}
@@ -524,7 +524,8 @@ class MainMenuState extends MusicBeatState
 	{
 		if (optionShit[curSelected] == 'ouh')
 		{
-			goToState();
+			FlxG.sound.play(Paths.sound('ouh'));
+			FlxG.camera.shake(0.05, 0.05);
 		}
 		else if (optionShit[curSelected] == 'story mode')
 		{

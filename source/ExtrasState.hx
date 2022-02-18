@@ -172,7 +172,7 @@ class ExtrasState extends MusicBeatState
 					spr.animation.play('selected');
 				}
 
-				if(FlxG.mouse.pressed && canClick)
+				if(FlxG.mouse.justPressed && canClick)
 				{
 					selectSomething();
 				}
@@ -195,33 +195,40 @@ class ExtrasState extends MusicBeatState
 
 	function selectSomething()
 	{
-		
-		selectedSomethin = true;
-		FlxG.sound.play(Paths.sound('confirmMenu'));
-		
-		canClick = false;
-		menuItems.forEach(function(spr:FlxSprite)
+		if(optionShit[curSelected] == 'other songs')
+			{
+				FlxG.sound.play(Paths.sound('cancelMenu'));	
+			}
+		else
 		{
-			if (curSelected != spr.ID)
+			selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			
+			canClick = false;
+			menuItems.forEach(function(spr:FlxSprite)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
-				FlxTween.tween(spr, {alpha: 0}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						spr.kill();
-					}
-				});
-			}
-			else
-			{
-				FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
-				new FlxTimer().start(1, function(tmr:FlxTimer)
-					{
-						goToState();
+				if (curSelected != spr.ID)
+				{
+					FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
+					FlxTween.tween(spr, {alpha: 0}, 0.6, {
+						ease: FlxEase.quadOut,
+						onComplete: function(twn:FlxTween)
+						{
+							spr.kill();
+						}
 					});
-			}
-		});
+				}
+				else
+				{
+					FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+						{
+							goToState();
+						});
+				}
+			});
+		}
+		
 			
 	}
 
@@ -236,8 +243,10 @@ class ExtrasState extends MusicBeatState
 				trace("bonus songs!");
 
 			case 'other songs':
-				FlxG.switchState(new FreeplayStateOthers());
+				FlxG.sound.play(Paths.sound('cancelMenu'));			
+				//FlxG.switchState(new FreeplayStateOthers());
 				trace("Other Songs");
+				trace("Disabled!");
 		}
 	}
 
