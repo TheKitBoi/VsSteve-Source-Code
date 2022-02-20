@@ -182,6 +182,7 @@ class PlayState extends MusicBeatState
 	var notchStanding:FlxSprite; 
 	var gfminecraft:FlxSprite; 
 	var irfan:FlxSprite; 
+	var vignette:FlxSprite; 
 	var fc:Bool = true;
 
 	//HOT BAR VARIABLES
@@ -1459,10 +1460,8 @@ class PlayState extends MusicBeatState
 			hotbar.animation.play('Mic', false);
 		add(hotbar);
 
-		if(SONG.song.toLowerCase() == 'entity')
-		{
-			dad.alpha = 0;
-		}
+	
+
 
 		if(SONG.song.toLowerCase() == 'espionage')
 			{
@@ -1660,15 +1659,14 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 
 		
-
-		//if(SONG.song.toLowerCase() == 'suit up' && oneTimeUse == false)
-		//{
-		//	hotbar.animation.play('MicNoSP', true);
-		//}
-		//else if(SONG.song.toLowerCase() == 'suit up' && oneTimeUse == true)
-		//{
-		//	hotbar.animation.play('MicNoPotion', true);
-		//}
+		if(SONG.song.toLowerCase() == 'entity')
+		{
+			dad.alpha = 0;
+			vignette = new FlxSprite().loadGraphic(Paths.image('entity/vignette'));
+			//vignette.setGraphicSize(Std.int(vignette.width * 6));
+			vignette.alpha = 0;
+			add(vignette);
+		}
 
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -1680,6 +1678,8 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		hotbar.cameras = [camHUD];
+		if(SONG.song.toLowerCase() == 'entity')
+			vignette.cameras = [camHUD];
 		if (FlxG.save.data.songPosition)
 		{
 			songPosBG.cameras = [camHUD];
@@ -3028,8 +3028,6 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-	
-
 		if (SONG.song.toLowerCase() == 'practice')
 		{
 			hotbar.animation.play('MicNoSP', false);
@@ -3427,34 +3425,15 @@ class PlayState extends MusicBeatState
 							camFollow.y = dad.getMidpoint().y - 300;
 							camFollow.x = dad.getMidpoint().x - -300;
 							defaultCamZoom = 0.5;
+
 						case 'stevehorse':
 							camFollow.y = dad.getMidpoint().y - 200;
 							camFollow.x = dad.getMidpoint().x - -170;
 							defaultCamZoom = 0.7;
 
-						case 'stevefnm':
-							camFollow.y = dad.getMidpoint().y - 125; //400
-							camFollow.x = dad.getMidpoint().x - -100; //10
-							defaultCamZoom = 0.9;
-
-						case 'stevematt':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 100;
-							defaultCamZoom = 1;
-
-						case 'stevelucky':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 100;
-							defaultCamZoom = 0.9;
-
-						case 'herobrine':
-							camFollow.y = dad.getMidpoint().y - 80;
-							camFollow.x = dad.getMidpoint().x - -170;
-							defaultCamZoom = 0.7;
-
 						case '303':
 							camFollow.y = dad.getMidpoint().y - 300 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
+							camFollow.x = dad.getMidpoint().x - -400 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.5;
 
 						case 'alex':
@@ -3487,35 +3466,10 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -200 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.8;
 
-						case 'endless':
-							camFollow.y = dad.getMidpoint().y - -270;
-							camFollow.x = dad.getMidpoint().x - -750;
-							defaultCamZoom = 0.8;
-
-						case 'smollalex':
-							camFollow.y = dad.getMidpoint().y - 80;
-							camFollow.x = dad.getMidpoint().x - -600;
-							defaultCamZoom = 0.8;
-
 						case 'steve-armor':
 							camFollow.y = dad.getMidpoint().y - 260;
 							camFollow.x = dad.getMidpoint().x - -140;
 							defaultCamZoom = 0.7;              
-
-						case 'tiago':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 0;
-							defaultCamZoom = 1.0;
-
-						case 'tiagoSwag':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 50;
-							defaultCamZoom = 1.2;
-
-						case 'gabo':
-							camFollow.y = dad.getMidpoint().y - 430;
-							camFollow.x = dad.getMidpoint().x - 10;
-							defaultCamZoom = 1.2;
 						
 						case 'jaziel':
 							camFollow.y = dad.getMidpoint().y - 100;
@@ -5381,16 +5335,6 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				//case 180:
-				//new FlxTimer().start(0.01, function(tmr:FlxTimer)
-				//{
-				//	camHUD.alpha += 0.075;
-		//
-				//	if (camHUD.alpha < 1)
-				//	{
-				//		tmr.reset(0.01);
-				//	}
-				//});
 
 				case 566:
 					new FlxTimer().start(0.001, function(tmr:FlxTimer)
@@ -5402,6 +5346,29 @@ class PlayState extends MusicBeatState
 								tmr.reset(0.001);
 							}
 						});
+
+				case 686 | 1008 | 1086 | 1102 | 1116 | 1214 | 1232 | 1248 | 1342 | 1358 | 1374 | 1406 | 1422 | 1438 | 1470 | 1486 | 1502 | 1550 | 1566 | 1790 | 2046:
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						vignette.alpha += 0.015;
+						FlxG.camera.zoom += 0.035;
+						if (vignette.alpha < 1)
+						{
+							tmr.reset(0.001);
+						}
+					});
+
+				case 694 | 1016 | 1094 | 1112 | 1126 | 1226 | 1242 | 1260 | 1354 | 1370 | 1386 | 1418 | 1434 | 1450 | 1482 | 1498 | 1514 | 1562 | 1578 | 1802 | 2058:
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						vignette.alpha -= 0.0225;
+						//FlxG.camera.zoom -= 0.025;
+						if (vignette.alpha != 0)
+						{
+							tmr.reset(0.001);
+						}
+					});
+
 				}			
 		}
 
@@ -5409,16 +5376,6 @@ class PlayState extends MusicBeatState
 			{
 				switch (curStep)
 				{
-					//case 180:
-					//new FlxTimer().start(0.01, function(tmr:FlxTimer)
-					//{
-					//	camHUD.alpha += 0.075;
-			//
-					//	if (camHUD.alpha < 1)
-					//	{
-					//		tmr.reset(0.01);
-					//	}
-					//});
 	
 					case 64:
 						new FlxTimer().start(0.001, function(tmr:FlxTimer)
