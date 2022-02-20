@@ -1317,7 +1317,7 @@ class PlayState extends MusicBeatState
 				gf.y += 170;
 			case 'tf2':
 				boyfriend.x += 85;
-				boyfriend.y += 150;
+				boyfriend.y += 130;
 				gf.x += 180;
 				gf.y += 340;
 			case 'mcsm':
@@ -4488,9 +4488,9 @@ class PlayState extends MusicBeatState
 			comboSpr.updateHitbox();
 			rating.updateHitbox();
 
-			currentTimingShown.cameras = [camHUD];
-			comboSpr.cameras = [camHUD];
-			rating.cameras = [camHUD];
+			//currentTimingShown.cameras = [camHUD];
+			//comboSpr.cameras = [camHUD];
+			//rating.cameras = [camHUD];
 
 			var seperatedScore:Array<Int> = [];
 
@@ -4512,7 +4512,7 @@ class PlayState extends MusicBeatState
 				numScore.screenCenter();
 				numScore.x = rating.x + (43 * daLoop) - 50;
 				numScore.y = rating.y + 100;
-				numScore.cameras = [camHUD];
+				//numScore.cameras = [camHUD];
 
 				if (curStage.startsWith('stage'))
 				{
