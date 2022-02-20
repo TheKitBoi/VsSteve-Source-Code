@@ -1182,7 +1182,7 @@ class PlayState extends MusicBeatState
 				dad.y -= 70;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case '303':
-				dad.x -= 140;
+				dad.x -= 180;
 				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'endless':
@@ -1292,7 +1292,7 @@ class PlayState extends MusicBeatState
 				gf.y += 230;
 			case 'entity':
 				boyfriend.x += 500;
-				boyfriend.y += 215;
+				boyfriend.y += 250;
 				gf.x += 240;
 				gf.y += 400;
 			case 'endless':
@@ -3050,9 +3050,7 @@ class PlayState extends MusicBeatState
 		}
 		
 		/*
-
 		UN-USED FOR THIS UPDATE
-
 		if(FlxG.keys.justPressed.T && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUse == false)
 		{
 			Strength();
@@ -3433,7 +3431,7 @@ class PlayState extends MusicBeatState
 
 						case '303':
 							camFollow.y = dad.getMidpoint().y - 300 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - -400 + dadnoteMovementXoffset;
+							camFollow.x = dad.getMidpoint().x - 0 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.5;
 
 						case 'alex':
@@ -5791,7 +5789,3 @@ class PlayState extends MusicBeatState
 //					Welp...
 // 					Kind Regards 
 //					Tiago (TracedInPurple)
-
-
-
-
