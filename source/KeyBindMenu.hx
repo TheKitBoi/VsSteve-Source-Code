@@ -37,23 +37,21 @@ class KeyBindMenu extends FlxSubState
     var keyTextDisplay:FlxText;
     var keyWarning:FlxText;
     var warningTween:FlxTween;
-    var keyText:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT", "REGEN. POTION", "STRENGTH POTION"];
-    var defaultKeys:Array<String> = ["A", "S", "W", "D", "E", "T", "R"];
-    var defaultGpKeys:Array<String> = ["DPAD_LEFT", "DPAD_DOWN", "DPAD_UP", "DPAD_RIGHT" , "A", "A", "B"];
+    var keyText:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT", "REGEN. POTION"];
+    var defaultKeys:Array<String> = ["A", "S", "W", "D", "E", "R"];
+    var defaultGpKeys:Array<String> = ["DPAD_LEFT", "DPAD_DOWN", "DPAD_UP", "DPAD_RIGHT" , "A", "B"];
     var curSelected:Int = 0;
 
     var keys:Array<String> = [FlxG.save.data.leftBind,
                               FlxG.save.data.downBind,
                               FlxG.save.data.upBind,
                               FlxG.save.data.rightBind,
-                              FlxG.save.data.regenPotionBind,
-                              FlxG.save.data.strengthPotionBind];
+                              FlxG.save.data.regenPotionBind,];
     var gpKeys:Array<String> = [FlxG.save.data.gpleftBind,
                               FlxG.save.data.gpdownBind,
                               FlxG.save.data.gpupBind,
                               FlxG.save.data.gprightBind,
-                              FlxG.save.data.gregenPotionBind,
-                              FlxG.save.data.gstrengthPotionBind];
+                              FlxG.save.data.gregenPotionBind];
     var tempKey:String = "";
     var blacklist:Array<String> = ["ESCAPE", "ENTER", "BACKSPACE", "TAB"];
 
@@ -289,14 +287,12 @@ class KeyBindMenu extends FlxSubState
         FlxG.save.data.leftBind = keys[0];
         FlxG.save.data.rightBind = keys[3];
         FlxG.save.data.regenPotionBind = keys[4];
-        FlxG.save.data.strengthPotionBind = keys[5];
         
         FlxG.save.data.gpupBind = gpKeys[2];
         FlxG.save.data.gpdownBind = gpKeys[1];
         FlxG.save.data.gpleftBind = gpKeys[0];
         FlxG.save.data.gprightBind = gpKeys[3];
         FlxG.save.data.gregenPotionBind = keys[4];
-        FlxG.save.data.gstrengthPotionBind = keys[5];
 
         FlxG.save.flush();
 

@@ -7,7 +7,10 @@ import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import lime.utils.Assets;
 
 
@@ -20,6 +23,11 @@ using StringTools;
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
+
+	var tween:FlxTween;
+	var pano:FlxSprite;
+	var panoclone:FlxSprite;
+	var startscroll:Bool;
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
@@ -68,8 +76,20 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
-		add(bg);
+		//var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+		//add(bg);
+
+		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
+		pano.antialiasing = true;
+		pano.updateHitbox();
+		add(pano);
+
+		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoclone.antialiasing = true;
+		panoclone.updateHitbox();
+		add(panoclone);
+
+		startscroll = true;
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -199,6 +219,28 @@ class FreeplayState extends MusicBeatState
 		{
 			FlxG.switchState(new MainMenuState());
 		}
+
+
+		if (startscroll == true)
+			{
+				startscroll = false;
+				panoclone.x = 1280;
+				pano.x = 0;
+				//pano.visible = false;
+				FlxTween.tween(pano, {x: -1600}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween = FlxTween.tween(pano, { x: -2880 }, 90);
+				FlxTween.tween(panoclone, {x: 0}, 90, {
+				onComplete: function(twn:FlxTween)
+			{
+				tween.cancel();
+				startscroll = true;
+			}
+		});
+			}
+		});
+			}
 
 		if (accepted)
 		{

@@ -184,9 +184,12 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 30, 0, gameVer +  (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 20);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		versionShit.scrollFactor.set();
+		versionShit.borderSize = 1.25;
+		versionShit.antialiasing = false;
 		add(versionShit);
 
 		// NG.core.calls.event.logEvent('swag').send();
@@ -574,7 +577,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));			
 				trace("Story Menu Selected");
 			case 'freeplay':
-				FlxG.switchState(new FreeplayState());
+				FlxG.switchState(new DifficultyInfo());
 				trace("Freeplay Menu Selected");
 
 			case 'ouh':

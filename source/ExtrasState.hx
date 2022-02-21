@@ -37,7 +37,6 @@ class ExtrasState extends MusicBeatState
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
 	public static var firstStart:Bool = true;
-
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 
@@ -105,6 +104,14 @@ class ExtrasState extends MusicBeatState
 		}
 
 		add(menuItems);
+
+		var othersAlert:FlxSprite = new FlxSprite().loadGraphic(Paths.image("old songs alert"));
+        othersAlert.antialiasing = false;
+		othersAlert.screenCenter();
+		othersAlert.y += 110;
+		othersAlert.x += 350;
+        othersAlert.updateHitbox();
+		add(othersAlert);
 
 		firstStart = false;
 

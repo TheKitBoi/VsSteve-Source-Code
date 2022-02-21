@@ -185,6 +185,8 @@ class PlayState extends MusicBeatState
 	var vignette:FlxSprite; 
 	var fc:Bool = true;
 
+	var evilTrail:FlxTrail;
+
 	//HOT BAR VARIABLES
 	var hotbar:FlxSprite;
 
@@ -204,6 +206,7 @@ class PlayState extends MusicBeatState
 	var songScore:Int = 0;
 	var songScoreDef:Int = 0;
 	var scoreTxt:FlxText;
+	var scoreTxTMovement:FlxTween;
 	var replayTxt:FlxText;
 
 	public static var duoDadSONG:SwagSong;
@@ -1183,6 +1186,13 @@ class PlayState extends MusicBeatState
 				dad.x -= 180;
 				dad.y += 240;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
+
+				//evilTrail = new FlxTrail(dad, null, 24, 60, 0.3, 0.069);
+				//	// evilTrail.changeValuesEnabled(false, false, false, false);
+				//	// evilTrail.changeGraphic()
+				//add(evilTrail);
+
+				//evilTrail.visible = false;
 			case 'endless':
 				dad.x -= 1100;
 				dad.y -= 600;
@@ -1535,7 +1545,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.save.data.songPosition) // I dont wanna talk about this code :(
 			{
-				songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBarBGG'));
+				songPosBG = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBarBGG'));
 				if (FlxG.save.data.downscroll)
 					songPosBG.y = FlxG.height * 0.9 + 45; 
 				songPosBG.screenCenter(X);
@@ -1564,9 +1574,10 @@ class PlayState extends MusicBeatState
 				add(songPosBar);
 
 				if (dad.curCharacter == '303')
-					songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('bossbarfront'));
+					songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('bossbarfront'));
 				else 
-					songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+					songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
+
 				if (FlxG.save.data.downscroll)
 					songPosXP.y = FlxG.height * 0.9 + 45; 
 				songPosXP.screenCenter(X);
@@ -1574,12 +1585,11 @@ class PlayState extends MusicBeatState
 				songPosXP.scrollFactor.set();
 				add(songPosXP);
 
-				var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
-				songName.x -= 13;
-				if (FlxG.save.data.downscroll)
-					songName.y -= 3;
-				songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+				var songName = new FlxText(songPosBG.x + 36, songPosBG.y - 30, 0, SONG.song, 20);
+				songName.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 				songName.scrollFactor.set();
+				songName.screenCenter(X);
+				songName.borderSize = 1.25;
 				songName.antialiasing = false;
 				add(songName);
 
@@ -1614,24 +1624,35 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 
 		// Add Kade Engine watermark
-		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardcore" : storyDifficulty == 2 ? "Hardcore" : storyDifficulty == 1 ? "Hard" : "Peaceful") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
-		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		kadeEngineWatermark = new FlxText(5, healthBarBG.y + 45 ,0,SONG.song + " " + (storyDifficulty == 3 ? "Ultra Hardcore" : storyDifficulty == 2 ? "Hardcore" : storyDifficulty == 1 ? "Hard" : "Peaceful") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 20);
+		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.borderSize = 1.25;
+		kadeEngineWatermark.antialiasing = false;
 		add(kadeEngineWatermark);
 
 		if (FlxG.save.data.downscroll)
 			kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
 
-		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
-		if (!FlxG.save.data.accuracyDisplay)
-			scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		//scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
+		//if (!FlxG.save.data.accuracyDisplay)
+		//	scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
+		//scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		//scoreTxt.scrollFactor.set();
+		//if (offsetTesting)
+		//	scoreTxt.x += 300;
+		//if(FlxG.save.data.SpectatorMode) 
+		//scoreTxt.x = FlxG.width / 2 - 20;													  
+		//add(scoreTxt);
+
+
+		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-		if (offsetTesting)
-			scoreTxt.x += 300;
-		if(FlxG.save.data.SpectatorMode) 
-		scoreTxt.x = FlxG.width / 2 - 20;													  
+		scoreTxt.borderSize = 1.25;
 		add(scoreTxt);
+
+
 		// idk how I SHOULD MAKE THIS WORK WITH THE SECOND HEALTHBAR BGG LMAOOOOO HELP
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -2067,7 +2088,7 @@ class PlayState extends MusicBeatState
 			remove(songPosXP);
 			remove(songName);
 
-			songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBarBGG'));
+			songPosBG = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBarBGG'));
 			if (FlxG.save.data.downscroll)
 				songPosBG.y = FlxG.height * 0.9 + 45; 
 			songPosBG.screenCenter(X);
@@ -2099,9 +2120,9 @@ class PlayState extends MusicBeatState
 			add(songPosBar);
 
 			if (dad.curCharacter == '303')
-				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('bossbarfront'));
+				songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('bossbarfront'));
 			else 
-				songPosXP = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+				songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
 
 			
 			if (FlxG.save.data.downscroll)
@@ -2111,12 +2132,12 @@ class PlayState extends MusicBeatState
 			songPosXP.scrollFactor.set();
 			add(songPosXP);
 
-			var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
-			if (FlxG.save.data.downscroll)
-				songName.y -= 3;
-			songName.x -= 13;
-			songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+			var songName = new FlxText(songPosBG.x + 36, songPosBG.y - 30, 0, SONG.song, 20);
+			songName.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			songName.scrollFactor.set();
+			songName.screenCenter(X);
+			songName.borderSize = 1.25;
+			songName.antialiasing = false;
 			add(songName);
 
 			songPosBG.cameras = [camHUD];
@@ -3016,6 +3037,7 @@ class PlayState extends MusicBeatState
 		if(SONG.song.toLowerCase() == 'entity')
 		{
 			cpuStrums.visible = false;
+			oneTimeUse = true;
 			hotbar.animation.play('MicNoSP', false);
 			if (health > 0.03)
 				health -= 0.0001;
@@ -3030,6 +3052,7 @@ class PlayState extends MusicBeatState
 		{
 			hotbar.animation.play('MicNoSP', false);
 			cpuStrums.visible = false;
+			oneTimeUse = true;
 		}
 
 		if (SONG.song.toLowerCase() != 'practice' || SONG.song.toLowerCase() != 'entity')
@@ -4277,11 +4300,24 @@ class PlayState extends MusicBeatState
 					}
 
 			}
+				// FROM PSYCH ENINGE BUT MODIFIED
+				if(scoreTxTMovement != null) {
+					scoreTxTMovement.cancel();
+				}
+				scoreTxt.scale.x = 1.05;
+				scoreTxt.scale.y = 1.05;
+				scoreTxTMovement = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.25, {
+					onComplete: function(twn:FlxTween) {
+						scoreTxTMovement = null;
+					}
+				});
 
-			// trace('Wife accuracy loss: ' + wife + ' | Rating: ' + daRating + ' | Score: ' + score + ' | Weight: ' + (1 - wife));
 
 			if (daRating != 'shit' || daRating != 'bad')
-				{
+			{
+
+
+
 
 
 			songScore += Math.round(score);
@@ -5342,6 +5378,8 @@ class PlayState extends MusicBeatState
 								tmr.reset(0.001);
 							}
 						});
+					//evilTrail.visible = true;
+
 
 				case 686 | 1008 | 1086 | 1102 | 1116 | 1214 | 1232 | 1248 | 1342 | 1358 | 1374 | 1406 | 1422 | 1438 | 1470 | 1486 | 1502 | 1550 | 1566 | 1790 | 2046:
 					new FlxTimer().start(0.001, function(tmr:FlxTimer)
