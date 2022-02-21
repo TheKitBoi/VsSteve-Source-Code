@@ -662,17 +662,21 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.7;
 					camMovement = 0.2;
 
-					var bgSky = new FlxSprite().loadGraphic(Paths.image('temple/templeBG'));
-					bgSky.scrollFactor.set(0.1, 0.1);
-					bgSky.y -= 250;
-					bgSky.x -= 265;
-					add(bgSky);
+					var templeBG = new FlxSprite().loadGraphic(Paths.image('temple/templeBG'));
+					templeBG.scrollFactor.set(0.1, 0.1);
+					templeBG.y -= 250;
+					templeBG.x -= 285;
+					templeBG.setGraphicSize(Std.int(templeBG.width * 6.2));
+					add(templeBG);
 
 					var repositionShit = -200;
 
-					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('temple/floor'));
-					bgStreet.scrollFactor.set(0.95, 0.95);
-					add(bgStreet);
+					var templeFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('temple/floor'));
+					templeFloor.scrollFactor.set(0.95, 0.95);
+					templeFloor.y -= -35;
+					templeFloor.x -= 1600;
+					templeFloor.setGraphicSize(Std.int(templeFloor.width * 7));
+					add(templeFloor);
 
 					alecs = new FlxSprite(810, 100);
 				    alecs.frames = Paths.getSparrowAtlas('temple/alexBG');
@@ -706,14 +710,8 @@ class PlayState extends MusicBeatState
 					notchStanding.updateHitbox();
 			 		add(notchStanding);
 
-
-					var widShit = Std.int(bgSky.width * 6);
-
-					bgSky.setGraphicSize(widShit);
-					bgStreet.setGraphicSize(widShit);
-
-					bgSky.updateHitbox();
-					bgStreet.updateHitbox();
+					templeBG.updateHitbox();
+					templeFloor.updateHitbox();
 
 			}
 			case 'entity':
@@ -3461,8 +3459,8 @@ class PlayState extends MusicBeatState
 
 						case 'notch':
 							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - -200 + dadnoteMovementXoffset;
-							defaultCamZoom = 0.8;
+							camFollow.x = dad.getMidpoint().x - -125 + dadnoteMovementXoffset;
+							defaultCamZoom = 0.7;
 
 						case 'steve-armor':
 							camFollow.y = dad.getMidpoint().y - 260;
@@ -3538,7 +3536,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 240;
 						defaultCamZoom = 0.8;
 					case 'notch':
-						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
+						camFollow.x = boyfriend.getMidpoint().x - 320 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 200 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'entity':
